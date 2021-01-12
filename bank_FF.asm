@@ -2218,7 +2218,7 @@ C - - - - - 0x00CE9E 03:CE8E: A9 05     LDA #$05
 C - - - - - 0x00CEA0 03:CE90: 85 68     STA ram_0068
 C - - - - - 0x00CEA2 03:CE92: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CEA5 03:CE95: 68        PLA
-C - - - - - 0x00CEA6 03:CE96: 20 24 80  JSR sub_0x008034
+C - - - - - 0x00CEA6 03:CE96: 20 24 80  JSR sub_0x00A03A
 C - - - - - 0x00CEA9 03:CE99: A5 28     LDA ram_0028
 C - - - - - 0x00CEAB 03:CE9B: 29 7F     AND #$7F
 C - - - - - 0x00CEAD 03:CE9D: 8D 00 20  STA $2000
