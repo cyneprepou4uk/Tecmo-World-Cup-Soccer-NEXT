@@ -2092,7 +2092,7 @@ C - - - - - 0x00CDA1 03:CD91: A9 03     LDA #$03
 C - - - - - 0x00CDA3 03:CD93: 85 68     STA ram_0068
 C - - - - - 0x00CDA5 03:CD95: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDA8 03:CD98: 68        PLA
-C - - - - - 0x00CDA9 03:CD99: 20 00 80  JSR sub_0x004010
+C - - - - - 0x00CDA9 03:CD99: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00CDAC 03:CD9C: 48        PHA
 C - - - - - 0x00CDAD 03:CD9D: A9 02     LDA #$02
 C - - - - - 0x00CDAF 03:CD9F: 85 67     STA ram_0067
@@ -2120,7 +2120,7 @@ C - - - - - 0x00CDDB 03:CDCB: A9 03     LDA #$03
 C - - - - - 0x00CDDD 03:CDCD: 85 68     STA ram_0068
 C - - - - - 0x00CDDF 03:CDCF: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDE2 03:CDD2: 68        PLA
-C - - - - - 0x00CDE3 03:CDD3: 20 00 80  JSR sub_0x004010
+C - - - - - 0x00CDE3 03:CDD3: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00CDE6 03:CDD6: 48        PHA
 C - - - - - 0x00CDE7 03:CDD7: A9 02     LDA #$02
 C - - - - - 0x00CDE9 03:CDD9: 85 67     STA ram_0067
@@ -2742,7 +2742,7 @@ C - - - - - 0x00D23C 03:D22C: A9 03     LDA #$03
 C - - - - - 0x00D23E 03:D22E: 85 68     STA ram_0068
 C - - - - - 0x00D240 03:D230: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D243 03:D233: 68        PLA
-C - - - - - 0x00D244 03:D234: 20 00 80  JSR sub_0x004010
+C - - - - - 0x00D244 03:D234: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00D247 03:D237: 48        PHA
 C - - - - - 0x00D248 03:D238: A9 02     LDA #$02
 C - - - - - 0x00D24A 03:D23A: 85 67     STA ram_0067
@@ -2877,7 +2877,7 @@ C - - - - - 0x00D344 03:D334: A9 03     LDA #$03
 C - - - - - 0x00D346 03:D336: 85 68     STA ram_0068
 C - - - - - 0x00D348 03:D338: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D34B 03:D33B: 68        PLA
-C - - - - - 0x00D34C 03:D33C: 20 00 80  JSR sub_0x004010
+C - - - - - 0x00D34C 03:D33C: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00D34F 03:D33F: 48        PHA
 C - - - - - 0x00D350 03:D340: A9 02     LDA #$02
 C - - - - - 0x00D352 03:D342: 85 67     STA ram_0067
