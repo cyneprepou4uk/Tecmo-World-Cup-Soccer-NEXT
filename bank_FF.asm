@@ -5668,29 +5668,29 @@ sub_E527:
 C - - - - - 0x00E537 03:E527: A0 12     LDY #$12
 C - - - - - 0x00E539 03:E529: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00E53B 03:E52B: 20 BD CA  JSR sub_CABD_bytes_after_JSR
-- D 3 - I - 0x00E53E 03:E52E: 7D E5     .word ofs_E57D_00
-- D 3 - I - 0x00E540 03:E530: 7D E5     .word ofs_E57D_01
-- D 3 - I - 0x00E542 03:E532: 76 E5     .word ofs_E576_02_RTS
-- D 3 - I - 0x00E544 03:E534: 9B E5     .word ofs_E59B_03_RTS
-- D 3 - I - 0x00E546 03:E536: 7D E5     .word ofs_E57D_04
-- D 3 - I - 0x00E548 03:E538: 76 E5     .word ofs_E576_05_RTS
-- - - - - - 0x00E54A 03:E53A: 76 E5     .word ofs_E576_06_RTS
-- - - - - - 0x00E54C 03:E53C: 76 E5     .word ofs_E576_07_RTS
-- - - - - - 0x00E54E 03:E53E: 76 E5     .word ofs_E576_08_RTS
-- - - - - - 0x00E550 03:E540: 76 E5     .word ofs_E576_09_RTS
-- - - - - - 0x00E552 03:E542: 76 E5     .word ofs_E576_0A_RTS
-- - - - - - 0x00E554 03:E544: 76 E5     .word ofs_E576_0B_RTS
-- - - - - - 0x00E556 03:E546: 76 E5     .word ofs_E576_0C_RTS
-- - - - - - 0x00E558 03:E548: 76 E5     .word ofs_E576_0D_RTS
-- - - - - - 0x00E55A 03:E54A: 76 E5     .word ofs_E576_0E_RTS
-- D 3 - I - 0x00E55C 03:E54C: 9C E5     .word ofs_E59C_0F
-- D 3 - I - 0x00E55E 03:E54E: A2 E5     .word ofs_E5A2_10
-- D 3 - I - 0x00E560 03:E550: E1 E5     .word ofs_E57D_11
-- D 3 - I - 0x00E562 03:E552: 7D E5     .word ofs_E57D_12
-- D 3 - I - 0x00E564 03:E554: 7D E5     .word ofs_E57D_13
-- D 3 - I - 0x00E566 03:E556: 9C E5     .word ofs_E59C_14
-- D 3 - I - 0x00E568 03:E558: 9C E5     .word ofs_E59C_15
-- D 3 - I - 0x00E56A 03:E55A: 76 E5     .word ofs_E576_16_RTS
+- D 3 - I - 0x00E53E 03:E52E: 7D E5     .word ofs_E57D_00   
+- D 3 - I - 0x00E540 03:E530: 7D E5     .word ofs_E57D_01   
+- D 3 - I - 0x00E542 03:E532: 76 E5     .word _common_RTS   ; 02
+- D 3 - I - 0x00E544 03:E534: 9B E5     .word _common_RTS   ; 03
+- D 3 - I - 0x00E546 03:E536: 7D E5     .word ofs_E57D_04   
+- D 3 - I - 0x00E548 03:E538: 76 E5     .word _common_RTS   ; 05
+- - - - - - 0x00E54A 03:E53A: 76 E5     .word _common_RTS   ; 06
+- - - - - - 0x00E54C 03:E53C: 76 E5     .word _common_RTS   ; 07
+- - - - - - 0x00E54E 03:E53E: 76 E5     .word _common_RTS   ; 08
+- - - - - - 0x00E550 03:E540: 76 E5     .word _common_RTS   ; 09
+- - - - - - 0x00E552 03:E542: 76 E5     .word _common_RTS   ; 0A
+- - - - - - 0x00E554 03:E544: 76 E5     .word _common_RTS   ; 0B
+- - - - - - 0x00E556 03:E546: 76 E5     .word _common_RTS   ; 0C
+- - - - - - 0x00E558 03:E548: 76 E5     .word _common_RTS   ; 0D
+- - - - - - 0x00E55A 03:E54A: 76 E5     .word _common_RTS   ; 0E
+- D 3 - I - 0x00E55C 03:E54C: 9C E5     .word ofs_E59C_0F   
+- D 3 - I - 0x00E55E 03:E54E: A2 E5     .word ofs_E5A2_10   
+- D 3 - I - 0x00E560 03:E550: E1 E5     .word ofs_E57D_11   
+- D 3 - I - 0x00E562 03:E552: 7D E5     .word ofs_E57D_12   
+- D 3 - I - 0x00E564 03:E554: 7D E5     .word ofs_E57D_13   
+- D 3 - I - 0x00E566 03:E556: 9C E5     .word ofs_E59C_14   
+- D 3 - I - 0x00E568 03:E558: 9C E5     .word ofs_E59C_15   
+- D 3 - I - 0x00E56A 03:E55A: 76 E5     .word _common_RTS   ; 16
 
 
 
@@ -5708,22 +5708,6 @@ C - - - - - 0x00E57F 03:E56F: C8        INY
 C - - - - - 0x00E580 03:E570: AD E0 03  LDA ram_03E0
 C - - - - - 0x00E583 03:E573: 91 61     STA (ram_0061),Y
 C - - - - - 0x00E585 03:E575: 60        RTS
-
-
-
-ofs_E576_02_RTS:
-ofs_E576_05_RTS:
-ofs_E576_06_RTS:
-ofs_E576_07_RTS:
-ofs_E576_08_RTS:
-ofs_E576_09_RTS:
-ofs_E576_0A_RTS:
-ofs_E576_0B_RTS:
-ofs_E576_0C_RTS:
-ofs_E576_0D_RTS:
-ofs_E576_0E_RTS:
-ofs_E576_16_RTS:
-C - - J - - 0x00E586 03:E576: 60        RTS
 
 
 
@@ -5758,11 +5742,6 @@ C - - - - - 0x00E5A6 03:E596: 88        DEY
 C - - - - - 0x00E5A7 03:E597: 8A        TXA
 C - - - - - 0x00E5A8 03:E598: 91 61     STA (ram_0061),Y
 C - - - - - 0x00E5AA 03:E59A: 60        RTS
-
-
-
-ofs_E59B_03_RTS:
-C - - J - - 0x00E5AB 03:E59B: 60        RTS
 
 
 
@@ -9099,6 +9078,11 @@ tbl_FBFB:
 - D 3 - - - 0x00FC88 03:FC78: FF        .byte $FF   ; 
 - D 3 - - - 0x00FC89 03:FC79: FF        .byte $FF   ; 
 
+
+
+.export _common_RTS
+_common_RTS:
+    RTS
 
 
 .segment "VECTORS"
