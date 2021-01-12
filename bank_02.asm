@@ -28,12 +28,6 @@ C - - - - - 0x008025 02:8015: 4C D1 80  JMP loc_80D1
 sub_0x008028:
 C - - - - - 0x008028 02:8018: 4C 20 8B  JMP loc_8B20
 
-
-; bzk мусор
-- - - - - - 0x00802B 02:801B: 4C 00 B0  JMP loc_B000
-
-
-
 .export sub_0x00802E
 sub_0x00802E:
 C - - - - - 0x00802E 02:801E: 4C 42 98  JMP loc_9842
@@ -10299,7 +10293,6 @@ tbl_A9AC:
 
 
 
-loc_B000:
 .export sub_0x00B010
 sub_0x00B010:
 C - - - - - 0x00B010 02:B000: 20 07 B0  JSR sub_B007
