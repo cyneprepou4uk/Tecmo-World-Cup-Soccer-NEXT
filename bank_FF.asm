@@ -20,13 +20,6 @@ C - - - - - 0x00C019 03:C009: 4C 09 C6  JMP loc_C609
 loc_0x00C01C:
 C D 2 - - - 0x00C01C 03:C00C: 4C F1 C5  JMP loc_C5F1
 
-
-; bzk мусор
-- - - - - - 0x00C022 03:C012: 4C 9E C7  JMP loc_C79E
-- - - - - - 0x00C025 03:C015: 4C B9 C6  JMP loc_C6B9
-
-
-
 .export sub_0x00C028
 sub_0x00C028:
 C - - - - - 0x00C028 03:C018: 4C D4 CA  JMP loc_CAD4
@@ -1059,7 +1052,6 @@ C - - - - - 0x00C6C8 03:C6B8: 60        RTS
 
 
 sub_C6B9:
-loc_C6B9:
 C - - - - - 0x00C6C9 03:C6B9: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00C6CC 03:C6BC: C9 0B     CMP #$0B
 C - - - - - 0x00C6CE 03:C6BE: A9 00     LDA #$00
@@ -1203,7 +1195,6 @@ C - - - - - 0x00C7AD 03:C79D: 60        RTS
 
 
 sub_C79E:
-loc_C79E:
 C - - - - - 0x00C7AE 03:C79E: 0A        ASL
 C - - - - - 0x00C7AF 03:C79F: 85 2A     STA ram_002A
 C - - - - - 0x00C7B1 03:C7A1: 0A        ASL
