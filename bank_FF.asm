@@ -3004,8 +3004,8 @@ C - - - - - 0x00D404 03:D3F4: A9 B4     LDA #$B4
 C - - - - - 0x00D406 03:D3F6: 95 01     STA ram_0001,X
 C - - - - - 0x00D408 03:D3F8: A9 02     LDA #$02
 C - - - - - 0x00D40A 03:D3FA: 95 02     STA ram_0002,X
-C - - - - - 0x00D40C 03:D3FC: A9 80     LDA #> ofs_0x004043
-C - - - - - 0x00D40E 03:D3FE: A0 32     LDY #< ofs_0x004043
+C - - - - - 0x00D40C 03:D3FC: A9 80     LDA #> sub_0x004351
+C - - - - - 0x00D40E 03:D3FE: A0 32     LDY #< sub_0x004351
 C - - - - - 0x00D410 03:D400: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00D413 03:D403: A9 00     LDA #$00
 C - - - - - 0x00D415 03:D405: 85 09     STA ram_0009

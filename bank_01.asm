@@ -2,11 +2,6 @@
 .include "bank_ram.inc"
 ; 0x004010-0x00800F
 
-off_0x004043:
-.export ofs_0x004043
-ofs_0x004043 = off_0x004043 - 1
-C - - - - - 0x004043 01:8033: 4C 41 83  JMP loc_8341
-
 
 
 .export sub_0x00405E
@@ -471,7 +466,9 @@ tbl_8332:
 
 
 
-loc_8341:
+off_0x004351:
+.export sub_0x004351
+sub_0x004351 = off_0x004351 - 1
 C D 0 - - - 0x004351 01:8341: A9 21     LDA #$21
 loc_8343:
 C D 0 - - - 0x004353 01:8343: 48        PHA
