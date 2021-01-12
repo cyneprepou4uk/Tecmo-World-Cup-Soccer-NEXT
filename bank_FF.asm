@@ -3720,14 +3720,6 @@ tbl_D842:
 - D 2 - - - 0x00D85C 03:D84C: 05        .byte $05   ; 
 
 
-; bzk мусор
-- - - - - - 0x00D85D 03:D84D: FF        .byte $FF   ; 
-- - - - - - 0x00D85E 03:D84E: FF        .byte $FF   ; 
-- - - - - - 0x00D85F 03:D84F: FF        .byte $FF   ; 
-- - - - - - 0x00D860 03:D850: FF        .byte $FF   ; 
-- - - - - - 0x00D861 03:D851: FF        .byte $FF   ; 
-
-
 
 bra_D852:
 C - - - - - 0x00D862 03:D852: A2 00     LDX #$00
