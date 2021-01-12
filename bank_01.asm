@@ -17,10 +17,6 @@ off_0x004043:
 ofs_0x004043 = off_0x004043 - 1
 C - - - - - 0x004043 01:8033: 4C 41 83  JMP loc_8341
 
-.export sub_0x004058
-sub_0x004058:
-C - - - - - 0x004058 01:8048: 4C B2 88  JMP loc_88B2
-
 .export sub_0x00405B
 sub_0x00405B:
 C - - - - - 0x00405B 01:804B: 4C 3F 8B  JMP loc_8B3F
@@ -1455,8 +1451,9 @@ C - - - - - 0x0048C1 01:88B1: 60        RTS
 
 
 
-loc_88B2:
 sub_88B2:
+.export sub_0x0048C2
+sub_0x0048C2:
 C D 0 - - - 0x0048C2 01:88B2: 48        PHA
 C - - - - - 0x0048C3 01:88B3: 20 57 C0  JSR sub_0x00CBF3
 C - - - - - 0x0048C6 01:88B6: 68        PLA
