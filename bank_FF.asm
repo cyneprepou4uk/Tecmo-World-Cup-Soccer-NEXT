@@ -2140,7 +2140,7 @@ C - - - - - 0x00CE06 03:CDF6: A9 03     LDA #$03
 C - - - - - 0x00CE08 03:CDF8: 85 68     STA ram_0068
 C - - - - - 0x00CE0A 03:CDFA: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CE0D 03:CDFD: 68        PLA
-C - - - - - 0x00CE0E 03:CDFE: 20 0F 80  JSR sub_0x00401F
+C - - - - - 0x00CE0E 03:CDFE: 20 0F 80  JSR sub_0x0047FD
 C - - - - - 0x00CE11 03:CE01: 20 DA CF  JSR sub_CFDA
 C - - - - - 0x00CE14 03:CE04: AD B1 03  LDA ram_timer_sec
 C - - - - - 0x00CE17 03:CE07: 0D B2 03  ORA ram_timer_min
@@ -2179,7 +2179,7 @@ C - - - - - 0x00CE56 03:CE46: A9 03     LDA #$03
 C - - - - - 0x00CE58 03:CE48: 85 68     STA ram_0068
 C - - - - - 0x00CE5A 03:CE4A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CE5D 03:CE4D: 68        PLA
-C - - - - - 0x00CE5E 03:CE4E: 20 0F 80  JSR sub_0x00401F
+C - - - - - 0x00CE5E 03:CE4E: 20 0F 80  JSR sub_0x0047FD
 C - - - - - 0x00CE61 03:CE51: 68        PLA
 C - - - - - 0x00CE62 03:CE52: 38        SEC
 C - - - - - 0x00CE63 03:CE53: E9 01     SBC #$01
