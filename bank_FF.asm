@@ -2,9 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-loc_C003:
-C D 2 - - - 0x00C013 03:C003: 4C 81 C0  JMP loc_C081
-
 .export sub_0x00C016_prepare_return_address
 sub_0x00C016_prepare_return_address:
 C - - - - - 0x00C016 03:C006: 4C E1 C5  JMP loc_C5E1_prepare_return_address
@@ -75,7 +72,9 @@ C - - - - - 0x00C08E 03:C07E: 4C 10 C9  JMP loc_C910
 
 
 
-loc_C081:
+vec_C081_RESET:
+                                        LDA #$00
+                                        STA $8000
 C D 2 - - - 0x00C091 03:C081: A9 08     LDA #$08
 C - - - - - 0x00C093 03:C083: 8D 00 20  STA $2000
 C - - - - - 0x00C096 03:C086: 78        SEI
@@ -9167,16 +9166,9 @@ tbl_FBFB:
 
 
 
-vec_FFD0_RESET:
-C - - - - - 0x00FFE0 03:FFD0: A9 00     LDA #$00
-C - - - - - 0x00FFE2 03:FFD2: 8D 00 80  STA $8000
-C - - - - - 0x00FFE5 03:FFD5: 4C 03 C0  JMP loc_C003
-
-
-
 .segment "VECTORS"
 - D 3 - - - 0x01000A 03:FFFA: 00 C0     .word vec_C14A_NMI
-- D 3 - - - 0x01000C 03:FFFC: D0 FF     .word vec_FFD0_RESET
+- D 3 - - - 0x01000C 03:FFFC: D0 FF     .word vec_C081_RESET
 - - - - - - 0x01000E 03:FFFE: D0 FF     .word $FFD0
 
 
