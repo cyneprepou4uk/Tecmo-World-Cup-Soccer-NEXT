@@ -17,10 +17,6 @@ off_0x004043:
 ofs_0x004043 = off_0x004043 - 1
 C - - - - - 0x004043 01:8033: 4C 41 83  JMP loc_8341
 
-.export sub_0x00404F
-sub_0x00404F:
-C - - - - - 0x00404F 01:803F: 4C 6B 8B  JMP loc_8B6B
-
 .export sub_0x004052
 sub_0x004052:
 C - - - - - 0x004052 01:8042: 4C 24 8B  JMP loc_8B24
@@ -1949,7 +1945,8 @@ C - - - - - 0x004B7A 01:8B6A: 60        RTS
 
 
 
-loc_8B6B:
+.export sub_0x004B7B
+sub_0x004B7B:
 C D 0 - - - 0x004B7B 01:8B6B: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x004B7E 01:8B6E: 10 03     BPL bra_8B73
 C - - - - - 0x004B80 01:8B70: 4C 97 8B  JMP loc_8B97

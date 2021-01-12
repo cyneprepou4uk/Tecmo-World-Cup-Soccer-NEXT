@@ -6769,7 +6769,7 @@ C - - - - - 0x00ECA8 03:EC98: A9 03     LDA #$03
 C - - - - - 0x00ECAA 03:EC9A: 85 68     STA ram_0068
 C - - - - - 0x00ECAC 03:EC9C: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00ECAF 03:EC9F: 68        PLA
-C - - - - - 0x00ECB0 03:ECA0: 20 3F 80  JSR sub_0x00404F
+C - - - - - 0x00ECB0 03:ECA0: 20 3F 80  JSR sub_0x004B7B
 C - - - - - 0x00ECB3 03:ECA3: A9 06     LDA #$06
 C - - - - - 0x00ECB5 03:ECA5: 20 A5 E0  JSR sub_E0A5
 C - - - - - 0x00ECB8 03:ECA8: 4C B0 EC  JMP loc_ECB0
