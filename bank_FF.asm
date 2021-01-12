@@ -8715,14 +8715,6 @@ C - - - - - 0x00F92F 03:F91F: 20 2F C6  JSR sub_C62F
 C - - - - - 0x00F932 03:F922: 4C 55 DF  JMP loc_DF55
 
 
-; bzk мусор
-loc_F925:
-- - - - - - 0x00F935 03:F925: A9 01     LDA #$01
-- - - - - - 0x00F937 03:F927: 20 52 C6  JSR sub_C652
-- - - - - - 0x00F93A 03:F92A: 20 49 F9  JSR sub_F949
-- - - - - - 0x00F93D 03:F92D: 4C 25 F9  JMP loc_F925
-
-
 
 tbl_F930:
 - D 3 - - - 0x00F940 03:F930: 08        .byte $08   ; 
