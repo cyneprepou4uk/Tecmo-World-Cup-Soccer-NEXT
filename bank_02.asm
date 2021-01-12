@@ -1491,34 +1491,33 @@ C - - - - - 0x00899D 02:898D: 68        PLA
 C - - - - - 0x00899E 02:898E: C9 20     CMP #$20
 C - - - - - 0x0089A0 02:8990: D0 05     BNE bra_8997
 C - - - - - 0x0089A2 02:8992: A9 00     LDA #$00
-C - - - - - 0x0089A4 02:8994: 4C C2 89  JMP loc_89C2
+                                        BEQ bra_89C2
 bra_8997:
 C - - - - - 0x0089A7 02:8997: C9 2D     CMP #$2D
 C - - - - - 0x0089A9 02:8999: D0 05     BNE bra_89A0
 - - - - - - 0x0089AB 02:899B: A9 01     LDA #$01
-- - - - - - 0x0089AD 02:899D: 4C C2 89  JMP loc_89C2
+                                        BNE bra_89C2
 bra_89A0:
 C - - - - - 0x0089B0 02:89A0: C9 21     CMP #$21
 C - - - - - 0x0089B2 02:89A2: D0 05     BNE bra_89A9
 C - - - - - 0x0089B4 02:89A4: A9 26     LDA #$26
-C - - - - - 0x0089B6 02:89A6: 4C C2 89  JMP loc_89C2
+                                        BNE bra_89C2
 bra_89A9:
 C - - - - - 0x0089B9 02:89A9: C9 2E     CMP #$2E
 C - - - - - 0x0089BB 02:89AB: D0 05     BNE bra_89B2
 C - - - - - 0x0089BD 02:89AD: A9 27     LDA #$27
-C - - - - - 0x0089BF 02:89AF: 4C C2 89  JMP loc_89C2
+                                        BNE bra_89C2
 bra_89B2:
 C - - - - - 0x0089C2 02:89B2: C9 41     CMP #$41
 C - - - - - 0x0089C4 02:89B4: 90 05     BCC bra_89BB
 C - - - - - 0x0089C6 02:89B6: E9 35     SBC #$35
-C - - - - - 0x0089C8 02:89B8: 4C C2 89  JMP loc_89C2
+                                        BNE bra_89C2
 bra_89BB:
 C - - - - - 0x0089CB 02:89BB: C9 30     CMP #$30
 C - - - - - 0x0089CD 02:89BD: 90 03     BCC bra_89C2
 C - - - - - 0x0089CF 02:89BF: 38        SEC
 C - - - - - 0x0089D0 02:89C0: E9 2E     SBC #$2E
 bra_89C2:
-loc_89C2:   ; bzk опт
 C D 0 - - - 0x0089D2 02:89C2: 0A        ASL
 C - - - - - 0x0089D3 02:89C3: 0A        ASL
 C - - - - - 0x0089D4 02:89C4: AA        TAX
