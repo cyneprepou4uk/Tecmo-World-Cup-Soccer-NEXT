@@ -2375,7 +2375,7 @@ C - - - - - 0x00CFB9 03:CFA9: A9 03     LDA #$03
 C - - - - - 0x00CFBB 03:CFAB: 85 68     STA ram_0068
 C - - - - - 0x00CFBD 03:CFAD: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CFC0 03:CFB0: 68        PLA
-C - - - - - 0x00CFC1 03:CFB1: 20 21 80  JSR sub_0x004031
+C - - - - - 0x00CFC1 03:CFB1: 20 21 80  JSR sub_0x004531
 C - - - - - 0x00CFC4 03:CFB4: 20 18 CB  JSR sub_CB18
 - D 2 - I - 0x00CFC7 03:CFB7: 80 03     .word ram_0380
 C - - - - - 0x00CFC9 03:CFB9: 60        RTS
