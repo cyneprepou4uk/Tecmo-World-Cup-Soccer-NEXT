@@ -444,7 +444,7 @@ C - - - - - 0x00C3CA 03:C3BA: A9 03     LDA #$03
 C - - - - - 0x00C3CC 03:C3BC: 85 68     STA ram_0068
 C - - - - - 0x00C3CE 03:C3BE: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C3D1 03:C3C1: 68        PLA
-C - - - - - 0x00C3D2 03:C3C2: 20 2D 80  JSR sub_0x00403D
+C - - - - - 0x00C3D2 03:C3C2: 20 2D 80  JSR sub_0x004A81
 C - - - - - 0x00C3D5 03:C3C5: 20 07 C5  JSR sub_C507
 bra_C3C8:
 C - - - - - 0x00C3D8 03:C3C8: A9 01     LDA #$01
