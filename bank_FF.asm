@@ -8296,7 +8296,7 @@ C - - - - - 0x00F7F7 03:F7E7: A9 03     LDA #$03
 C - - - - - 0x00F7F9 03:F7E9: 85 68     STA ram_0068
 C - - - - - 0x00F7FB 03:F7EB: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F7FE 03:F7EE: 68        PLA
-C - - - - - 0x00F7FF 03:F7EF: 20 42 80  JSR sub_0x004052
+C - - - - - 0x00F7FF 03:F7EF: 20 42 80  JSR sub_0x004B34
 C - - - - - 0x00F802 03:F7F2: 4C FF F7  JMP loc_F7FF
 bra_F7F5:
 C - - - - - 0x00F805 03:F7F5: A9 C0     LDA #$C0
@@ -8360,7 +8360,7 @@ C - - - - - 0x00F87A 03:F86A: A9 03     LDA #$03
 C - - - - - 0x00F87C 03:F86C: 85 68     STA ram_0068
 C - - - - - 0x00F87E 03:F86E: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F881 03:F871: 68        PLA
-C - - - - - 0x00F882 03:F872: 20 42 80  JSR sub_0x004052
+C - - - - - 0x00F882 03:F872: 20 42 80  JSR sub_0x004B34
 C - - - - - 0x00F885 03:F875: 4C 88 F8  JMP loc_F888
 bra_F878:
 C - - - - - 0x00F888 03:F878: A9 0B     LDA #$0B
