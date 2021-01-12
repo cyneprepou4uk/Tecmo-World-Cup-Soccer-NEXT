@@ -5455,7 +5455,7 @@ C - - - - - 0x00E406 03:E3F6: A9 03     LDA #$03
 C - - - - - 0x00E408 03:E3F8: 85 68     STA ram_0068
 C - - - - - 0x00E40A 03:E3FA: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00E40D 03:E3FD: 68        PLA
-C - - - - - 0x00E40E 03:E3FE: 20 4B 80  JSR sub_0x00405B
+C - - - - - 0x00E40E 03:E3FE: 20 4B 80  JSR sub_0x004B4F
 C - - - - - 0x00E411 03:E401: 90 0C     BCC bra_E40F_RTS
 C - - - - - 0x00E413 03:E403: B0 0B     BCS bra_E410
 bra_E405:
