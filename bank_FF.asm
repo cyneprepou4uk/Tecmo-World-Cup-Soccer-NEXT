@@ -7864,7 +7864,7 @@ C - - - - - 0x00F48B 03:F47B: A9 03     LDA #$03
 C - - - - - 0x00F48D 03:F47D: 85 68     STA ram_0068
 C - - - - - 0x00F48F 03:F47F: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F492 03:F482: 68        PLA
-C - - - - - 0x00F493 03:F483: 20 3C 80  JSR sub_0x00404C
+C - - - - - 0x00F493 03:F483: 20 3C 80  JSR sub_0x004BEC
 bra_F486:
 loc_F486:
 C D 3 - - - 0x00F496 03:F486: A9 01     LDA #$01
