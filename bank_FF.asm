@@ -527,8 +527,8 @@ C - - - - - 0x00C46F 03:C45F: A9 3C     LDA #$3C
 C - - - - - 0x00C471 03:C461: 95 01     STA ram_0001,X
 C - - - - - 0x00C473 03:C463: A9 04     LDA #$04
 C - - - - - 0x00C475 03:C465: 95 02     STA ram_0002,X
-C - - - - - 0x00C477 03:C467: A9 80     LDA #> ofs_0x008025
-C - - - - - 0x00C479 03:C469: A0 14     LDY #< ofs_0x008025
+C - - - - - 0x00C477 03:C467: A9 80     LDA #> sub_0x0080E1
+C - - - - - 0x00C479 03:C469: A0 14     LDY #< sub_0x0080E1
 C - - - - - 0x00C47B 03:C46B: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 loc_C46E:
 C D 2 - - - 0x00C47E 03:C46E: A9 01     LDA #$01
