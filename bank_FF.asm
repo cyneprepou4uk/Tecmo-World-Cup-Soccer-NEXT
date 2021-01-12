@@ -24,15 +24,6 @@ C D 2 - - - 0x00C01C 03:C00C: 4C F1 C5  JMP loc_C5F1
 sub_0x00C028:
 C - - - - - 0x00C028 03:C018: 4C D4 CA  JMP loc_CAD4
 
-; bzk мусор
-loc_C01E:
-- - - - - - 0x00C02E 03:C01E: 4C 1E C0  JMP loc_C01E
-- - - - - - 0x00C031 03:C021: 4C A4 CB  JMP loc_CBA4
-- - - - - - 0x00C034 03:C024: 4C F6 C6  JMP loc_C6F6
-- - - - - - 0x00C037 03:C027: 4C 1D C7  JMP loc_C71D
-
-
-
 .export sub_0x00C03A_bytes_after_JSR
 sub_0x00C03A_bytes_after_JSR:
 C - - - - - 0x00C03A 03:C02A: 4C BD CA  JMP loc_CABD_bytes_after_JSR
@@ -1080,7 +1071,6 @@ C - - - - - 0x00C6FF 03:C6EF: 91 61     STA (ram_0061),Y
 C - - - - - 0x00C701 03:C6F1: A9 00     LDA #$00
 C - - - - - 0x00C703 03:C6F3: 20 2F C6  JSR sub_C62F
 bra_C6F6:
-loc_C6F6:
 C - - - - - 0x00C706 03:C6F6: 20 1D C7  JSR sub_C71D
 C - - - - - 0x00C709 03:C6F9: B0 08     BCS bra_C703
 C - - - - - 0x00C70B 03:C6FB: AD AD 03  LDA ram_team_w_ball
@@ -1104,7 +1094,6 @@ bra_C717:
 
 
 sub_C71D:
-loc_C71D:
 C - - - - - 0x00C72D 03:C71D: AE BC 03  LDX ram_03BC
 C - - - - - 0x00C730 03:C720: AC BD 03  LDY ram_03BD
 C - - - - - 0x00C733 03:C723: 38        SEC
@@ -1975,7 +1964,6 @@ C - - - - - 0x00CBB3 03:CBA3: 60        RTS
 
 
 sub_CBA4:
-loc_CBA4:
 C - - - - - 0x00CBB4 03:CBA4: 8A        TXA
 C - - - - - 0x00CBB5 03:CBA5: 48        PHA
 C - - - - - 0x00CBB6 03:CBA6: A9 00     LDA #$00
