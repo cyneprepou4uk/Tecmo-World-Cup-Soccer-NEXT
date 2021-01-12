@@ -223,7 +223,7 @@ C - - - - - 0x00815A 02:814A: A9 04     LDA #$04
 C - - - - - 0x00815C 02:814C: 95 02     STA ram_0002,X
 C - - - - - 0x00815E 02:814E: A9 81     LDA #> ofs_81AD
 C - - - - - 0x008160 02:8150: A0 AC     LDY #< ofs_81AD
-C - - - - - 0x008162 02:8152: 20 06 C0  JSR sub_0x00C016_prepare_return_address
+C - - - - - 0x008162 02:8152: 20 06 C0  JSR sub_0x00C5F1_prepare_return_address
 C - - - - - 0x008165 02:8155: A9 46     LDA #$46
 C - - - - - 0x008167 02:8157: 20 09 C0  JSR sub_0x00C019
 C - - - - - 0x00816A 02:815A: A2 00     LDX #$00
@@ -315,7 +315,7 @@ C - - - - - 0x008209 02:81F9: A9 04     LDA #$04
 C - - - - - 0x00820B 02:81FB: 95 02     STA ram_0002,X
 C - - - - - 0x00820D 02:81FD: A9 82     LDA #> ofs_82D9
 C - - - - - 0x00820F 02:81FF: A0 D8     LDY #< ofs_82D9
-C - - - - - 0x008211 02:8201: 20 06 C0  JSR sub_0x00C016_prepare_return_address
+C - - - - - 0x008211 02:8201: 20 06 C0  JSR sub_0x00C5F1_prepare_return_address
 C - - - - - 0x008214 02:8204: A9 11     LDA #$11
 bra_8206:
 C - - - - - 0x008216 02:8206: 0A        ASL
@@ -875,7 +875,7 @@ C - - - - - 0x008580 02:8570: A9 04     LDA #$04
 C - - - - - 0x008582 02:8572: 95 02     STA ram_0002,X
 C - - - - - 0x008584 02:8574: A9 88     LDA #> ofs_88B9
 C - - - - - 0x008586 02:8576: A0 B8     LDY #< ofs_88B9
-C - - - - - 0x008588 02:8578: 20 06 C0  JSR sub_0x00C016_prepare_return_address
+C - - - - - 0x008588 02:8578: 20 06 C0  JSR sub_0x00C5F1_prepare_return_address
 C - - - - - 0x00858B 02:857B: 2C A4 03  BIT ram_03A4
 C - - - - - 0x00858E 02:857E: 10 19     BPL bra_8599
 C - - - - - 0x008590 02:8580: A9 00     LDA #$00

@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C016_prepare_return_address
-sub_0x00C016_prepare_return_address:
-C - - - - - 0x00C016 03:C006: 4C E1 C5  JMP loc_C5E1_prepare_return_address
-
 .export sub_0x00C019
 sub_0x00C019:
 C - - - - - 0x00C019 03:C009: 4C 09 C6  JMP loc_C609
@@ -813,8 +809,9 @@ C - - - - - 0x00C5F0 03:C5E0: 60        RTS
 
 
 
-loc_C5E1_prepare_return_address:
 sub_C5E1_prepare_return_address:
+.export sub_0x00C5F1_prepare_return_address
+sub_0x00C5F1_prepare_return_address:
 C D 2 - - - 0x00C5F1 03:C5E1: 48        PHA
 C - - - - - 0x00C5F2 03:C5E2: 98        TYA
 C - - - - - 0x00C5F3 03:C5E3: B4 01     LDY ram_0001,X
