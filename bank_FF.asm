@@ -52,12 +52,6 @@ C - - - - - 0x00C058 03:C048: 4C 9D C8  JMP loc_C89D
 sub_0x00C061:
 C - - - - - 0x00C061 03:C051: 4C AF CA  JMP loc_CAAF
 
-
-; bzk мусор
-- - - - - - 0x00C064 03:C054: 4C 23 CC  JMP loc_CC23
-
-
-
 .export sub_0x00C067
 sub_0x00C067:
 C - - - - - 0x00C067 03:C057: 4C E3 CB  JMP loc_CBE3
@@ -2020,7 +2014,6 @@ sub_CC20:
 C - - - - - 0x00CC30 03:CC20: 18        CLC
 C - - - - - 0x00CC31 03:CC21: 69 40     ADC #$40
 sub_CC23:
-loc_CC23:
 C - - - - - 0x00CC33 03:CC23: 0A        ASL
 C - - - - - 0x00CC34 03:CC24: 08        PHP
 C - - - - - 0x00CC35 03:CC25: 10 02     BPL bra_CC29
