@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x008010-0x00C00F
 
-.export sub_0x008013
-sub_0x008013:
-C - - - - - 0x008013 02:8003: 4C C9 83  JMP loc_83C9
-
 off_0x00801C:
 .export ofs_0x00801C
 ofs_0x00801C = off_0x00801C - 1
@@ -633,7 +629,8 @@ tbl_8399:
 
 
 
-loc_83C9:
+.export sub_0x0083D9
+sub_0x0083D9:
 C D 0 - - - 0x0083D9 02:83C9: 2C A4 03  BIT ram_03A4
 C - - - - - 0x0083DC 02:83CC: 30 3B     BMI bra_8409_RTS
 C - - - - - 0x0083DE 02:83CE: A9 14     LDA #$14
