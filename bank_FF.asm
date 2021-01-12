@@ -4641,7 +4641,7 @@ C - - - - - 0x00DECE 03:DEBE: 20 1B 80  JSR sub_0x00402B
 C - - - - - 0x00DED1 03:DEC1: A9 17     LDA #$17
 C - - - - - 0x00DED3 03:DEC3: 20 E3 CB  JSR sub_CBE3
 C - - - - - 0x00DED6 03:DEC6: 20 1B 80  JSR sub_0x00402B
-C - - - - - 0x00DED9 03:DEC9: 20 18 80  JSR sub_0x004028
+C - - - - - 0x00DED9 03:DEC9: 20 18 80  JSR sub_0x00464C
 C - - - - - 0x00DEDC 03:DECC: A5 5C     LDA ram_005C
 C - - - - - 0x00DEDE 03:DECE: 48        PHA
 C - - - - - 0x00DEDF 03:DECF: A5 5B     LDA ram_005B
