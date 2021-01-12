@@ -7,10 +7,6 @@ off_0x004016:
 ofs_0x004016 = off_0x004016 - 1
 C - - - - - 0x004016 01:8006: 4C A3 80  JMP loc_80A3
 
-.export sub_0x004022
-sub_0x004022:
-C - - - - - 0x004022 01:8012: 4C E0 88  JMP loc_88E0
-
 off_0x004025:
 .export ofs_0x004025
 ofs_0x004025 = off_0x004025 - 1
@@ -1544,7 +1540,8 @@ C - - - - - 0x0048EF 01:88DF: 60        RTS
 
 
 
-loc_88E0:
+.export sub_0x0048F0
+sub_0x0048F0:
 C D 0 - - - 0x0048F0 01:88E0: 2C 2C 04  BIT ram_042C
 C - - - - - 0x0048F3 01:88E3: 70 38     BVS bra_891D
 C - - - - - 0x0048F5 01:88E5: A2 00     LDX #$00
