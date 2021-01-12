@@ -4773,7 +4773,7 @@ bra_97E0:
 C - - - - - 0x0097F0 02:97E0: A5 2C     LDA ram_002C
 C - - - - - 0x0097F2 02:97E2: C9 0B     CMP #$0B
 C - - - - - 0x0097F4 02:97E4: 90 03     BCC bra_97E9
-C - - - - - 0x0097F6 02:97E6: 20 36 C0  JSR sub_0x00C046
+C - - - - - 0x0097F6 02:97E6: 20 36 C0  JSR sub_0x00CB5A
 bra_97E9:
 loc_97E9:
 C D 0 - - - 0x0097F9 02:97E9: 98        TYA
@@ -4919,7 +4919,7 @@ bra_98BE:
 C - - - - - 0x0098CE 02:98BE: A5 2C     LDA ram_002C
 C - - - - - 0x0098D0 02:98C0: C9 0B     CMP #$0B
 C - - - - - 0x0098D2 02:98C2: 90 03     BCC bra_98C7
-C - - - - - 0x0098D4 02:98C4: 20 36 C0  JSR sub_0x00C046
+C - - - - - 0x0098D4 02:98C4: 20 36 C0  JSR sub_0x00CB5A
 bra_98C7:
 loc_98C7:
 C D 0 - - - 0x0098D7 02:98C7: 98        TYA

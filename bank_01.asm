@@ -1984,7 +1984,7 @@ C - - - - - 0x004B5A 01:8B4A: 90 1D     BCC bra_8B69
 C - - - - - 0x004B5C 01:8B4C: AE D8 03  LDX ram_03D8
 C - - - - - 0x004B5F 01:8B4F: AC DA 03  LDY ram_03DA
 C - - - - - 0x004B62 01:8B52: F0 03     BEQ bra_8B57
-C - - - - - 0x004B64 01:8B54: 20 36 C0  JSR sub_0x00C046
+C - - - - - 0x004B64 01:8B54: 20 36 C0  JSR sub_0x00CB5A
 bra_8B57:
 C - - - - - 0x004B67 01:8B57: 8A        TXA
 C - - - - - 0x004B68 01:8B58: 38        SEC
@@ -2174,7 +2174,7 @@ C - - - - - 0x004C79 01:8C69: AE D8 03  LDX ram_03D8
 C - - - - - 0x004C7C 01:8C6C: AC DA 03  LDY ram_03DA
 C - - - - - 0x004C7F 01:8C6F: F0 05     BEQ bra_8C76
 C - - - - - 0x004C81 01:8C71: E6 2A     INC ram_002A
-C - - - - - 0x004C83 01:8C73: 20 36 C0  JSR sub_0x00C046
+C - - - - - 0x004C83 01:8C73: 20 36 C0  JSR sub_0x00CB5A
 bra_8C76:
 C - - - - - 0x004C86 01:8C76: 38        SEC
 C - - - - - 0x004C87 01:8C77: 8A        TXA
