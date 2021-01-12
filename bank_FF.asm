@@ -4939,22 +4939,6 @@ C - - - - - 0x00E064 03:E054: 20 13 E6  JSR sub_E613
 C - - - - - 0x00E067 03:E057: 60        RTS
 
 
-; bzk мусор
-- - - - - - 0x00E068 03:E058: AD 24 00  LDA a: ram_btn_hold
-- - - - - - 0x00E06B 03:E05B: AE AD 03  LDX ram_team_w_ball
-- - - - - - 0x00E06E 03:E05E: D0 03     BNE bra_E063
-- - - - - - 0x00E070 03:E060: AD 25 00  LDA a: ram_btn_hold + 1
-bra_E063:
-- - - - - - 0x00E073 03:E063: 29 0F     AND #$0F
-- - - - - - 0x00E075 03:E065: F0 08     BEQ bra_E06F_RTS
-- - - - - - 0x00E077 03:E067: AA        TAX
-- - - - - - 0x00E078 03:E068: BD 83 E0  LDA tbl_E083,X
-- - - - - - 0x00E07B 03:E06B: A0 13     LDY #$13
-- - - - - - 0x00E07D 03:E06D: 91 61     STA (ram_0061),Y
-bra_E06F_RTS:
-- - - - - - 0x00E07F 03:E06F: 60        RTS
-
-
 
 sub_E070:
 C - - - - - 0x00E080 03:E070: AA        TAX
