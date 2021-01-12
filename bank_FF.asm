@@ -2029,8 +2029,8 @@ C - - - - - 0x00CD14 03:CD04: A9 78     LDA #$78
 C - - - - - 0x00CD16 03:CD06: 95 01     STA ram_0001,X
 C - - - - - 0x00CD18 03:CD08: A9 02     LDA #$02
 C - - - - - 0x00CD1A 03:CD0A: 95 02     STA ram_0002,X
-C - - - - - 0x00CD1C 03:CD0C: A9 80     LDA #> ofs_0x004016
-C - - - - - 0x00CD1E 03:CD0E: A0 05     LDY #< ofs_0x004016
+C - - - - - 0x00CD1C 03:CD0C: A9 80     LDA #> sub_0x0040B3
+C - - - - - 0x00CD1E 03:CD0E: A0 05     LDY #< sub_0x0040B3
 C - - - - - 0x00CD20 03:CD10: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00CD23 03:CD13: A2 11     LDX #$11
 C - - - - - 0x00CD25 03:CD15: A9 96     LDA #$96
