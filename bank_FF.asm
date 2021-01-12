@@ -2100,7 +2100,7 @@ C - - - - - 0x00CDB1 03:CDA1: A9 03     LDA #$03
 C - - - - - 0x00CDB3 03:CDA3: 85 68     STA ram_0068
 C - - - - - 0x00CDB5 03:CDA5: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDB8 03:CDA8: 68        PLA
-C - - - - - 0x00CDB9 03:CDA9: 20 09 80  JSR sub_0x004019
+C - - - - - 0x00CDB9 03:CDA9: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00CDBC 03:CDAC: 2C C2 03  BIT ram_03C2
 C - - - - - 0x00CDBF 03:CDAF: 30 D6     BMI bra_CD87
 C - - - - - 0x00CDC1 03:CDB1: 20 97 CF  JSR sub_CF97
@@ -2128,7 +2128,7 @@ C - - - - - 0x00CDEB 03:CDDB: A9 03     LDA #$03
 C - - - - - 0x00CDED 03:CDDD: 85 68     STA ram_0068
 C - - - - - 0x00CDEF 03:CDDF: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDF2 03:CDE2: 68        PLA
-C - - - - - 0x00CDF3 03:CDE3: 20 09 80  JSR sub_0x004019
+C - - - - - 0x00CDF3 03:CDE3: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00CDF6 03:CDE6: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00CDF9 03:CDE9: 20 E8 D4  JSR sub_D4E8
 C - - - - - 0x00CDFC 03:CDEC: B0 29     BCS bra_CE17
@@ -2750,7 +2750,7 @@ C - - - - - 0x00D24C 03:D23C: A9 03     LDA #$03
 C - - - - - 0x00D24E 03:D23E: 85 68     STA ram_0068
 C - - - - - 0x00D250 03:D240: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D253 03:D243: 68        PLA
-C - - - - - 0x00D254 03:D244: 20 09 80  JSR sub_0x004019
+C - - - - - 0x00D254 03:D244: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00D257 03:D247: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D25A 03:D24A: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00D25D 03:D24D: 10 D3     BPL bra_D222
@@ -2885,7 +2885,7 @@ C - - - - - 0x00D354 03:D344: A9 03     LDA #$03
 C - - - - - 0x00D356 03:D346: 85 68     STA ram_0068
 C - - - - - 0x00D358 03:D348: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D35B 03:D34B: 68        PLA
-C - - - - - 0x00D35C 03:D34C: 20 09 80  JSR sub_0x004019
+C - - - - - 0x00D35C 03:D34C: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00D35F 03:D34F: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D362 03:D352: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00D365 03:D355: 10 D3     BPL bra_D32A
