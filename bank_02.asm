@@ -210,7 +210,7 @@ C - - - - - 0x00813A 02:812A: 20 18 C0  JSR sub_0x00CAE4
 C - - - - - 0x00813D 02:812D: 20 78 C0  JSR sub_0x00CB28
 - D 0 - I - 0x008140 02:8130: 80 03     .word ram_0380
 C - - - - - 0x008142 02:8132: A9 15     LDA #$15
-C - - - - - 0x008144 02:8134: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x008144 02:8134: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x008147 02:8137: A9 FE     LDA #$FE
 C - - - - - 0x008149 02:8139: 20 09 C0  JSR sub_0x00C619
 C - - - - - 0x00814C 02:813C: A9 0F     LDA #$0F
@@ -641,7 +641,7 @@ loc_83C9:
 C D 0 - - - 0x0083D9 02:83C9: 2C A4 03  BIT ram_03A4
 C - - - - - 0x0083DC 02:83CC: 30 3B     BMI bra_8409_RTS
 C - - - - - 0x0083DE 02:83CE: A9 14     LDA #$14
-C - - - - - 0x0083E0 02:83D0: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x0083E0 02:83D0: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x0083E3 02:83D3: 20 0A 84  JSR sub_840A
 C - - - - - 0x0083E6 02:83D6: A9 C8     LDA #$C8
 bra_83D8:
@@ -865,7 +865,7 @@ tbl_855C:
 
 loc_8560:
 C D 0 - - - 0x008570 02:8560: A9 16     LDA #$16
-C - - - - - 0x008572 02:8562: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x008572 02:8562: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x008575 02:8565: A9 01     LDA #$01
 C - - - - - 0x008577 02:8567: 8D AF 03  STA ram_option_timer
 C - - - - - 0x00857A 02:856A: A2 05     LDX #$05
@@ -948,7 +948,7 @@ C - - - - - 0x008628 02:8618: A9 00     LDA #$00
 C - - - - - 0x00862A 02:861A: 85 05     STA ram_0005
 C - - - - - 0x00862C 02:861C: 85 06     STA ram_0006
 C - - - - - 0x00862E 02:861E: A9 0E     LDA #$0E
-C - - - - - 0x008630 02:8620: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x008630 02:8620: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x008633 02:8623: A9 3C     LDA #$3C
 C - - - - - 0x008635 02:8625: 20 09 C0  JSR sub_0x00C619
 C - - - - - 0x008638 02:8628: A9 0F     LDA #$0F
@@ -1119,7 +1119,7 @@ C - - - - - 0x008744 02:8734: A9 00     LDA #$00
 C - - - - - 0x008746 02:8736: 85 05     STA ram_0005
 C - - - - - 0x008748 02:8738: 85 06     STA ram_0006
 C - - - - - 0x00874A 02:873A: A9 0E     LDA #$0E
-C - - - - - 0x00874C 02:873C: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00874C 02:873C: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00874F 02:873F: A9 46     LDA #$46
 C - - - - - 0x008751 02:8741: 20 09 C0  JSR sub_0x00C619
 C - - - - - 0x008754 02:8744: 60        RTS
@@ -1139,7 +1139,7 @@ bra_8756:
 C - - - - - 0x008766 02:8756: 8E AF 03  STX ram_option_timer
 C - - - - - 0x008769 02:8759: 20 62 87  JSR sub_8762
 C - - - - - 0x00876C 02:875C: A9 18     LDA #$18
-C - - - - - 0x00876E 02:875E: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00876E 02:875E: 20 7E C0  JSR sub_0x00C920
 bra_8761_RTS:
 C - - - - - 0x008771 02:8761: 60        RTS
 
@@ -1328,7 +1328,7 @@ C - - - - - 0x008880 02:8870: A9 00     LDA #$00
 C - - - - - 0x008882 02:8872: 9D B4 03  STA ram_03B4,X
 C - - - - - 0x008885 02:8875: 20 40 86  JSR sub_8640
 C - - - - - 0x008888 02:8878: A9 18     LDA #$18
-C - - - - - 0x00888A 02:887A: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00888A 02:887A: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00888D 02:887D: 60        RTS
 
 
@@ -1812,7 +1812,7 @@ C - - - - - 0x008B6B 02:8B5B: A9 90     LDA #$90
 C - - - - - 0x008B6D 02:8B5D: 2D 26 00  AND a: ram_btn_press
 C - - - - - 0x008B70 02:8B60: F0 CA     BEQ bra_8B2C
 C - - - - - 0x008B72 02:8B62: A9 01     LDA #$01
-C - - - - - 0x008B74 02:8B64: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x008B74 02:8B64: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x008B77 02:8B67: A9 00     LDA #$00
 C - - - - - 0x008B79 02:8B69: 85 05     STA ram_0005
 C - - - - - 0x008B7B 02:8B6B: 85 06     STA ram_0006
@@ -1820,7 +1820,7 @@ C - - - - - 0x008B7D 02:8B6D: 20 C9 8A  JSR sub_8AC9
 C - - - - - 0x008B80 02:8B70: A9 02     LDA #$02
 C - - - - - 0x008B82 02:8B72: 20 09 C0  JSR sub_0x00C619
 C - - - - - 0x008B85 02:8B75: A9 0F     LDA #$0F
-C - - - - - 0x008B87 02:8B77: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x008B87 02:8B77: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x008B8A 02:8B7A: AE D4 03  LDX ram_03D4
 C - - - - - 0x008B8D 02:8B7D: BD 1E 8C  LDA tbl_8C1E,X
 C - - - - - 0x008B90 02:8B80: 8D A4 03  STA ram_03A4
@@ -7015,7 +7015,7 @@ C - - - - - 0x00A176 02:A166: 8D E0 03  STA ram_03E0
 C - - - - - 0x00A179 02:A169: A9 09     LDA #$09
 C - - - - - 0x00A17B 02:A16B: 8D E4 03  STA ram_03E4
 C - - - - - 0x00A17E 02:A16E: A9 0C     LDA #$0C
-C - - - - - 0x00A180 02:A170: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00A180 02:A170: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A183 02:A173: 60        RTS
 
 
@@ -8322,7 +8322,7 @@ C - - - - - 0x00A786 02:A776: 60        RTS
 
 loc_A777:
 C D 1 - - - 0x00A787 02:A777: A9 1A     LDA #$1A
-C - - - - - 0x00A789 02:A779: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00A789 02:A779: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A78C 02:A77C: A9 60     LDA #$60
 C - - - - - 0x00A78E 02:A77E: 85 3B     STA ram_003B
 C - - - - - 0x00A790 02:A780: A9 00     LDA #$00
@@ -8362,7 +8362,7 @@ C - - - - - 0x00A7D7 02:A7C7: 4C 0C A8  JMP loc_A80C
 bra_A7CA:
 C - - - - - 0x00A7DA 02:A7CA: 48        PHA
 C - - - - - 0x00A7DB 02:A7CB: A9 18     LDA #$18
-C - - - - - 0x00A7DD 02:A7CD: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00A7DD 02:A7CD: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A7E0 02:A7D0: 68        PLA
 C - - - - - 0x00A7E1 02:A7D1: AA        TAX
 C - - - - - 0x00A7E2 02:A7D2: 29 0C     AND #$0C
@@ -8411,12 +8411,12 @@ bra_A816:
 C - - - - - 0x00A826 02:A816: 20 A2 A8  JSR sub_A8A2
 C - - - - - 0x00A829 02:A819: F0 08     BEQ bra_A823
 C - - - - - 0x00A82B 02:A81B: A9 1B     LDA #$1B
-C - - - - - 0x00A82D 02:A81D: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00A82D 02:A81D: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A830 02:A820: 4C A9 A7  JMP loc_A7A9
 bra_A823:
 C - - - - - 0x00A833 02:A823: 20 51 C0  JSR sub_0x00CABF
 C - - - - - 0x00A836 02:A826: A9 20     LDA #$20
-C - - - - - 0x00A838 02:A828: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00A838 02:A828: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A83B 02:A82B: A9 00     LDA #$00
 bra_A82D:
 C - - - - - 0x00A83D 02:A82D: 48        PHA
@@ -8434,7 +8434,7 @@ C - - - - - 0x00A84F 02:A83F: B0 EC     BCS bra_A82D
 C - - - - - 0x00A851 02:A841: A9 00     LDA #$00
 C - - - - - 0x00A853 02:A843: 85 3B     STA ram_003B
 C - - - - - 0x00A855 02:A845: A9 0E     LDA #$0E
-C - - - - - 0x00A857 02:A847: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x00A857 02:A847: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A85A 02:A84A: A9 00     LDA #$00
 bra_A84C:
 C - - - - - 0x00A85C 02:A84C: 48        PHA

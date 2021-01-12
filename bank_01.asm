@@ -864,7 +864,7 @@ bra_84E4:
 C - - - - - 0x0044F4 01:84E4: AA        TAX
 C - - - - - 0x0044F5 01:84E5: D0 05     BNE bra_84EC_RTS
 C - - - - - 0x0044F7 01:84E7: A9 0A     LDA #$0A
-C - - - - - 0x0044F9 01:84E9: 20 7E C0  JSR sub_0x00C08E
+C - - - - - 0x0044F9 01:84E9: 20 7E C0  JSR sub_0x00C920
 bra_84EC_RTS:
 C - - - - - 0x0044FC 01:84EC: 60        RTS
 

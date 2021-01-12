@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C08E
-sub_0x00C08E:
-C - - - - - 0x00C08E 03:C07E: 4C 10 C9  JMP loc_C910
-
 
 
 vec_C081_RESET:
@@ -1340,8 +1336,9 @@ C - - - - - 0x00C91F 03:C90F: 60        RTS
 
 
 
-loc_C910:
 sub_C910:
+.export sub_0x00C920
+sub_0x00C920:
 C D 2 - - - 0x00C920 03:C910: AC 00 07  LDY ram_0700
 C - - - - - 0x00C923 03:C913: C0 04     CPY #$04
 C - - - - - 0x00C925 03:C915: B0 06     BCS bra_C91D_RTS
