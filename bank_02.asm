@@ -15,12 +15,6 @@ off_0x00801C:
 ofs_0x00801C = off_0x00801C - 1
 C - - - - - 0x00801C 02:800C: 4C 1A 8A  JMP loc_8A1A
 
-
-; bzk мусор
-- - - - - - 0x00801F 02:800F: 4C F6 8A  JMP loc_8AF6
-
-
-
 .export sub_0x008022
 sub_0x008022:
 C - - - - - 0x008022 02:8012: 4C C9 8A  JMP loc_8AC9
@@ -1775,7 +1769,6 @@ C - - - - - 0x008B05 02:8AF5: 60        RTS
 
 
 sub_8AF6:
-loc_8AF6:
 C - - - - - 0x008B06 02:8AF6: 20 75 C0  JSR sub_0x00C085
 C - - - - - 0x008B09 02:8AF9: 20 51 C0  JSR sub_0x00C061
 C - - - - - 0x008B0C 02:8AFC: A9 1C     LDA #$1C
