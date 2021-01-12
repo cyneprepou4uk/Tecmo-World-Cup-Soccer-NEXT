@@ -44,12 +44,6 @@ C - - - - - 0x00C049 03:C039: 4C 50 CB  JMP loc_CB50
 sub_0x00C052:
 C - - - - - 0x00C052 03:C042: 4C 1E C9  JMP loc_C91E
 
-
-; bzk мусор
-- - - - - - 0x00C055 03:C045: 4C 58 CB  JMP loc_CB58_prg_bankswitch
-
-
-
 .export sub_0x00C058
 sub_0x00C058:
 C - - - - - 0x00C058 03:C048: 4C 9D C8  JMP loc_C89D
@@ -1895,7 +1889,6 @@ C - - - - - 0x00CB67 03:CB57: 60        RTS
 
 
 sub_CB58_prg_bankswitch:
-loc_CB58_prg_bankswitch:
 C - - - - - 0x00CB68 03:CB58: A5 65     LDA ram_0065
 C - - - - - 0x00CB6A 03:CB5A: 09 06     ORA #$06
 C - - - - - 0x00CB6C 03:CB5C: 85 66     STA ram_0066
