@@ -2,9 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-vec_C000_NMI:
-C - - - - - 0x00C010 03:C000: 4C 4A C1  JMP loc_C14A
-
 loc_C003:
 C D 2 - - - 0x00C013 03:C003: 4C 81 C0  JMP loc_C081
 
@@ -180,7 +177,7 @@ C - - - - - 0x00C157 03:C147: 4C 5B C5  JMP loc_C55B
 
 
 
-loc_C14A:
+vec_C14A_NMI:
 C D 2 - - - 0x00C15A 03:C14A: 48        PHA
 C - - - - - 0x00C15B 03:C14B: 8A        TXA
 C - - - - - 0x00C15C 03:C14C: 48        PHA
@@ -9178,7 +9175,7 @@ C - - - - - 0x00FFE5 03:FFD5: 4C 03 C0  JMP loc_C003
 
 
 .segment "VECTORS"
-- D 3 - - - 0x01000A 03:FFFA: 00 C0     .word vec_C000_NMI
+- D 3 - - - 0x01000A 03:FFFA: 00 C0     .word vec_C14A_NMI
 - D 3 - - - 0x01000C 03:FFFC: D0 FF     .word vec_FFD0_RESET
 - - - - - - 0x01000E 03:FFFE: D0 FF     .word $FFD0
 
