@@ -48,13 +48,6 @@ C - - - - - 0x00C052 03:C042: 4C 1E C9  JMP loc_C91E
 sub_0x00C058:
 C - - - - - 0x00C058 03:C048: 4C 9D C8  JMP loc_C89D
 
-
-; bzk мусор
-- - - - - - 0x00C05B 03:C04B: 4C 43 C8  JMP loc_C843
-- - - - - - 0x00C05E 03:C04E: 4C 7E C6  JMP loc_C67E
-
-
-
 .export sub_0x00C061
 sub_0x00C061:
 C - - - - - 0x00C061 03:C051: 4C AF CA  JMP loc_CAAF
@@ -977,7 +970,6 @@ C - - - - - 0x00C68D 03:C67D: 60        RTS
 
 
 sub_C67E:
-loc_C67E:
 C - - - - - 0x00C68E 03:C67E: A0 14     LDY #$14
 C - - - - - 0x00C690 03:C680: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00C692 03:C682: 85 2A     STA ram_002A
@@ -1301,7 +1293,6 @@ tbl_C81A:
 
 
 sub_C843:
-loc_C843:
 C - - - - - 0x00C853 03:C843: 38        SEC
 C - - - - - 0x00C854 03:C844: A0 05     LDY #$05
 C - - - - - 0x00C856 03:C846: B1 61     LDA (ram_0061),Y
