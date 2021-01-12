@@ -12,10 +12,6 @@ off_0x004025:
 ofs_0x004025 = off_0x004025 - 1
 C - - - - - 0x004025 01:8015: 4C 96 85  JMP loc_8596
 
-.export sub_0x00402B
-sub_0x00402B:
-C - - - - - 0x00402B 01:801B: 4C 96 86  JMP loc_8696
-
 .export sub_0x00402E
 sub_0x00402E:
 C - - - - - 0x00402E 01:801E: 4C 8F 87  JMP loc_878F
@@ -1140,8 +1136,9 @@ C - - - - - 0x0046A5 01:8695: 60        RTS
 
 
 
-loc_8696:
 sub_8696:
+.export sub_0x0046A6
+sub_0x0046A6:
 C D 0 - - - 0x0046A6 01:8696: A0 00     LDY #$00
 C - - - - - 0x0046A8 01:8698: B1 61     LDA (ram_0061),Y
 C - - - - - 0x0046AA 01:869A: 29 FD     AND #$FD
