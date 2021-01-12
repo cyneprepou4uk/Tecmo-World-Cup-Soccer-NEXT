@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C03A_bytes_after_JSR
-sub_0x00C03A_bytes_after_JSR:
-C - - - - - 0x00C03A 03:C02A: 4C BD CA  JMP loc_CABD_bytes_after_JSR
-
 .export sub_0x00C043
 sub_0x00C043:
 C - - - - - 0x00C043 03:C033: 4C 52 C7  JMP loc_C752
@@ -1679,8 +1675,9 @@ C - - - - - 0x00CACC 03:CABC: 60        RTS
 
 
 
-loc_CABD_bytes_after_JSR:
 sub_CABD_bytes_after_JSR:
+.export sub_0x00CACD_bytes_after_JSR
+sub_0x00CACD_bytes_after_JSR:
 C D 2 - - - 0x00CACD 03:CABD: 0A        ASL
 C - - - - - 0x00CACE 03:CABE: A8        TAY
 C - - - - - 0x00CACF 03:CABF: 68        PLA

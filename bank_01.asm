@@ -1603,7 +1603,7 @@ C - - - - - 0x00493C 01:892C: 4A        LSR
 C - - - - - 0x00493D 01:892D: 4A        LSR
 C - - - - - 0x00493E 01:892E: 4A        LSR
 C - - - - - 0x00493F 01:892F: 4A        LSR
-C - - - - - 0x004940 01:8930: 20 2A C0  JSR sub_0x00C03A_bytes_after_JSR
+C - - - - - 0x004940 01:8930: 20 2A C0  JSR sub_0x00CACD_bytes_after_JSR
 - - - - - - 0x004943 01:8933: 41 89     .word ofs_8941_00
 - D 0 - I - 0x004945 01:8935: 41 89     .word ofs_8941_01
 - D 0 - I - 0x004947 01:8937: 47 89     .word ofs_8947_02
