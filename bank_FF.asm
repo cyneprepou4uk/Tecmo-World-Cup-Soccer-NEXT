@@ -7328,7 +7328,7 @@ C - - - - - 0x00F066 03:F056: A9 03     LDA #$03
 C - - - - - 0x00F068 03:F058: 85 68     STA ram_0068
 C - - - - - 0x00F06A 03:F05A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F06D 03:F05D: 68        PLA
-C - - - - - 0x00F06E 03:F05E: 20 45 80  JSR sub_0x004055
+C - - - - - 0x00F06E 03:F05E: 20 45 80  JSR sub_0x00487C
 C - - - - - 0x00F071 03:F061: 20 48 80  JSR sub_0x004058
 C - - - - - 0x00F074 03:F064: 4C 55 DF  JMP loc_DF55
 
