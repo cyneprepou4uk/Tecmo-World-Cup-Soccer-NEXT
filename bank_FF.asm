@@ -4024,21 +4024,6 @@ C - - - - - 0x00DA32 03:DA22: AD D3 03  LDA ram_03D3
 C - - - - - 0x00DA35 03:DA25: 29 10     AND #$10
 C - - - - - 0x00DA37 03:DA27: D0 14     BNE bra_DA3D
 C - - - - - 0x00DA39 03:DA29: 60        RTS
-
-
-; bzk мусор
-- - - - - - 0x00DA3A 03:DA2A: 38        SEC
-- - - - - - 0x00DA3B 03:DA2B: AD 26 04  LDA ram_0426
-- - - - - - 0x00DA3E 03:DA2E: F0 03     BEQ bra_DA33
-- - - - - - 0x00DA40 03:DA30: 4C 3A DB  JMP loc_DB3A_RTS
-bra_DA33:
-- - - - - - 0x00DA43 03:DA33: AD 24 04  LDA ram_ball_Z_lo
-- - - - - - 0x00DA46 03:DA36: C9 1D     CMP #$1D
-- - - - - - 0x00DA48 03:DA38: 90 03     BCC bra_DA3D
-- - - - - - 0x00DA4A 03:DA3A: 4C 3A DB  JMP loc_DB3A_RTS
-
-
-
 bra_DA3D:
 C - - - - - 0x00DA4D 03:DA3D: A9 00     LDA #$00
 C - - - - - 0x00DA4F 03:DA3F: 85 2E     STA ram_002E
