@@ -12,10 +12,6 @@ off_0x008025:
 ofs_0x008025 = off_0x008025 - 1
 C - - - - - 0x008025 02:8015: 4C D1 80  JMP loc_80D1
 
-.export sub_0x008028
-sub_0x008028:
-C - - - - - 0x008028 02:8018: 4C 20 8B  JMP loc_8B20
-
 .export sub_0x00802E
 sub_0x00802E:
 C - - - - - 0x00802E 02:801E: 4C 42 98  JMP loc_9842
@@ -1765,7 +1761,8 @@ C - - - - - 0x008B2F 02:8B1F: 60        RTS
 
 
 
-loc_8B20:
+.export sub_0x008B30
+sub_0x008B30:
 C D 0 - - - 0x008B30 02:8B20: A9 1D     LDA #$1D
 C - - - - - 0x008B32 02:8B22: 85 6C     STA ram_006C
 C - - - - - 0x008B34 02:8B24: A9 00     LDA #$00

@@ -400,7 +400,7 @@ C - - - - - 0x00C366 03:C356: A9 05     LDA #$05
 C - - - - - 0x00C368 03:C358: 85 68     STA ram_0068
 C - - - - - 0x00C36A 03:C35A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C36D 03:C35D: 68        PLA
-C - - - - - 0x00C36E 03:C35E: 20 18 80  JSR sub_0x008028
+C - - - - - 0x00C36E 03:C35E: 20 18 80  JSR sub_0x008B30
 C - - - - - 0x00C371 03:C361: AD A4 03  LDA ram_03A4
 C - - - - - 0x00C374 03:C364: 09 08     ORA #$08
 C - - - - - 0x00C376 03:C366: 8D A4 03  STA ram_03A4
