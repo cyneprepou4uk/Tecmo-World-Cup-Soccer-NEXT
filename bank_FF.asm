@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C028
-sub_0x00C028:
-C - - - - - 0x00C028 03:C018: 4C D4 CA  JMP loc_CAD4
-
 .export sub_0x00C03A_bytes_after_JSR
 sub_0x00C03A_bytes_after_JSR:
 C - - - - - 0x00C03A 03:C02A: 4C BD CA  JMP loc_CABD_bytes_after_JSR
@@ -1703,8 +1699,9 @@ C - - - - - 0x00CAE1 03:CAD1: 6C 3C 00  JMP (ram_003C)
 
 
 
-loc_CAD4:
 sub_CAD4:
+.export sub_0x00CAE4
+sub_0x00CAE4:
 C D 2 - - - 0x00CAE4 03:CAD4: A0 00     LDY #$00
 C - - - - - 0x00CAE6 03:CAD6: 84 42     STY ram_0042
 C - - - - - 0x00CAE8 03:CAD8: 0A        ASL
