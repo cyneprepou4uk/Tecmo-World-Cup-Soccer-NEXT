@@ -9385,11 +9385,10 @@ C - - - - - 0x00B454 02:B444: 8D E4 00  STA a: ram_00E4
 C - - - - - 0x00B457 02:B447: AD E3 00  LDA a: ram_00E3
 C - - - - - 0x00B45A 02:B44A: 0D E4 00  ORA a: ram_00E4
 C - - - - - 0x00B45D 02:B44D: D0 D0     BNE bra_B41F
-C - - - - - 0x00B45F 02:B44F: 4C 57 B4  JMP loc_B457_RTS
+                                        RTS
 bra_B452:
 C - - - - - 0x00B462 02:B452: AD E9 00  LDA a: ram_00E9
 C - - - - - 0x00B465 02:B455: F0 DF     BEQ bra_B436_loop
-loc_B457_RTS:
 C D 1 - - - 0x00B467 02:B457: 60        RTS
 
 
