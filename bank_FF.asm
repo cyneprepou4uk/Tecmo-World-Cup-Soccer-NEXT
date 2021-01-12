@@ -5077,7 +5077,7 @@ tbl_E160:
 
 
 sub_E167:
-C - - - - - 0x00E177 03:E167: 20 30 80  JSR sub_0x004040
+C - - - - - 0x00E177 03:E167: 20 30 80  JSR sub_0x004A03
 C - - - - - 0x00E17A 03:E16A: A0 14     LDY #$14
 C - - - - - 0x00E17C 03:E16C: A5 77     LDA ram_0077
 C - - - - - 0x00E17E 03:E16E: 91 61     STA (ram_0061),Y
@@ -5295,7 +5295,7 @@ C - - - - - 0x00E2F2 03:E2E2: 91 61     STA (ram_0061),Y
 C - - - - - 0x00E2F4 03:E2E4: 90 67     BCC bra_E34D_RTS
 C - - - - - 0x00E2F6 03:E2E6: A5 6F     LDA ram_006F
 C - - - - - 0x00E2F8 03:E2E8: A2 01     LDX #$01
-C - - - - - 0x00E2FA 03:E2EA: 20 30 80  JSR sub_0x004040
+C - - - - - 0x00E2FA 03:E2EA: 20 30 80  JSR sub_0x004A03
 C - - - - - 0x00E2FD 03:E2ED: A5 77     LDA ram_0077
 C - - - - - 0x00E2FF 03:E2EF: 8D 1D 04  STA ram_041D
 C - - - - - 0x00E302 03:E2F2: A5 78     LDA ram_0078
