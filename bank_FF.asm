@@ -9169,7 +9169,7 @@ tbl_FBFB:
 .segment "VECTORS"
 - D 3 - - - 0x01000A 03:FFFA: 00 C0     .word vec_C14A_NMI
 - D 3 - - - 0x01000C 03:FFFC: D0 FF     .word vec_C081_RESET
-- - - - - - 0x01000E 03:FFFE: D0 FF     .word $FFD0
+- - - - - - 0x01000E 03:FFFE: D0 FF     .word $0000
 
 
 
