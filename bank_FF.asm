@@ -2023,7 +2023,7 @@ C - - - - - 0x00CD07 03:CCF7: A9 03     LDA #$03
 C - - - - - 0x00CD09 03:CCF9: 85 68     STA ram_0068
 C - - - - - 0x00CD0B 03:CCFB: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CD0E 03:CCFE: 68        PLA
-C - - - - - 0x00CD0F 03:CCFF: 20 39 80  JSR sub_0x004049
+C - - - - - 0x00CD0F 03:CCFF: 20 39 80  JSR sub_0x004D2A
 C - - - - - 0x00CD12 03:CD02: A2 0D     LDX #$0D
 C - - - - - 0x00CD14 03:CD04: A9 78     LDA #$78
 C - - - - - 0x00CD16 03:CD06: 95 01     STA ram_0001,X
