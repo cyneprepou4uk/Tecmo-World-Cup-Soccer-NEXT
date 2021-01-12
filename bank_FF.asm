@@ -5685,7 +5685,7 @@ C - - - - - 0x00E53B 03:E52B: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 - - - - - - 0x00E55A 03:E54A: 76 E5     .word ofs_E576_0E_RTS
 - D 3 - I - 0x00E55C 03:E54C: 9C E5     .word ofs_E59C_0F
 - D 3 - I - 0x00E55E 03:E54E: A2 E5     .word ofs_E5A2_10
-- D 3 - I - 0x00E560 03:E550: E1 E5     .word ofs_E5E1_11
+- D 3 - I - 0x00E560 03:E550: E1 E5     .word ofs_E57D_11
 - D 3 - I - 0x00E562 03:E552: 7D E5     .word ofs_E57D_12
 - D 3 - I - 0x00E564 03:E554: 7D E5     .word ofs_E57D_13
 - D 3 - I - 0x00E566 03:E556: 9C E5     .word ofs_E59C_14
@@ -5732,11 +5732,10 @@ C - - - - - 0x00E587 03:E577: 20 5C E5  JSR sub_E55C
 C - - - - - 0x00E58A 03:E57A: 4C E4 E5  JMP loc_E5E4
 
 
-
-loc_E57D:
 ofs_E57D_00:
 ofs_E57D_01:
 ofs_E57D_04:
+ofs_E57D_11:
 ofs_E57D_12:
 ofs_E57D_13:
 C D 3 J - - 0x00E58D 03:E57D: 20 77 E5  JSR sub_E577
@@ -5820,11 +5819,6 @@ C - - - - - 0x00E5EC 03:E5DC: 88        DEY
 C - - - - - 0x00E5ED 03:E5DD: 8A        TXA
 C - - - - - 0x00E5EE 03:E5DE: 91 61     STA (ram_0061),Y
 C - - - - - 0x00E5F0 03:E5E0: 60        RTS
-
-
-
-ofs_E5E1_11:    ; bzk опт
-C - - J - - 0x00E5F1 03:E5E1: 4C 7D E5  JMP loc_E57D
 
 
 
