@@ -60,16 +60,6 @@ C - - - - - 0x00C067 03:C057: 4C E3 CB  JMP loc_CBE3
 sub_0x00C06A:
 C - - - - - 0x00C06A 03:C05A: 4C 2F C6  JMP loc_C62F
 
-
-; bzk мусор
-- - - - - - 0x00C076 03:C066: 4C 37 C9  JMP loc_C937
-- - - - - - 0x00C079 03:C069: 4C 6D C6  JMP loc_C66D
-- - - - - - 0x00C07C 03:C06C: 4C 77 C6  JMP loc_C677
-- - - - - - 0x00C07F 03:C06F: 4C 40 C9  JMP loc_C940
-- - - - - - 0x00C082 03:C072: 4C E1 C6  JMP loc_C6E1
-
-
-
 .export sub_0x00C085
 sub_0x00C085:
 C - - - - - 0x00C085 03:C075: 4C 59 CA  JMP loc_CA59
@@ -929,7 +919,6 @@ C - - - - - 0x00C66E 03:C65E: 4C 55 DF  JMP loc_DF55
 
 
 sub_C66D:
-loc_C66D:
 C - - - - - 0x00C67D 03:C66D: A0 0F     LDY #$0F
 C - - - - - 0x00C67F 03:C66F: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00C681 03:C671: 18        CLC
@@ -940,7 +929,6 @@ C - - - - - 0x00C686 03:C676: 60        RTS
 
 
 sub_C677:
-loc_C677:
 C - - - - - 0x00C687 03:C677: A0 0F     LDY #$0F
 C - - - - - 0x00C689 03:C679: A9 00     LDA #$00
 C - - - - - 0x00C68B 03:C67B: 91 61     STA (ram_0061),Y
@@ -1011,7 +999,6 @@ C - - - - - 0x00C6F0 03:C6E0: 60        RTS
 
 
 sub_C6E1:
-loc_C6E1:
 C - - - - - 0x00C6F1 03:C6E1: AD 2A 04  LDA ram_plr_wo_ball
 C - - - - - 0x00C6F4 03:C6E4: 30 10     BMI bra_C6F6
 C - - - - - 0x00C6F6 03:C6E6: 20 E3 CB  JSR sub_CBE3
@@ -1470,7 +1457,6 @@ C - - - - - 0x00C946 03:C936: 60        RTS
 
 
 sub_C937:
-loc_C937:
 C - - - - - 0x00C947 03:C937: A0 00     LDY #$00
 C - - - - - 0x00C949 03:C939: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00C94B 03:C93B: 09 01     ORA #$01
@@ -1480,7 +1466,6 @@ C - - - - - 0x00C94F 03:C93F: 60        RTS
 
 
 sub_C940:
-loc_C940:
 C - - - - - 0x00C950 03:C940: A0 00     LDY #$00
 C - - - - - 0x00C952 03:C942: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00C954 03:C944: 29 FE     AND #$FE
