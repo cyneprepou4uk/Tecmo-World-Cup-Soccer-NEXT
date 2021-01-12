@@ -179,7 +179,7 @@ C - - - - - 0x0080F7 02:80E7: A9 26     LDA #$26
 C - - - - - 0x0080F9 02:80E9: 85 6A     STA ram_006A
 C - - - - - 0x0080FB 02:80EB: A2 BF     LDX #< tbl_95BF
 C - - - - - 0x0080FD 02:80ED: A0 95     LDY #> tbl_95BF
-C - - - - - 0x0080FF 02:80EF: 20 33 C0  JSR sub_0x00C043
+C - - - - - 0x0080FF 02:80EF: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x008102 02:80F2: A9 20     LDA #$20
 C - - - - - 0x008104 02:80F4: 20 4C 89  JSR sub_894C
 C - - - - - 0x008107 02:80F7: A9 21     LDA #$21
@@ -831,12 +831,12 @@ C - - - - - 0x008533 02:8523: A9 02     LDA #$02
 C - - - - - 0x008535 02:8525: 20 09 C0  JSR sub_0x00C619
 C - - - - - 0x008538 02:8528: A2 D0     LDX #< tbl_8DD0
 C - - - - - 0x00853A 02:852A: A0 8D     LDY #> tbl_8DD0
-C - - - - - 0x00853C 02:852C: 20 33 C0  JSR sub_0x00C043
+C - - - - - 0x00853C 02:852C: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x00853F 02:852F: 2C A4 03  BIT ram_03A4
 C - - - - - 0x008542 02:8532: 10 0A     BPL bra_853E
 C - - - - - 0x008544 02:8534: A2 37     LDX #< tbl_9137
 C - - - - - 0x008546 02:8536: A0 91     LDY #> tbl_9137
-C - - - - - 0x008548 02:8538: 20 33 C0  JSR sub_0x00C043
+C - - - - - 0x008548 02:8538: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x00854B 02:853B: 4C 41 85  JMP loc_8541
 bra_853E:
 C - - - - - 0x00854E 02:853E: 20 2D A6  JSR sub_A62D
@@ -1769,7 +1769,7 @@ C - - - - - 0x008B23 02:8B13: 20 78 C0  JSR sub_0x00C088
 - D 0 - I - 0x008B26 02:8B16: 80 03     .word ram_0380
 C - - - - - 0x008B28 02:8B18: A2 76     LDX #< tbl_8C76
 C - - - - - 0x008B2A 02:8B1A: A0 8C     LDY #> tbl_8C76
-C - - - - - 0x008B2C 02:8B1C: 20 33 C0  JSR sub_0x00C043
+C - - - - - 0x008B2C 02:8B1C: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x008B2F 02:8B1F: 60        RTS
 
 
@@ -8208,7 +8208,7 @@ C - - - - - 0x00A6F2 02:A6E2: E0 05     CPX #$05
 C - - - - - 0x00A6F4 02:A6E4: D0 F1     BNE bra_A6D7
 C - - - - - 0x00A6F6 02:A6E6: A2 AC     LDX #< tbl_A9AC
 C - - - - - 0x00A6F8 02:A6E8: A0 A9     LDY #> tbl_A9AC
-C - - - - - 0x00A6FA 02:A6EA: 20 33 C0  JSR sub_0x00C043
+C - - - - - 0x00A6FA 02:A6EA: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x00A6FD 02:A6ED: 20 1A A7  JSR sub_A71A
 C - - - - - 0x00A700 02:A6F0: 60        RTS
 
@@ -8333,7 +8333,7 @@ C - - - - - 0x00A79A 02:A78A: 20 78 C0  JSR sub_0x00C088
 - D 1 - I - 0x00A79D 02:A78D: 80 03     .word ram_0380
 C - - - - - 0x00A79F 02:A78F: A2 AC     LDX #< tbl_A9AC
 C - - - - - 0x00A7A1 02:A791: A0 A9     LDY #> tbl_A9AC
-C - - - - - 0x00A7A3 02:A793: 20 33 C0  JSR sub_0x00C043
+C - - - - - 0x00A7A3 02:A793: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x00A7A6 02:A796: A2 09     LDX #$09
 C - - - - - 0x00A7A8 02:A798: A9 00     LDA #$00
 bra_A79A:

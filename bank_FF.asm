@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C043
-sub_0x00C043:
-C - - - - - 0x00C043 03:C033: 4C 52 C7  JMP loc_C752
-
 .export sub_0x00C046
 sub_0x00C046:
 C - - - - - 0x00C046 03:C036: 4C 4A CB  JMP loc_CB4A
@@ -1032,7 +1028,8 @@ C - - - - - 0x00C761 03:C751: 60        RTS
 
 
 
-loc_C752:
+.export sub_0x00C762
+sub_0x00C762:
 C D 2 - - - 0x00C762 03:C752: 86 43     STX ram_0043
 C - - - - - 0x00C764 03:C754: 84 44     STY ram_0044
 loc_C756:
