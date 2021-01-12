@@ -40,13 +40,6 @@ C - - - - - 0x00C046 03:C036: 4C 4A CB  JMP loc_CB4A
 sub_0x00C049:
 C - - - - - 0x00C049 03:C039: 4C 50 CB  JMP loc_CB50
 
-
-; bzk мусор
-- - - - - - 0x00C04C 03:C03C: 4C 5B C9  JMP loc_C95B
-- - - - - - 0x00C04F 03:C03F: 4C DA C9  JMP loc_C9DA
-
-
-
 .export sub_0x00C052
 sub_0x00C052:
 C - - - - - 0x00C052 03:C042: 4C 1E C9  JMP loc_C91E
@@ -1546,7 +1539,6 @@ C - - - - - 0x00C958 03:C948: 60        RTS
 
 
 sub_C95B:
-loc_C95B:
 C - - - - - 0x00C96B 03:C95B: 85 2A     STA ram_002A
 C - - - - - 0x00C96D 03:C95D: E6 2A     INC ram_002A
 C - - - - - 0x00C96F 03:C95F: A9 10     LDA #$10
@@ -1633,7 +1625,6 @@ C - - - - - 0x00C9E9 03:C9D9: 60        RTS
 
 
 sub_C9DA:
-loc_C9DA:
 C - - - - - 0x00C9EA 03:C9DA: 85 2A     STA ram_002A
 C - - - - - 0x00C9EC 03:C9DC: E6 2A     INC ram_002A
 C - - - - - 0x00C9EE 03:C9DE: A9 10     LDA #$10
