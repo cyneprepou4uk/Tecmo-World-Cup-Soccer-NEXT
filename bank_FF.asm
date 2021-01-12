@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C067
-sub_0x00C067:
-C - - - - - 0x00C067 03:C057: 4C E3 CB  JMP loc_CBE3
-
 .export sub_0x00C06A
 sub_0x00C06A:
 C - - - - - 0x00C06A 03:C05A: 4C 2F C6  JMP loc_C62F
@@ -1871,12 +1867,13 @@ C - - - - - 0x00CBF2 03:CBE2: 60        RTS
 
 
 
-loc_CBE3:
 sub_CBE3:
 ; bzk сделать отдельный лейбл для 16 и 17
 ; _SelectInitialPlayerDataAddress_b03:      ; CBE3
 ; _SelectInitialBallDataAddress:            ; если на вход подается 16
 ; _SelectInitialShadowDataAddress:          ; если на вход подается 17
+.export sub_0x00CBF3
+sub_0x00CBF3:
 C D 2 - - - 0x00CBF3 03:CBE3: 0A        ASL
 C - - - - - 0x00CBF4 03:CBE4: AA        TAX
 C - - - - - 0x00CBF5 03:CBE5: BD F0 CB  LDA tbl_CBF0,X
