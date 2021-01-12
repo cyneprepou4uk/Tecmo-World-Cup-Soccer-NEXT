@@ -2262,7 +2262,7 @@ C - - - - - 0x00CEF5 03:CEE5: A9 05     LDA #$05
 C - - - - - 0x00CEF7 03:CEE7: 85 68     STA ram_0068
 C - - - - - 0x00CEF9 03:CEE9: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CEFC 03:CEEC: 68        PLA
-C - - - - - 0x00CEFD 03:CEED: 20 27 80  JSR sub_0x008037
+C - - - - - 0x00CEFD 03:CEED: 20 27 80  JSR sub_0x00A100
 bra_CEF0:
 C - - - - - 0x00CF00 03:CEF0: A9 01     LDA #$01
 C - - - - - 0x00CF02 03:CEF2: 20 09 C6  JSR sub_C609
