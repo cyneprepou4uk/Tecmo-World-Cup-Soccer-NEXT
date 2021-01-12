@@ -600,7 +600,7 @@ tbl_83A7:
 .export sub_0x0043BA
 sub_0x0043BA:
 C D 0 - - - 0x0043BA 01:83AA: A9 00     LDA #$00
-bra_83AC:
+bra_83AC_loop:
 C - - - - - 0x0043BC 01:83AC: 48        PHA
 C - - - - - 0x0043BD 01:83AD: 20 51 C0  JSR sub_0x00CABF
 C - - - - - 0x0043C0 01:83B0: A9 00     LDA #$00
@@ -619,7 +619,7 @@ C - - - - - 0x0043D3 01:83C3: A9 01     LDA #$01
 C - - - - - 0x0043D5 01:83C5: 20 09 C0  JSR sub_0x00C619
 C - - - - - 0x0043D8 01:83C8: 68        PLA
 C - - - - - 0x0043D9 01:83C9: C9 38     CMP #$38
-C - - - - - 0x0043DB 01:83CB: D0 DF     BNE bra_83AC
+C - - - - - 0x0043DB 01:83CB: D0 DF     BNE bra_83AC_loop
 C - - - - - 0x0043DD 01:83CD: 20 51 C0  JSR sub_0x00CABF
 C - - - - - 0x0043E0 01:83D0: 60        RTS
 
