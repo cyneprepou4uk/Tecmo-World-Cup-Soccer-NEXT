@@ -6295,7 +6295,7 @@ C - - - - - 0x00E930 03:E920: F0 12     BEQ bra_E934
 C - - - - - 0x00E932 03:E922: AD 25 00  LDA a: ram_btn_hold + 1
 C - - - - - 0x00E935 03:E925: 2C A4 03  BIT ram_03A4
 C - - - - - 0x00E938 03:E928: 30 0A     BMI bra_E934
-C - - - - - 0x00E93A 03:E92A: 20 36 80  JSR sub_0x004046
+C - - - - - 0x00E93A 03:E92A: 20 36 80  JSR sub_0x004BF8
 C - - - - - 0x00E93D 03:E92D: 24 86     BIT ram_0086
 C - - - - - 0x00E93F 03:E92F: 10 03     BPL bra_E934
 C - - - - - 0x00E941 03:E931: 4C 25 EA  JMP loc_EA25
