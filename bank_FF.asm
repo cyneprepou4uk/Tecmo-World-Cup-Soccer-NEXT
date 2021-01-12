@@ -3033,7 +3033,7 @@ C - - - - - 0x00D43F 03:D42F: A9 03     LDA #$03
 C - - - - - 0x00D441 03:D431: 85 68     STA ram_0068
 C - - - - - 0x00D443 03:D433: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D446 03:D436: 68        PLA
-C - - - - - 0x00D447 03:D437: 20 27 80  JSR sub_0x004037
+C - - - - - 0x00D447 03:D437: 20 27 80  JSR sub_0x0043BA
 C - - - - - 0x00D44A 03:D43A: 48        PHA
 C - - - - - 0x00D44B 03:D43B: A9 02     LDA #$02
 C - - - - - 0x00D44D 03:D43D: 85 67     STA ram_0067
