@@ -4629,7 +4629,7 @@ C - - - - - 0x00DEB3 03:DEA3: 85 5B     STA ram_005B
 C - - - - - 0x00DEB5 03:DEA5: 85 5D     STA ram_005D
 C - - - - - 0x00DEB7 03:DEA7: A9 40     LDA #$40
 C - - - - - 0x00DEB9 03:DEA9: 85 5C     STA ram_005C
-C - - - - - 0x00DEBB 03:DEAB: 20 24 80  JSR sub_0x004034
+C - - - - - 0x00DEBB 03:DEAB: 20 24 80  JSR sub_0x00448D
 C - - - - - 0x00DEBE 03:DEAE: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00DEC1 03:DEB1: 30 06     BMI bra_DEB9
 C - - - - - 0x00DEC3 03:DEB3: 20 E3 CB  JSR sub_CBE3
