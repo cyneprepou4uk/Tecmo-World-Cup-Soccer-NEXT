@@ -28,13 +28,6 @@ C - - - - - 0x00C028 03:C018: 4C D4 CA  JMP loc_CAD4
 sub_0x00C03A_bytes_after_JSR:
 C - - - - - 0x00C03A 03:C02A: 4C BD CA  JMP loc_CABD_bytes_after_JSR
 
-
-; bzk мусор
-- - - - - - 0x00C03D 03:C02D: 4C 2B C9  JMP loc_C92B
-- - - - - - 0x00C040 03:C030: 4C 75 CB  JMP loc_CB75
-
-
-
 .export sub_0x00C043
 sub_0x00C043:
 C - - - - - 0x00C043 03:C033: 4C 52 C7  JMP loc_C752
@@ -1509,7 +1502,6 @@ C - - - - - 0x00C93A 03:C92A: 60        RTS
 
 
 sub_C92B:
-loc_C92B:
 C - - - - - 0x00C93B 03:C92B: C9 0B     CMP #$0B
 C - - - - - 0x00C93D 03:C92D: A9 00     LDA #$00
 C - - - - - 0x00C93F 03:C92F: 90 02     BCC bra_C933
@@ -1930,7 +1922,6 @@ C - - - - - 0x00CB84 03:CB74: 60        RTS
 
 
 sub_CB75:
-loc_CB75:
 C - - - - - 0x00CB85 03:CB75: 8A        TXA
 C - - - - - 0x00CB86 03:CB76: 48        PHA
 C - - - - - 0x00CB87 03:CB77: A9 00     LDA #$00
