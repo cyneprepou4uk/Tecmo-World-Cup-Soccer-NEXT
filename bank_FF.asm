@@ -2995,7 +2995,7 @@ C - - - - - 0x00D3F1 03:D3E1: A9 03     LDA #$03
 C - - - - - 0x00D3F3 03:D3E3: 85 68     STA ram_0068
 C - - - - - 0x00D3F5 03:D3E5: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D3F8 03:D3E8: 68        PLA
-C - - - - - 0x00D3F9 03:D3E9: 20 0C 80  JSR sub_0x00401C
+C - - - - - 0x00D3F9 03:D3E9: 20 0C 80  JSR sub_0x00428E
 C - - - - - 0x00D3FC 03:D3EC: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D3FF 03:D3EF: 4C B1 D3  JMP loc_D3B1
 bra_D3F2:
