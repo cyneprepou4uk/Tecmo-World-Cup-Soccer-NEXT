@@ -10251,43 +10251,6 @@ C - - - - - 0x00FFE2 03:FFD2: 8D 00 80  STA $8000
 C - - - - - 0x00FFE5 03:FFD5: 4C 03 C0  JMP loc_C003
 
 
-; bzk мусор
-- - - - - - 0x00FFE8 03:FFD8: 00        .byte $00   ; 
-- - - - - - 0x00FFE9 03:FFD9: 00        .byte $00   ; 
-- - - - - - 0x00FFEA 03:FFDA: 00        .byte $00   ; 
-- - - - - - 0x00FFEB 03:FFDB: 00        .byte $00   ; 
-- - - - - - 0x00FFEC 03:FFDC: 00        .byte $00   ; 
-- - - - - - 0x00FFED 03:FFDD: 00        .byte $00   ; 
-- - - - - - 0x00FFEE 03:FFDE: 00        .byte $00   ; 
-- - - - - - 0x00FFEF 03:FFDF: 00        .byte $00   ; 
-- - - - - - 0x00FFF0 03:FFE0: 00        .byte $00   ; 
-- - - - - - 0x00FFF1 03:FFE1: 00        .byte $00   ; 
-- - - - - - 0x00FFF2 03:FFE2: 00        .byte $00   ; 
-- - - - - - 0x00FFF3 03:FFE3: 00        .byte $00   ; 
-- - - - - - 0x00FFF4 03:FFE4: 00        .byte $00   ; 
-- - - - - - 0x00FFF5 03:FFE5: 00        .byte $00   ; 
-- - - - - - 0x00FFF6 03:FFE6: 00        .byte $00   ; 
-- - - - - - 0x00FFF7 03:FFE7: 00        .byte $00   ; 
-- - - - - - 0x00FFF8 03:FFE8: 00        .byte $00   ; 
-- - - - - - 0x00FFF9 03:FFE9: 00        .byte $00   ; 
-- - - - - - 0x00FFFA 03:FFEA: 00        .byte $00   ; 
-- - - - - - 0x00FFFB 03:FFEB: 00        .byte $00   ; 
-- - - - - - 0x00FFFC 03:FFEC: 00        .byte $00   ; 
-- - - - - - 0x00FFFD 03:FFED: 00        .byte $00   ; 
-- - - - - - 0x00FFFE 03:FFEE: 00        .byte $00   ; 
-- - - - - - 0x00FFFF 03:FFEF: 00        .byte $00   ; 
-- - - - - - 0x010000 03:FFF0: 00        .byte $00   ; 
-- - - - - - 0x010001 03:FFF1: 00        .byte $00   ; 
-- - - - - - 0x010002 03:FFF2: 00        .byte $00   ; 
-- - - - - - 0x010003 03:FFF3: 00        .byte $00   ; 
-- - - - - - 0x010004 03:FFF4: 00        .byte $00   ; 
-- - - - - - 0x010005 03:FFF5: 00        .byte $00   ; 
-- - - - - - 0x010006 03:FFF6: 00        .byte $00   ; 
-- - - - - - 0x010007 03:FFF7: 00        .byte $00   ; 
-- - - - - - 0x010008 03:FFF8: 00        .byte $00   ; 
-- - - - - - 0x010009 03:FFF9: 00        .byte $00   ; 
-
-
 
 .segment "VECTORS"
 - D 3 - - - 0x01000A 03:FFFA: 00 C0     .word vec_C000_NMI
