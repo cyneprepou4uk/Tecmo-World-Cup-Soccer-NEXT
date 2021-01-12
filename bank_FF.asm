@@ -2045,8 +2045,8 @@ C - - - - - 0x00CD36 03:CD26: A9 D2     LDA #$D2
 C - - - - - 0x00CD38 03:CD28: 95 01     STA ram_0001,X
 C - - - - - 0x00CD3A 03:CD2A: A9 02     LDA #$02
 C - - - - - 0x00CD3C 03:CD2C: 95 02     STA ram_0002,X
-C - - - - - 0x00CD3E 03:CD2E: A9 80     LDA #> ofs_0x004025
-C - - - - - 0x00CD40 03:CD30: A0 14     LDY #< ofs_0x004025
+C - - - - - 0x00CD3E 03:CD2E: A9 80     LDA #> sub_0x0045A6
+C - - - - - 0x00CD40 03:CD30: A0 14     LDY #< sub_0x0045A6
 C - - - - - 0x00CD42 03:CD32: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00CD45 03:CD35: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00CD48 03:CD38: 18        CLC
