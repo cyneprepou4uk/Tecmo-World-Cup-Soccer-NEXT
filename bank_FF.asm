@@ -7287,41 +7287,6 @@ tbl_EFBF:
 - D 3 - - - 0x00EFD5 03:EFC5: 00        .byte $00   ; 
 
 
-; bzk мусор
-- - - - - - 0x00EFD6 03:EFC6: 0C        .byte $0C   ; 
-- - - - - - 0x00EFD7 03:EFC7: 0B        .byte $0B   ; 
-- - - - - - 0x00EFD8 03:EFC8: F6        .byte $F6   ; 
-- - - - - - 0x00EFD9 03:EFC9: F4        .byte $F4   ; 
-- - - - - - 0x00EFDA 03:EFCA: 0F        .byte $0F   ; 
-- - - - - - 0x00EFDB 03:EFCB: 00        .byte $00   ; 
-- - - - - - 0x00EFDC 03:EFCC: F1        .byte $F1   ; 
-- - - - - - 0x00EFDD 03:EFCD: 00        .byte $00   ; 
-- - - - - - 0x00EFDE 03:EFCE: 0A        .byte $0A   ; 
-- - - - - - 0x00EFDF 03:EFCF: F4        .byte $F4   ; 
-- - - - - - 0x00EFE0 03:EFD0: F4        .byte $F4   ; 
-- - - - - - 0x00EFE1 03:EFD1: 0B        .byte $0B   ; 
-- - - - - - 0x00EFE2 03:EFD2: FE        .byte $FE   ; 
-- - - - - - 0x00EFE3 03:EFD3: F3        .byte $F3   ; 
-- - - - - - 0x00EFE4 03:EFD4: FE        .byte $FE   ; 
-- - - - - - 0x00EFE5 03:EFD5: 0D        .byte $0D   ; 
-- - - - - - 0x00EFE6 03:EFD6: F4        .byte $F4   ; 
-- - - - - - 0x00EFE7 03:EFD7: F5        .byte $F5   ; 
-- - - - - - 0x00EFE8 03:EFD8: 0A        .byte $0A   ; 
-- - - - - - 0x00EFE9 03:EFD9: 0C        .byte $0C   ; 
-- - - - - - 0x00EFEA 03:EFDA: F1        .byte $F1   ; 
-- - - - - - 0x00EFEB 03:EFDB: 00        .byte $00   ; 
-- - - - - - 0x00EFEC 03:EFDC: 0F        .byte $0F   ; 
-- - - - - - 0x00EFED 03:EFDD: 00        .byte $00   ; 
-- - - - - - 0x00EFEE 03:EFDE: F6        .byte $F6   ; 
-- - - - - - 0x00EFEF 03:EFDF: 0C        .byte $0C   ; 
-- - - - - - 0x00EFF0 03:EFE0: 0C        .byte $0C   ; 
-- - - - - - 0x00EFF1 03:EFE1: F5        .byte $F5   ; 
-- - - - - - 0x00EFF2 03:EFE2: 02        .byte $02   ; 
-- - - - - - 0x00EFF3 03:EFE3: 0D        .byte $0D   ; 
-- - - - - - 0x00EFF4 03:EFE4: 02        .byte $02   ; 
-- - - - - - 0x00EFF5 03:EFE5: F3        .byte $F3   ; 
-
-
 
 tbl_EFE6:
 - D 3 - - - 0x00EFF6 03:EFE6: F1        .byte $F1   ; 
