@@ -2,10 +2,6 @@
 .include "bank_ram.inc"
 ; 0x00C010-0x01000F
 
-.export sub_0x00C08B
-sub_0x00C08B:
-C - - - - - 0x00C08B 03:C07B: 4C A5 F9  JMP loc_F9A5
-
 .export sub_0x00C08E
 sub_0x00C08E:
 C - - - - - 0x00C08E 03:C07E: 4C 10 C9  JMP loc_C910
@@ -8557,7 +8553,8 @@ C - - - - - 0x00F9B4 03:F9A4: 60        RTS
 
 
 
-loc_F9A5:
+.export sub_0x00F9B5
+sub_0x00F9B5:
 C D 3 - - - 0x00F9B5 03:F9A5: E8        INX
 C - - - - - 0x00F9B6 03:F9A6: E8        INX
 C - - - - - 0x00F9B7 03:F9A7: E8        INX
