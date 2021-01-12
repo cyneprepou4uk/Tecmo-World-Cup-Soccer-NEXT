@@ -12,10 +12,6 @@ off_0x008025:
 ofs_0x008025 = off_0x008025 - 1
 C - - - - - 0x008025 02:8015: 4C D1 80  JMP loc_80D1
 
-.export sub_0x008031
-sub_0x008031:
-C - - - - - 0x008031 02:8021: 4C 4F 97  JMP loc_974F
-
 .export sub_0x008034
 sub_0x008034:
 C - - - - - 0x008034 02:8024: 4C 2A A0  JMP loc_A02A
@@ -4662,7 +4658,8 @@ tbl_95BF:
 
 
 
-loc_974F:
+.export sub_0x00975F
+sub_0x00975F:
 C D 0 - - - 0x00975F 02:974F: A2 00     LDX #$00
 C - - - - - 0x009761 02:9751: 86 2C     STX ram_002C
 C - - - - - 0x009763 02:9753: 48        PHA

@@ -2606,7 +2606,7 @@ C - - - - - 0x00D144 03:D134: A9 05     LDA #$05
 C - - - - - 0x00D146 03:D136: 85 68     STA ram_0068
 C - - - - - 0x00D148 03:D138: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D14B 03:D13B: 68        PLA
-C - - - - - 0x00D14C 03:D13C: 20 21 80  JSR sub_0x008031
+C - - - - - 0x00D14C 03:D13C: 20 21 80  JSR sub_0x00975F
 C - - - - - 0x00D14F 03:D13F: A9 80     LDA #$80
 C - - - - - 0x00D151 03:D141: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00D154 03:D144: A9 00     LDA #$00
