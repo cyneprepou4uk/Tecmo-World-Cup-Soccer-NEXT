@@ -4038,17 +4038,17 @@ C - - - - - 0x00DA60 03:DA50: 86 2A     STX ram_002A
 C - - - - - 0x00DA62 03:DA52: 84 2B     STY ram_002B
 C - - - - - 0x00DA64 03:DA54: 38        SEC
 C - - - - - 0x00DA65 03:DA55: 8A        TXA
-C - - - - - 0x00DA66 03:DA56: ED 54 DB  SBC $DB54
+C - - - - - 0x00DA66 03:DA56: ED 54 DB  SBC tbl_DB54
 C - - - - - 0x00DA69 03:DA59: 98        TYA
-C - - - - - 0x00DA6A 03:DA5A: ED 55 DB  SBC $DB55
+C - - - - - 0x00DA6A 03:DA5A: ED 55 DB  SBC tbl_DB54 + 1
 C - - - - - 0x00DA6D 03:DA5D: 90 03     BCC bra_DA62
 C - - - - - 0x00DA6F 03:DA5F: 4C 3A DB  JMP loc_DB3A_RTS
 bra_DA62:
 C - - - - - 0x00DA72 03:DA62: 38        SEC
 C - - - - - 0x00DA73 03:DA63: 8A        TXA
-C - - - - - 0x00DA74 03:DA64: ED 5C DB  SBC $DB5C
+C - - - - - 0x00DA74 03:DA64: ED 5C DB  SBC tbl_DB5C
 C - - - - - 0x00DA77 03:DA67: 98        TYA
-C - - - - - 0x00DA78 03:DA68: ED 5D DB  SBC $DB5D
+C - - - - - 0x00DA78 03:DA68: ED 5D DB  SBC tbl_DB5C + 1
 C - - - - - 0x00DA7B 03:DA6B: B0 03     BCS bra_DA70
 - - - - - - 0x00DA7D 03:DA6D: 4C 3A DB  JMP loc_DB3A_RTS
 bra_DA70:
@@ -4061,9 +4061,9 @@ C - - - - - 0x00DA8C 03:DA7C: 20 4A CB  JSR sub_CB4A
 bra_DA7F:
 C - - - - - 0x00DA8F 03:DA7F: 38        SEC
 C - - - - - 0x00DA90 03:DA80: 8A        TXA
-C - - - - - 0x00DA91 03:DA81: ED 56 DB  SBC $DB56
+C - - - - - 0x00DA91 03:DA81: ED 56 DB  SBC tbl_DB56
 C - - - - - 0x00DA94 03:DA84: 98        TYA
-C - - - - - 0x00DA95 03:DA85: ED 57 DB  SBC $DB57
+C - - - - - 0x00DA95 03:DA85: ED 57 DB  SBC tbl_DB56 + 1
 C - - - - - 0x00DA98 03:DA88: B0 03     BCS bra_DA8D
 C - - - - - 0x00DA9A 03:DA8A: 4C 3A DB  JMP loc_DB3A_RTS
 bra_DA8D:
@@ -4073,9 +4073,9 @@ C - - - - - 0x00DAA2 03:DA92: 8D D4 03  STA ram_03D4
 C - - - - - 0x00DAA5 03:DA95: AD D7 03  LDA ram_03D7
 C - - - - - 0x00DAA8 03:DA98: F0 2E     BEQ bra_DAC8
 C - - - - - 0x00DAAA 03:DA9A: 8A        TXA
-C - - - - - 0x00DAAB 03:DA9B: ED 5A DB  SBC $DB5A
+C - - - - - 0x00DAAB 03:DA9B: ED 5A DB  SBC tbl_DB5A
 C - - - - - 0x00DAAE 03:DA9E: 98        TYA
-C - - - - - 0x00DAAF 03:DA9F: ED 5B DB  SBC $DB5B
+C - - - - - 0x00DAAF 03:DA9F: ED 5B DB  SBC tbl_DB5A + 1
 C - - - - - 0x00DAB2 03:DAA2: B0 24     BCS bra_DAC8
 C - - - - - 0x00DAB4 03:DAA4: A2 00     LDX #$00
 C - - - - - 0x00DAB6 03:DAA6: A5 2E     LDA ram_002E
@@ -4100,9 +4100,9 @@ C - - - - - 0x00DAD5 03:DAC5: 4C 13 DB  JMP loc_DB13
 bra_DAC8:
 C - - - - - 0x00DAD8 03:DAC8: 38        SEC
 C - - - - - 0x00DAD9 03:DAC9: A5 2A     LDA ram_002A
-C - - - - - 0x00DADB 03:DACB: ED 58 DB  SBC $DB58
+C - - - - - 0x00DADB 03:DACB: ED 58 DB  SBC tbl_DB58
 C - - - - - 0x00DADE 03:DACE: A5 2B     LDA ram_002B
-C - - - - - 0x00DAE0 03:DAD0: ED 59 DB  SBC $DB59
+C - - - - - 0x00DAE0 03:DAD0: ED 59 DB  SBC tbl_DB58 + 1
 C - - - - - 0x00DAE3 03:DAD3: B0 65     BCS bra_DB3A_RTS
 C - - - - - 0x00DAE5 03:DAD5: A5 2E     LDA ram_002E
 C - - - - - 0x00DAE7 03:DAD7: 4A        LSR
@@ -4115,10 +4115,10 @@ C - - - - - 0x00DAF1 03:DAE1: 29 80     AND #$80
 C - - - - - 0x00DAF3 03:DAE3: F0 55     BEQ bra_DB3A_RTS
 C - - - - - 0x00DAF5 03:DAE5: 38        SEC
 C - - - - - 0x00DAF6 03:DAE6: AD D8 03  LDA ram_03D8
-C - - - - - 0x00DAF9 03:DAE9: ED 56 DB  SBC $DB56
+C - - - - - 0x00DAF9 03:DAE9: ED 56 DB  SBC tbl_DB56
 C - - - - - 0x00DAFC 03:DAEC: 85 2A     STA ram_002A
 C - - - - - 0x00DAFE 03:DAEE: AD DA 03  LDA ram_03DA
-C - - - - - 0x00DB01 03:DAF1: ED 57 DB  SBC $DB57
+C - - - - - 0x00DB01 03:DAF1: ED 57 DB  SBC tbl_DB56 + 1
 C - - - - - 0x00DB04 03:DAF4: B0 04     BCS bra_DAFA
 - - - - - - 0x00DB06 03:DAF6: A9 00     LDA #$00
 - - - - - - 0x00DB08 03:DAF8: 85 2A     STA ram_002A
@@ -4187,16 +4187,25 @@ tbl_DB3B:
 - D 2 - - - 0x00DB61 03:DB51: 07        .byte $07   ; 
 - D 2 - - - 0x00DB62 03:DB52: 07        .byte $07   ; 
 - - - - - - 0x00DB63 03:DB53: 07        .byte $07   ; 
-- D 2 - - - 0x00DB64 03:DB54: A4        .byte $A4   ; 
-- D 2 - - - 0x00DB65 03:DB55: 00        .byte $00   ; 
-- D 2 - - - 0x00DB66 03:DB56: D0        .byte $D0   ; 
-- D 2 - - - 0x00DB67 03:DB57: 00        .byte $00   ; 
-- D 2 - - - 0x00DB68 03:DB58: 9A        .byte $9A   ; 
-- D 2 - - - 0x00DB69 03:DB59: 00        .byte $00   ; 
-- D 2 - - - 0x00DB6A 03:DB5A: D4        .byte $D4   ; 
-- D 2 - - - 0x00DB6B 03:DB5B: 00        .byte $00   ; 
-- D 2 - - - 0x00DB6C 03:DB5C: 92        .byte $92   ; 
-- D 2 - - - 0x00DB6D 03:DB5D: 00        .byte $00   ; 
+
+
+
+; что-то связано с проверкой касания мяча сетки
+; без корректных поинтеров мяч пролетал насквозь ворот, но гол засчитывался
+tbl_DB54:
+- D 2 - - - 0x00DB64 03:DB54: A4 00     .word $00A4
+
+tbl_DB56:
+- D 2 - - - 0x00DB66 03:DB56: D0 00     .word $00D0
+
+tbl_DB58:
+- D 2 - - - 0x00DB68 03:DB58: 9A 00     .word $009A
+
+tbl_DB5A:
+- D 2 - - - 0x00DB6A 03:DB5A: D4 00     .word $00D4
+
+tbl_DB5C:
+- D 2 - - - 0x00DB6C 03:DB5C: 92 00     .word $0092
 
 
 
