@@ -2,11 +2,6 @@
 .include "bank_ram.inc"
 ; 0x008010-0x00C00F
 
-off_0x00801C:
-.export ofs_0x00801C
-ofs_0x00801C = off_0x00801C - 1
-C - - - - - 0x00801C 02:800C: 4C 1A 8A  JMP loc_8A1A
-
 off_0x008025:
 .export ofs_0x008025
 ofs_0x008025 = off_0x008025 - 1
@@ -1582,7 +1577,9 @@ C - - - - - 0x008A29 02:8A19: 60        RTS
 
 
 
-loc_8A1A:
+off_0x008A2A:
+.export sub_0x008A2A
+sub_0x008A2A = off_0x008A2A - 1
 C D 0 - - - 0x008A2A 02:8A1A: A5 28     LDA ram_0028
 C - - - - - 0x008A2C 02:8A1C: 29 FC     AND #$FC
 C - - - - - 0x008A2E 02:8A1E: 09 20     ORA #$20

@@ -365,8 +365,8 @@ C - - - - - 0x00C321 03:C311: A9 3C     LDA #$3C
 C - - - - - 0x00C323 03:C313: 95 01     STA ram_0001,X
 C - - - - - 0x00C325 03:C315: A9 04     LDA #$04
 C - - - - - 0x00C327 03:C317: 95 02     STA ram_0002,X
-C - - - - - 0x00C329 03:C319: A9 80     LDA #> ofs_0x00801C
-C - - - - - 0x00C32B 03:C31B: A0 0B     LDY #< ofs_0x00801C
+C - - - - - 0x00C329 03:C319: A9 80     LDA #> sub_0x008A2A
+C - - - - - 0x00C32B 03:C31B: A0 0B     LDY #< sub_0x008A2A
 C - - - - - 0x00C32D 03:C31D: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 bra_C320:
 C - - - - - 0x00C330 03:C320: A9 01     LDA #$01
