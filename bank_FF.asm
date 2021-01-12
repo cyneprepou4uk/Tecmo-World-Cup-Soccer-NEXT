@@ -2707,7 +2707,7 @@ C - - - - - 0x00D1F1 03:D1E1: A9 05     LDA #$05
 C - - - - - 0x00D1F3 03:D1E3: 85 68     STA ram_0068
 C - - - - - 0x00D1F5 03:D1E5: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D1F8 03:D1E8: 68        PLA
-C - - - - - 0x00D1F9 03:D1E9: 20 1E 80  JSR sub_0x00802E
+C - - - - - 0x00D1F9 03:D1E9: 20 1E 80  JSR sub_0x009852
 C - - - - - 0x00D1FC 03:D1EC: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00D1FF 03:D1EF: 20 E3 CB  JSR sub_CBE3
 C - - - - - 0x00D202 03:D1F2: A0 00     LDY #$00
@@ -2863,7 +2863,7 @@ C - - - - - 0x00D327 03:D317: A9 05     LDA #$05
 C - - - - - 0x00D329 03:D319: 85 68     STA ram_0068
 C - - - - - 0x00D32B 03:D31B: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D32E 03:D31E: 68        PLA
-C - - - - - 0x00D32F 03:D31F: 20 1E 80  JSR sub_0x00802E
+C - - - - - 0x00D32F 03:D31F: 20 1E 80  JSR sub_0x009852
 C - - - - - 0x00D332 03:D322: A9 80     LDA #$80
 C - - - - - 0x00D334 03:D324: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00D337 03:D327: 20 ED DC  JSR sub_DCED
@@ -3278,7 +3278,7 @@ C - - - - - 0x00D5C9 03:D5B9: A9 05     LDA #$05
 C - - - - - 0x00D5CB 03:D5BB: 85 68     STA ram_0068
 C - - - - - 0x00D5CD 03:D5BD: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D5D0 03:D5C0: 68        PLA
-C - - - - - 0x00D5D1 03:D5C1: 20 1E 80  JSR sub_0x00802E
+C - - - - - 0x00D5D1 03:D5C1: 20 1E 80  JSR sub_0x009852
 C - - - - - 0x00D5D4 03:D5C4: A9 C0     LDA #$C0
 C - - - - - 0x00D5D6 03:D5C6: 85 2B     STA ram_002B
 C - - - - - 0x00D5D8 03:D5C8: A9 01     LDA #$01
