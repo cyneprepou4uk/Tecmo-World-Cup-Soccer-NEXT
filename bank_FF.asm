@@ -391,7 +391,7 @@ C - - - - - 0x00C356 03:C346: A9 05     LDA #$05
 C - - - - - 0x00C358 03:C348: 85 68     STA ram_0068
 C - - - - - 0x00C35A 03:C34A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C35D 03:C34D: 68        PLA
-C - - - - - 0x00C35E 03:C34E: 20 12 80  JSR sub_0x008022
+C - - - - - 0x00C35E 03:C34E: 20 12 80  JSR sub_0x008AD9
 bra_C351:
 C - - - - - 0x00C361 03:C351: 48        PHA
 C - - - - - 0x00C362 03:C352: A9 04     LDA #$04
