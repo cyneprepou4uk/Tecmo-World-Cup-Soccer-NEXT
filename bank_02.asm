@@ -4715,7 +4715,7 @@ C - - - - - 0x009793 02:9783: B1 61     LDA (ram_0061),Y
 C - - - - - 0x009795 02:9785: 29 FB     AND #$FB
 C - - - - - 0x009797 02:9787: 91 61     STA (ram_0061),Y
 C - - - - - 0x009799 02:9789: A9 00     LDA #$00
-C - - - - - 0x00979B 02:978B: 20 5A C0  JSR sub_0x00C06A
+C - - - - - 0x00979B 02:978B: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00979E 02:978E: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x0097A1 02:9791: A6 2C     LDX ram_002C
 C - - - - - 0x0097A3 02:9793: E0 0B     CPX #$0B
@@ -4861,7 +4861,7 @@ C - - - - - 0x009871 02:9861: B1 61     LDA (ram_0061),Y
 C - - - - - 0x009873 02:9863: 29 FB     AND #$FB
 C - - - - - 0x009875 02:9865: 91 61     STA (ram_0061),Y
 C - - - - - 0x009877 02:9867: A9 00     LDA #$00
-C - - - - - 0x009879 02:9869: 20 5A C0  JSR sub_0x00C06A
+C - - - - - 0x009879 02:9869: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00987C 02:986C: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00987F 02:986F: A6 2C     LDX ram_002C
 C - - - - - 0x009881 02:9871: E0 0B     CPX #$0B
@@ -6979,7 +6979,7 @@ C - - - - - 0x00A124 02:A114: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00A126 02:A116: 29 FB     AND #$FB
 C - - - - - 0x00A128 02:A118: 91 61     STA (ram_0061),Y
 C - - - - - 0x00A12A 02:A11A: A9 19     LDA #$19
-C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C06A
+C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00A12F 02:A11F: A0 11     LDY #$11
 C - - - - - 0x00A131 02:A121: A9 00     LDA #$00
 C - - - - - 0x00A133 02:A123: 91 61     STA (ram_0061),Y
@@ -6994,14 +6994,14 @@ C - - - - - 0x00A141 02:A131: 69 09     ADC #$09
 C - - - - - 0x00A143 02:A133: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00A146 02:A136: 20 57 C0  JSR sub_0x00CBF3
 C - - - - - 0x00A149 02:A139: A9 17     LDA #$17
-C - - - - - 0x00A14B 02:A13B: 20 5A C0  JSR sub_0x00C06A
+C - - - - - 0x00A14B 02:A13B: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00A14E 02:A13E: A2 00     LDX #$00
 C - - - - - 0x00A150 02:A140: 20 74 A1  JSR sub_A174
 C - - - - - 0x00A153 02:A143: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00A156 02:A146: 49 0B     EOR #$0B
 C - - - - - 0x00A158 02:A148: 20 57 C0  JSR sub_0x00CBF3
 C - - - - - 0x00A15B 02:A14B: A9 18     LDA #$18
-C - - - - - 0x00A15D 02:A14D: 20 5A C0  JSR sub_0x00C06A
+C - - - - - 0x00A15D 02:A14D: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00A160 02:A150: A2 04     LDX #$04
 C - - - - - 0x00A162 02:A152: 20 74 A1  JSR sub_A174
 C - - - - - 0x00A165 02:A155: A9 FF     LDA #$FF
