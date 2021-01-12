@@ -428,7 +428,7 @@ C - - - - - 0x00C3AA 03:C39A: A9 05     LDA #$05
 C - - - - - 0x00C3AC 03:C39C: 85 68     STA ram_0068
 C - - - - - 0x00C3AE 03:C39E: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C3B1 03:C3A1: 68        PLA
-C - - - - - 0x00C3B2 03:C3A2: 20 00 80  JSR sub_0x008010
+C - - - - - 0x00C3B2 03:C3A2: 20 00 80  JSR sub_0x008501
 C - - - - - 0x00C3B5 03:C3A5: 48        PHA
 C - - - - - 0x00C3B6 03:C3A6: A9 04     LDA #$04
 C - - - - - 0x00C3B8 03:C3A8: 85 67     STA ram_0067
