@@ -5996,7 +5996,7 @@ tbl_E6C2:
 - D 3 - - - 0x00E6F6 03:E6E6: E5 F1     .word ofs_F1E5_12 - 1
 - D 3 - - - 0x00E6F8 03:E6E8: 14 F2     .word ofs_F214_13 - 1
 - D 3 - - - 0x00E6FA 03:E6EA: A4 F2     .word ofs_F2A4_14 - 1
-- D 3 - - - 0x00E6FC 03:E6EC: CF F2     .word ofs_F2CF_15 - 1
+- D 3 - - - 0x00E6FC 03:E6EC: CF F2     .word ofs_F0A8_15 - 1
 - D 3 - - - 0x00E6FE 03:E6EE: 63 F5     .word ofs_F563_16 - 1
 - D 3 - - - 0x00E700 03:E6F0: B9 F7     .word ofs_F7B9_17 - 1
 - D 3 - - - 0x00E702 03:E6F2: 3E F8     .word ofs_F83E_18 - 1
@@ -7366,8 +7366,8 @@ C - - - - - 0x00F0B5 03:F0A5: 4C 55 DF  JMP loc_DF55
 
 
 
-loc_F0A8:
 ofs_F0A8_0F:
+ofs_F0A8_15:
 C D 3 - - - 0x00F0B8 03:F0A8: A0 00     LDY #$00
 C - - - - - 0x00F0BA 03:F0AA: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00F0BC 03:F0AC: 29 FB     AND #$FB
@@ -7647,11 +7647,6 @@ bra_F2C6:
 C - - - - - 0x00F2D6 03:F2C6: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00F2D9 03:F2C9: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00F2DC 03:F2CC: 4C A4 F2  JMP loc_F2A4
-
-
-
-ofs_F2CF_15:    ; bzk опт
-C - - - - - 0x00F2DF 03:F2CF: 4C A8 F0  JMP loc_F0A8
 
 
 
