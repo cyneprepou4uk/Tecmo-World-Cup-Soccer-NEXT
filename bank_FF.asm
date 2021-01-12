@@ -2277,7 +2277,7 @@ C - - - - - 0x00CF13 03:CF03: A9 05     LDA #$05
 C - - - - - 0x00CF15 03:CF05: 85 68     STA ram_0068
 C - - - - - 0x00CF17 03:CF07: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CF1A 03:CF0A: 68        PLA
-C - - - - - 0x00CF1B 03:CF0B: 20 2A 80  JSR sub_0x00803A
+C - - - - - 0x00CF1B 03:CF0B: 20 2A 80  JSR sub_0x00A1FD
 C - - - - - 0x00CF1E 03:CF0E: A5 8E     LDA ram_008E
 C - - - - - 0x00CF20 03:CF10: 85 2A     STA ram_002A
 C - - - - - 0x00CF22 03:CF12: 38        SEC
