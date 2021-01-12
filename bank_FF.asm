@@ -559,11 +559,6 @@ C - - - - - 0x00C42D 03:C41D: D0 F4     BNE bra_C413
 C - - - - - 0x00C42F 03:C41F: 20 25 C4  JSR sub_C425
 
 
-; bzk мусор
-loc_C422:
-- - - - - - 0x00C432 03:C422: 4C 22 C4  JMP loc_C422
-
-
 
 sub_C425:
 C - - - - - 0x00C435 03:C425: A2 00     LDX #$00
