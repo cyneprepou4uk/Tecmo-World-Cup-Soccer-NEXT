@@ -22,7 +22,6 @@ C D 2 - - - 0x00C01C 03:C00C: 4C F1 C5  JMP loc_C5F1
 
 
 ; bzk мусор
-- - - - - - 0x00C01F 03:C00F: 4C FC C5  JMP loc_C5FC
 - - - - - - 0x00C022 03:C012: 4C 9E C7  JMP loc_C79E
 - - - - - - 0x00C025 03:C015: 4C B9 C6  JMP loc_C6B9
 
@@ -910,18 +909,6 @@ C - - - - - 0x00C603 03:C5F3: A6 00     LDX ram_0000
 C - - - - - 0x00C605 03:C5F5: 95 00     STA ram_0000,X
 C - - - - - 0x00C607 03:C5F7: 95 01     STA ram_0001,X
 C - - - - - 0x00C609 03:C5F9: 4C 7A C5  JMP loc_C57A
-
-
-; bzk мусор
-loc_C5FC:
-- - - - - - 0x00C60C 03:C5FC: B5 01     LDA ram_0001,X
-- - - - - - 0x00C60E 03:C5FE: F0 06     BEQ bra_C606_RTS
-- - - - - - 0x00C610 03:C600: B5 00     LDA ram_0000,X
-- - - - - - 0x00C612 03:C602: D0 02     BNE bra_C606_RTS
-- - - - - - 0x00C614 03:C604: F6 00     INC ram_0000,X
-bra_C606_RTS:
-- - - - - - 0x00C616 03:C606: 60        RTS
-- - - - - - 0x00C617 03:C607: A9 00     LDA #$00
 
 
 
