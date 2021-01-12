@@ -24,11 +24,6 @@ C D 2 - - - 0x00C01C 03:C00C: 4C F1 C5  JMP loc_C5F1
 sub_0x00C028:
 C - - - - - 0x00C028 03:C018: 4C D4 CA  JMP loc_CAD4
 
-
-; bzk мусор
-- - - - - - 0x00C02B 03:C01B: 4C 20 CC  JMP loc_CC20
-
-
 ; bzk мусор
 loc_C01E:
 - - - - - - 0x00C02E 03:C01E: 4C 1E C0  JMP loc_C01E
@@ -2068,7 +2063,6 @@ tbl_CBF0:
 
 
 sub_CC20:
-loc_CC20:
 C - - - - - 0x00CC30 03:CC20: 18        CLC
 C - - - - - 0x00CC31 03:CC21: 69 40     ADC #$40
 sub_CC23:
