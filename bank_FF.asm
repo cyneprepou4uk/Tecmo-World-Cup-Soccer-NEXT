@@ -3517,11 +3517,6 @@ tbl_D6D4:
 - - - - - - 0x00D703 03:D6F3: 04        .byte $04   ; 
 
 
-; bzk мусор
-- - - - - - 0x00D704 03:D6F4: 20 6B DD  JSR sub_DD6B
-- - - - - - 0x00D707 03:D6F7: 8D E6 03  STA ram_03E6
-
-
 
 off_D6FA:
 ofs_D6FA = off_D6FA - 1
