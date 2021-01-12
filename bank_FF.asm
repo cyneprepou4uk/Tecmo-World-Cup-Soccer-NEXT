@@ -3368,8 +3368,8 @@ C - - - - - 0x00D67D 03:D66D: A9 78     LDA #$78
 C - - - - - 0x00D67F 03:D66F: 95 01     STA ram_0001,X
 C - - - - - 0x00D681 03:D671: A9 04     LDA #$04
 C - - - - - 0x00D683 03:D673: 95 02     STA ram_0002,X
-C - - - - - 0x00D685 03:D675: A9 80     LDA #> ofs_0x00803D
-C - - - - - 0x00D687 03:D677: A0 2C     LDY #< ofs_0x00803D
+C - - - - - 0x00D685 03:D675: A9 80     LDA #> sub_0x00A340
+C - - - - - 0x00D687 03:D677: A0 2C     LDY #< sub_0x00A340
 C - - - - - 0x00D689 03:D679: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00D68C 03:D67C: 38        SEC
 C - - - - - 0x00D68D 03:D67D: 4C 9F D6  JMP loc_D69F

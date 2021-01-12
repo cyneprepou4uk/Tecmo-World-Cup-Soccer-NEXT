@@ -2,11 +2,6 @@
 .include "bank_ram.inc"
 ; 0x008010-0x00C00F
 
-off_0x00803D:
-.export ofs_0x00803D
-ofs_0x00803D = off_0x00803D - 1
-C - - - - - 0x00803D 02:802D: 4C 30 A3  JMP loc_A330
-
 
 
 .export sub_0x008043
@@ -7271,8 +7266,9 @@ C - - - - - 0x00A33D 02:A32D: 86 5B     STX ram_005B
 C - - - - - 0x00A33F 02:A32F: 60        RTS
 
 
-
-loc_A330:
+off_0x00A340:
+.export sub_0x00A340
+sub_0x00A340 = off_0x00A340 - 1
 C D 1 - - - 0x00A340 02:A330: A9 00     LDA #$00
 bra_A332_loop:
 C - - - - - 0x00A342 02:A332: 48        PHA
