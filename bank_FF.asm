@@ -4730,6 +4730,7 @@ C - - - - - 0x00DF63 03:DF53: 48        PHA
 C - - - - - 0x00DF64 03:DF54: 60        RTS
 bra_DF55:
 loc_DF55:
+ofs_DF55_09:
 C D 2 - - - 0x00DF65 03:DF55: E6 6F     INC ram_006F
 C - - - - - 0x00DF67 03:DF57: A5 6F     LDA ram_006F
 C - - - - - 0x00DF69 03:DF59: C9 16     CMP #$16
@@ -5984,7 +5985,7 @@ tbl_E6C2:
 - D 3 - - - 0x00E6DE 03:E6CE: 67 F0     .word ofs_F067_06 - 1
 - D 3 - - - 0x00E6E0 03:E6D0: D2 F2     .word ofs_F2D2_07 - 1
 - D 3 - - - 0x00E6E2 03:E6D2: 19 F3     .word ofs_F319_08 - 1
-- - - - - - 0x00E6E4 03:E6D4: 7A F3     .word ofs_F37A_09 - 1
+- - - - - - 0x00E6E4 03:E6D4: 7A F3     .word ofs_DF55_09 - 1
 - D 3 - - - 0x00E6E6 03:E6D6: 7D F3     .word ofs_F37D_0A - 1
 - - - - - - 0x00E6E8 03:E6D8: D9 F3     .word ofs_F3D9_0B - 1
 - D 3 - - - 0x00E6EA 03:E6DA: 5A F4     .word ofs_F45A_0C - 1
@@ -7723,11 +7724,6 @@ C - - - - - 0x00F380 03:F370: 91 61     STA (ram_0061),Y
 C - - - - - 0x00F382 03:F372: A9 00     LDA #$00
 C - - - - - 0x00F384 03:F374: 20 2F C6  JSR sub_C62F
 C - - - - - 0x00F387 03:F377: 4C 55 DF  JMP loc_DF55
-
-
-
-ofs_F37A_09:    ; bzk опт
-- - - - - - 0x00F38A 03:F37A: 4C 55 DF  JMP loc_DF55
 
 
 
