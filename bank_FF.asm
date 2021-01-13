@@ -4655,7 +4655,6 @@ C - - - - - 0x00DF63 03:DF53: 48        PHA
 C - - - - - 0x00DF64 03:DF54: 60        RTS
 bra_DF55:
 loc_DF55:
-ofs_DF55_09:
 C D 2 - - - 0x00DF65 03:DF55: E6 6F     INC ram_006F
 C - - - - - 0x00DF67 03:DF57: A5 6F     LDA ram_006F
 C - - - - - 0x00DF69 03:DF59: C9 16     CMP #$16
@@ -5827,9 +5826,9 @@ tbl_E6C2_state_subroutine:
 - D 3 - - - 0x00E6DE 03:E6CE: 67 F0     .word ofs_F067_06 - 1
 - D 3 - - - 0x00E6E0 03:E6D0: D2 F2     .word ofs_F2D2_07 - 1
 - D 3 - - - 0x00E6E2 03:E6D2: 19 F3     .word ofs_F319_08 - 1
-- - - - - - 0x00E6E4 03:E6D4: 7A F3     .word ofs_DF55_09 - 1
+- - - - - - 0x00E6E4 03:E6D4: 7A F3     .word $0000  ; 09
 - D 3 - - - 0x00E6E6 03:E6D6: 7D F3     .word ofs_F37D_0A - 1
-- - - - - - 0x00E6E8 03:E6D8: D9 F3     .word ofs_F3D9_0B - 1
+- - - - - - 0x00E6E8 03:E6D8: D9 F3     .word $0000  ; 0B
 - D 3 - - - 0x00E6EA 03:E6DA: 5A F4     .word ofs_F45A_0C - 1
 - D 3 - - - 0x00E6EC 03:E6DC: 63 F5     .word ofs_F563_0D - 1
 - D 3 - - - 0x00E6EE 03:E6DE: 85 F6     .word ofs_F685_0E - 1
@@ -7422,7 +7421,6 @@ C - - - - - 0x00F3E6 03:F3D6: 4C 55 DF  JMP loc_DF55
 
 
 loc_F3D9:
-ofs_F3D9_0B:
 C D 3 - - - 0x00F3E9 03:F3D9: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F3EC 03:F3DC: A9 0E     LDA #$0E
 C - - - - - 0x00F3EE 03:F3DE: 20 1E 80  JSR sub_0x00479F
