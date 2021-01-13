@@ -89,7 +89,7 @@ C - - - - - 0x00C14E 03:C13E: 09 80     ORA #$80
 C - - - - - 0x00C150 03:C140: 85 28     STA ram_0028
 C - - - - - 0x00C152 03:C142: 85 21     STA ram_0021
 C - - - - - 0x00C154 03:C144: 8D 00 20  STA $2000
-C - - - - - 0x00C157 03:C147: 4C 5B C5  JMP loc_C55B
+C - - - - - 0x00C157 03:C147: 4C 5B C5  JMP loc_C55B_infinite_loop
 
 
 
@@ -638,7 +638,7 @@ tbl_C558:
 
 
 
-loc_C55B:
+loc_C55B_infinite_loop:
 C D 2 - - - 0x00C56B 03:C55B: AD A4 03  LDA ram_03A4
 C - - - - - 0x00C56E 03:C55E: 29 04     AND #$04
 C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C
@@ -663,12 +663,12 @@ C - - - - - 0x00C58C 03:C57C: 69 04     ADC #$04
 C - - - - - 0x00C58E 03:C57E: AA        TAX
 C - - - - - 0x00C58F 03:C57F: E0 21     CPX #$21
 C - - - - - 0x00C591 03:C581: D0 EB     BNE bra_C56E_loop
-bra_C583:
+bra_C583_infinite_loop:
 C - - - - - 0x00C593 03:C583: A5 23     LDA ram_0023
-C - - - - - 0x00C595 03:C585: 10 FC     BPL bra_C583
+C - - - - - 0x00C595 03:C585: 10 FC     BPL bra_C583_infinite_loop
 C - - - - - 0x00C597 03:C587: 29 7F     AND #$7F
 C - - - - - 0x00C599 03:C589: 85 23     STA ram_0023
-C - - - - - 0x00C59B 03:C58B: 4C 5B C5  JMP loc_C55B
+C - - - - - 0x00C59B 03:C58B: 4C 5B C5  JMP loc_C55B_infinite_loop
 
 
 
