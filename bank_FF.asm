@@ -5382,25 +5382,16 @@ C - - - - - 0x00E446 03:E436: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 
 ofs_E43F_00:
 C - - J - - 0x00E44F 03:E43F: A9 07     LDA #$07
-C - - - - - 0x00E451 03:E441: 20 2F C6  JSR sub_C62F
-C - - - - - 0x00E454 03:E444: 4C 54 E4  JMP loc_E454
-
-
+                                        BNE bra_E45D
 
 ofs_E447_01:
 C - - J - - 0x00E457 03:E447: A9 08     LDA #$08
-C - - - - - 0x00E459 03:E449: 20 2F C6  JSR sub_C62F
-C - - - - - 0x00E45C 03:E44C: 4C 54 E4  JMP loc_E454
-
-
+                                        BNE bra_E45D
 
 ofs_E44F_02:
 C - - J - - 0x00E45F 03:E44F: A9 0A     LDA #$0A
-C - - - - - 0x00E461 03:E451: 20 2F C6  JSR sub_C62F
-
-
-
-loc_E454:   ; bzk опт
+                                        JSR sub_C62F
+bra_E45D:
                                         JSR sub_C93B_set_04_clear_F7
 C - - - - - 0x00E46E 03:E45E: 4C 55 DF  JMP loc_DF55
 
