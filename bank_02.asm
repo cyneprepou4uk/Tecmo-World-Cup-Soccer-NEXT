@@ -8636,7 +8636,7 @@ C - - - - - 0x00B04A 02:B03A: 8D 0E 03  STA ram_030E
 C - - - - - 0x00B04D 02:B03D: AD DC 00  LDA ram_00DC
 C - - - - - 0x00B050 02:B040: 8D 0F 03  STA ram_030F
 C - - - - - 0x00B053 02:B043: A9 00     LDA #$00
-C - - - - - 0x00B055 02:B045: 8D 31 03  STA ram_0331
+C - - - - - 0x00B055 02:B045: 8D 31 03  STA ram_0330
 C - - - - - 0x00B058 02:B048: A9 80     LDA #$80
 C - - - - - 0x00B05A 02:B04A: 8D 7D 03  STA ram_037D
 C - - - - - 0x00B05D 02:B04D: AD DB 00  LDA ram_00DB
