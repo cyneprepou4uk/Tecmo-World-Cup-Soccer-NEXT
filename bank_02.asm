@@ -576,7 +576,7 @@ tbl_8399:
 
 .export sub_0x0083D9
 sub_0x0083D9:
-C D 0 - - - 0x0083D9 02:83C9: 2C A4 03  BIT ram_03A4
+C D 0 - - - 0x0083D9 02:83C9: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x0083DC 02:83CC: 30 3B     BMI bra_8409_RTS
 C - - - - - 0x0083DE 02:83CE: A9 14     LDA #$14
 C - - - - - 0x0083E0 02:83D0: 20 7E C0  JSR sub_0x00C920
@@ -768,7 +768,7 @@ C - - - - - 0x008535 02:8525: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x008538 02:8528: A2 D0     LDX #< tbl_8DD0
 C - - - - - 0x00853A 02:852A: A0 8D     LDY #> tbl_8DD0
 C - - - - - 0x00853C 02:852C: 20 33 C0  JSR sub_0x00C762
-C - - - - - 0x00853F 02:852F: 2C A4 03  BIT ram_03A4
+C - - - - - 0x00853F 02:852F: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x008542 02:8532: 10 0A     BPL bra_853E
 C - - - - - 0x008544 02:8534: A2 37     LDX #< tbl_9137
 C - - - - - 0x008546 02:8536: A0 91     LDY #> tbl_9137
@@ -811,7 +811,7 @@ C - - - - - 0x008582 02:8572: 95 02     STA ram_0002,X
 C - - - - - 0x008584 02:8574: A9 88     LDA #> ofs_88B9
 C - - - - - 0x008586 02:8576: A0 B8     LDY #< ofs_88B9
 C - - - - - 0x008588 02:8578: 20 06 C0  JSR sub_0x00C5F1_prepare_return_address
-C - - - - - 0x00858B 02:857B: 2C A4 03  BIT ram_03A4
+C - - - - - 0x00858B 02:857B: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00858E 02:857E: 10 19     BPL bra_8599
 C - - - - - 0x008590 02:8580: A9 00     LDA #$00
 C - - - - - 0x008592 02:8582: 8D AB 03  STA ram_03AB
@@ -823,7 +823,7 @@ C - - - - - 0x0085A0 02:8590: 8D AA 03  STA ram_team_id + 1
 C - - - - - 0x0085A3 02:8593: 20 98 88  JSR sub_8898
 C - - - - - 0x0085A6 02:8596: 4C C2 86  JMP loc_86C2
 bra_8599:
-C - - - - - 0x0085A9 02:8599: 2C A4 03  BIT ram_03A4
+C - - - - - 0x0085A9 02:8599: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x0085AC 02:859C: 70 1B     BVS bra_85B9
 C - - - - - 0x0085AE 02:859E: AD A9 03  LDA ram_team_id
 C - - - - - 0x0085B1 02:85A1: C9 FF     CMP #$FF
@@ -841,7 +841,7 @@ C - - - - - 0x0085CC 02:85BC: 20 98 88  JSR sub_8898
 C - - - - - 0x0085CF 02:85BF: A2 07     LDX #$07
 C - - - - - 0x0085D1 02:85C1: 20 09 88  JSR sub_8809
 C - - - - - 0x0085D4 02:85C4: 20 40 86  JSR sub_8640
-C - - - - - 0x0085D7 02:85C7: AD A4 03  LDA ram_03A4
+C - - - - - 0x0085D7 02:85C7: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x0085DA 02:85CA: 29 08     AND #$08
 C - - - - - 0x0085DC 02:85CC: D0 14     BNE bra_85E2
 C - - - - - 0x0085DE 02:85CE: AD AA 03  LDA ram_team_id + 1
@@ -917,7 +917,7 @@ C - - - - - 0x008664 02:8654: A2 06     LDX #$06
 C - - - - - 0x008666 02:8656: CD AA 03  CMP ram_team_id + 1
 C - - - - - 0x008669 02:8659: D0 09     BNE bra_8664
 C - - - - - 0x00866B 02:865B: A2 02     LDX #$02
-C - - - - - 0x00866D 02:865D: 2C A4 03  BIT ram_03A4
+C - - - - - 0x00866D 02:865D: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x008670 02:8660: 30 02     BMI bra_8664
 C - - - - - 0x008672 02:8662: A2 04     LDX #$04
 bra_8664:
@@ -1028,7 +1028,7 @@ C - - - - - 0x008716 02:8706: 8D B6 03  STA ram_03B6
 C - - - - - 0x008719 02:8709: A2 0B     LDX #$0B
 C - - - - - 0x00871B 02:870B: 20 09 88  JSR sub_8809
 bra_870E:
-C - - - - - 0x00871E 02:870E: 20 45 87  JSR sub_8745
+C - - - - - 0x00871E 02:870E: 20 45 87  JSR sub_8745_change_time_option
 C - - - - - 0x008721 02:8711: AD B6 03  LDA ram_03B6
 C - - - - - 0x008724 02:8714: C9 C0     CMP #$C0
 C - - - - - 0x008726 02:8716: D0 B2     BNE bra_86CA
@@ -1061,16 +1061,16 @@ C - - - - - 0x008754 02:8744: 60        RTS
 
 
 
-sub_8745:
+sub_8745_change_time_option:
 C - - - - - 0x008755 02:8745: A9 20     LDA #con_btn_Select
 C - - - - - 0x008757 02:8747: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00875A 02:874A: F0 15     BEQ bra_8761_RTS
 C - - - - - 0x00875C 02:874C: AE AF 03  LDX ram_option_timer
 C - - - - - 0x00875F 02:874F: E8        INX
 C - - - - - 0x008760 02:8750: E0 03     CPX #$03
-C - - - - - 0x008762 02:8752: D0 02     BNE bra_8756
+C - - - - - 0x008762 02:8752: D0 02     BNE bra_8756_not_overflow
 C - - - - - 0x008764 02:8754: A2 00     LDX #$00
-bra_8756:
+bra_8756_not_overflow:
 C - - - - - 0x008766 02:8756: 8E AF 03  STX ram_option_timer
 C - - - - - 0x008769 02:8759: 20 62 87  JSR sub_8762
 C - - - - - 0x00876C 02:875C: A9 18     LDA #$18
@@ -1755,7 +1755,7 @@ C - - - - - 0x008B85 02:8B75: A9 0F     LDA #$0F
 C - - - - - 0x008B87 02:8B77: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x008B8A 02:8B7A: AE D4 03  LDX ram_03D4
 C - - - - - 0x008B8D 02:8B7D: BD 1E 8C  LDA tbl_8C1E,X
-C - - - - - 0x008B90 02:8B80: 8D A4 03  STA ram_03A4
+C - - - - - 0x008B90 02:8B80: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x008B93 02:8B83: A9 00     LDA #$00
 bra_8B85:
 C - - - - - 0x008B95 02:8B85: 48        PHA
@@ -7014,7 +7014,7 @@ C - - - - - 0x00A1CD 02:A1BD: A2 01     LDX #$01
 C - - - - - 0x00A1CF 02:A1BF: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00A1D2 02:A1C2: F0 07     BEQ bra_A1CB
 C - - - - - 0x00A1D4 02:A1C4: E8        INX
-C - - - - - 0x00A1D5 02:A1C5: 2C A4 03  BIT ram_03A4
+C - - - - - 0x00A1D5 02:A1C5: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00A1D8 02:A1C8: 30 01     BMI bra_A1CB
 C - - - - - 0x00A1DA 02:A1CA: E8        INX
 bra_A1CB:
@@ -8029,7 +8029,7 @@ tbl_A3BE:
 
 
 sub_A62D:
-C - - - - - 0x00A63D 02:A62D: 2C A4 03  BIT ram_03A4
+C - - - - - 0x00A63D 02:A62D: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00A640 02:A630: 50 03     BVC bra_A635
 C - - - - - 0x00A642 02:A632: 4C 77 A7  JMP loc_A777
 bra_A635:
@@ -8050,7 +8050,7 @@ C - - - - - 0x00A65A 02:A64A: AD AB 03  LDA ram_03AB
 C - - - - - 0x00A65D 02:A64D: 85 2B     STA ram_002B
 C - - - - - 0x00A65F 02:A64F: AD AC 03  LDA ram_03AC
 C - - - - - 0x00A662 02:A652: 85 2C     STA ram_002C
-C - - - - - 0x00A664 02:A654: AD A4 03  LDA ram_03A4
+C - - - - - 0x00A664 02:A654: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00A667 02:A657: 29 08     AND #$08
 C - - - - - 0x00A669 02:A659: 0A        ASL
 C - - - - - 0x00A66A 02:A65A: 0A        ASL
@@ -8411,9 +8411,9 @@ C - - - - - 0x00A8A2 02:A892: 18        CLC
 C - - - - - 0x00A8A3 02:A893: 69 10     ADC #$10
 C - - - - - 0x00A8A5 02:A895: C9 30     CMP #$30
 C - - - - - 0x00A8A7 02:A897: D0 B3     BNE bra_A84C
-C - - - - - 0x00A8A9 02:A899: AD A4 03  LDA ram_03A4
+C - - - - - 0x00A8A9 02:A899: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00A8AC 02:A89C: 29 BF     AND #$BF
-C - - - - - 0x00A8AE 02:A89E: 8D A4 03  STA ram_03A4
+C - - - - - 0x00A8AE 02:A89E: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00A8B1 02:A8A1: 60        RTS
 
 
@@ -8479,12 +8479,12 @@ C - - - - - 0x00A90B 02:A8FB: 4A        LSR
 C - - - - - 0x00A90C 02:A8FC: 4A        LSR
 C - - - - - 0x00A90D 02:A8FD: 4A        LSR
 C - - - - - 0x00A90E 02:A8FE: AA        TAX
-C - - - - - 0x00A90F 02:A8FF: AD A4 03  LDA ram_03A4
+C - - - - - 0x00A90F 02:A8FF: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00A912 02:A902: 29 F7     AND #$F7
-C - - - - - 0x00A914 02:A904: 8D A4 03  STA ram_03A4
+C - - - - - 0x00A914 02:A904: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00A917 02:A907: 8A        TXA
-C - - - - - 0x00A918 02:A908: 0D A4 03  ORA ram_03A4
-C - - - - - 0x00A91B 02:A90B: 8D A4 03  STA ram_03A4
+C - - - - - 0x00A918 02:A908: 0D A4 03  ORA ram_game_mode_flags
+C - - - - - 0x00A91B 02:A90B: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00A91E 02:A90E: A5 2C     LDA ram_002C
 C - - - - - 0x00A920 02:A910: 8D AC 03  STA ram_03AC
 C - - - - - 0x00A923 02:A913: A5 2B     LDA ram_002B

@@ -333,9 +333,9 @@ C - - - - - 0x00C302 03:C2F2: A5 29     LDA ram_0029
 C - - - - - 0x00C304 03:C2F4: 09 1E     ORA #$1E
 C - - - - - 0x00C306 03:C2F6: 85 29     STA ram_0029
 loc_C2F8:
-C D 2 - - - 0x00C308 03:C2F8: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C30B 03:C2FB: 29 FB     AND #$FB
-C - - - - - 0x00C30D 03:C2FD: 8D A4 03  STA ram_03A4
+C D 2 - - - 0x00C308 03:C2F8: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C30B 03:C2FB: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00C30D 03:C2FD: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C310 03:C300: A9 00     LDA #$00
 C - - - - - 0x00C312 03:C302: 8D D2 03  STA ram_03D2
 C - - - - - 0x00C315 03:C305: A9 11     LDA #$11
@@ -383,17 +383,17 @@ C - - - - - 0x00C368 03:C358: 85 68     STA ram_0068
 C - - - - - 0x00C36A 03:C35A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C36D 03:C35D: 68        PLA
 C - - - - - 0x00C36E 03:C35E: 20 18 80  JSR sub_0x008B30
-C - - - - - 0x00C371 03:C361: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C374 03:C364: 09 08     ORA #$08
-C - - - - - 0x00C376 03:C366: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C371 03:C361: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C374 03:C364: 09 08     ORA #con_gm_unk_08
+C - - - - - 0x00C376 03:C366: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C379 03:C369: A9 FF     LDA #$FF
 C - - - - - 0x00C37B 03:C36B: 8D A9 03  STA ram_team_id
 loc_C36E:
 C D 2 - - - 0x00C37E 03:C36E: A9 01     LDA #$01
 C - - - - - 0x00C380 03:C370: 20 10 C9  JSR sub_C910
-C - - - - - 0x00C383 03:C373: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C386 03:C376: 29 FB     AND #$FB
-C - - - - - 0x00C388 03:C378: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C383 03:C373: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C386 03:C376: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00C388 03:C378: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C38B 03:C37B: A9 00     LDA #$00
 C - - - - - 0x00C38D 03:C37D: 8D A7 03  STA ram_goals_total
 C - - - - - 0x00C390 03:C380: 8D A8 03  STA ram_goals_total + 1
@@ -431,8 +431,8 @@ C - - - - - 0x00C3D5 03:C3C5: 20 07 C5  JSR sub_C507
 bra_C3C8:
 C - - - - - 0x00C3D8 03:C3C8: A9 01     LDA #$01
 C - - - - - 0x00C3DA 03:C3CA: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00C3DD 03:C3CD: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C3E0 03:C3D0: 29 01     AND #$01
+C - - - - - 0x00C3DD 03:C3CD: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C3E0 03:C3D0: 29 01     AND #con_gm_timeup
 C - - - - - 0x00C3E2 03:C3D2: F0 F4     BEQ bra_C3C8
 C - - - - - 0x00C3E4 03:C3D4: 20 76 C4  JSR sub_C476
 C - - - - - 0x00C3E7 03:C3D7: 20 B8 C4  JSR sub_C4B8
@@ -443,8 +443,8 @@ C - - - - - 0x00C3F2 03:C3E2: 8D AD 03  STA ram_team_w_ball
 bra_C3E5:
 C - - - - - 0x00C3F5 03:C3E5: A9 01     LDA #$01
 C - - - - - 0x00C3F7 03:C3E7: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00C3FA 03:C3EA: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C3FD 03:C3ED: 29 01     AND #$01
+C - - - - - 0x00C3FA 03:C3EA: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C3FD 03:C3ED: 29 01     AND #con_gm_timeup
 C - - - - - 0x00C3FF 03:C3EF: F0 F4     BEQ bra_C3E5
 C - - - - - 0x00C401 03:C3F1: 20 76 C4  JSR sub_C476
 C - - - - - 0x00C404 03:C3F4: 20 B8 C4  JSR sub_C4B8
@@ -457,14 +457,14 @@ C - - - - - 0x00C412 03:C402: 95 02     STA ram_0002,X
 C - - - - - 0x00C414 03:C404: A9 CE     LDA #> ofs_CE73
 C - - - - - 0x00C416 03:C406: A0 72     LDY #< ofs_CE73
 C - - - - - 0x00C418 03:C408: 20 E1 C5  JSR sub_C5E1_prepare_return_address
-C - - - - - 0x00C41B 03:C40B: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C41E 03:C40E: 09 10     ORA #$10
-C - - - - - 0x00C420 03:C410: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C41B 03:C40B: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C41E 03:C40E: 09 10     ORA #con_gm_pk
+C - - - - - 0x00C420 03:C410: 8D A4 03  STA ram_game_mode_flags
 bra_C413:
 C - - - - - 0x00C423 03:C413: A9 01     LDA #$01
 C - - - - - 0x00C425 03:C415: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00C428 03:C418: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C42B 03:C41B: 29 10     AND #$10
+C - - - - - 0x00C428 03:C418: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C42B 03:C41B: 29 10     AND #con_gm_pk
 C - - - - - 0x00C42D 03:C41D: D0 F4     BNE bra_C413
 C - - - - - 0x00C42F 03:C41F: 20 25 C4  JSR sub_C425
 
@@ -478,16 +478,16 @@ C - - - - - 0x00C43D 03:C42D: F0 2D     BEQ bra_C45C_RTS
 C - - - - - 0x00C43F 03:C42F: 90 02     BCC bra_C433
 C - - - - - 0x00C441 03:C431: A2 08     LDX #$08
 bra_C433:
-C - - - - - 0x00C443 03:C433: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C446 03:C436: 29 F7     AND #$F7
-C - - - - - 0x00C448 03:C438: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C443 03:C433: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C446 03:C436: 29 F7     AND #con_gm_unk_08 ^ $FF
+C - - - - - 0x00C448 03:C438: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C44B 03:C43B: 8A        TXA
-C - - - - - 0x00C44C 03:C43C: 0D A4 03  ORA ram_03A4
-C - - - - - 0x00C44F 03:C43F: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C44C 03:C43C: 0D A4 03  ORA ram_game_mode_flags
+C - - - - - 0x00C44F 03:C43F: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C452 03:C442: 68        PLA
 C - - - - - 0x00C453 03:C443: 68        PLA
-C - - - - - 0x00C454 03:C444: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00C457 03:C447: 10 03     BPL bra_C44C
+C - - - - - 0x00C454 03:C444: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00C457 03:C447: 10 03     BPL bra_C44C    ; con_gm_1p
 C - - - - - 0x00C459 03:C449: 4C F8 C2  JMP loc_C2F8
 bra_C44C:
 C - - - - - 0x00C45C 03:C44C: 8A        TXA
@@ -520,9 +520,9 @@ C - - - - - 0x00C483 03:C473: 4C 6E C4  JMP loc_C46E
 
 
 sub_C476:
-C - - - - - 0x00C486 03:C476: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C489 03:C479: 29 FB     AND #$FB
-C - - - - - 0x00C48B 03:C47B: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C486 03:C476: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C489 03:C479: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00C48B 03:C47B: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C48E 03:C47E: A9 00     LDA #$00
 C - - - - - 0x00C490 03:C480: 85 05     STA ram_0005
 C - - - - - 0x00C492 03:C482: 85 06     STA ram_0006
@@ -625,9 +625,9 @@ C - - - - - 0x00C556 03:C546: 95 02     STA ram_0002,X
 C - - - - - 0x00C558 03:C548: A9 CC     LDA #> ofs_CCC4
 C - - - - - 0x00C55A 03:C54A: A0 C3     LDY #< ofs_CCC4
 C - - - - - 0x00C55C 03:C54C: 20 E1 C5  JSR sub_C5E1_prepare_return_address
-C - - - - - 0x00C55F 03:C54F: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C562 03:C552: 29 DE     AND #$DE
-C - - - - - 0x00C564 03:C554: 8D A4 03  STA ram_03A4
+C - - - - - 0x00C55F 03:C54F: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C562 03:C552: 29 DE     AND #(con_gm_timeup + con_gm_out_of_play) ^ $FF
+C - - - - - 0x00C564 03:C554: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C567 03:C557: 60        RTS
 
 
@@ -640,8 +640,8 @@ tbl_C558:
 
 
 loc_C55B_infinite_loop:
-C D 2 - - - 0x00C56B 03:C55B: AD A4 03  LDA ram_03A4
-C - - - - - 0x00C56E 03:C55E: 29 04     AND #$04
+C D 2 - - - 0x00C56B 03:C55B: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00C56E 03:C55E: 29 04     AND #con_gm_unk_04
 C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C
 C - - - - - 0x00C572 03:C562: A9 10     LDA #con_btn_Start
 C - - - - - 0x00C574 03:C564: 2D 26 00  AND ram_btn_press
@@ -1944,9 +1944,9 @@ tbl_CC44:
 loc_CCC4:
 off_CCC4:
 ofs_CCC4 = off_CCC4 - 1
-C D 2 - - - 0x00CCD4 03:CCC4: AD A4 03  LDA ram_03A4
-C - - - - - 0x00CCD7 03:CCC7: 29 FB     AND #$FB
-C - - - - - 0x00CCD9 03:CCC9: 8D A4 03  STA ram_03A4
+C D 2 - - - 0x00CCD4 03:CCC4: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00CCD7 03:CCC7: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00CCD9 03:CCC9: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CCDC 03:CCCC: 20 59 CA  JSR sub_CA59_clear_nametables
 C - - - - - 0x00CCDF 03:CCCF: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00CCE2 03:CCD2: A2 00     LDX #$00
@@ -2005,9 +2005,9 @@ C - - - - - 0x00CD58 03:CD48: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00CD5A 03:CD4A: 09 04     ORA #$04
 C - - - - - 0x00CD5C 03:CD4C: 29 F7     AND #$F7
 C - - - - - 0x00CD5E 03:CD4E: 91 61     STA (ram_0061),Y
-C - - - - - 0x00CD60 03:CD50: AD A4 03  LDA ram_03A4
-C - - - - - 0x00CD63 03:CD53: 09 20     ORA #$20
-C - - - - - 0x00CD65 03:CD55: 8D A4 03  STA ram_03A4
+C - - - - - 0x00CD60 03:CD50: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00CD63 03:CD53: 09 20     ORA #con_gm_out_of_play
+C - - - - - 0x00CD65 03:CD55: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CD68 03:CD58: 20 2F D7  JSR sub_D72F
 C - - - - - 0x00CD6B 03:CD5B: A9 00     LDA #$00
 C - - - - - 0x00CD6D 03:CD5D: 8D 2C 04  STA ram_042C
@@ -2051,9 +2051,9 @@ C - - - - - 0x00CDBF 03:CDAF: 30 D6     BMI bra_CD87
 C - - - - - 0x00CDC1 03:CDB1: 20 97 CF  JSR sub_CF97
 C - - - - - 0x00CDC4 03:CDB4: A9 02     LDA #$02
 C - - - - - 0x00CDC6 03:CDB6: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00CDC9 03:CDB9: AD A4 03  LDA ram_03A4
-C - - - - - 0x00CDCC 03:CDBC: 09 04     ORA #$04
-C - - - - - 0x00CDCE 03:CDBE: 8D A4 03  STA ram_03A4
+C - - - - - 0x00CDC9 03:CDB9: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00CDCC 03:CDBC: 09 04     ORA #con_gm_unk_04
+C - - - - - 0x00CDCE 03:CDBE: 8D A4 03  STA ram_game_mode_flags
 bra_CDC1:
 loc_CDC1:
 C D 2 - - - 0x00CDD1 03:CDC1: A9 01     LDA #$01
@@ -2090,9 +2090,9 @@ C - - - - - 0x00CE11 03:CE01: 20 DA CF  JSR sub_CFDA
 C - - - - - 0x00CE14 03:CE04: AD B1 03  LDA ram_timer_sec
 C - - - - - 0x00CE17 03:CE07: 0D B2 03  ORA ram_timer_min
 C - - - - - 0x00CE1A 03:CE0A: D0 B5     BNE bra_CDC1
-C - - - - - 0x00CE1C 03:CE0C: A9 01     LDA #$01
-C - - - - - 0x00CE1E 03:CE0E: 0D A4 03  ORA ram_03A4
-C - - - - - 0x00CE21 03:CE11: 8D A4 03  STA ram_03A4
+C - - - - - 0x00CE1C 03:CE0C: A9 01     LDA #con_gm_timeup
+C - - - - - 0x00CE1E 03:CE0E: 0D A4 03  ORA ram_game_mode_flags
+C - - - - - 0x00CE21 03:CE11: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CE24 03:CE14: 4C F1 C5  JMP loc_C5F1
 bra_CE17:
 C - - - - - 0x00CE27 03:CE17: 8A        TXA
@@ -2129,9 +2129,9 @@ C - - - - - 0x00CE61 03:CE51: 68        PLA
 C - - - - - 0x00CE62 03:CE52: 38        SEC
 C - - - - - 0x00CE63 03:CE53: E9 01     SBC #$01
 C - - - - - 0x00CE65 03:CE55: D0 E1     BNE bra_CE38
-C - - - - - 0x00CE67 03:CE57: AD A4 03  LDA ram_03A4
-C - - - - - 0x00CE6A 03:CE5A: 29 FB     AND #$FB
-C - - - - - 0x00CE6C 03:CE5C: 8D A4 03  STA ram_03A4
+C - - - - - 0x00CE67 03:CE57: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00CE6A 03:CE5A: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00CE6C 03:CE5C: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CE6F 03:CE5F: 68        PLA
 C - - - - - 0x00CE70 03:CE60: 8D 28 04  STA ram_0428
 C - - - - - 0x00CE73 03:CE63: 68        PLA
@@ -2147,9 +2147,9 @@ C - - - - - 0x00CE78 03:CE68: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 
 off_CE73:
 ofs_CE73 = off_CE73 - 1
-C - - - - - 0x00CE83 03:CE73: AD A4 03  LDA ram_03A4
-C - - - - - 0x00CE86 03:CE76: 29 FB     AND #$FB
-C - - - - - 0x00CE88 03:CE78: 8D A4 03  STA ram_03A4
+C - - - - - 0x00CE83 03:CE73: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00CE86 03:CE76: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00CE88 03:CE78: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CE8B 03:CE7B: A2 00     LDX #$00
 C - - - - - 0x00CE8D 03:CE7D: A9 02     LDA #$02
 C - - - - - 0x00CE8F 03:CE7F: 20 D4 CA  JSR sub_CAD4
@@ -2279,9 +2279,9 @@ C - - - - - 0x00CF78 03:CF68: 8A        TXA
 C - - - - - 0x00CF79 03:CF69: D0 E6     BNE bra_CF51
 bra_CF6B:
 C - - - - - 0x00CF7B 03:CF6B: A9 01     LDA #$01
-C - - - - - 0x00CF7D 03:CF6D: 0D A4 03  ORA ram_03A4
-C - - - - - 0x00CF80 03:CF70: 29 EF     AND #$EF
-C - - - - - 0x00CF82 03:CF72: 8D A4 03  STA ram_03A4
+C - - - - - 0x00CF7D 03:CF6D: 0D A4 03  ORA ram_game_mode_flags
+C - - - - - 0x00CF80 03:CF70: 29 EF     AND #con_gm_pk ^ $FF
+C - - - - - 0x00CF82 03:CF72: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CF85 03:CF75: A2 00     LDX #$00
 C - - - - - 0x00CF87 03:CF77: 20 8D CF  JSR sub_CF8D
 C - - - - - 0x00CF8A 03:CF7A: E8        INX
@@ -2371,8 +2371,8 @@ C - - - - - 0x00CFF4 03:CFE4: 4C 74 D0  JMP loc_D074
 bra_CFE7:
 C - - - - - 0x00CFF7 03:CFE7: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00CFFA 03:CFEA: D0 08     BNE bra_CFF4
-C - - - - - 0x00CFFC 03:CFEC: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00CFFF 03:CFEF: 30 03     BMI bra_CFF4
+C - - - - - 0x00CFFC 03:CFEC: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00CFFF 03:CFEF: 30 03     BMI bra_CFF4    ; con_gm_2p
 C - - - - - 0x00D001 03:CFF1: 4C 74 D0  JMP loc_D074
 bra_CFF4:
 C - - - - - 0x00D004 03:CFF4: AD 2A 04  LDA ram_plr_wo_ball
@@ -3053,20 +3053,20 @@ C - - - - - 0x00D4D3 03:D4C3: C9 16     CMP #$16
 C - - - - - 0x00D4D5 03:D4C5: D0 E0     BNE bra_D4A7_loop
 C - - - - - 0x00D4D7 03:D4C7: A9 03     LDA #$03
 C - - - - - 0x00D4D9 03:D4C9: 8D E4 03  STA ram_03E4
-C - - - - - 0x00D4DC 03:D4CC: AD A4 03  LDA ram_03A4
-C - - - - - 0x00D4DF 03:D4CF: 09 20     ORA #$20
-C - - - - - 0x00D4E1 03:D4D1: 8D A4 03  STA ram_03A4
+C - - - - - 0x00D4DC 03:D4CC: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00D4DF 03:D4CF: 09 20     ORA #con_gm_out_of_play
+C - - - - - 0x00D4E1 03:D4D1: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00D4E4 03:D4D4: 60        RTS
 
 
 
 loc_D4D5:
-C D 2 - - - 0x00D4E5 03:D4D5: AD A4 03  LDA ram_03A4
-C - - - - - 0x00D4E8 03:D4D8: 29 DF     AND #$DF
-C - - - - - 0x00D4EA 03:D4DA: 8D A4 03  STA ram_03A4
-C - - - - - 0x00D4ED 03:D4DD: AD A4 03  LDA ram_03A4
-C - - - - - 0x00D4F0 03:D4E0: 09 04     ORA #$04
-C - - - - - 0x00D4F2 03:D4E2: 8D A4 03  STA ram_03A4
+C D 2 - - - 0x00D4E5 03:D4D5: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00D4E8 03:D4D8: 29 DF     AND #con_gm_out_of_play ^ $FF
+C - - - - - 0x00D4EA 03:D4DA: 8D A4 03  STA ram_game_mode_flags
+C - - - - - 0x00D4ED 03:D4DD: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00D4F0 03:D4E0: 09 04     ORA #con_gm_unk_04
+C - - - - - 0x00D4F2 03:D4E2: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00D4F5 03:D4E5: 4C C1 CD  JMP loc_CDC1
 
 
@@ -4588,8 +4588,8 @@ C - - - - - 0x00DEDE 03:DECE: 48        PHA
 C - - - - - 0x00DEDF 03:DECF: A5 5B     LDA ram_005B
 C - - - - - 0x00DEE1 03:DED1: 85 60     STA ram_0060
 C - - - - - 0x00DEE3 03:DED3: AA        TAX
-C - - - - - 0x00DEE4 03:DED4: AD A4 03  LDA ram_03A4
-C - - - - - 0x00DEE7 03:DED7: 29 10     AND #$10
+C - - - - - 0x00DEE4 03:DED4: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00DEE7 03:DED7: 29 10     AND #con_gm_pk
 C - - - - - 0x00DEE9 03:DED9: D0 0C     BNE bra_DEE7
 C - - - - - 0x00DEEB 03:DEDB: 38        SEC
 C - - - - - 0x00DEEC 03:DEDC: E5 5E     SBC ram_005E
@@ -4735,8 +4735,8 @@ C - - - - - 0x00DFCA 03:DFBA: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00DFCD 03:DFBD: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00DFD0 03:DFC0: F0 14     BEQ bra_DFD6
 C - - - - - 0x00DFD2 03:DFC2: AD 25 00  LDA ram_btn_hold + 1
-C - - - - - 0x00DFD5 03:DFC5: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00DFD8 03:DFC8: 30 0C     BMI bra_DFD6
+C - - - - - 0x00DFD5 03:DFC5: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00DFD8 03:DFC8: 30 0C     BMI bra_DFD6    ; con_gm_2p
 C - - - - - 0x00DFDA 03:DFCA: AD 7E 03  LDA ram_random
 C - - - - - 0x00DFDD 03:DFCD: 29 03     AND #$03
 C - - - - - 0x00DFDF 03:DFCF: AA        TAX
@@ -4879,8 +4879,8 @@ C - - - - - 0x00E0A3 03:E093: AE 24 00  LDX ram_btn_hold
 C - - - - - 0x00E0A6 03:E096: A8        TAY
 C - - - - - 0x00E0A7 03:E097: F0 0A     BEQ bra_E0A3
 C - - - - - 0x00E0A9 03:E099: AE 25 00  LDX ram_btn_hold + 1
-C - - - - - 0x00E0AC 03:E09C: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00E0AF 03:E09F: 30 02     BMI bra_E0A3
+C - - - - - 0x00E0AC 03:E09C: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00E0AF 03:E09F: 30 02     BMI bra_E0A3    ; con_gm_2p
 C - - - - - 0x00E0B1 03:E0A1: A2 00     LDX #$00
 bra_E0A3:
 C - - - - - 0x00E0B3 03:E0A3: A9 00     LDA #$00
@@ -5387,8 +5387,8 @@ C - - - - - 0x00E3F1 03:E3E1: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00E3F4 03:E3E4: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00E3F7 03:E3E7: F0 1C     BEQ bra_E405
 C - - - - - 0x00E3F9 03:E3E9: AD 25 00  LDA ram_btn_hold + 1
-C - - - - - 0x00E3FC 03:E3EC: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00E3FF 03:E3EF: 30 14     BMI bra_E405
+C - - - - - 0x00E3FC 03:E3EC: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00E3FF 03:E3EF: 30 14     BMI bra_E405    ; con_gm_2p
 C - - - - - 0x00E401 03:E3F1: 48        PHA
 C - - - - - 0x00E402 03:E3F2: A9 02     LDA #$02
 C - - - - - 0x00E404 03:E3F4: 85 67     STA ram_0067
@@ -6207,8 +6207,8 @@ C - - - - - 0x00E92A 03:E91A: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00E92D 03:E91D: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00E930 03:E920: F0 12     BEQ bra_E934
 C - - - - - 0x00E932 03:E922: AD 25 00  LDA ram_btn_hold + 1
-C - - - - - 0x00E935 03:E925: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00E938 03:E928: 30 0A     BMI bra_E934
+C - - - - - 0x00E935 03:E925: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00E938 03:E928: 30 0A     BMI bra_E934    ; con_gm_2p
 C - - - - - 0x00E93A 03:E92A: 20 36 80  JSR sub_0x004BF8
 C - - - - - 0x00E93D 03:E92D: 24 86     BIT ram_0086
 C - - - - - 0x00E93F 03:E92F: 10 03     BPL bra_E934
@@ -6241,8 +6241,8 @@ C - - - - - 0x00E97A 03:E96A: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00E97C 03:E96C: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00E97F 03:E96F: 4C 7C E9  JMP loc_E97C
 bra_E972:
-C - - - - - 0x00E982 03:E972: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00E985 03:E975: 10 9E     BPL bra_E915
+C - - - - - 0x00E982 03:E972: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00E985 03:E975: 10 9E     BPL bra_E915    ; con_gm_1p
 C - - - - - 0x00E987 03:E977: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00E989 03:E979: 2D 27 00  AND ram_btn_press + 1
 loc_E97C:
@@ -6495,8 +6495,8 @@ C - - - - - 0x00EB4F 03:EB3F: 4C 4B EC  JMP loc_EC4B
 bra_EB42:
 C - - - - - 0x00EB52 03:EB42: A2 01     LDX #$01
 C - - - - - 0x00EB54 03:EB44: 20 67 E1  JSR sub_E167
-C - - - - - 0x00EB57 03:EB47: AD A4 03  LDA ram_03A4
-C - - - - - 0x00EB5A 03:EB4A: 29 20     AND #$20
+C - - - - - 0x00EB57 03:EB47: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00EB5A 03:EB4A: 29 20     AND #con_gm_out_of_play
 C - - - - - 0x00EB5C 03:EB4C: F0 10     BEQ bra_EB5E
 loc_EB4E:
 C D 3 - - - 0x00EB5E 03:EB4E: A9 01     LDA #$01
@@ -6509,8 +6509,8 @@ bra_EB5E:
 C - - - - - 0x00EB6E 03:EB5E: A5 6F     LDA ram_006F
 C - - - - - 0x00EB70 03:EB60: C9 0B     CMP #$0B
 C - - - - - 0x00EB72 03:EB62: 90 15     BCC bra_EB79
-C - - - - - 0x00EB74 03:EB64: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00EB77 03:EB67: 30 10     BMI bra_EB79
+C - - - - - 0x00EB74 03:EB64: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00EB77 03:EB67: 30 10     BMI bra_EB79    ; con_gm_2p
 C - - - - - 0x00EB79 03:EB69: A0 00     LDY #$00
 C - - - - - 0x00EB7B 03:EB6B: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00EB7D 03:EB6D: 29 FB     AND #$FB
@@ -6674,8 +6674,8 @@ C - - - - - 0x00EC97 03:EC87: 4C 55 DF  JMP loc_DF55
 bra_EC8A:
 C - - - - - 0x00EC9A 03:EC8A: A5 6F     LDA ram_006F
 C - - - - - 0x00EC9C 03:EC8C: F0 1D     BEQ bra_ECAB
-C - - - - - 0x00EC9E 03:EC8E: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00ECA1 03:EC91: 30 18     BMI bra_ECAB
+C - - - - - 0x00EC9E 03:EC8E: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00ECA1 03:EC91: 30 18     BMI bra_ECAB    ; con_gm_2p
 C - - - - - 0x00ECA3 03:EC93: 48        PHA
 C - - - - - 0x00ECA4 03:EC94: A9 02     LDA #$02
 C - - - - - 0x00ECA6 03:EC96: 85 67     STA ram_0067
@@ -7329,8 +7329,8 @@ C - - - - - 0x00F109 03:F0F9: 4C DB F0  JMP loc_F0DB
 ofs_F0FC_11:
 C - - - - - 0x00F10C 03:F0FC: 20 77 C6  JSR sub_C677
 loc_F0FF:
-C D 3 - - - 0x00F10F 03:F0FF: AD A4 03  LDA ram_03A4
-C - - - - - 0x00F112 03:F102: 29 20     AND #$20
+C D 3 - - - 0x00F10F 03:F0FF: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00F112 03:F102: 29 20     AND #con_gm_out_of_play
 C - - - - - 0x00F114 03:F104: F0 10     BEQ bra_F116
 C - - - - - 0x00F116 03:F106: A9 01     LDA #$01
 C - - - - - 0x00F118 03:F108: 20 52 C6  JSR sub_C652
@@ -7493,8 +7493,8 @@ C - - - - - 0x00F24E 03:F23E: A2 00     LDX #$00
 C - - - - - 0x00F250 03:F240: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00F253 03:F243: F0 13     BEQ bra_F258
 C - - - - - 0x00F255 03:F245: E8        INX
-C - - - - - 0x00F256 03:F246: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F259 03:F249: 30 0D     BMI bra_F258
+C - - - - - 0x00F256 03:F246: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F259 03:F249: 30 0D     BMI bra_F258    ; con_gm_2p
 C - - - - - 0x00F25B 03:F24B: A0 06     LDY #$06
 C - - - - - 0x00F25D 03:F24D: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00F25F 03:F24F: 38        SEC
@@ -7532,9 +7532,9 @@ C - - - - - 0x00F29E 03:F28E: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00F2A1 03:F291: 20 E3 CB  JSR sub_CBE3
 C - - - - - 0x00F2A4 03:F294: A9 80     LDA #$80
 C - - - - - 0x00F2A6 03:F296: 8D 2C 04  STA ram_042C
-C - - - - - 0x00F2A9 03:F299: AD A4 03  LDA ram_03A4
-C - - - - - 0x00F2AC 03:F29C: 29 DF     AND #$DF
-C - - - - - 0x00F2AE 03:F29E: 8D A4 03  STA ram_03A4
+C - - - - - 0x00F2A9 03:F299: AD A4 03  LDA ram_game_mode_flags
+C - - - - - 0x00F2AC 03:F29C: 29 DF     AND #con_gm_out_of_play ^ $FF
+C - - - - - 0x00F2AE 03:F29E: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00F2B1 03:F2A1: 4C 55 DF  JMP loc_DF55
 
 
@@ -7758,8 +7758,8 @@ C - - - - - 0x00F477 03:F467: A5 6F     LDA ram_006F
 C - - - - - 0x00F479 03:F469: 20 2B C9  JSR sub_C92B
 C - - - - - 0x00F47C 03:F46C: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00F47F 03:F46F: F0 15     BEQ bra_F486
-C - - - - - 0x00F481 03:F471: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F484 03:F474: 30 10     BMI bra_F486
+C - - - - - 0x00F481 03:F471: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F484 03:F474: 30 10     BMI bra_F486    ; con_gm_2p
 C - - - - - 0x00F486 03:F476: 48        PHA
 C - - - - - 0x00F487 03:F477: A9 02     LDA #$02
 C - - - - - 0x00F489 03:F479: 85 67     STA ram_0067
@@ -7780,8 +7780,8 @@ C - - - - - 0x00F4A5 03:F495: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00F4A8 03:F498: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00F4AB 03:F49B: F0 0C     BEQ bra_F4A9
 C - - - - - 0x00F4AD 03:F49D: A9 00     LDA #$00
-C - - - - - 0x00F4AF 03:F49F: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F4B2 03:F4A2: 10 05     BPL bra_F4A9
+C - - - - - 0x00F4AF 03:F49F: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F4B2 03:F4A2: 10 05     BPL bra_F4A9    ; con_gm_1p
 C - - - - - 0x00F4B4 03:F4A4: AD 25 00  LDA ram_btn_hold + 1
 C - - - - - 0x00F4B7 03:F4A7: A2 01     LDX #$01
 bra_F4A9:
@@ -7818,8 +7818,8 @@ bra_F4DD:
 C - - - - - 0x00F4ED 03:F4DD: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F4EF 03:F4DF: A6 2B     LDX ram_002B
 C - - - - - 0x00F4F1 03:F4E1: F0 13     BEQ bra_F4F6
-C - - - - - 0x00F4F3 03:F4E3: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F4F6 03:F4E6: 30 0E     BMI bra_F4F6
+C - - - - - 0x00F4F3 03:F4E3: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F4F6 03:F4E6: 30 0E     BMI bra_F4F6    ; con_gm_2p
 C - - - - - 0x00F4F8 03:F4E8: A0 0C     LDY #$0C
 C - - - - - 0x00F4FA 03:F4EA: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00F4FC 03:F4EC: 38        SEC
@@ -7929,8 +7929,8 @@ C - - - - - 0x00F5D5 03:F5C5: 20 ED DC  JSR sub_DCED
 C - - - - - 0x00F5D8 03:F5C8: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00F5DB 03:F5CB: F0 14     BEQ bra_F5E1
 C - - - - - 0x00F5DD 03:F5CD: A2 01     LDX #$01
-C - - - - - 0x00F5DF 03:F5CF: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F5E2 03:F5D2: 30 0D     BMI bra_F5E1
+C - - - - - 0x00F5DF 03:F5CF: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F5E2 03:F5D2: 30 0D     BMI bra_F5E1    ; con_gm_2p
 C - - - - - 0x00F5E4 03:F5D4: A0 06     LDY #$06
 C - - - - - 0x00F5E6 03:F5D6: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00F5E8 03:F5D8: 38        SEC
@@ -8023,8 +8023,8 @@ C - - - - - 0x00F6A2 03:F692: A5 6F     LDA ram_006F
 C - - - - - 0x00F6A4 03:F694: 20 2B C9  JSR sub_C92B
 C - - - - - 0x00F6A7 03:F697: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00F6AA 03:F69A: F0 11     BEQ bra_F6AD
-C - - - - - 0x00F6AC 03:F69C: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F6AF 03:F69F: 30 0C     BMI bra_F6AD
+C - - - - - 0x00F6AC 03:F69C: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F6AF 03:F69F: 30 0C     BMI bra_F6AD    ; con_gm_2p
 C - - - - - 0x00F6B1 03:F6A1: A0 06     LDY #$06
 C - - - - - 0x00F6B3 03:F6A3: AD 7E 03  LDA ram_random
 C - - - - - 0x00F6B6 03:F6A6: 29 1F     AND #$1F
@@ -8040,8 +8040,8 @@ C - - - - - 0x00F6C4 03:F6B4: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F6C7 03:F6B7: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00F6CA 03:F6BA: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00F6CD 03:F6BD: F0 0D     BEQ bra_F6CC
-C - - - - - 0x00F6CF 03:F6BF: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F6D2 03:F6C2: 30 03     BMI bra_F6C7
+C - - - - - 0x00F6CF 03:F6BF: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F6D2 03:F6C2: 30 03     BMI bra_F6C7    ; con_gm_2p
 C - - - - - 0x00F6D4 03:F6C4: 4C 13 F7  JMP loc_F713
 bra_F6C7:
 C - - - - - 0x00F6D7 03:F6C7: AD 25 00  LDA ram_btn_hold + 1
@@ -8083,8 +8083,8 @@ C - - - - - 0x00F717 03:F707: 20 9C F7  JSR sub_F79C
 bra_F70A:
 C - - - - - 0x00F71A 03:F70A: A6 2B     LDX ram_002B
 C - - - - - 0x00F71C 03:F70C: F0 12     BEQ bra_F720
-C - - - - - 0x00F71E 03:F70E: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F721 03:F711: 30 0D     BMI bra_F720
+C - - - - - 0x00F71E 03:F70E: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F721 03:F711: 30 0D     BMI bra_F720    ; con_gm_2p
 loc_F713:
 C D 3 - - - 0x00F723 03:F713: A0 06     LDY #$06
 C - - - - - 0x00F725 03:F715: B1 61     LDA (ram_0061),Y
@@ -8187,8 +8187,8 @@ C - - - - - 0x00F7DD 03:F7CD: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F7E0 03:F7D0: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00F7E3 03:F7D3: F0 20     BEQ bra_F7F5
 C - - - - - 0x00F7E5 03:F7D5: A2 01     LDX #$01
-C - - - - - 0x00F7E7 03:F7D7: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F7EA 03:F7DA: 30 19     BMI bra_F7F5
+C - - - - - 0x00F7E7 03:F7D7: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F7EA 03:F7DA: 30 19     BMI bra_F7F5    ; con_gm_2p
 C - - - - - 0x00F7EC 03:F7DC: C6 8D     DEC ram_008D
 C - - - - - 0x00F7EE 03:F7DE: D0 EB     BNE bra_F7CB
 C - - - - - 0x00F7F0 03:F7E0: A9 00     LDA #$00
@@ -8251,8 +8251,8 @@ C - - - - - 0x00F862 03:F852: 49 0B     EOR #$0B
 C - - - - - 0x00F864 03:F854: AA        TAX
 C - - - - - 0x00F865 03:F855: F0 21     BEQ bra_F878
 C - - - - - 0x00F867 03:F857: A2 01     LDX #$01
-C - - - - - 0x00F869 03:F859: 2C A4 03  BIT ram_03A4
-C - - - - - 0x00F86C 03:F85C: 30 1A     BMI bra_F878
+C - - - - - 0x00F869 03:F859: 2C A4 03  BIT ram_game_mode_flags
+C - - - - - 0x00F86C 03:F85C: 30 1A     BMI bra_F878    ; con_gm_2p
 C - - - - - 0x00F86E 03:F85E: A9 06     LDA #$06
 C - - - - - 0x00F870 03:F860: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F873 03:F863: A9 02     LDA #$02

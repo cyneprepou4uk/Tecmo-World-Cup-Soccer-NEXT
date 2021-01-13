@@ -718,7 +718,7 @@ tbl_8456:
 
 .export sub_0x00448D
 sub_0x00448D:
-C D 0 - - - 0x00448D 01:847D: AD A4 03  LDA ram_03A4
+C D 0 - - - 0x00448D 01:847D: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x004490 01:8480: 29 10     AND #$10
 C - - - - - 0x004492 01:8482: D0 68     BNE bra_84EC_RTS
 C - - - - - 0x004494 01:8484: A9 8C     LDA #$8C
@@ -729,7 +729,7 @@ C - - - - - 0x00449E 01:848E: A9 17     LDA #$17
 C - - - - - 0x0044A0 01:8490: 20 04 85  JSR sub_8504
 C - - - - - 0x0044A3 01:8493: AD B2 03  LDA ram_timer_min
 C - - - - - 0x0044A6 01:8496: 20 ED 84  JSR sub_84ED
-C - - - - - 0x0044A9 01:8499: AD A4 03  LDA ram_03A4
+C - - - - - 0x0044A9 01:8499: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x0044AC 01:849C: 29 20     AND #$20
 C - - - - - 0x0044AE 01:849E: D0 4C     BNE bra_84EC_RTS
 C - - - - - 0x0044B0 01:84A0: CE B0 03  DEC ram_timer_ms
@@ -1018,7 +1018,7 @@ C - - - - - 0x00464B 01:863B: 60        RTS
 
 .export sub_0x00464C
 sub_0x00464C:
-C D 0 - - - 0x00464C 01:863C: AD A4 03  LDA ram_03A4
+C D 0 - - - 0x00464C 01:863C: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00464F 01:863F: 29 10     AND #$10
 C - - - - - 0x004651 01:8641: D0 19     BNE bra_865C_RTS
 C - - - - - 0x004653 01:8643: AE C9 03  LDX ram_03C9
@@ -1039,7 +1039,7 @@ C - - - - - 0x00466C 01:865C: 60        RTS
 
 sub_865D:
 C - - - - - 0x00466D 01:865D: 30 36     BMI bra_8695_RTS
-C - - - - - 0x00466F 01:865F: 2C A4 03  BIT ram_03A4
+C - - - - - 0x00466F 01:865F: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x004672 01:8662: 30 04     BMI bra_8668
 C - - - - - 0x004674 01:8664: C9 0B     CMP #$0B
 C - - - - - 0x004676 01:8666: B0 2D     BCS bra_8695_RTS
@@ -1747,7 +1747,7 @@ loc_8A67:
 .export sub_0x004A81
 sub_0x004A81:
 C D 0 - - - 0x004A81 01:8A71: A9 00     LDA #$00
-C - - - - - 0x004A83 01:8A73: 2C A4 03  BIT ram_03A4
+C - - - - - 0x004A83 01:8A73: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x004A86 01:8A76: 30 03     BMI bra_8A7B
 C - - - - - 0x004A88 01:8A78: AD B3 03  LDA ram_game_cnt
 bra_8A7B:
