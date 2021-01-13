@@ -89,6 +89,8 @@ C - - - - - 0x00C12C 03:C11C: 20 D4 CA  JSR sub_CAD4
 C - - - - - 0x00C12F 03:C11F: A2 10     LDX #$10
 C - - - - - 0x00C131 03:C121: A9 01     LDA #$01
 C - - - - - 0x00C133 03:C123: 20 D4 CA  JSR sub_CAD4
+C - - - - - 0x00C136 03:C126: 20 18 CB  JSR sub_CB18
+- D 2 - I - 0x00C139 03:C129: 80 03     .word ram_0380
 C - - - - - 0x00C13B 03:C12B: A2 01     LDX #$01
 C - - - - - 0x00C13D 03:C12D: A9 1E     LDA #$1E
 C - - - - - 0x00C13F 03:C12F: 95 01     STA ram_0001,X
@@ -187,9 +189,16 @@ C - - - - - 0x00C1FA 03:C1EA: 40        RTI
 
 
 sub_C1EB:
-C - - - - - 0x00C208 03:C1F8: BD 01 03  LDA #< ram_0380
+C - - - - - 0x00C1FB 03:C1EB: AD 00 03  LDA ram_0300
+C - - - - - 0x00C1FE 03:C1EE: F0 37     BEQ bra_C227
+C - - - - - 0x00C200 03:C1F0: CE 00 03  DEC ram_0300
+C - - - - - 0x00C203 03:C1F3: 38        SEC
+C - - - - - 0x00C204 03:C1F4: E9 01     SBC #$01
+C - - - - - 0x00C206 03:C1F6: 0A        ASL
+C - - - - - 0x00C207 03:C1F7: AA        TAX
+C - - - - - 0x00C208 03:C1F8: BD 01 03  LDA ram_0301,X
 C - - - - - 0x00C20B 03:C1FB: 85 3D     STA ram_003D
-C - - - - - 0x00C20D 03:C1FD: BD 02 03  LDA #> ram_0380
+C - - - - - 0x00C20D 03:C1FD: BD 02 03  LDA ram_0302,X
 C - - - - - 0x00C210 03:C200: 85 3E     STA ram_003E
 C - - - - - 0x00C212 03:C202: A0 00     LDY #$00
 bra_C204:
@@ -215,6 +224,34 @@ C - - - - - 0x00C232 03:C222: D0 F7     BNE bra_C21B
 C - - - - - 0x00C234 03:C224: F0 DE     BEQ bra_C204
 bra_C226_RTS:
 C - - - - - 0x00C236 03:C226: 60        RTS
+bra_C227:
+C - - - - - 0x00C237 03:C227: AD 7D 03  LDA ram_037D
+C - - - - - 0x00C23A 03:C22A: 10 2B     BPL bra_C257_RTS
+C - - - - - 0x00C23C 03:C22C: A2 00     LDX #$00
+C - - - - - 0x00C23E 03:C22E: 8E 7D 03  STX ram_037D
+bra_C231:
+C - - - - - 0x00C241 03:C231: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C244 03:C234: F0 21     BEQ bra_C257_RTS
+C - - - - - 0x00C246 03:C236: A8        TAY
+C - - - - - 0x00C247 03:C237: E8        INX
+C - - - - - 0x00C248 03:C238: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C24B 03:C23B: 48        PHA
+C - - - - - 0x00C24C 03:C23C: E8        INX
+C - - - - - 0x00C24D 03:C23D: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C250 03:C240: 2C 02 20  BIT $2002
+C - - - - - 0x00C253 03:C243: 8D 06 20  STA $2006
+C - - - - - 0x00C256 03:C246: 68        PLA
+C - - - - - 0x00C257 03:C247: 8D 06 20  STA $2006
+C - - - - - 0x00C25A 03:C24A: E8        INX
+bra_C24B:
+C - - - - - 0x00C25B 03:C24B: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C25E 03:C24E: 8D 07 20  STA $2007
+C - - - - - 0x00C261 03:C251: E8        INX
+C - - - - - 0x00C262 03:C252: 88        DEY
+C - - - - - 0x00C263 03:C253: D0 F6     BNE bra_C24B
+C - - - - - 0x00C265 03:C255: F0 DA     BEQ bra_C231
+bra_C257_RTS:
+C - - - - - 0x00C267 03:C257: 60        RTS
 
 
 
@@ -550,6 +587,8 @@ C - - - - - 0x00C4DE 03:C4CE: 20 D4 CA  JSR sub_CAD4
 C - - - - - 0x00C4E1 03:C4D1: A2 10     LDX #$10
 C - - - - - 0x00C4E3 03:C4D3: A9 08     LDA #$08
 C - - - - - 0x00C4E5 03:C4D5: 20 D4 CA  JSR sub_CAD4
+C - - - - - 0x00C4E8 03:C4D8: 20 18 CB  JSR sub_CB18
+- D 2 - I - 0x00C4EB 03:C4DB: 80 03     .word ram_0380
 C - - - - - 0x00C4ED 03:C4DD: A9 1C     LDA #$1C
 C - - - - - 0x00C4EF 03:C4DF: 85 69     STA ram_0069
 C - - - - - 0x00C4F1 03:C4E1: A9 1A     LDA #$1A
@@ -1663,6 +1702,40 @@ C - - - - - 0x00CB27 03:CB17: 60        RTS
 
 
 
+sub_CB18:
+.export sub_0x00CB28
+sub_0x00CB28:
+C D 2 - - - 0x00CB28 03:CB18: BA        TSX
+C - - - - - 0x00CB29 03:CB19: BD 01 01  LDA ram_0101,X
+C - - - - - 0x00CB2C 03:CB1C: 85 3F     STA ram_003F
+C - - - - - 0x00CB2E 03:CB1E: 48        PHA
+C - - - - - 0x00CB2F 03:CB1F: BD 02 01  LDA ram_0102,X
+C - - - - - 0x00CB32 03:CB22: 85 40     STA ram_0040
+C - - - - - 0x00CB34 03:CB24: 68        PLA
+C - - - - - 0x00CB35 03:CB25: 18        CLC
+C - - - - - 0x00CB36 03:CB26: 69 02     ADC #$02
+C - - - - - 0x00CB38 03:CB28: 9D 01 01  STA ram_0101,X
+C - - - - - 0x00CB3B 03:CB2B: 90 03     BCC bra_CB30
+- - - - - - 0x00CB3D 03:CB2D: FE 02 01  INC ram_0102,X
+bra_CB30:
+C - - - - - 0x00CB40 03:CB30: 98        TYA
+C - - - - - 0x00CB41 03:CB31: 48        PHA
+C - - - - - 0x00CB42 03:CB32: AD 00 03  LDA ram_0300
+C - - - - - 0x00CB45 03:CB35: 0A        ASL
+C - - - - - 0x00CB46 03:CB36: AA        TAX
+C - - - - - 0x00CB47 03:CB37: A0 01     LDY #$01
+C - - - - - 0x00CB49 03:CB39: B1 3F     LDA (ram_003F),Y
+C - - - - - 0x00CB4B 03:CB3B: 9D 01 03  STA ram_0301,X
+C - - - - - 0x00CB4E 03:CB3E: C8        INY
+C - - - - - 0x00CB4F 03:CB3F: B1 3F     LDA (ram_003F),Y
+C - - - - - 0x00CB51 03:CB41: 9D 02 03  STA ram_0302,X
+C - - - - - 0x00CB54 03:CB44: EE 00 03  INC ram_0300
+C - - - - - 0x00CB57 03:CB47: 68        PLA
+C - - - - - 0x00CB58 03:CB48: A8        TAY
+C - - - - - 0x00CB59 03:CB49: 60        RTS
+
+
+
 sub_CB4A:
 .export sub_0x00CB5A
 sub_0x00CB5A:
@@ -1936,6 +2009,8 @@ C - - - - - 0x00CCE6 03:CCD6: 20 D4 CA  JSR sub_CAD4
 C - - - - - 0x00CCE9 03:CCD9: A2 10     LDX #$10
 C - - - - - 0x00CCEB 03:CCDB: A9 02     LDA #$02
 C - - - - - 0x00CCED 03:CCDD: 20 D4 CA  JSR sub_CAD4
+C - - - - - 0x00CCF0 03:CCE0: 20 18 CB  JSR sub_CB18
+- D 2 - I - 0x00CCF3 03:CCE3: 80 03     .word ram_0380
 C - - - - - 0x00CCF5 03:CCE5: A9 10     LDA #$10
 C - - - - - 0x00CCF7 03:CCE7: 20 10 C9  JSR sub_C910
 C - - - - - 0x00CCFA 03:CCEA: A9 00     LDA #$00
@@ -2301,6 +2376,8 @@ C - - - - - 0x00CFBB 03:CFAB: 85 68     STA ram_0068
 C - - - - - 0x00CFBD 03:CFAD: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CFC0 03:CFB0: 68        PLA
 C - - - - - 0x00CFC1 03:CFB1: 20 21 80  JSR sub_0x004531
+C - - - - - 0x00CFC4 03:CFB4: 20 18 CB  JSR sub_CB18
+- D 2 - I - 0x00CFC7 03:CFB7: 80 03     .word ram_0380
 C - - - - - 0x00CFC9 03:CFB9: 60        RTS
 
 
