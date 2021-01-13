@@ -1,5 +1,6 @@
 .segment "BANK_FF"
 .include "bank_ram.inc"
+.include "bank_val.inc"
 ; 0x00C010-0x01000F
 
 
