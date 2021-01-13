@@ -1489,7 +1489,7 @@ C - - - - - 0x00490B 01:88FB: A2 01     LDX #$01
 bra_88FD:
 C - - - - - 0x00490D 01:88FD: 28        PLP
 C - - - - - 0x00490E 01:88FE: F0 0E     BEQ bra_890E
-C - - - - - 0x004910 01:8900: BD 7C 00  LDA a: ram_attack,X
+C - - - - - 0x004910 01:8900: BD 7C 00  LDA ram_attack,X
 C - - - - - 0x004913 01:8903: CD 7E 03  CMP ram_random
 C - - - - - 0x004916 01:8906: 90 03     BCC bra_890B
 C - - - - - 0x004918 01:8908: 4C B0 89  JMP loc_89B0
@@ -1498,7 +1498,7 @@ C - - - - - 0x00491B 01:890B: 4C 1D 89  JMP loc_891D
 bra_890E:
 C - - - - - 0x00491E 01:890E: C0 05     CPY #$05
 C - - - - - 0x004920 01:8910: B0 0B     BCS bra_891D
-C - - - - - 0x004922 01:8912: BD 7E 00  LDA a: ram_defense,X
+C - - - - - 0x004922 01:8912: BD 7E 00  LDA ram_defense,X
 C - - - - - 0x004925 01:8915: CD 7E 03  CMP ram_random
 C - - - - - 0x004928 01:8918: 90 03     BCC bra_891D
 C - - - - - 0x00492A 01:891A: 4C C0 89  JMP loc_89C0
