@@ -354,7 +354,7 @@ C - - - - - 0x00C312 03:C302: 8D D2 03  STA ram_03D2
 C - - - - - 0x00C315 03:C305: A9 11     LDA #$11
 C - - - - - 0x00C317 03:C307: 20 10 C9  JSR sub_C910
 C - - - - - 0x00C31A 03:C30A: A9 04     LDA #$04
-C - - - - - 0x00C31C 03:C30C: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C31C 03:C30C: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C31F 03:C30F: A2 05     LDX #$05
 C - - - - - 0x00C321 03:C311: A9 3C     LDA #$3C
 C - - - - - 0x00C323 03:C313: 95 01     STA ram_0001,X
@@ -365,7 +365,7 @@ C - - - - - 0x00C32B 03:C31B: A0 0B     LDY #< sub_0x008A2A
 C - - - - - 0x00C32D 03:C31D: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 bra_C320:
 C - - - - - 0x00C330 03:C320: A9 01     LDA #$01
-C - - - - - 0x00C332 03:C322: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C332 03:C322: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C335 03:C325: A9 10     LDA #$10
 C - - - - - 0x00C337 03:C327: 2D 26 00  AND a: ram_btn_press
 C - - - - - 0x00C33A 03:C32A: D0 05     BNE bra_C331
@@ -443,7 +443,7 @@ C - - - - - 0x00C3D2 03:C3C2: 20 2D 80  JSR sub_0x004A81
 C - - - - - 0x00C3D5 03:C3C5: 20 07 C5  JSR sub_C507
 bra_C3C8:
 C - - - - - 0x00C3D8 03:C3C8: A9 01     LDA #$01
-C - - - - - 0x00C3DA 03:C3CA: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C3DA 03:C3CA: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C3DD 03:C3CD: AD A4 03  LDA ram_03A4
 C - - - - - 0x00C3E0 03:C3D0: 29 01     AND #$01
 C - - - - - 0x00C3E2 03:C3D2: F0 F4     BEQ bra_C3C8
@@ -455,7 +455,7 @@ C - - - - - 0x00C3F0 03:C3E0: A9 0B     LDA #$0B
 C - - - - - 0x00C3F2 03:C3E2: 8D AD 03  STA ram_team_w_ball
 bra_C3E5:
 C - - - - - 0x00C3F5 03:C3E5: A9 01     LDA #$01
-C - - - - - 0x00C3F7 03:C3E7: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C3F7 03:C3E7: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C3FA 03:C3EA: AD A4 03  LDA ram_03A4
 C - - - - - 0x00C3FD 03:C3ED: 29 01     AND #$01
 C - - - - - 0x00C3FF 03:C3EF: F0 F4     BEQ bra_C3E5
@@ -475,7 +475,7 @@ C - - - - - 0x00C41E 03:C40E: 09 10     ORA #$10
 C - - - - - 0x00C420 03:C410: 8D A4 03  STA ram_03A4
 bra_C413:
 C - - - - - 0x00C423 03:C413: A9 01     LDA #$01
-C - - - - - 0x00C425 03:C415: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C425 03:C415: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C428 03:C418: AD A4 03  LDA ram_03A4
 C - - - - - 0x00C42B 03:C41B: 29 10     AND #$10
 C - - - - - 0x00C42D 03:C41D: D0 F4     BNE bra_C413
@@ -527,7 +527,7 @@ C - - - - - 0x00C479 03:C469: A0 14     LDY #< sub_0x0080E1
 C - - - - - 0x00C47B 03:C46B: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 loc_C46E:
 C D 2 - - - 0x00C47E 03:C46E: A9 01     LDA #$01
-C - - - - - 0x00C480 03:C470: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C480 03:C470: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C483 03:C473: 4C 6E C4  JMP loc_C46E
 
 
@@ -562,7 +562,7 @@ C - - - - - 0x00C4BA 03:C4AA: 20 10 C9  JSR sub_C910
 C - - - - - 0x00C4BD 03:C4AD: A9 01     LDA #$01
 C - - - - - 0x00C4BF 03:C4AF: 20 DA F9  JSR sub_F9DA
 C - - - - - 0x00C4C2 03:C4B2: A9 A0     LDA #$A0
-C - - - - - 0x00C4C4 03:C4B4: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C4C4 03:C4B4: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C4C7 03:C4B7: 60        RTS
 
 
@@ -765,9 +765,9 @@ C - - - - - 0x00C609 03:C5F9: 4C 7A C5  JMP loc_C57A
 
 
 
-sub_C609:
-.export sub_0x00C619
-sub_0x00C619:
+sub_C609_delay:
+.export sub_0x00C619_delay
+sub_0x00C619_delay:
 C D 2 - - - 0x00C619 03:C609: 85 49     STA ram_0049
 C - - - - - 0x00C61B 03:C60B: 8A        TXA
 C - - - - - 0x00C61C 03:C60C: 48        PHA
@@ -990,7 +990,7 @@ C - - - - - 0x00C76A 03:C75A: F0 41     BEQ bra_C79D_RTS
 C - - - - - 0x00C76C 03:C75C: 48        PHA
 bra_C75D:
 C - - - - - 0x00C76D 03:C75D: A9 01     LDA #$01
-C - - - - - 0x00C76F 03:C75F: 20 09 C6  JSR sub_C609
+C - - - - - 0x00C76F 03:C75F: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C772 03:C762: AD 7D 03  LDA ram_037D
 C - - - - - 0x00C775 03:C765: D0 F6     BNE bra_C75D
 C - - - - - 0x00C777 03:C767: A9 01     LDA #$01
@@ -2043,7 +2043,7 @@ C - - - - - 0x00CD92 03:CD82: A9 00     LDA #$00
 C - - - - - 0x00CD94 03:CD84: 8D B8 03  STA ram_03B8
 bra_CD87:
 C - - - - - 0x00CD97 03:CD87: A9 01     LDA #$01
-C - - - - - 0x00CD99 03:CD89: 20 09 C6  JSR sub_C609
+C - - - - - 0x00CD99 03:CD89: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CD9C 03:CD8C: 48        PHA
 C - - - - - 0x00CD9D 03:CD8D: A9 02     LDA #$02
 C - - - - - 0x00CD9F 03:CD8F: 85 67     STA ram_0067
@@ -2064,14 +2064,14 @@ C - - - - - 0x00CDBC 03:CDAC: 2C C2 03  BIT ram_03C2
 C - - - - - 0x00CDBF 03:CDAF: 30 D6     BMI bra_CD87
 C - - - - - 0x00CDC1 03:CDB1: 20 97 CF  JSR sub_CF97
 C - - - - - 0x00CDC4 03:CDB4: A9 02     LDA #$02
-C - - - - - 0x00CDC6 03:CDB6: 20 09 C6  JSR sub_C609
+C - - - - - 0x00CDC6 03:CDB6: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CDC9 03:CDB9: AD A4 03  LDA ram_03A4
 C - - - - - 0x00CDCC 03:CDBC: 09 04     ORA #$04
 C - - - - - 0x00CDCE 03:CDBE: 8D A4 03  STA ram_03A4
 bra_CDC1:
 loc_CDC1:
 C D 2 - - - 0x00CDD1 03:CDC1: A9 01     LDA #$01
-C - - - - - 0x00CDD3 03:CDC3: 20 09 C6  JSR sub_C609
+C - - - - - 0x00CDD3 03:CDC3: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CDD6 03:CDC6: 48        PHA
 C - - - - - 0x00CDD7 03:CDC7: A9 02     LDA #$02
 C - - - - - 0x00CDD9 03:CDC9: 85 67     STA ram_0067
@@ -2129,7 +2129,7 @@ C - - - - - 0x00CE46 03:CE36: A9 08     LDA #$08
 bra_CE38:
 C - - - - - 0x00CE48 03:CE38: 48        PHA
 C - - - - - 0x00CE49 03:CE39: A9 01     LDA #$01
-C - - - - - 0x00CE4B 03:CE3B: 20 09 C6  JSR sub_C609
+C - - - - - 0x00CE4B 03:CE3B: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CE4E 03:CE3E: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00CE51 03:CE41: 48        PHA
 C - - - - - 0x00CE52 03:CE42: A9 02     LDA #$02
@@ -2224,7 +2224,7 @@ C - - - - - 0x00CEFC 03:CEEC: 68        PLA
 C - - - - - 0x00CEFD 03:CEED: 20 27 80  JSR sub_0x00A100
 bra_CEF0:
 C - - - - - 0x00CF00 03:CEF0: A9 01     LDA #$01
-C - - - - - 0x00CF02 03:CEF2: 20 09 C6  JSR sub_C609
+C - - - - - 0x00CF02 03:CEF2: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CF05 03:CEF5: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00CF08 03:CEF8: A5 8A     LDA ram_008A
 C - - - - - 0x00CF0A 03:CEFA: 29 20     AND #$20
@@ -2279,7 +2279,7 @@ C - - - - - 0x00CF5F 03:CF4F: A9 00     LDA #$00
 bra_CF51:
 C - - - - - 0x00CF61 03:CF51: 48        PHA
 C - - - - - 0x00CF62 03:CF52: A9 01     LDA #$01
-C - - - - - 0x00CF64 03:CF54: 20 09 C6  JSR sub_C609
+C - - - - - 0x00CF64 03:CF54: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CF67 03:CF57: 68        PLA
 C - - - - - 0x00CF68 03:CF58: AA        TAX
 C - - - - - 0x00CF69 03:CF59: A9 D0     LDA #$D0
@@ -2575,12 +2575,12 @@ C - - - - - 0x00D15E 03:D14E: 8D E4 03  STA ram_03E4
 C - - - - - 0x00D161 03:D151: 20 ED DC  JSR sub_DCED
 bra_D154:
 C - - - - - 0x00D164 03:D154: A9 01     LDA #$01
-C - - - - - 0x00D166 03:D156: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D166 03:D156: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D169 03:D159: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D16C 03:D15C: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00D16F 03:D15F: 10 F3     BPL bra_D154
 C - - - - - 0x00D171 03:D161: A9 02     LDA #$02
-C - - - - - 0x00D173 03:D163: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D173 03:D163: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D176 03:D166: 4C D5 D4  JMP loc_D4D5
 
 
@@ -2692,7 +2692,7 @@ C - - - - - 0x00D22D 03:D21D: A9 80     LDA #$80
 C - - - - - 0x00D22F 03:D21F: 8D 2A 04  STA ram_plr_wo_ball
 bra_D222:
 C - - - - - 0x00D232 03:D222: A9 01     LDA #$01
-C - - - - - 0x00D234 03:D224: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D234 03:D224: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D237 03:D227: 48        PHA
 C - - - - - 0x00D238 03:D228: A9 02     LDA #$02
 C - - - - - 0x00D23A 03:D22A: 85 67     STA ram_0067
@@ -2713,7 +2713,7 @@ C - - - - - 0x00D257 03:D247: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D25A 03:D24A: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00D25D 03:D24D: 10 D3     BPL bra_D222
 C - - - - - 0x00D25F 03:D24F: A9 02     LDA #$02
-C - - - - - 0x00D261 03:D251: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D261 03:D251: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D264 03:D254: 4C D5 D4  JMP loc_D4D5
 
 
@@ -2827,7 +2827,7 @@ C - - - - - 0x00D334 03:D324: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00D337 03:D327: 20 ED DC  JSR sub_DCED
 bra_D32A:
 C - - - - - 0x00D33A 03:D32A: A9 01     LDA #$01
-C - - - - - 0x00D33C 03:D32C: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D33C 03:D32C: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D33F 03:D32F: 48        PHA
 C - - - - - 0x00D340 03:D330: A9 02     LDA #$02
 C - - - - - 0x00D342 03:D332: 85 67     STA ram_0067
@@ -2848,7 +2848,7 @@ C - - - - - 0x00D35F 03:D34F: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D362 03:D352: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00D365 03:D355: 10 D3     BPL bra_D32A
 C - - - - - 0x00D367 03:D357: A9 02     LDA #$02
-C - - - - - 0x00D369 03:D359: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D369 03:D359: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D36C 03:D35C: 4C D5 D4  JMP loc_D4D5
 
 
@@ -2925,7 +2925,7 @@ bra_D3AE:
 C - - - - - 0x00D3BE 03:D3AE: 8E CA 03  STX ram_03CA
 loc_D3B1:
 C D 2 - - - 0x00D3C1 03:D3B1: A9 01     LDA #$01
-C - - - - - 0x00D3C3 03:D3B3: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D3C3 03:D3B3: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D3C6 03:D3B6: A2 01     LDX #$01
 C - - - - - 0x00D3C8 03:D3B8: A0 00     LDY #$00
 C - - - - - 0x00D3CA 03:D3BA: AD CA 03  LDA ram_03CA
@@ -2978,7 +2978,7 @@ C - - - - - 0x00D425 03:D415: A9 00     LDA #$00
 C - - - - - 0x00D427 03:D417: 85 19     STA ram_0019
 C - - - - - 0x00D429 03:D419: 85 1A     STA ram_001A
 C - - - - - 0x00D42B 03:D41B: A9 14     LDA #$14
-C - - - - - 0x00D42D 03:D41D: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D42D 03:D41D: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D430 03:D420: A9 02     LDA #$02
 C - - - - - 0x00D432 03:D422: 85 6B     STA ram_006B
 C - - - - - 0x00D434 03:D424: A5 28     LDA ram_0028
@@ -3001,7 +3001,7 @@ C - - - - - 0x00D453 03:D443: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D456 03:D446: 68        PLA
 C - - - - - 0x00D457 03:D447: 20 2A 80  JSR sub_0x004371
 C - - - - - 0x00D45A 03:D44A: A9 28     LDA #$28
-C - - - - - 0x00D45C 03:D44C: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D45C 03:D44C: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D45F 03:D44F: AE CA 03  LDX ram_03CA
 C - - - - - 0x00D462 03:D452: BD A7 03  LDA ram_goals_total,X
 C - - - - - 0x00D465 03:D455: C9 63     CMP #$63
@@ -3020,7 +3020,7 @@ C - - - - - 0x00D47D 03:D46D: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D480 03:D470: 68        PLA
 C - - - - - 0x00D481 03:D471: 20 2A 80  JSR sub_0x004371
 C - - - - - 0x00D484 03:D474: A9 6E     LDA #$6E
-C - - - - - 0x00D486 03:D476: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D486 03:D476: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D489 03:D479: 20 AF CA  JSR sub_CAAF
 C - - - - - 0x00D48C 03:D47C: A5 28     LDA ram_0028
 C - - - - - 0x00D48E 03:D47E: 09 20     ORA #$20
@@ -3276,7 +3276,7 @@ off_D605:
 ofs_D605 = off_D605 - 1
 bra_D605_loop:
 C - - - - - 0x00D615 03:D605: A9 01     LDA #$01
-C - - - - - 0x00D617 03:D607: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D617 03:D607: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D61A 03:D60A: 24 8A     BIT ram_008A
 C - - - - - 0x00D61C 03:D60C: 10 F7     BPL bra_D605_loop
 C - - - - - 0x00D61E 03:D60E: A9 AB     LDA #$AB
@@ -3300,16 +3300,16 @@ C - - - - - 0x00D643 03:D633: A9 18     LDA #$18
 C - - - - - 0x00D645 03:D635: 8D 24 04  STA ram_ball_Z_lo
 bra_D638:
 C - - - - - 0x00D648 03:D638: A9 01     LDA #$01
-C - - - - - 0x00D64A 03:D63A: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D64A 03:D63A: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D64D 03:D63D: 20 B1 D6  JSR sub_D6B1
 C - - - - - 0x00D650 03:D640: 20 68 DC  JSR sub_DC68
 C - - - - - 0x00D653 03:D643: CE 24 04  DEC ram_ball_Z_lo
 C - - - - - 0x00D656 03:D646: D0 F0     BNE bra_D638
 C - - - - - 0x00D658 03:D648: A9 08     LDA #$08
-C - - - - - 0x00D65A 03:D64A: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D65A 03:D64A: 20 09 C6  JSR sub_C609_delay
 bra_D64D:
 C - - - - - 0x00D65D 03:D64D: A9 01     LDA #$01
-C - - - - - 0x00D65F 03:D64F: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D65F 03:D64F: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D662 03:D652: EE DE 03  INC ram_03DE
 C - - - - - 0x00D665 03:D655: AD DE 03  LDA ram_03DE
 C - - - - - 0x00D668 03:D658: C9 80     CMP #$80
@@ -3344,7 +3344,7 @@ C - - - - - 0x00D69A 03:D68A: A9 FB     LDA #$FB
 C - - - - - 0x00D69C 03:D68C: 8D DD 03  STA ram_03DD
 bra_D68F:
 C - - - - - 0x00D69F 03:D68F: A9 01     LDA #$01
-C - - - - - 0x00D6A1 03:D691: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D6A1 03:D691: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D6A4 03:D694: 20 68 DC  JSR sub_DC68
 C - - - - - 0x00D6A7 03:D697: AD DE 03  LDA ram_03DE
 C - - - - - 0x00D6AA 03:D69A: C9 10     CMP #$10
@@ -3354,7 +3354,7 @@ loc_D69F:
 C D 2 - - - 0x00D6AF 03:D69F: 26 91     ROL ram_0091
 C - - - - - 0x00D6B1 03:D6A1: 26 92     ROL ram_0092
 C - - - - - 0x00D6B3 03:D6A3: A9 14     LDA #$14
-C - - - - - 0x00D6B5 03:D6A5: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D6B5 03:D6A5: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D6B8 03:D6A8: A5 8A     LDA ram_008A
 C - - - - - 0x00D6BA 03:D6AA: 09 20     ORA #$20
 C - - - - - 0x00D6BC 03:D6AC: 85 8A     STA ram_008A
@@ -3426,14 +3426,14 @@ ofs_D6FA = off_D6FA - 1
 C - - - - - 0x00D70A 03:D6FA: 20 F2 DD  JSR sub_DDF2
 C - - - - - 0x00D70D 03:D6FD: 20 36 DE  JSR sub_DE36
 C - - - - - 0x00D710 03:D700: A9 01     LDA #$01
-C - - - - - 0x00D712 03:D702: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D712 03:D702: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D715 03:D705: 20 5E DB  JSR sub_DB5E
 C - - - - - 0x00D718 03:D708: AD D3 03  LDA ram_03D3
 C - - - - - 0x00D71B 03:D70B: 09 80     ORA #$80
 C - - - - - 0x00D71D 03:D70D: 8D D3 03  STA ram_03D3
 bra_D710_loop:
 C - - - - - 0x00D720 03:D710: A9 01     LDA #$01
-C - - - - - 0x00D722 03:D712: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D722 03:D712: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D725 03:D715: 20 BE DB  JSR sub_DBBE
 C - - - - - 0x00D728 03:D718: 20 17 DD  JSR sub_DD17
 C - - - - - 0x00D72B 03:D71B: 20 ED DC  JSR sub_DCED
@@ -3533,7 +3533,7 @@ C - - - - - 0x00D7BD 03:D7AD: 8D D4 03  STA ram_03D4
 bra_D7B0:
 loc_D7B0:
 C D 2 - - - 0x00D7C0 03:D7B0: A9 01     LDA #$01
-C - - - - - 0x00D7C2 03:D7B2: 20 09 C6  JSR sub_C609
+C - - - - - 0x00D7C2 03:D7B2: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D7C5 03:D7B5: 20 ED DC  JSR sub_DCED
 C - - - - - 0x00D7C8 03:D7B8: 2C D3 03  BIT ram_03D3
 C - - - - - 0x00D7CB 03:D7BB: 50 F3     BVC bra_D7B0
@@ -5582,7 +5582,7 @@ C - - - - - 0x00E4E9 03:E4D9: A9 00     LDA #$00
 C - - - - - 0x00E4EB 03:E4DB: 8D 2B 04  STA ram_plr_frame_id
 loc_E4DE:
 C D 3 - - - 0x00E4EE 03:E4DE: A9 01     LDA #$01
-C - - - - - 0x00E4F0 03:E4E0: 20 09 C6  JSR sub_C609
+C - - - - - 0x00E4F0 03:E4E0: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00E4F3 03:E4E3: AD 2B 04  LDA ram_plr_frame_id
 C - - - - - 0x00E4F6 03:E4E6: 20 E3 CB  JSR sub_CBE3
 C - - - - - 0x00E4F9 03:E4E9: 20 43 C8  JSR sub_C843
@@ -5781,7 +5781,7 @@ C - - - - - 0x00E613 03:E603: 60        RTS
 sub_E604:
 C - - - - - 0x00E614 03:E604: 20 13 E6  JSR sub_E613
 C - - - - - 0x00E617 03:E607: A9 01     LDA #$01
-C - - - - - 0x00E619 03:E609: 20 09 C6  JSR sub_C609
+C - - - - - 0x00E619 03:E609: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00E61C 03:E60C: AD 2B 04  LDA ram_plr_frame_id
 C - - - - - 0x00E61F 03:E60F: 20 E3 CB  JSR sub_CBE3
 C - - - - - 0x00E622 03:E612: 60        RTS
@@ -8492,7 +8492,7 @@ C - - - - - 0x00F9CB 03:F9BB: A9 70     LDA #$70
 bra_F9BD:
 C - - - - - 0x00F9CD 03:F9BD: 48        PHA
 C - - - - - 0x00F9CE 03:F9BE: A9 01     LDA #$01
-C - - - - - 0x00F9D0 03:F9C0: 20 09 C6  JSR sub_C609
+C - - - - - 0x00F9D0 03:F9C0: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00F9D3 03:F9C3: A9 C0     LDA #$C0
 C - - - - - 0x00F9D5 03:F9C5: 2D 26 00  AND a: ram_btn_press
 C - - - - - 0x00F9D8 03:F9C8: D0 0E     BNE bra_F9D8

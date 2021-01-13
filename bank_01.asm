@@ -74,7 +74,7 @@ off_0x0040B3:
 .export sub_0x0040B3
 sub_0x0040B3 = off_0x0040B3 - 1
 C D 0 - - - 0x0040B3 01:80A3: A9 01     LDA #$01
-C - - - - - 0x0040B5 01:80A5: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0040B5 01:80A5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0040B8 01:80A8: A9 00     LDA #$00
 C - - - - - 0x0040BA 01:80AA: 85 2C     STA ram_002C
 C - - - - - 0x0040BC 01:80AC: 38        SEC
@@ -151,7 +151,7 @@ C - - - - - 0x00413F 01:812F: 2E C6 03  ROL ram_03C6
 C - - - - - 0x004142 01:8132: 8D C5 03  STA ram_03C5
 bra_8135:
 C - - - - - 0x004145 01:8135: A9 01     LDA #$01
-C - - - - - 0x004147 01:8137: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x004147 01:8137: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00414A 01:813A: AD 7D 03  LDA ram_037D
 C - - - - - 0x00414D 01:813D: D0 F6     BNE bra_8135
 C - - - - - 0x00414F 01:813F: A9 01     LDA #$01
@@ -203,7 +203,7 @@ C - - - - - 0x0041AB 01:819B: 8D C7 03  STA ram_03C7
 bra_819E:
 loc_819E:
 C D 0 - - - 0x0041AE 01:819E: A9 01     LDA #$01
-C - - - - - 0x0041B0 01:81A0: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0041B0 01:81A0: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0041B3 01:81A3: AD 7D 03  LDA ram_037D
 C - - - - - 0x0041B6 01:81A6: D0 F6     BNE bra_819E
 C - - - - - 0x0041B8 01:81A8: A9 01     LDA #$01
@@ -474,7 +474,7 @@ loc_8343:
 C D 0 - - - 0x004353 01:8343: 48        PHA
                                         INC ram_0300
 C - - - - - 0x004359 01:8349: A9 04     LDA #$04
-C - - - - - 0x00435B 01:834B: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x00435B 01:834B: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00435E 01:834E: 68        PLA
 C - - - - - 0x00435F 01:834F: 8D 89 03  STA ram_0389
 C - - - - - 0x004362 01:8352: 8D 8D 03  STA ram_038D
@@ -562,7 +562,7 @@ C - - - - - 0x0043CE 01:83BE: 48        PHA
 C - - - - - 0x0043CF 01:83BF: 38        SEC
 C - - - - - 0x0043D0 01:83C0: 20 D1 83  JSR sub_83D1
 C - - - - - 0x0043D3 01:83C3: A9 01     LDA #$01
-C - - - - - 0x0043D5 01:83C5: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0043D5 01:83C5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0043D8 01:83C8: 68        PLA
 C - - - - - 0x0043D9 01:83C9: C9 38     CMP #$38
 C - - - - - 0x0043DB 01:83CB: D0 DF     BNE bra_83AC_loop
@@ -925,11 +925,11 @@ sub_0x0045A6 = off_0x0045A6 - 1
 C D 0 - - - 0x0045A6 01:8596: 2C D2 03  BIT ram_03D2
 C - - - - - 0x0045A9 01:8599: 30 08     BMI bra_85A3
 C - - - - - 0x0045AB 01:859B: A9 01     LDA #$01
-C - - - - - 0x0045AD 01:859D: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0045AD 01:859D: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045B0 01:85A0: 4C 96 85  JMP loc_8596
 bra_85A3:
 C - - - - - 0x0045B3 01:85A3: A9 01     LDA #$01
-C - - - - - 0x0045B5 01:85A5: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0045B5 01:85A5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045B8 01:85A8: AD 7D 03  LDA ram_037D
 C - - - - - 0x0045BB 01:85AB: D0 F6     BNE bra_85A3
 C - - - - - 0x0045BD 01:85AD: A9 01     LDA #$01
@@ -944,10 +944,10 @@ C - - - - - 0x0045CF 01:85BF: BD 47 A4  LDA tbl_A446 + 1,X
 C - - - - - 0x0045D2 01:85C2: 85 2B     STA ram_002B
 C - - - - - 0x0045D4 01:85C4: 20 0C 86  JSR sub_860C
 C - - - - - 0x0045D7 01:85C7: A9 08     LDA #$08
-C - - - - - 0x0045D9 01:85C9: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0045D9 01:85C9: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045DC 01:85CC: 20 E3 85  JSR sub_85E3
 C - - - - - 0x0045DF 01:85CF: A9 01     LDA #$01
-C - - - - - 0x0045E1 01:85D1: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0045E1 01:85D1: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045E4 01:85D4: A9 00     LDA #$00
 C - - - - - 0x0045E6 01:85D6: CE CE 03  DEC ram_03CE
 C - - - - - 0x0045E9 01:85D9: F0 02     BEQ bra_85DD
@@ -961,7 +961,7 @@ C - - - - - 0x0045F0 01:85E0: 4C 96 85  JMP loc_8596
 sub_85E3:
 bra_85E3_loop:
 C - - - - - 0x0045F3 01:85E3: A9 01     LDA #$01
-C - - - - - 0x0045F5 01:85E5: 20 09 C0  JSR sub_0x00C619
+C - - - - - 0x0045F5 01:85E5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045F8 01:85E8: AD 7D 03  LDA ram_037D
 C - - - - - 0x0045FB 01:85EB: D0 F6     BNE bra_85E3_loop
 C - - - - - 0x0045FD 01:85ED: A9 01     LDA #$01
