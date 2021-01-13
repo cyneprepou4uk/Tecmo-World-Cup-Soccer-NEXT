@@ -42,15 +42,6 @@ C - - - - - 0x00C0C8 03:C0B8: 8D 00 E0  STA $E000
 C - - - - - 0x00C0CB 03:C0BB: 8D 10 40  STA $4010
 C - - - - - 0x00C0CE 03:C0BE: A9 40     LDA #$40
 C - - - - - 0x00C0D0 03:C0C0: 8D 17 40  STA $4017
-C - - - - - 0x00C0D3 03:C0C3: AD 02 20  LDA $2002
-C - - - - - 0x00C0D6 03:C0C6: A9 10     LDA #$10
-C - - - - - 0x00C0D8 03:C0C8: AA        TAX
-bra_C0C9:
-C - - - - - 0x00C0D9 03:C0C9: 8D 06 20  STA $2006
-C - - - - - 0x00C0DC 03:C0CC: 8D 06 20  STA $2006
-C - - - - - 0x00C0DF 03:C0CF: 49 00     EOR #$00
-C - - - - - 0x00C0E1 03:C0D1: CA        DEX
-C - - - - - 0x00C0E2 03:C0D2: D0 F5     BNE bra_C0C9
 C - - - - - 0x00C0E4 03:C0D4: 20 59 CA  JSR sub_CA59_clear_nametables
 C - - - - - 0x00C0E7 03:C0D7: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00C0EA 03:C0DA: A2 E0     LDX #$E0
