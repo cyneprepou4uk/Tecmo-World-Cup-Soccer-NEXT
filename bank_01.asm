@@ -490,7 +490,7 @@ C - - - - - 0x00436E 01:835E: 4C 43 83  JMP loc_8343
 
 .export sub_0x004371
 sub_0x004371:
-C D 0 - - - 0x004371 01:8361: 20 51 C0  JSR sub_0x00CABF
+C D 0 - - - 0x004371 01:8361: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x004374 01:8364: A9 00     LDA #$00
 C - - - - - 0x004376 01:8366: 85 5B     STA ram_005B
 C - - - - - 0x004378 01:8368: A2 00     LDX #$00
@@ -548,7 +548,7 @@ sub_0x0043BA:
 C D 0 - - - 0x0043BA 01:83AA: A9 00     LDA #$00
 bra_83AC_loop:
 C - - - - - 0x0043BC 01:83AC: 48        PHA
-C - - - - - 0x0043BD 01:83AD: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x0043BD 01:83AD: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x0043C0 01:83B0: A9 00     LDA #$00
 C - - - - - 0x0043C2 01:83B2: 85 5B     STA ram_005B
 C - - - - - 0x0043C4 01:83B4: 68        PLA
@@ -566,7 +566,7 @@ C - - - - - 0x0043D5 01:83C5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0043D8 01:83C8: 68        PLA
 C - - - - - 0x0043D9 01:83C9: C9 38     CMP #$38
 C - - - - - 0x0043DB 01:83CB: D0 DF     BNE bra_83AC_loop
-C - - - - - 0x0043DD 01:83CD: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x0043DD 01:83CD: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x0043E0 01:83D0: 60        RTS
 
 

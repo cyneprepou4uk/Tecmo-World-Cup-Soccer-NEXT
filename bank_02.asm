@@ -114,8 +114,8 @@ C - - - - - 0x0080E0 02:80D0: 60        RTS
 off_0x0080E1:
 .export sub_0x0080E1
 sub_0x0080E1 = off_0x0080E1 - 1
-C D 0 - - - 0x0080E1 02:80D1: 20 75 C0  JSR sub_0x00CA69
-C - - - - - 0x0080E4 02:80D4: 20 51 C0  JSR sub_0x00CABF
+C D 0 - - - 0x0080E1 02:80D1: 20 75 C0  JSR sub_0x00CA69_clear_nametables
+C - - - - - 0x0080E4 02:80D4: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x0080E7 02:80D7: A2 00     LDX #$00
 C - - - - - 0x0080E9 02:80D9: A9 02     LDA #$02
 C - - - - - 0x0080EB 02:80DB: 20 18 C0  JSR sub_0x00CAE4
@@ -612,8 +612,8 @@ C - - - - - 0x008419 02:8409: 60        RTS
 
 
 sub_840A:
-C - - - - - 0x00841A 02:840A: 20 75 C0  JSR sub_0x00CA69
-C - - - - - 0x00841D 02:840D: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x00841A 02:840A: 20 75 C0  JSR sub_0x00CA69_clear_nametables
+C - - - - - 0x00841D 02:840D: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x008420 02:8410: A2 00     LDX #$00
 C - - - - - 0x008422 02:8412: A9 05     LDA #$05
 C - - - - - 0x008424 02:8414: 20 18 C0  JSR sub_0x00CAE4
@@ -667,7 +667,7 @@ C - - - - - 0x008487 02:8477: 60        RTS
 
 
 sub_8478:
-C - - - - - 0x008488 02:8478: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x008488 02:8478: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00848B 02:847B: A9 44     LDA #< tbl_9144
 C - - - - - 0x00848D 02:847D: 85 2A     STA ram_002A
 C - - - - - 0x00848F 02:847F: A9 91     LDA #> tbl_9144
@@ -740,8 +740,8 @@ C - - - - - 0x0084F5 02:84E5: 4C 87 84  JMP loc_8487
 
 .export sub_0x008501
 sub_0x008501:
-C D 0 - - - 0x008501 02:84F1: 20 75 C0  JSR sub_0x00CA69
-C - - - - - 0x008504 02:84F4: 20 51 C0  JSR sub_0x00CABF
+C D 0 - - - 0x008501 02:84F1: 20 75 C0  JSR sub_0x00CA69_clear_nametables
+C - - - - - 0x008504 02:84F4: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x008507 02:84F7: A5 28     LDA ram_0028
 C - - - - - 0x008509 02:84F9: 09 20     ORA #$20
 C - - - - - 0x00850B 02:84FB: 85 28     STA ram_0028
@@ -1682,8 +1682,8 @@ C - - - - - 0x008B05 02:8AF5: 60        RTS
 
 
 sub_8AF6:
-C - - - - - 0x008B06 02:8AF6: 20 75 C0  JSR sub_0x00CA69
-C - - - - - 0x008B09 02:8AF9: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x008B06 02:8AF6: 20 75 C0  JSR sub_0x00CA69_clear_nametables
+C - - - - - 0x008B09 02:8AF9: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x008B0C 02:8AFC: A9 1C     LDA #$1C
 C - - - - - 0x008B0E 02:8AFE: 85 69     STA ram_0069
 C - - - - - 0x008B10 02:8B00: A9 1E     LDA #$1E
@@ -6794,8 +6794,8 @@ C - - - - - 0x00A041 02:A031: A2 10     LDX #$10
 C - - - - - 0x00A043 02:A033: A9 02     LDA #$02
 C - - - - - 0x00A045 02:A035: 20 18 C0  JSR sub_0x00CAE4
                                         INC ram_0300
-C - - - - - 0x00A04D 02:A03D: 20 75 C0  JSR sub_0x00CA69
-C - - - - - 0x00A050 02:A040: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x00A04D 02:A03D: 20 75 C0  JSR sub_0x00CA69_clear_nametables
+C - - - - - 0x00A050 02:A040: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00A053 02:A043: A9 BE     LDA #< tbl_A3BE
 C - - - - - 0x00A055 02:A045: 85 8A     STA ram_008A
 C - - - - - 0x00A057 02:A047: A9 A3     LDA #> tbl_A3BE
@@ -6891,7 +6891,7 @@ C - - - - - 0x00A0FF 02:A0EF: 60        RTS
 .export sub_0x00A100
 sub_0x00A100:
 C D 1 - - - 0x00A100 02:A0F0: 20 9F A1  JSR sub_A19F
-C - - - - - 0x00A103 02:A0F3: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x00A103 02:A0F3: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00A106 02:A0F6: A5 28     LDA ram_0028
 C - - - - - 0x00A108 02:A0F8: 09 20     ORA #$20
 C - - - - - 0x00A10A 02:A0FA: 85 28     STA ram_0028
@@ -6991,7 +6991,7 @@ tbl_A19A:
 
 
 sub_A19F:
-C - - - - - 0x00A1AF 02:A19F: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x00A1AF 02:A19F: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00A1B2 02:A1A2: A5 28     LDA ram_0028
 C - - - - - 0x00A1B4 02:A1A4: 29 DF     AND #$DF
 C - - - - - 0x00A1B6 02:A1A6: 85 28     STA ram_0028
@@ -7039,7 +7039,7 @@ C - - - - - 0x00A1FC 02:A1EC: 60        RTS
 
 .export sub_0x00A1FD
 sub_0x00A1FD:
-C D 1 - - - 0x00A1FD 02:A1ED: 20 51 C0  JSR sub_0x00CABF
+C D 1 - - - 0x00A1FD 02:A1ED: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00A200 02:A1F0: A5 28     LDA ram_0028
 C - - - - - 0x00A202 02:A1F2: 29 DF     AND #$DF
 C - - - - - 0x00A204 02:A1F4: 85 28     STA ram_0028
@@ -8346,7 +8346,7 @@ C - - - - - 0x00A82B 02:A81B: A9 1B     LDA #$1B
 C - - - - - 0x00A82D 02:A81D: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A830 02:A820: 4C A9 A7  JMP loc_A7A9
 bra_A823:
-C - - - - - 0x00A833 02:A823: 20 51 C0  JSR sub_0x00CABF
+C - - - - - 0x00A833 02:A823: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00A836 02:A826: A9 20     LDA #$20
 C - - - - - 0x00A838 02:A828: 20 7E C0  JSR sub_0x00C920
 C - - - - - 0x00A83B 02:A82B: A9 00     LDA #$00

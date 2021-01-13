@@ -51,8 +51,8 @@ C - - - - - 0x00C0DC 03:C0CC: 8D 06 20  STA $2006
 C - - - - - 0x00C0DF 03:C0CF: 49 00     EOR #$00
 C - - - - - 0x00C0E1 03:C0D1: CA        DEX
 C - - - - - 0x00C0E2 03:C0D2: D0 F5     BNE bra_C0C9
-C - - - - - 0x00C0E4 03:C0D4: 20 59 CA  JSR sub_CA59
-C - - - - - 0x00C0E7 03:C0D7: 20 AF CA  JSR sub_CAAF
+C - - - - - 0x00C0E4 03:C0D4: 20 59 CA  JSR sub_CA59_clear_nametables
+C - - - - - 0x00C0E7 03:C0D7: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00C0EA 03:C0DA: A2 E0     LDX #$E0
 C - - - - - 0x00C0EC 03:C0DC: 9A        TXS
 C - - - - - 0x00C0ED 03:C0DD: A9 00     LDA #$00
@@ -568,8 +568,8 @@ C - - - - - 0x00C4C7 03:C4B7: 60        RTS
 
 
 sub_C4B8:
-C - - - - - 0x00C4C8 03:C4B8: 20 59 CA  JSR sub_CA59
-C - - - - - 0x00C4CB 03:C4BB: 20 AF CA  JSR sub_CAAF
+C - - - - - 0x00C4C8 03:C4B8: 20 59 CA  JSR sub_CA59_clear_nametables
+C - - - - - 0x00C4CB 03:C4BB: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00C4CE 03:C4BE: A5 28     LDA ram_0028
 C - - - - - 0x00C4D0 03:C4C0: 29 FC     AND #$FC
 C - - - - - 0x00C4D2 03:C4C2: 85 28     STA ram_0028
@@ -610,8 +610,8 @@ C - - - - - 0x00C516 03:C506: 60        RTS
 
 
 sub_C507:
-C - - - - - 0x00C517 03:C507: 20 59 CA  JSR sub_CA59
-C - - - - - 0x00C51A 03:C50A: 20 AF CA  JSR sub_CAAF
+C - - - - - 0x00C517 03:C507: 20 59 CA  JSR sub_CA59_clear_nametables
+C - - - - - 0x00C51A 03:C50A: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00C51D 03:C50D: 20 EC C8  JSR sub_C8EC
 C - - - - - 0x00C520 03:C510: 20 97 CF  JSR sub_CF97
 C - - - - - 0x00C523 03:C513: A9 04     LDA #$04
@@ -1561,9 +1561,9 @@ C - - - - - 0x00CA68 03:CA58: 60        RTS
 
 
 
-sub_CA59:
-.export sub_0x00CA69
-sub_0x00CA69:
+sub_CA59_clear_nametables:
+.export sub_0x00CA69_clear_nametables
+sub_0x00CA69_clear_nametables:
 C D 2 - - - 0x00CA69 03:CA59: A5 28     LDA ram_0028
 C - - - - - 0x00CA6B 03:CA5B: 29 7F     AND #$7F
 C - - - - - 0x00CA6D 03:CA5D: 85 28     STA ram_0028
@@ -1571,9 +1571,9 @@ C - - - - - 0x00CA6F 03:CA5F: 8D 00 20  STA $2000
 C - - - - - 0x00CA72 03:CA62: A9 06     LDA #$06
 C - - - - - 0x00CA74 03:CA64: 8D 01 20  STA $2001
 C - - - - - 0x00CA77 03:CA67: A9 20     LDA #$20
-C - - - - - 0x00CA79 03:CA69: 20 80 CA  JSR sub_CA80
+C - - - - - 0x00CA79 03:CA69: 20 80 CA  JSR sub_CA80_clear_nametable
 C - - - - - 0x00CA7C 03:CA6C: A9 24     LDA #$24
-C - - - - - 0x00CA7E 03:CA6E: 20 80 CA  JSR sub_CA80
+C - - - - - 0x00CA7E 03:CA6E: 20 80 CA  JSR sub_CA80_clear_nametable
 C - - - - - 0x00CA81 03:CA71: A9 1E     LDA #$1E
 C - - - - - 0x00CA83 03:CA73: 8D 01 20  STA $2001
 C - - - - - 0x00CA86 03:CA76: A5 28     LDA ram_0028
@@ -1584,7 +1584,7 @@ C - - - - - 0x00CA8F 03:CA7F: 60        RTS
 
 
 
-sub_CA80:
+sub_CA80_clear_nametable:
 C - - - - - 0x00CA90 03:CA80: 2C 02 20  BIT $2002
 C - - - - - 0x00CA93 03:CA83: 8D 06 20  STA $2006
 C - - - - - 0x00CA96 03:CA86: A9 00     LDA #$00
@@ -1592,12 +1592,12 @@ C - - - - - 0x00CA98 03:CA88: 8D 06 20  STA $2006
 C - - - - - 0x00CA9B 03:CA8B: A9 00     LDA #$00
 C - - - - - 0x00CA9D 03:CA8D: A2 C0     LDX #$C0
 C - - - - - 0x00CA9F 03:CA8F: A0 04     LDY #$04
-bra_CA91:
+bra_CA91_loop:
 C - - - - - 0x00CAA1 03:CA91: 8D 07 20  STA $2007
 C - - - - - 0x00CAA4 03:CA94: CA        DEX
-C - - - - - 0x00CAA5 03:CA95: D0 FA     BNE bra_CA91
+C - - - - - 0x00CAA5 03:CA95: D0 FA     BNE bra_CA91_loop
 C - - - - - 0x00CAA7 03:CA97: 88        DEY
-C - - - - - 0x00CAA8 03:CA98: D0 F7     BNE bra_CA91
+C - - - - - 0x00CAA8 03:CA98: D0 F7     BNE bra_CA91_loop
 C - - - - - 0x00CAAA 03:CA9A: 8A        TXA
 C - - - - - 0x00CAAB 03:CA9B: A2 40     LDX #$40
 bra_CA9D:
@@ -1612,18 +1612,18 @@ C - - - - - 0x00CABE 03:CAAE: 60        RTS
 
 
 
-sub_CAAF:
-.export sub_0x00CABF
-sub_0x00CABF:
+sub_CAAF_hide_sprites:
+.export sub_0x00CABF_hide_sprites
+sub_0x00CABF_hide_sprites:
 C D 2 - - - 0x00CABF 03:CAAF: A0 00     LDY #$00
 C - - - - - 0x00CAC1 03:CAB1: A9 F8     LDA #$F8
-bra_CAB3:
+bra_CAB3_loop:
 C - - - - - 0x00CAC3 03:CAB3: 99 00 02  STA ram_0200,Y
 C - - - - - 0x00CAC6 03:CAB6: C8        INY
 C - - - - - 0x00CAC7 03:CAB7: C8        INY
 C - - - - - 0x00CAC8 03:CAB8: C8        INY
 C - - - - - 0x00CAC9 03:CAB9: C8        INY
-C - - - - - 0x00CACA 03:CABA: D0 F7     BNE bra_CAB3
+C - - - - - 0x00CACA 03:CABA: D0 F7     BNE bra_CAB3_loop
 C - - - - - 0x00CACC 03:CABC: 60        RTS
 
 
@@ -1961,8 +1961,8 @@ ofs_CCC4 = off_CCC4 - 1
 C D 2 - - - 0x00CCD4 03:CCC4: AD A4 03  LDA ram_03A4
 C - - - - - 0x00CCD7 03:CCC7: 29 FB     AND #$FB
 C - - - - - 0x00CCD9 03:CCC9: 8D A4 03  STA ram_03A4
-C - - - - - 0x00CCDC 03:CCCC: 20 59 CA  JSR sub_CA59
-C - - - - - 0x00CCDF 03:CCCF: 20 AF CA  JSR sub_CAAF
+C - - - - - 0x00CCDC 03:CCCC: 20 59 CA  JSR sub_CA59_clear_nametables
+C - - - - - 0x00CCDF 03:CCCF: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00CCE2 03:CCD2: A2 00     LDX #$00
 C - - - - - 0x00CCE4 03:CCD4: A9 02     LDA #$02
 C - - - - - 0x00CCE6 03:CCD6: 20 D4 CA  JSR sub_CAD4
@@ -3021,7 +3021,7 @@ C - - - - - 0x00D480 03:D470: 68        PLA
 C - - - - - 0x00D481 03:D471: 20 2A 80  JSR sub_0x004371
 C - - - - - 0x00D484 03:D474: A9 6E     LDA #$6E
 C - - - - - 0x00D486 03:D476: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00D489 03:D479: 20 AF CA  JSR sub_CAAF
+C - - - - - 0x00D489 03:D479: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00D48C 03:D47C: A5 28     LDA ram_0028
 C - - - - - 0x00D48E 03:D47E: 09 20     ORA #$20
 C - - - - - 0x00D490 03:D480: 85 28     STA ram_0028
