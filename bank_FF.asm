@@ -642,12 +642,12 @@ tbl_C558:
 loc_C55B_infinite_loop:
 C D 2 - - - 0x00C56B 03:C55B: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00C56E 03:C55E: 29 04     AND #con_gm_playable
-C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C
+C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C_no_pause
 C - - - - - 0x00C572 03:C562: A9 10     LDA #con_btn_Start
 C - - - - - 0x00C574 03:C564: 2D 26 00  AND ram_btn_press
-C - - - - - 0x00C577 03:C567: F0 03     BEQ bra_C56C
+C - - - - - 0x00C577 03:C567: F0 03     BEQ bra_C56C_no_pause
 C - - - - - 0x00C579 03:C569: 20 8E C5  JSR sub_C58E_pause
-bra_C56C:
+bra_C56C_no_pause:
 C - - - - - 0x00C57C 03:C56C: A2 01     LDX #$01
 bra_C56E_loop:
 C - - - - - 0x00C57E 03:C56E: B5 00     LDA ram_0000,X
@@ -754,6 +754,7 @@ C - - - - - 0x00C609 03:C5F9: 4C 7A C5  JMP loc_C57A
 sub_C609_delay:
 .export sub_0x00C619_delay
 sub_0x00C619_delay:
+; искусственная задержка, в A подается количество кадров
 C D 2 - - - 0x00C619 03:C609: 85 49     STA ram_0049
 C - - - - - 0x00C61B 03:C60B: 8A        TXA
 C - - - - - 0x00C61C 03:C60C: 48        PHA
