@@ -666,7 +666,24 @@ C - - - - - 0x00C5EF 03:C5DF: 9A        TXS
 C - - - - - 0x00C5F0 03:C5E0: 60        RTS
 bra_C576:
 C - - - - - 0x00C586 03:C576: D6 00     DEC ram_0000,X
-C - - - - - 0x00C588 03:C578: F0 39     BEQ bra_C5B3
+C - - - - - 0x00C588 03:C578: F0 39     BNE bra_C57A
+C - - - - - 0x00C5C3 03:C5B3: 46 21     LSR ram_0021
+C - - - - - 0x00C5C5 03:C5B5: 86 00     STX ram_0000
+C - - - - - 0x00C5C7 03:C5B7: B5 02     LDA ram_0002,X
+C - - - - - 0x00C5C9 03:C5B9: 85 67     STA ram_0067
+C - - - - - 0x00C5CB 03:C5BB: B5 03     LDA ram_0003,X
+C - - - - - 0x00C5CD 03:C5BD: 85 68     STA ram_0068
+C - - - - - 0x00C5CF 03:C5BF: 20 58 CB  JSR sub_CB58_prg_bankswitch
+C - - - - - 0x00C5D2 03:C5C2: B5 01     LDA ram_0001,X
+C - - - - - 0x00C5D4 03:C5C4: AA        TAX
+C - - - - - 0x00C5D5 03:C5C5: 9A        TXS
+C - - - - - 0x00C5D6 03:C5C6: 38        SEC
+C - - - - - 0x00C5D7 03:C5C7: 66 21     ROR ram_0021
+C - - - - - 0x00C5D9 03:C5C9: 68        PLA
+C - - - - - 0x00C5DA 03:C5CA: A8        TAY
+C - - - - - 0x00C5DB 03:C5CB: 68        PLA
+C - - - - - 0x00C5DC 03:C5CC: AA        TAX
+C - - - - - 0x00C5DD 03:C5CD: 60        RTS
 bra_C57A:
 loc_C57A:
 C D 2 - - - 0x00C58A 03:C57A: 8A        TXA
@@ -704,24 +721,6 @@ C - - - - - 0x00C5BB 03:C5AB: A9 10     LDA #$10
 C - - - - - 0x00C5BD 03:C5AD: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00C5C0 03:C5B0: F0 F1     BEQ bra_C5A3
 C - - - - - 0x00C5C2 03:C5B2: 60        RTS
-bra_C5B3:
-C - - - - - 0x00C5C3 03:C5B3: 46 21     LSR ram_0021
-C - - - - - 0x00C5C5 03:C5B5: 86 00     STX ram_0000
-C - - - - - 0x00C5C7 03:C5B7: B5 02     LDA ram_0002,X
-C - - - - - 0x00C5C9 03:C5B9: 85 67     STA ram_0067
-C - - - - - 0x00C5CB 03:C5BB: B5 03     LDA ram_0003,X
-C - - - - - 0x00C5CD 03:C5BD: 85 68     STA ram_0068
-C - - - - - 0x00C5CF 03:C5BF: 20 58 CB  JSR sub_CB58_prg_bankswitch
-C - - - - - 0x00C5D2 03:C5C2: B5 01     LDA ram_0001,X
-C - - - - - 0x00C5D4 03:C5C4: AA        TAX
-C - - - - - 0x00C5D5 03:C5C5: 9A        TXS
-C - - - - - 0x00C5D6 03:C5C6: 38        SEC
-C - - - - - 0x00C5D7 03:C5C7: 66 21     ROR ram_0021
-C - - - - - 0x00C5D9 03:C5C9: 68        PLA
-C - - - - - 0x00C5DA 03:C5CA: A8        TAY
-C - - - - - 0x00C5DB 03:C5CB: 68        PLA
-C - - - - - 0x00C5DC 03:C5CC: AA        TAX
-C - - - - - 0x00C5DD 03:C5CD: 60        RTS
 
 
 
