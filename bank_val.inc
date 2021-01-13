@@ -29,3 +29,6 @@ con_gm_continue                 = $40   ; экран continue
 con_gm_2p                       = $80   ; режим 2 игрока (противоположность 00)
 
 
+; MISC разное
+con_ball_index                  = $16   ; 
+con_shadow_index                = $17   ; тень мяча

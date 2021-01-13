@@ -10,10 +10,10 @@ sub_0x00405E:
 C D 0 - - - 0x00405E 01:804E: A9 00     LDA #$00
 C - - - - - 0x004060 01:8050: 85 2A     STA ram_002A
 C - - - - - 0x004062 01:8052: AD 29 04  LDA ram_plr_w_ball
-C - - - - - 0x004065 01:8055: 10 02     BPL bra_8059
-C - - - - - 0x004067 01:8057: A9 16     LDA #$16
-bra_8059:
-C - - - - - 0x004069 01:8059: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x004065 01:8055: 10 02     BPL bra_8059_someone_has_ball
+C - - - - - 0x004067 01:8057: A9 16     LDA #con_ball_index
+bra_8059_someone_has_ball:
+C - - - - - 0x004069 01:8059: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x00406C 01:805C: 38        SEC
 C - - - - - 0x00406D 01:805D: A0 05     LDY #$05
 C - - - - - 0x00406F 01:805F: B1 61     LDA (ram_0061),Y
@@ -233,10 +233,10 @@ C - - - - - 0x0041E6 01:81D6: 4C A3 80  JMP loc_80A3
 .export sub_0x0041E9
 sub_0x0041E9:
 C D 0 - - - 0x0041E9 01:81D9: AD 29 04  LDA ram_plr_w_ball
-C - - - - - 0x0041EC 01:81DC: 10 02     BPL bra_81E0
-C - - - - - 0x0041EE 01:81DE: A9 16     LDA #$16
-bra_81E0:
-C - - - - - 0x0041F0 01:81E0: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x0041EC 01:81DC: 10 02     BPL bra_81E0_someone_has_ball
+C - - - - - 0x0041EE 01:81DE: A9 16     LDA #con_ball_index
+bra_81E0_someone_has_ball:
+C - - - - - 0x0041F0 01:81E0: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x0041F3 01:81E3: A0 0B     LDY #$0B
 C - - - - - 0x0041F5 01:81E5: B1 61     LDA (ram_0061),Y
 C - - - - - 0x0041F7 01:81E7: 38        SEC
@@ -1044,7 +1044,7 @@ C - - - - - 0x004672 01:8662: 30 04     BMI bra_8668    ; con_gm_2p
 C - - - - - 0x004674 01:8664: C9 0B     CMP #$0B
 C - - - - - 0x004676 01:8666: B0 2D     BCS bra_8695_RTS
 bra_8668:
-C - - - - - 0x004678 01:8668: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x004678 01:8668: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x00467B 01:866B: A0 01     LDY #$01
 C - - - - - 0x00467D 01:866D: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00467F 01:866F: 48        PHA
@@ -1329,7 +1329,7 @@ C - - - - - 0x00481C 01:880C: A5 2A     LDA ram_002A
 C - - - - - 0x00481E 01:880E: F0 30     BEQ bra_8840
 C - - - - - 0x004820 01:8810: C9 0B     CMP #$0B
 C - - - - - 0x004822 01:8812: F0 2C     BEQ bra_8840
-C - - - - - 0x004824 01:8814: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x004824 01:8814: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x004827 01:8817: A0 12     LDY #$12
 C - - - - - 0x004829 01:8819: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00482B 01:881B: C9 15     CMP #$15
@@ -1439,12 +1439,12 @@ sub_88B2:
 .export sub_0x0048C2
 sub_0x0048C2:
 C D 0 - - - 0x0048C2 01:88B2: 48        PHA
-C - - - - - 0x0048C3 01:88B3: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x0048C3 01:88B3: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x0048C6 01:88B6: 68        PLA
 C - - - - - 0x0048C7 01:88B7: C9 0B     CMP #$0B
-C - - - - - 0x0048C9 01:88B9: 90 02     BCC bra_88BD
+C - - - - - 0x0048C9 01:88B9: 90 02     BCC bra_88BD_team_1
 C - - - - - 0x0048CB 01:88BB: E9 0B     SBC #$0B
-bra_88BD:
+bra_88BD_team_1:
 C - - - - - 0x0048CD 01:88BD: 38        SEC
 C - - - - - 0x0048CE 01:88BE: E9 01     SBC #$01
 C - - - - - 0x0048D0 01:88C0: 0A        ASL
@@ -1806,7 +1806,7 @@ C - - - - - 0x004ADE 01:8ACE: A0 00     LDY #$00
 C - - - - - 0x004AE0 01:8AD0: 84 2C     STY ram_002C
 bra_8AD2_loop:
 C - - - - - 0x004AE2 01:8AD2: 48        PHA
-C - - - - - 0x004AE3 01:8AD3: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x004AE3 01:8AD3: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x004AE6 01:8AD6: A6 2C     LDX ram_002C
 C - - - - - 0x004AE8 01:8AD8: BD 19 8B  LDA tbl_8B19,X
 C - - - - - 0x004AEB 01:8ADB: 18        CLC

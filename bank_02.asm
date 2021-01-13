@@ -4642,7 +4642,7 @@ C - - - - - 0x009786 02:9776: CD 29 04  CMP ram_plr_w_ball
 C - - - - - 0x009789 02:9779: D0 03     BNE bra_977E
 C - - - - - 0x00978B 02:977B: 4C 38 98  JMP loc_9838
 bra_977E:
-C - - - - - 0x00978E 02:977E: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x00978E 02:977E: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x009791 02:9781: A0 00     LDY #$00
 C - - - - - 0x009793 02:9783: B1 61     LDA (ram_0061),Y
 C - - - - - 0x009795 02:9785: 29 FB     AND #$FB
@@ -4789,7 +4789,7 @@ C - - - - - 0x009864 02:9854: CD 29 04  CMP ram_plr_w_ball
 C - - - - - 0x009867 02:9857: D0 03     BNE bra_985C
 C - - - - - 0x009869 02:9859: 4C 16 99  JMP loc_9916
 bra_985C:
-C - - - - - 0x00986C 02:985C: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x00986C 02:985C: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x00986F 02:985F: A0 00     LDY #$00
 C - - - - - 0x009871 02:9861: B1 61     LDA (ram_0061),Y
 C - - - - - 0x009873 02:9863: 29 FB     AND #$FB
@@ -6905,9 +6905,9 @@ C - - - - - 0x00A116 02:A106: 85 6D     STA ram_006D
 C - - - - - 0x00A118 02:A108: A9 29     LDA #$29
 C - - - - - 0x00A11A 02:A10A: 85 6E     STA ram_006E
 C - - - - - 0x00A11C 02:A10C: A9 00     LDA #$00
-bra_A10E:
+bra_A10E_loop:
 C - - - - - 0x00A11E 02:A10E: 48        PHA
-C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x00A122 02:A112: A0 00     LDY #$00
 C - - - - - 0x00A124 02:A114: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00A126 02:A116: 29 FB     AND #$FB
@@ -6921,19 +6921,19 @@ C - - - - - 0x00A135 02:A125: 68        PLA
 C - - - - - 0x00A136 02:A126: 18        CLC
 C - - - - - 0x00A137 02:A127: 69 01     ADC #$01
 C - - - - - 0x00A139 02:A129: C9 16     CMP #$16
-C - - - - - 0x00A13B 02:A12B: D0 E1     BNE bra_A10E
+C - - - - - 0x00A13B 02:A12B: D0 E1     BNE bra_A10E_loop
 C - - - - - 0x00A13D 02:A12D: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00A140 02:A130: 18        CLC
 C - - - - - 0x00A141 02:A131: 69 09     ADC #$09
 C - - - - - 0x00A143 02:A133: 8D 29 04  STA ram_plr_w_ball
-C - - - - - 0x00A146 02:A136: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x00A146 02:A136: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x00A149 02:A139: A9 17     LDA #$17
 C - - - - - 0x00A14B 02:A13B: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00A14E 02:A13E: A2 00     LDX #$00
 C - - - - - 0x00A150 02:A140: 20 74 A1  JSR sub_A174
 C - - - - - 0x00A153 02:A143: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00A156 02:A146: 49 0B     EOR #$0B
-C - - - - - 0x00A158 02:A148: 20 57 C0  JSR sub_0x00CBF3
+C - - - - - 0x00A158 02:A148: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
 C - - - - - 0x00A15B 02:A14B: A9 18     LDA #$18
 C - - - - - 0x00A15D 02:A14D: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00A160 02:A150: A2 04     LDX #$04
