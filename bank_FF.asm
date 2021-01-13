@@ -652,7 +652,19 @@ bra_C56E_loop:
 C - - - - - 0x00C57E 03:C56E: B5 00     LDA ram_0000,X
 C - - - - - 0x00C580 03:C570: F0 08     BEQ bra_C57A
 C - - - - - 0x00C582 03:C572: C9 FF     CMP #$FF
-C - - - - - 0x00C584 03:C574: F0 58     BEQ bra_C5CE
+C - - - - - 0x00C584 03:C574: F0 58     BNE bra_C576
+C - - - - - 0x00C5DE 03:C5CE: 86 00     STX ram_0000
+C - - - - - 0x00C5E0 03:C5D0: B5 02     LDA ram_0002,X
+C - - - - - 0x00C5E2 03:C5D2: 85 67     STA ram_0067
+C - - - - - 0x00C5E4 03:C5D4: 18        CLC
+C - - - - - 0x00C5E5 03:C5D5: 69 01     ADC #$01
+C - - - - - 0x00C5E7 03:C5D7: 85 68     STA ram_0068
+C - - - - - 0x00C5E9 03:C5D9: 20 58 CB  JSR sub_CB58_prg_bankswitch
+C - - - - - 0x00C5EC 03:C5DC: B5 01     LDA ram_0001,X
+C - - - - - 0x00C5EE 03:C5DE: AA        TAX
+C - - - - - 0x00C5EF 03:C5DF: 9A        TXS
+C - - - - - 0x00C5F0 03:C5E0: 60        RTS
+bra_C576:
 C - - - - - 0x00C586 03:C576: D6 00     DEC ram_0000,X
 C - - - - - 0x00C588 03:C578: F0 39     BEQ bra_C5B3
 bra_C57A:
@@ -710,18 +722,6 @@ C - - - - - 0x00C5DA 03:C5CA: A8        TAY
 C - - - - - 0x00C5DB 03:C5CB: 68        PLA
 C - - - - - 0x00C5DC 03:C5CC: AA        TAX
 C - - - - - 0x00C5DD 03:C5CD: 60        RTS
-bra_C5CE:
-C - - - - - 0x00C5DE 03:C5CE: 86 00     STX ram_0000
-C - - - - - 0x00C5E0 03:C5D0: B5 02     LDA ram_0002,X
-C - - - - - 0x00C5E2 03:C5D2: 85 67     STA ram_0067
-C - - - - - 0x00C5E4 03:C5D4: 18        CLC
-C - - - - - 0x00C5E5 03:C5D5: 69 01     ADC #$01
-C - - - - - 0x00C5E7 03:C5D7: 85 68     STA ram_0068
-C - - - - - 0x00C5E9 03:C5D9: 20 58 CB  JSR sub_CB58_prg_bankswitch
-C - - - - - 0x00C5EC 03:C5DC: B5 01     LDA ram_0001,X
-C - - - - - 0x00C5EE 03:C5DE: AA        TAX
-C - - - - - 0x00C5EF 03:C5DF: 9A        TXS
-C - - - - - 0x00C5F0 03:C5E0: 60        RTS
 
 
 
