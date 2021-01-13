@@ -1076,10 +1076,7 @@ C - - - - - 0x0046A5 01:8695: 60        RTS
 sub_8696:
 .export sub_0x0046A6
 sub_0x0046A6:
-C D 0 - - - 0x0046A6 01:8696: A0 00     LDY #con_plr_flags
-C - - - - - 0x0046A8 01:8698: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0046AA 01:869A: 29 FD     AND #$FD
-C - - - - - 0x0046AC 01:869C: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C951_clear_FD
 C - - - - - 0x0046AE 01:869E: 24 5D     BIT ram_005D
 C - - - - - 0x0046B0 01:86A0: 30 26     BMI bra_86C8_RTS
 C - - - - - 0x0046B2 01:86A2: A0 0B     LDY #con_plr_pos_Y_lo
@@ -1105,10 +1102,7 @@ C - - - - - 0x0046D6 01:86C6: F0 01     BEQ bra_86C9
 bra_86C8_RTS:
 C - - - - - 0x0046D8 01:86C8: 60        RTS
 bra_86C9:
-C - - - - - 0x0046D9 01:86C9: A0 00     LDY #con_plr_flags
-C - - - - - 0x0046DB 01:86CB: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0046DD 01:86CD: 09 02     ORA #$02
-C - - - - - 0x0046DF 01:86CF: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C949_set_02
 C - - - - - 0x0046E1 01:86D1: A9 00     LDA #$00
 C - - - - - 0x0046E3 01:86D3: 85 2F     STA ram_002F
 C - - - - - 0x0046E5 01:86D5: A9 01     LDA #$01
@@ -1334,10 +1328,7 @@ C - - - - - 0x004827 01:8817: A0 12     LDY #con_plr_state
 C - - - - - 0x004829 01:8819: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00482B 01:881B: C9 15     CMP #$15
 C - - - - - 0x00482D 01:881D: F0 21     BEQ bra_8840
-C - - - - - 0x00482F 01:881F: A0 00     LDY #con_plr_flags
-C - - - - - 0x004831 01:8821: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x004833 01:8823: 29 FB     AND #$FB
-C - - - - - 0x004835 01:8825: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C953_clear_FB
 C - - - - - 0x004837 01:8827: A0 1E     LDY #con_plr_tbl_lo
 C - - - - - 0x004839 01:8829: A5 2A     LDA ram_002A
 C - - - - - 0x00483B 01:882B: 0A        ASL
@@ -1348,10 +1339,7 @@ C - - - - - 0x004841 01:8831: C8        INY ; con_plr_tbl_hi
 C - - - - - 0x004842 01:8832: A9 00     LDA #$00
 C - - - - - 0x004844 01:8834: 69 A5     ADC #> tbl_A5D6
 C - - - - - 0x004846 01:8836: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x004848 01:8838: A0 00     LDY #con_plr_flags
-C - - - - - 0x00484A 01:883A: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00484C 01:883C: 09 08     ORA #$08
-C - - - - - 0x00484E 01:883E: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C94D_set_08
 bra_8840:
 C - - - - - 0x004850 01:8840: E6 2A     INC ram_002A
 C - - - - - 0x004852 01:8842: A5 2A     LDA ram_002A
@@ -1461,10 +1449,7 @@ C - - - - - 0x0048E0 01:88D0: C8        INY ; con_plr_tbl_hi
 C - - - - - 0x0048E1 01:88D1: A5 2D     LDA ram_002D
 C - - - - - 0x0048E3 01:88D3: 69 00     ADC #$00
 C - - - - - 0x0048E5 01:88D5: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x0048E7 01:88D7: A0 00     LDY #con_plr_flags
-C - - - - - 0x0048E9 01:88D9: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0048EB 01:88DB: 09 08     ORA #$08
-C - - - - - 0x0048ED 01:88DD: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C94D_set_08
 C - - - - - 0x0048EF 01:88DF: 60        RTS
 
 
@@ -1615,11 +1600,7 @@ loc_89B0:
 ofs_89B0_04:
 C D 0 J - - 0x0049C0 01:89B0: A9 11     LDA #$11
 C - - - - - 0x0049C2 01:89B2: 20 5A C0  JSR sub_0x00C63F
-C - - - - - 0x0049C5 01:89B5: A0 00     LDY #con_plr_flags
-C - - - - - 0x0049C7 01:89B7: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0049C9 01:89B9: 09 04     ORA #$04
-C - - - - - 0x0049CB 01:89BB: 29 F7     AND #$F7
-C - - - - - 0x0049CD 01:89BD: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C94B_set_04_clear_F7
 C - - - - - 0x0049CF 01:89BF: 60        RTS
 
 
@@ -1643,11 +1624,7 @@ bra_89D7:
 C - - - - - 0x0049E7 01:89D7: 20 4B 89  JSR sub_894B
 C - - - - - 0x0049EA 01:89DA: A9 14     LDA #$14
 C - - - - - 0x0049EC 01:89DC: 20 5A C0  JSR sub_0x00C63F
-C - - - - - 0x0049EF 01:89DF: A0 00     LDY #con_plr_flags
-C - - - - - 0x0049F1 01:89E1: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0049F3 01:89E3: 09 04     ORA #$04
-C - - - - - 0x0049F5 01:89E5: 29 F7     AND #$F7
-C - - - - - 0x0049F7 01:89E7: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C94B_set_04_clear_F7
 C - - - - - 0x0049F9 01:89E9: 60        RTS
 
 

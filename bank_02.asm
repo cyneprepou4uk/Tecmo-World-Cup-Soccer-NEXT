@@ -4643,10 +4643,7 @@ C - - - - - 0x009789 02:9779: D0 03     BNE bra_977E
 C - - - - - 0x00978B 02:977B: 4C 38 98  JMP loc_9838
 bra_977E:
 C - - - - - 0x00978E 02:977E: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x009791 02:9781: A0 00     LDY #con_plr_flags
-C - - - - - 0x009793 02:9783: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x009795 02:9785: 29 FB     AND #$FB
-C - - - - - 0x009797 02:9787: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C953_clear_FB
 C - - - - - 0x009799 02:9789: A9 00     LDA #$00
 C - - - - - 0x00979B 02:978B: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00979E 02:978E: AD AD 03  LDA ram_team_w_ball
@@ -4790,10 +4787,7 @@ C - - - - - 0x009867 02:9857: D0 03     BNE bra_985C
 C - - - - - 0x009869 02:9859: 4C 16 99  JMP loc_9916
 bra_985C:
 C - - - - - 0x00986C 02:985C: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00986F 02:985F: A0 00     LDY #con_plr_flags
-C - - - - - 0x009871 02:9861: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x009873 02:9863: 29 FB     AND #$FB
-C - - - - - 0x009875 02:9865: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C953_clear_FB
 C - - - - - 0x009877 02:9867: A9 00     LDA #$00
 C - - - - - 0x009879 02:9869: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00987C 02:986C: AD AD 03  LDA ram_team_w_ball
@@ -6908,10 +6902,7 @@ C - - - - - 0x00A11C 02:A10C: A9 00     LDA #$00
 bra_A10E_loop:
 C - - - - - 0x00A11E 02:A10E: 48        PHA
 C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00A122 02:A112: A0 00     LDY #con_plr_flags
-C - - - - - 0x00A124 02:A114: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00A126 02:A116: 29 FB     AND #$FB
-C - - - - - 0x00A128 02:A118: 91 61     STA (ram_plr_data),Y
+                                        JSR sub_0x00C953_clear_FB
 C - - - - - 0x00A12A 02:A11A: A9 19     LDA #$19
 C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C63F
 C - - - - - 0x00A12F 02:A11F: A0 11     LDY #con_plr_anim_id
