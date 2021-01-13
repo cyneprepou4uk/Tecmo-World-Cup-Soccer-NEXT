@@ -645,7 +645,7 @@ C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C
 C - - - - - 0x00C572 03:C562: A9 10     LDA #$10
 C - - - - - 0x00C574 03:C564: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00C577 03:C567: F0 03     BEQ bra_C56C
-C - - - - - 0x00C579 03:C569: 20 8E C5  JSR sub_C58E
+C - - - - - 0x00C579 03:C569: 20 8E C5  JSR sub_C58E_pause
 bra_C56C:
 C - - - - - 0x00C57C 03:C56C: A2 01     LDX #$01
 bra_C56E_loop:
@@ -684,7 +684,7 @@ C - - - - - 0x00C59B 03:C58B: 4C 5B C5  JMP loc_C55B_infinite_loop
 
 
 
-sub_C58E:
+sub_C58E_pause:
 C - - - - - 0x00C59E 03:C58E: A9 05     LDA #$05
 C - - - - - 0x00C5A0 03:C590: 20 DA F9  JSR sub_F9DA
 C - - - - - 0x00C5A3 03:C593: 48        PHA
