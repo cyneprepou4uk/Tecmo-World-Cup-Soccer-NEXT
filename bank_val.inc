@@ -70,3 +70,32 @@ con_plr_aim_Y_hi                = $1D   ; куда бежит игрок, коп
 con_plr_tbl_lo                  = $1E   ; младший байт некой таблицы поведения игрока
 con_plr_tbl_hi                  = $1F   ; старший байт некой таблицы поведения игрока
 
+
+
+; con_plr_state, подпрограммы в 0x00E6D2
+con_player_state_idle           = $00   ; стоять в ожидании, поворачиваться к мячу на месте, может убиться об летящий мяч
+con_player_state_01             = $01   ; 
+con_player_state_w_ball         = $02   ; управляемый игрок или бот с мячом
+con_player_state_follow_ball    = $03   ; бежать к месту приземления мяча
+con_player_state_wo_ball        = $04   ; управляемый игрок без мяча
+con_player_state_dead           = $05   ; труп
+con_player_state_dodge          = $06   ; увернуться от подката
+con_player_state_07             = $07   ; 
+con_player_state_08             = $08   ; 
+con_player_state_09             = $09   ; unused
+con_player_state_0A             = $0A   ; 
+con_player_state_0B             = $0B   ; unused
+con_player_state_throw_in       = $0C   ; 
+con_player_state_goal_kick      = $0D   ; (для киперов) стоит на месте для пробивания goal kick
+con_player_state_corner_kick    = $0E   ; стоит на месте для пробивания corner kick
+con_player_run_area             = $0F   ; бежать на какую-то зону
+con_player_state_10             = $10   ; 
+con_player_state_follow_enemy   = $11   ; бежать за соперником с мячом
+con_player_state_freeze         = $12   ; неактивный после гола, когда игроки замирают
+con_player_state_13             = $13   ; 
+con_player_state_14             = $14   ; 
+con_player_state_run_base       = $15   ; бежать на свою позицию когда кипер завладел мячом
+con_player_state_gk_get_ball    = $16   ; (для киперов) владеет мячом, даже когда еще находится в анимации падения
+con_player_state_17             = $17   ; 
+con_player_state_18             = $18   ; 
+con_player_state_19             = $19   ; 
