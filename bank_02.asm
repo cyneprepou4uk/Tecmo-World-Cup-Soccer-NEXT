@@ -1565,7 +1565,7 @@ C - - - - - 0x008A5E 02:8A4E: A9 80     LDA #$80
 C - - - - - 0x008A60 02:8A50: 20 B6 8A  JSR sub_8AB6
 C - - - - - 0x008A63 02:8A53: B0 30     BCS bra_8A85
 C - - - - - 0x008A65 02:8A55: A2 1F     LDX #$1F
-bra_8A57:
+bra_8A57_loop:
 C - - - - - 0x008A67 02:8A57: 8A        TXA
 C - - - - - 0x008A68 02:8A58: 29 03     AND #$03
 C - - - - - 0x008A6A 02:8A5A: F0 05     BEQ bra_8A61
@@ -1573,7 +1573,7 @@ C - - - - - 0x008A6C 02:8A5C: A9 30     LDA #$30
 C - - - - - 0x008A6E 02:8A5E: 9D 83 03  STA ram_0383,X
 bra_8A61:
 C - - - - - 0x008A71 02:8A61: CA        DEX
-C - - - - - 0x008A72 02:8A62: 10 F3     BPL bra_8A57
+C - - - - - 0x008A72 02:8A62: 10 F3     BPL bra_8A57_loop
 C - - - - - 0x008A79 02:8A69: A9 18     LDA #$18
 C - - - - - 0x008A7B 02:8A6B: 20 B6 8A  JSR sub_8AB6
 C - - - - - 0x008A7E 02:8A6E: B0 15     BCS bra_8A85
