@@ -4643,7 +4643,7 @@ C - - - - - 0x009789 02:9779: D0 03     BNE bra_977E
 C - - - - - 0x00978B 02:977B: 4C 38 98  JMP loc_9838
 bra_977E:
 C - - - - - 0x00978E 02:977E: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x009791 02:9781: A0 00     LDY #$00
+C - - - - - 0x009791 02:9781: A0 00     LDY #con_plr_flags
 C - - - - - 0x009793 02:9783: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x009795 02:9785: 29 FB     AND #$FB
 C - - - - - 0x009797 02:9787: 91 61     STA (ram_plr_data),Y
@@ -4710,10 +4710,10 @@ C - - - - - 0x0097F6 02:97E6: 20 36 C0  JSR sub_0x00CB5A
 bra_97E9:
 loc_97E9:
 C D 0 - - - 0x0097F9 02:97E9: 98        TYA
-C - - - - - 0x0097FA 02:97EA: A0 07     LDY #$07
+C - - - - - 0x0097FA 02:97EA: A0 07     LDY #con_plr_pos_X_hi
 C - - - - - 0x0097FC 02:97EC: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x0097FE 02:97EE: 88        DEY
-C - - - - - 0x0097FF 02:97EF: 88        DEY
+C - - - - - 0x0097FF 02:97EF: 88        DEY ; con_plr_pos_X_lo
 C - - - - - 0x009800 02:97F0: 8A        TXA
 C - - - - - 0x009801 02:97F1: 91 61     STA (ram_plr_data),Y
 bra_97F3:
@@ -4756,10 +4756,10 @@ C - - - - - 0x00983B 02:982B: 20 39 C0  JSR sub_0x00CB60
 bra_982E:
 loc_982E:
 C D 0 - - - 0x00983E 02:982E: 98        TYA
-C - - - - - 0x00983F 02:982F: A0 0D     LDY #$0D
+C - - - - - 0x00983F 02:982F: A0 0D     LDY #con_plr_pos_Y_hi
 C - - - - - 0x009841 02:9831: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x009843 02:9833: 88        DEY
-C - - - - - 0x009844 02:9834: 88        DEY
+C - - - - - 0x009844 02:9834: 88        DEY ; con_plr_pos_Y_lo
 C - - - - - 0x009845 02:9835: 8A        TXA
 C - - - - - 0x009846 02:9836: 91 61     STA (ram_plr_data),Y
 bra_9838:
@@ -4790,7 +4790,7 @@ C - - - - - 0x009867 02:9857: D0 03     BNE bra_985C
 C - - - - - 0x009869 02:9859: 4C 16 99  JMP loc_9916
 bra_985C:
 C - - - - - 0x00986C 02:985C: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00986F 02:985F: A0 00     LDY #$00
+C - - - - - 0x00986F 02:985F: A0 00     LDY #con_plr_flags
 C - - - - - 0x009871 02:9861: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x009873 02:9863: 29 FB     AND #$FB
 C - - - - - 0x009875 02:9865: 91 61     STA (ram_plr_data),Y
@@ -4857,10 +4857,10 @@ C - - - - - 0x0098D4 02:98C4: 20 36 C0  JSR sub_0x00CB5A
 bra_98C7:
 loc_98C7:
 C D 0 - - - 0x0098D7 02:98C7: 98        TYA
-C - - - - - 0x0098D8 02:98C8: A0 07     LDY #$07
+C - - - - - 0x0098D8 02:98C8: A0 07     LDY #con_plr_pos_X_hi
 C - - - - - 0x0098DA 02:98CA: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x0098DC 02:98CC: 88        DEY
-C - - - - - 0x0098DD 02:98CD: 88        DEY
+C - - - - - 0x0098DD 02:98CD: 88        DEY ; con_plr_pos_X_lo
 C - - - - - 0x0098DE 02:98CE: 8A        TXA
 C - - - - - 0x0098DF 02:98CF: 91 61     STA (ram_plr_data),Y
 bra_98D1:
@@ -4903,10 +4903,10 @@ C - - - - - 0x009919 02:9909: 20 39 C0  JSR sub_0x00CB60
 bra_990C:
 loc_990C:
 C D 0 - - - 0x00991C 02:990C: 98        TYA
-C - - - - - 0x00991D 02:990D: A0 0D     LDY #$0D
+C - - - - - 0x00991D 02:990D: A0 0D     LDY #con_plr_pos_Y_hi
 C - - - - - 0x00991F 02:990F: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x009921 02:9911: 88        DEY
-C - - - - - 0x009922 02:9912: 88        DEY
+C - - - - - 0x009922 02:9912: 88        DEY ; con_plr_pos_Y_lo
 C - - - - - 0x009923 02:9913: 8A        TXA
 C - - - - - 0x009924 02:9914: 91 61     STA (ram_plr_data),Y
 bra_9916:
@@ -6908,13 +6908,13 @@ C - - - - - 0x00A11C 02:A10C: A9 00     LDA #$00
 bra_A10E_loop:
 C - - - - - 0x00A11E 02:A10E: 48        PHA
 C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00A122 02:A112: A0 00     LDY #$00
+C - - - - - 0x00A122 02:A112: A0 00     LDY #con_plr_flags
 C - - - - - 0x00A124 02:A114: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00A126 02:A116: 29 FB     AND #$FB
 C - - - - - 0x00A128 02:A118: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A12A 02:A11A: A9 19     LDA #$19
 C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C63F
-C - - - - - 0x00A12F 02:A11F: A0 11     LDY #$11
+C - - - - - 0x00A12F 02:A11F: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x00A131 02:A121: A9 00     LDA #$00
 C - - - - - 0x00A133 02:A123: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A135 02:A125: 68        PLA
@@ -6955,18 +6955,18 @@ C - - - - - 0x00A183 02:A173: 60        RTS
 
 
 sub_A174:
-C - - - - - 0x00A184 02:A174: A0 05     LDY #$05
+C - - - - - 0x00A184 02:A174: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00A186 02:A176: BD 97 A1  LDA tbl_A197,X
 C - - - - - 0x00A189 02:A179: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A18B 02:A17B: C8        INY
-C - - - - - 0x00A18C 02:A17C: C8        INY
+C - - - - - 0x00A18C 02:A17C: C8        INY ; con_plr_pos_X_hi
 C - - - - - 0x00A18D 02:A17D: BD 98 A1  LDA tbl_A198,X
 C - - - - - 0x00A190 02:A180: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00A192 02:A182: A0 0B     LDY #$0B
+C - - - - - 0x00A192 02:A182: A0 0B     LDY #con_plr_pos_Y_lo
 C - - - - - 0x00A194 02:A184: BD 99 A1  LDA tbl_A199,X
 C - - - - - 0x00A197 02:A187: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A199 02:A189: C8        INY
-C - - - - - 0x00A19A 02:A18A: C8        INY
+C - - - - - 0x00A19A 02:A18A: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x00A19B 02:A18B: BD 9A A1  LDA tbl_A19A,X
 C - - - - - 0x00A19E 02:A18E: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A1A0 02:A190: A0 13     LDY #$13
