@@ -3035,9 +3035,9 @@ C - - - - - 0x00D4B4 03:D4A4: 8D 26 04  STA ram_0426
 bra_D4A7_loop:
 C - - - - - 0x00D4B7 03:D4A7: 48        PHA
 C - - - - - 0x00D4B8 03:D4A8: AA        TAX
-C - - - - - 0x00D4B9 03:D4A9: F0 14     BEQ bra_D4BF
+C - - - - - 0x00D4B9 03:D4A9: F0 14     BEQ bra_D4BF_it_is_gk
 C - - - - - 0x00D4BB 03:D4AB: C9 0B     CMP #$0B
-C - - - - - 0x00D4BD 03:D4AD: F0 10     BEQ bra_D4BF
+C - - - - - 0x00D4BD 03:D4AD: F0 10     BEQ bra_D4BF_it_is_gk
 C - - - - - 0x00D4BF 03:D4AF: 20 E3 CB  JSR sub_CBE3
 C - - - - - 0x00D4C2 03:D4B2: A0 00     LDY #$00
 C - - - - - 0x00D4C4 03:D4B4: B1 61     LDA (ram_0061),Y
@@ -3045,7 +3045,7 @@ C - - - - - 0x00D4C6 03:D4B6: 29 F0     AND #$F0
 C - - - - - 0x00D4C8 03:D4B8: 91 61     STA (ram_0061),Y
 C - - - - - 0x00D4CA 03:D4BA: A9 00     LDA #$00
 C - - - - - 0x00D4CC 03:D4BC: 20 2F C6  JSR sub_C62F
-bra_D4BF:
+bra_D4BF_it_is_gk:
 C - - - - - 0x00D4CF 03:D4BF: 68        PLA
 C - - - - - 0x00D4D0 03:D4C0: 18        CLC
 C - - - - - 0x00D4D1 03:D4C1: 69 01     ADC #$01
