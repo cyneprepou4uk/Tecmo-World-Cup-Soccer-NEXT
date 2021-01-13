@@ -842,7 +842,7 @@ C - - - - - 0x0085CF 02:85BF: A2 07     LDX #$07
 C - - - - - 0x0085D1 02:85C1: 20 09 88  JSR sub_8809
 C - - - - - 0x0085D4 02:85C4: 20 40 86  JSR sub_8640
 C - - - - - 0x0085D7 02:85C7: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x0085DA 02:85CA: 29 08     AND #con_gm_unk_08
+C - - - - - 0x0085DA 02:85CA: 29 08     AND #con_gm_team_select
 C - - - - - 0x0085DC 02:85CC: D0 14     BNE bra_85E2
 C - - - - - 0x0085DE 02:85CE: AD AA 03  LDA ram_team_id + 1
 C - - - - - 0x0085E1 02:85D1: 8D AA 03  STA ram_team_id + 1
@@ -8051,7 +8051,7 @@ C - - - - - 0x00A65D 02:A64D: 85 2B     STA ram_002B
 C - - - - - 0x00A65F 02:A64F: AD AC 03  LDA ram_03AC
 C - - - - - 0x00A662 02:A652: 85 2C     STA ram_002C
 C - - - - - 0x00A664 02:A654: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00A667 02:A657: 29 08     AND #con_gm_unk_08
+C - - - - - 0x00A667 02:A657: 29 08     AND #con_gm_team_select
 C - - - - - 0x00A669 02:A659: 0A        ASL
 C - - - - - 0x00A66A 02:A65A: 0A        ASL
 C - - - - - 0x00A66B 02:A65B: 0A        ASL
@@ -8480,7 +8480,7 @@ C - - - - - 0x00A90C 02:A8FC: 4A        LSR
 C - - - - - 0x00A90D 02:A8FD: 4A        LSR
 C - - - - - 0x00A90E 02:A8FE: AA        TAX
 C - - - - - 0x00A90F 02:A8FF: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00A912 02:A902: 29 F7     AND #con_gm_unk_08 ^ $FF
+C - - - - - 0x00A912 02:A902: 29 F7     AND #con_gm_team_select ^ $FF
 C - - - - - 0x00A914 02:A904: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00A917 02:A907: 8A        TXA
 C - - - - - 0x00A918 02:A908: 0D A4 03  ORA ram_game_mode_flags

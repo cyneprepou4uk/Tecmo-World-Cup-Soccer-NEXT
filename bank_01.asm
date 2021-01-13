@@ -719,7 +719,7 @@ tbl_8456:
 .export sub_0x00448D
 sub_0x00448D:
 C D 0 - - - 0x00448D 01:847D: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x004490 01:8480: 29 10     AND #con_gm_pk
+C - - - - - 0x004490 01:8480: 29 10     AND #con_gm_penalty
 C - - - - - 0x004492 01:8482: D0 68     BNE bra_84EC_RTS
 C - - - - - 0x004494 01:8484: A9 8C     LDA #$8C
 C - - - - - 0x004496 01:8486: 85 2A     STA ram_002A
@@ -1019,7 +1019,7 @@ C - - - - - 0x00464B 01:863B: 60        RTS
 .export sub_0x00464C
 sub_0x00464C:
 C D 0 - - - 0x00464C 01:863C: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00464F 01:863F: 29 10     AND #con_gm_pk
+C - - - - - 0x00464F 01:863F: 29 10     AND #con_gm_penalty
 C - - - - - 0x004651 01:8641: D0 19     BNE bra_865C_RTS
 C - - - - - 0x004653 01:8643: AE C9 03  LDX ram_03C9
 C - - - - - 0x004656 01:8646: E8        INX

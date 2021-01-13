@@ -334,7 +334,7 @@ C - - - - - 0x00C304 03:C2F4: 09 1E     ORA #$1E
 C - - - - - 0x00C306 03:C2F6: 85 29     STA ram_0029
 loc_C2F8:
 C D 2 - - - 0x00C308 03:C2F8: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C30B 03:C2FB: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00C30B 03:C2FB: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00C30D 03:C2FD: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C310 03:C300: A9 00     LDA #$00
 C - - - - - 0x00C312 03:C302: 8D D2 03  STA ram_03D2
@@ -384,7 +384,7 @@ C - - - - - 0x00C36A 03:C35A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C36D 03:C35D: 68        PLA
 C - - - - - 0x00C36E 03:C35E: 20 18 80  JSR sub_0x008B30
 C - - - - - 0x00C371 03:C361: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C374 03:C364: 09 08     ORA #con_gm_unk_08
+C - - - - - 0x00C374 03:C364: 09 08     ORA #con_gm_team_select
 C - - - - - 0x00C376 03:C366: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C379 03:C369: A9 FF     LDA #$FF
 C - - - - - 0x00C37B 03:C36B: 8D A9 03  STA ram_team_id
@@ -392,7 +392,7 @@ loc_C36E:
 C D 2 - - - 0x00C37E 03:C36E: A9 01     LDA #$01
 C - - - - - 0x00C380 03:C370: 20 10 C9  JSR sub_C910
 C - - - - - 0x00C383 03:C373: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C386 03:C376: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00C386 03:C376: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00C388 03:C378: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C38B 03:C37B: A9 00     LDA #$00
 C - - - - - 0x00C38D 03:C37D: 8D A7 03  STA ram_goals_total
@@ -458,13 +458,13 @@ C - - - - - 0x00C414 03:C404: A9 CE     LDA #> ofs_CE73
 C - - - - - 0x00C416 03:C406: A0 72     LDY #< ofs_CE73
 C - - - - - 0x00C418 03:C408: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00C41B 03:C40B: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C41E 03:C40E: 09 10     ORA #con_gm_pk
+C - - - - - 0x00C41E 03:C40E: 09 10     ORA #con_gm_penalty
 C - - - - - 0x00C420 03:C410: 8D A4 03  STA ram_game_mode_flags
 bra_C413:
 C - - - - - 0x00C423 03:C413: A9 01     LDA #$01
 C - - - - - 0x00C425 03:C415: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C428 03:C418: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C42B 03:C41B: 29 10     AND #con_gm_pk
+C - - - - - 0x00C42B 03:C41B: 29 10     AND #con_gm_penalty
 C - - - - - 0x00C42D 03:C41D: D0 F4     BNE bra_C413
 C - - - - - 0x00C42F 03:C41F: 20 25 C4  JSR sub_C425
 
@@ -479,7 +479,7 @@ C - - - - - 0x00C43F 03:C42F: 90 02     BCC bra_C433
 C - - - - - 0x00C441 03:C431: A2 08     LDX #$08
 bra_C433:
 C - - - - - 0x00C443 03:C433: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C446 03:C436: 29 F7     AND #con_gm_unk_08 ^ $FF
+C - - - - - 0x00C446 03:C436: 29 F7     AND #con_gm_team_select ^ $FF
 C - - - - - 0x00C448 03:C438: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C44B 03:C43B: 8A        TXA
 C - - - - - 0x00C44C 03:C43C: 0D A4 03  ORA ram_game_mode_flags
@@ -521,7 +521,7 @@ C - - - - - 0x00C483 03:C473: 4C 6E C4  JMP loc_C46E
 
 sub_C476:
 C - - - - - 0x00C486 03:C476: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C489 03:C479: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00C489 03:C479: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00C48B 03:C47B: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C48E 03:C47E: A9 00     LDA #$00
 C - - - - - 0x00C490 03:C480: 85 05     STA ram_0005
@@ -641,7 +641,7 @@ tbl_C558:
 
 loc_C55B_infinite_loop:
 C D 2 - - - 0x00C56B 03:C55B: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00C56E 03:C55E: 29 04     AND #con_gm_unk_04
+C - - - - - 0x00C56E 03:C55E: 29 04     AND #con_gm_playable
 C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C
 C - - - - - 0x00C572 03:C562: A9 10     LDA #con_btn_Start
 C - - - - - 0x00C574 03:C564: 2D 26 00  AND ram_btn_press
@@ -1945,7 +1945,7 @@ loc_CCC4:
 off_CCC4:
 ofs_CCC4 = off_CCC4 - 1
 C D 2 - - - 0x00CCD4 03:CCC4: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00CCD7 03:CCC7: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00CCD7 03:CCC7: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00CCD9 03:CCC9: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CCDC 03:CCCC: 20 59 CA  JSR sub_CA59_clear_nametables
 C - - - - - 0x00CCDF 03:CCCF: 20 AF CA  JSR sub_CAAF_hide_sprites
@@ -2052,7 +2052,7 @@ C - - - - - 0x00CDC1 03:CDB1: 20 97 CF  JSR sub_CF97
 C - - - - - 0x00CDC4 03:CDB4: A9 02     LDA #$02
 C - - - - - 0x00CDC6 03:CDB6: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CDC9 03:CDB9: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00CDCC 03:CDBC: 09 04     ORA #con_gm_unk_04
+C - - - - - 0x00CDCC 03:CDBC: 09 04     ORA #con_gm_playable
 C - - - - - 0x00CDCE 03:CDBE: 8D A4 03  STA ram_game_mode_flags
 bra_CDC1:
 loc_CDC1:
@@ -2130,7 +2130,7 @@ C - - - - - 0x00CE62 03:CE52: 38        SEC
 C - - - - - 0x00CE63 03:CE53: E9 01     SBC #$01
 C - - - - - 0x00CE65 03:CE55: D0 E1     BNE bra_CE38
 C - - - - - 0x00CE67 03:CE57: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00CE6A 03:CE5A: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00CE6A 03:CE5A: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00CE6C 03:CE5C: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CE6F 03:CE5F: 68        PLA
 C - - - - - 0x00CE70 03:CE60: 8D 28 04  STA ram_0428
@@ -2148,7 +2148,7 @@ C - - - - - 0x00CE78 03:CE68: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 off_CE73:
 ofs_CE73 = off_CE73 - 1
 C - - - - - 0x00CE83 03:CE73: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00CE86 03:CE76: 29 FB     AND #con_gm_unk_04 ^ $FF
+C - - - - - 0x00CE86 03:CE76: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00CE88 03:CE78: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CE8B 03:CE7B: A2 00     LDX #$00
 C - - - - - 0x00CE8D 03:CE7D: A9 02     LDA #$02
@@ -2280,7 +2280,7 @@ C - - - - - 0x00CF79 03:CF69: D0 E6     BNE bra_CF51
 bra_CF6B:
 C - - - - - 0x00CF7B 03:CF6B: A9 01     LDA #$01
 C - - - - - 0x00CF7D 03:CF6D: 0D A4 03  ORA ram_game_mode_flags
-C - - - - - 0x00CF80 03:CF70: 29 EF     AND #con_gm_pk ^ $FF
+C - - - - - 0x00CF80 03:CF70: 29 EF     AND #con_gm_penalty ^ $FF
 C - - - - - 0x00CF82 03:CF72: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00CF85 03:CF75: A2 00     LDX #$00
 C - - - - - 0x00CF87 03:CF77: 20 8D CF  JSR sub_CF8D
@@ -3065,7 +3065,7 @@ C D 2 - - - 0x00D4E5 03:D4D5: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00D4E8 03:D4D8: 29 DF     AND #con_gm_out_of_play ^ $FF
 C - - - - - 0x00D4EA 03:D4DA: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00D4ED 03:D4DD: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00D4F0 03:D4E0: 09 04     ORA #con_gm_unk_04
+C - - - - - 0x00D4F0 03:D4E0: 09 04     ORA #con_gm_playable
 C - - - - - 0x00D4F2 03:D4E2: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00D4F5 03:D4E5: 4C C1 CD  JMP loc_CDC1
 
@@ -4589,7 +4589,7 @@ C - - - - - 0x00DEDF 03:DECF: A5 5B     LDA ram_005B
 C - - - - - 0x00DEE1 03:DED1: 85 60     STA ram_0060
 C - - - - - 0x00DEE3 03:DED3: AA        TAX
 C - - - - - 0x00DEE4 03:DED4: AD A4 03  LDA ram_game_mode_flags
-C - - - - - 0x00DEE7 03:DED7: 29 10     AND #con_gm_pk
+C - - - - - 0x00DEE7 03:DED7: 29 10     AND #con_gm_penalty
 C - - - - - 0x00DEE9 03:DED9: D0 0C     BNE bra_DEE7
 C - - - - - 0x00DEEB 03:DEDB: 38        SEC
 C - - - - - 0x00DEEC 03:DEDC: E5 5E     SBC ram_005E
