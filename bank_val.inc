@@ -9,4 +9,9 @@ con_btn_Select                  = $20 ;
 con_btn_B                       = $40 ; 
 con_btn_A                       = $80 ; 
 
+con_btns_Dpad                   = con_btn_Right + con_btn_Left + con_btn_Down + con_btn_Up  ; 0F
+con_btns_AB                     = con_btn_A + con_btn_B                                     ; C0
+con_btns_LR                     = con_btn_Left + con_btn_Right                              ; 03
+con_btns_UD                     = con_btn_Up + con_btn_Down                                 ; 0C
+
 

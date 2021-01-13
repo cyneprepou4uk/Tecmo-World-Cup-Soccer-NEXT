@@ -353,7 +353,7 @@ C - - - - - 0x00C32D 03:C31D: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 bra_C320:
 C - - - - - 0x00C330 03:C320: A9 01     LDA #$01
 C - - - - - 0x00C332 03:C322: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00C335 03:C325: A9 10     LDA #$10
+C - - - - - 0x00C335 03:C325: A9 10     LDA #con_btn_Start
 C - - - - - 0x00C337 03:C327: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00C33A 03:C32A: D0 05     BNE bra_C331
 C - - - - - 0x00C33C 03:C32C: 2C D2 03  BIT ram_03D2
@@ -643,7 +643,7 @@ loc_C55B_infinite_loop:
 C D 2 - - - 0x00C56B 03:C55B: AD A4 03  LDA ram_03A4
 C - - - - - 0x00C56E 03:C55E: 29 04     AND #$04
 C - - - - - 0x00C570 03:C560: F0 0A     BEQ bra_C56C
-C - - - - - 0x00C572 03:C562: A9 10     LDA #$10
+C - - - - - 0x00C572 03:C562: A9 10     LDA #con_btn_Start
 C - - - - - 0x00C574 03:C564: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00C577 03:C567: F0 03     BEQ bra_C56C
 C - - - - - 0x00C579 03:C569: 20 8E C5  JSR sub_C58E_pause
@@ -718,7 +718,7 @@ C - - - - - 0x00C5B3 03:C5A3: A5 23     LDA ram_0023
 C - - - - - 0x00C5B5 03:C5A5: 10 FC     BPL bra_C5A3_loop
 C - - - - - 0x00C5B7 03:C5A7: 29 7F     AND #$7F
 C - - - - - 0x00C5B9 03:C5A9: 85 23     STA ram_0023
-C - - - - - 0x00C5BB 03:C5AB: A9 10     LDA #$10
+C - - - - - 0x00C5BB 03:C5AB: A9 10     LDA #con_btn_Start
 C - - - - - 0x00C5BD 03:C5AD: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00C5C0 03:C5B0: F0 F1     BEQ bra_C5A3_loop
 C - - - - - 0x00C5C2 03:C5B2: 60        RTS
@@ -2268,10 +2268,10 @@ C - - - - - 0x00CF62 03:CF52: A9 01     LDA #$01
 C - - - - - 0x00CF64 03:CF54: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CF67 03:CF57: 68        PLA
 C - - - - - 0x00CF68 03:CF58: AA        TAX
-C - - - - - 0x00CF69 03:CF59: A9 D0     LDA #$D0
+C - - - - - 0x00CF69 03:CF59: A9 D0     LDA #con_btns_AB + con_btn_Start
 C - - - - - 0x00CF6B 03:CF5B: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00CF6E 03:CF5E: D0 0B     BNE bra_CF6B
-C - - - - - 0x00CF70 03:CF60: A9 C0     LDA #$C0
+C - - - - - 0x00CF70 03:CF60: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00CF72 03:CF62: 2D 27 00  AND ram_btn_press + 1
 C - - - - - 0x00CF75 03:CF65: D0 04     BNE bra_CF6B
 C - - - - - 0x00CF77 03:CF67: E8        INX
@@ -5401,10 +5401,10 @@ C - - - - - 0x00E411 03:E401: 90 0C     BCC bra_E40F_RTS
 C - - - - - 0x00E413 03:E403: B0 0B     BCS bra_E410
 bra_E405:
 C - - - - - 0x00E415 03:E405: AA        TAX
-C - - - - - 0x00E416 03:E406: 29 0F     AND #$0F
+C - - - - - 0x00E416 03:E406: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00E418 03:E408: F0 05     BEQ bra_E40F_RTS
 C - - - - - 0x00E41A 03:E40A: 8A        TXA
-C - - - - - 0x00E41B 03:E40B: 29 C0     AND #$C0
+C - - - - - 0x00E41B 03:E40B: 29 C0     AND #con_btns_AB
 C - - - - - 0x00E41D 03:E40D: D0 01     BNE bra_E410
 bra_E40F_RTS:
 C - - - - - 0x00E41F 03:E40F: 60        RTS
@@ -6214,7 +6214,7 @@ C - - - - - 0x00E93D 03:E92D: 24 86     BIT ram_0086
 C - - - - - 0x00E93F 03:E92F: 10 03     BPL bra_E934
 C - - - - - 0x00E941 03:E931: 4C 25 EA  JMP loc_EA25
 bra_E934:
-C - - - - - 0x00E944 03:E934: 29 0F     AND #$0F
+C - - - - - 0x00E944 03:E934: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00E946 03:E936: F0 11     BEQ bra_E949
 C - - - - - 0x00E948 03:E938: 20 70 E0  JSR sub_E070
 C - - - - - 0x00E94B 03:E93B: AD D3 03  LDA ram_03D3
@@ -6237,13 +6237,13 @@ C - - - - - 0x00E970 03:E960: B1 61     LDA (ram_0061),Y
 C - - - - - 0x00E972 03:E962: 8D E6 03  STA ram_03E6
 C - - - - - 0x00E975 03:E965: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00E978 03:E968: D0 08     BNE bra_E972
-C - - - - - 0x00E97A 03:E96A: A9 C0     LDA #$C0
+C - - - - - 0x00E97A 03:E96A: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00E97C 03:E96C: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00E97F 03:E96F: 4C 7C E9  JMP loc_E97C
 bra_E972:
 C - - - - - 0x00E982 03:E972: 2C A4 03  BIT ram_03A4
 C - - - - - 0x00E985 03:E975: 10 9E     BPL bra_E915
-C - - - - - 0x00E987 03:E977: A9 C0     LDA #$C0
+C - - - - - 0x00E987 03:E977: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00E989 03:E979: 2D 27 00  AND ram_btn_press + 1
 loc_E97C:
 C D 3 - - - 0x00E98C 03:E97C: F0 97     BEQ bra_E915
@@ -6538,7 +6538,7 @@ C - - - - - 0x00EBA8 03:EB98: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00EBAB 03:EB9B: D0 03     BNE bra_EBA0
 C - - - - - 0x00EBAD 03:EB9D: AD 25 00  LDA ram_btn_hold + 1
 bra_EBA0:
-C - - - - - 0x00EBB0 03:EBA0: 29 0F     AND #$0F
+C - - - - - 0x00EBB0 03:EBA0: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00EBB2 03:EBA2: F0 0C     BEQ bra_EBB0
 C - - - - - 0x00EBB4 03:EBA4: 20 70 E0  JSR sub_E070
 C - - - - - 0x00EBB7 03:EBA7: 20 19 EC  JSR sub_EC19
@@ -6585,11 +6585,11 @@ C - - - - - 0x00EC0C 03:EBFC: 4C 55 DF  JMP loc_DF55
 bra_EBFF:
 C - - - - - 0x00EC0F 03:EBFF: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00EC12 03:EC02: F0 08     BEQ bra_EC0C
-C - - - - - 0x00EC14 03:EC04: A9 80     LDA #$80
+C - - - - - 0x00EC14 03:EC04: A9 80     LDA #con_btn_A
 C - - - - - 0x00EC16 03:EC06: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00EC19 03:EC09: 4C 11 EC  JMP loc_EC11
 bra_EC0C:
-C - - - - - 0x00EC1C 03:EC0C: A9 80     LDA #$80
+C - - - - - 0x00EC1C 03:EC0C: A9 80     LDA #con_btn_A
 C - - - - - 0x00EC1E 03:EC0E: 2D 27 00  AND ram_btn_press + 1
 loc_EC11:
 C D 3 - - - 0x00EC21 03:EC11: D0 03     BNE bra_EC16
@@ -7503,7 +7503,7 @@ C - - - - - 0x00F262 03:F252: 91 61     STA (ram_0061),Y
 C - - - - - 0x00F264 03:F254: F0 09     BEQ bra_F25F
 C - - - - - 0x00F266 03:F256: D0 DC     BNE bra_F234
 bra_F258:
-C - - - - - 0x00F268 03:F258: A9 C0     LDA #$C0
+C - - - - - 0x00F268 03:F258: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F26A 03:F25A: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F26D 03:F25D: F0 D5     BEQ bra_F234
 bra_F25F:
@@ -7786,7 +7786,7 @@ C - - - - - 0x00F4B4 03:F4A4: AD 25 00  LDA ram_btn_hold + 1
 C - - - - - 0x00F4B7 03:F4A7: A2 01     LDX #$01
 bra_F4A9:
 C - - - - - 0x00F4B9 03:F4A9: 86 2B     STX ram_002B
-C - - - - - 0x00F4BB 03:F4AB: 29 0F     AND #$0F
+C - - - - - 0x00F4BB 03:F4AB: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00F4BD 03:F4AD: 85 2A     STA ram_002A
 C - - - - - 0x00F4BF 03:F4AF: F0 2C     BEQ bra_F4DD
 C - - - - - 0x00F4C1 03:F4B1: A2 01     LDX #$01
@@ -7815,7 +7815,7 @@ C - - - - - 0x00F4E6 03:F4D6: BD 83 E0  LDA tbl_E083,X
 C - - - - - 0x00F4E9 03:F4D9: A0 13     LDY #$13
 C - - - - - 0x00F4EB 03:F4DB: 91 61     STA (ram_0061),Y
 bra_F4DD:
-C - - - - - 0x00F4ED 03:F4DD: A9 C0     LDA #$C0
+C - - - - - 0x00F4ED 03:F4DD: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F4EF 03:F4DF: A6 2B     LDX ram_002B
 C - - - - - 0x00F4F1 03:F4E1: F0 13     BEQ bra_F4F6
 C - - - - - 0x00F4F3 03:F4E3: 2C A4 03  BIT ram_03A4
@@ -7939,7 +7939,7 @@ C - - - - - 0x00F5EB 03:F5DB: 91 61     STA (ram_0061),Y
 C - - - - - 0x00F5ED 03:F5DD: D0 B0     BNE bra_F58F
 C - - - - - 0x00F5EF 03:F5DF: F0 14     BEQ bra_F5F5
 bra_F5E1:
-C - - - - - 0x00F5F1 03:F5E1: A9 C0     LDA #$C0
+C - - - - - 0x00F5F1 03:F5E1: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F5F3 03:F5E3: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F5F6 03:F5E6: F0 A7     BEQ bra_F58F
 bra_F5E8:
@@ -8049,7 +8049,7 @@ C - - - - - 0x00F6DA 03:F6CA: A2 01     LDX #$01
 bra_F6CC:
 C - - - - - 0x00F6DC 03:F6CC: 86 2B     STX ram_002B
 C - - - - - 0x00F6DE 03:F6CE: 85 2A     STA ram_002A
-C - - - - - 0x00F6E0 03:F6D0: 29 0F     AND #$0F
+C - - - - - 0x00F6E0 03:F6D0: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00F6E2 03:F6D2: F0 36     BEQ bra_F70A
 C - - - - - 0x00F6E4 03:F6D4: A2 01     LDX #$01
 C - - - - - 0x00F6E6 03:F6D6: AD DA 03  LDA ram_03DA
@@ -8094,7 +8094,7 @@ C - - - - - 0x00F72A 03:F71A: 91 61     STA (ram_0061),Y
 C - - - - - 0x00F72C 03:F71C: D0 8F     BNE bra_F6AD
 C - - - - - 0x00F72E 03:F71E: F0 0A     BEQ bra_F72A
 bra_F720:
-C - - - - - 0x00F730 03:F720: A9 C0     LDA #$C0
+C - - - - - 0x00F730 03:F720: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F732 03:F722: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F735 03:F725: D0 03     BNE bra_F72A
 C - - - - - 0x00F737 03:F727: 4C AD F6  JMP loc_F6AD
@@ -8202,12 +8202,12 @@ C - - - - - 0x00F7FE 03:F7EE: 68        PLA
 C - - - - - 0x00F7FF 03:F7EF: 20 42 80  JSR sub_0x004B34
 C - - - - - 0x00F802 03:F7F2: 4C FF F7  JMP loc_F7FF
 bra_F7F5:
-C - - - - - 0x00F805 03:F7F5: A9 C0     LDA #$C0
+C - - - - - 0x00F805 03:F7F5: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F807 03:F7F7: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F80A 03:F7FA: F0 CF     BEQ bra_F7CB
 C - - - - - 0x00F80C 03:F7FC: BD 24 00  LDA ram_btn_hold,X
 loc_F7FF:
-C D 3 - - - 0x00F80F 03:F7FF: 29 03     AND #$03
+C D 3 - - - 0x00F80F 03:F7FF: 29 03     AND #con_btns_LR
 C - - - - - 0x00F811 03:F801: A0 06     LDY #$06
 C - - - - - 0x00F813 03:F803: 91 61     STA (ram_0061),Y
 C - - - - - 0x00F815 03:F805: AA        TAX
@@ -8266,7 +8266,7 @@ C - - - - - 0x00F881 03:F871: 68        PLA
 C - - - - - 0x00F882 03:F872: 20 42 80  JSR sub_0x004B34
 C - - - - - 0x00F885 03:F875: 4C 88 F8  JMP loc_F888
 bra_F878:
-C - - - - - 0x00F888 03:F878: A9 0B     LDA #$0B
+C - - - - - 0x00F888 03:F878: A9 0B     LDA #con_btns_LR + con_btn_Up
 C - - - - - 0x00F88A 03:F87A: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F88D 03:F87D: D0 06     BNE bra_F885
 C - - - - - 0x00F88F 03:F87F: 20 49 F9  JSR sub_F949
@@ -8274,7 +8274,7 @@ C - - - - - 0x00F892 03:F882: 4C 46 F8  JMP loc_F846
 bra_F885:
 C - - - - - 0x00F895 03:F885: BD 24 00  LDA ram_btn_hold,X
 loc_F888:
-C D 3 - - - 0x00F898 03:F888: 29 0B     AND #$0B
+C D 3 - - - 0x00F898 03:F888: 29 0B     AND #con_btns_LR + con_btn_Up
 C - - - - - 0x00F89A 03:F88A: AA        TAX
 C - - - - - 0x00F89B 03:F88B: BD 39 F9  LDA tbl_F939,X
 C - - - - - 0x00F89E 03:F88E: A0 13     LDY #$13
@@ -8479,10 +8479,10 @@ bra_F9BD:
 C - - - - - 0x00F9CD 03:F9BD: 48        PHA
 C - - - - - 0x00F9CE 03:F9BE: A9 01     LDA #$01
 C - - - - - 0x00F9D0 03:F9C0: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00F9D3 03:F9C3: A9 C0     LDA #$C0
+C - - - - - 0x00F9D3 03:F9C3: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F9D5 03:F9C5: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00F9D8 03:F9C8: D0 0E     BNE bra_F9D8
-C - - - - - 0x00F9DA 03:F9CA: A9 C0     LDA #$C0
+C - - - - - 0x00F9DA 03:F9CA: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F9DC 03:F9CC: 2D 27 00  AND ram_btn_press + 1
 C - - - - - 0x00F9DF 03:F9CF: D0 07     BNE bra_F9D8
 C - - - - - 0x00F9E1 03:F9D1: 68        PLA

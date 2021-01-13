@@ -588,7 +588,7 @@ C - - - - - 0x0083E9 02:83D9: A9 01     LDA #$01
 C - - - - - 0x0083EB 02:83DB: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0083EE 02:83DE: 68        PLA
 C - - - - - 0x0083EF 02:83DF: AA        TAX
-C - - - - - 0x0083F0 02:83E0: A9 D0     LDA #$D0
+C - - - - - 0x0083F0 02:83E0: A9 D0     LDA #con_btns_AB + con_btn_Start
 C - - - - - 0x0083F2 02:83E2: 2D 26 00  AND ram_btn_press
 C - - - - - 0x0083F5 02:83E5: D0 04     BNE bra_83EB
 C - - - - - 0x0083F7 02:83E7: CA        DEX
@@ -876,7 +876,7 @@ bra_860C:
 loc_860C:
 C D 0 - - - 0x00861C 02:860C: A9 01     LDA #$01
 C - - - - - 0x00861E 02:860E: 20 09 C0  JSR sub_0x00C619_delay
-C - - - - - 0x008621 02:8611: A9 D0     LDA #$D0
+C - - - - - 0x008621 02:8611: A9 D0     LDA #con_btns_AB + con_btn_Start
 C - - - - - 0x008623 02:8613: 2D 26 00  AND ram_btn_press
 C - - - - - 0x008626 02:8616: F0 F4     BEQ bra_860C
 C - - - - - 0x008628 02:8618: A9 00     LDA #$00
@@ -987,7 +987,7 @@ C - - - - - 0x0086C0 02:86B0: A9 01     LDA #$01
 C - - - - - 0x0086C2 02:86B2: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0086C5 02:86B5: A2 00     LDX #$00
 C - - - - - 0x0086C7 02:86B7: 20 14 88  JSR sub_8814
-C - - - - - 0x0086CA 02:86BA: A9 C0     LDA #$C0
+C - - - - - 0x0086CA 02:86BA: A9 C0     LDA #con_btns_AB
 C - - - - - 0x0086CC 02:86BC: 2D 26 00  AND ram_btn_press
 C - - - - - 0x0086CF 02:86BF: F0 EF     BEQ bra_86B0_loop
 C - - - - - 0x0086D1 02:86C1: 60        RTS
@@ -1006,7 +1006,7 @@ C - - - - - 0x0086E2 02:86D2: 2C B6 03  BIT ram_03B6
 C - - - - - 0x0086E5 02:86D5: 30 19     BMI bra_86F0
 C - - - - - 0x0086E7 02:86D7: A2 00     LDX #$00
 C - - - - - 0x0086E9 02:86D9: 20 14 88  JSR sub_8814
-C - - - - - 0x0086EC 02:86DC: A9 C0     LDA #$C0
+C - - - - - 0x0086EC 02:86DC: A9 C0     LDA #con_btns_AB
 C - - - - - 0x0086EE 02:86DE: 2D 26 00  AND ram_btn_press
 C - - - - - 0x0086F1 02:86E1: F0 0D     BEQ bra_86F0
 C - - - - - 0x0086F3 02:86E3: AD B6 03  LDA ram_03B6
@@ -1019,7 +1019,7 @@ C - - - - - 0x008700 02:86F0: 2C B6 03  BIT ram_03B6
 C - - - - - 0x008703 02:86F3: 70 19     BVS bra_870E
 C - - - - - 0x008705 02:86F5: A2 01     LDX #$01
 C - - - - - 0x008707 02:86F7: 20 14 88  JSR sub_8814
-C - - - - - 0x00870A 02:86FA: A9 C0     LDA #$C0
+C - - - - - 0x00870A 02:86FA: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00870C 02:86FC: 2D 27 00  AND ram_btn_press + 1
 C - - - - - 0x00870F 02:86FF: F0 0D     BEQ bra_870E
 C - - - - - 0x008711 02:8701: AD B6 03  LDA ram_03B6
@@ -1062,7 +1062,7 @@ C - - - - - 0x008754 02:8744: 60        RTS
 
 
 sub_8745:
-C - - - - - 0x008755 02:8745: A9 20     LDA #$20
+C - - - - - 0x008755 02:8745: A9 20     LDA #con_btn_Select
 C - - - - - 0x008757 02:8747: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00875A 02:874A: F0 15     BEQ bra_8761_RTS
 C - - - - - 0x00875C 02:874C: AE AF 03  LDX ram_option_timer
@@ -1207,11 +1207,11 @@ C - - - - - 0x008823 02:8813: 60        RTS
 
 sub_8814:
 C - - - - - 0x008824 02:8814: 86 2A     STX ram_002A
-C - - - - - 0x008826 02:8816: A9 0F     LDA #$0F
+C - - - - - 0x008826 02:8816: A9 0F     LDA #con_btns_Dpad
 C - - - - - 0x008828 02:8818: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00882B 02:881B: D0 11     BNE bra_882E
 C - - - - - 0x00882D 02:881D: BD 24 00  LDA ram_btn_hold,X
-C - - - - - 0x008830 02:8820: 29 0F     AND #$0F
+C - - - - - 0x008830 02:8820: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x008832 02:8822: F0 29     BEQ bra_884D_RTS
 C - - - - - 0x008834 02:8824: FE B4 03  INC ram_03B4,X
 C - - - - - 0x008837 02:8827: BC B4 03  LDY ram_03B4,X
@@ -1715,15 +1715,15 @@ C - - - - - 0x008B39 02:8B29: 20 E0 8B  JSR sub_8BE0
 bra_8B2C:
 C - - - - - 0x008B3C 02:8B2C: A9 01     LDA #$01
 C - - - - - 0x008B3E 02:8B2E: 20 09 C0  JSR sub_0x00C619_delay
-C - - - - - 0x008B41 02:8B31: A9 2C     LDA #$2C
+C - - - - - 0x008B41 02:8B31: A9 2C     LDA #con_btns_UD + con_btn_Select
 C - - - - - 0x008B43 02:8B33: 2D 26 00  AND ram_btn_press
 C - - - - - 0x008B46 02:8B36: F0 23     BEQ bra_8B5B
 C - - - - - 0x008B48 02:8B38: AA        TAX
 C - - - - - 0x008B49 02:8B39: A0 01     LDY #$01
-C - - - - - 0x008B4B 02:8B3B: 29 20     AND #$20
+C - - - - - 0x008B4B 02:8B3B: 29 20     AND #con_btn_Select
 C - - - - - 0x008B4D 02:8B3D: D0 07     BNE bra_8B46
 C - - - - - 0x008B4F 02:8B3F: 8A        TXA
-C - - - - - 0x008B50 02:8B40: 29 04     AND #$04
+C - - - - - 0x008B50 02:8B40: 29 04     AND #con_btn_Down
 C - - - - - 0x008B52 02:8B42: D0 02     BNE bra_8B46
 C - - - - - 0x008B54 02:8B44: A0 FF     LDY #$FF
 bra_8B46:
@@ -1740,7 +1740,7 @@ bra_8B55:
 C - - - - - 0x008B65 02:8B55: 8D D4 03  STA ram_03D4
 C - - - - - 0x008B68 02:8B58: 20 E0 8B  JSR sub_8BE0
 bra_8B5B:
-C - - - - - 0x008B6B 02:8B5B: A9 90     LDA #$90
+C - - - - - 0x008B6B 02:8B5B: A9 90     LDA #con_btn_A + con_btn_Start
 C - - - - - 0x008B6D 02:8B5D: 2D 26 00  AND ram_btn_press
 C - - - - - 0x008B70 02:8B60: F0 CA     BEQ bra_8B2C
 C - - - - - 0x008B72 02:8B62: A9 01     LDA #$01
@@ -8281,11 +8281,11 @@ loc_A7A9:
 C D 1 - - - 0x00A7B9 02:A7A9: A9 01     LDA #$01
 C - - - - - 0x00A7BB 02:A7AB: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00A7BE 02:A7AE: 20 81 A9  JSR sub_A981
-C - - - - - 0x00A7C1 02:A7B1: A9 0F     LDA #$0F
+C - - - - - 0x00A7C1 02:A7B1: A9 0F     LDA #con_btns_Dpad
 C - - - - - 0x00A7C3 02:A7B3: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00A7C6 02:A7B6: D0 12     BNE bra_A7CA
 C - - - - - 0x00A7C8 02:A7B8: AD 24 00  LDA ram_btn_hold
-C - - - - - 0x00A7CB 02:A7BB: 29 0F     AND #$0F
+C - - - - - 0x00A7CB 02:A7BB: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00A7CD 02:A7BD: F0 49     BEQ bra_A808
 C - - - - - 0x00A7CF 02:A7BF: E6 95     INC ram_0095
 C - - - - - 0x00A7D1 02:A7C1: A6 95     LDX ram_0095
@@ -8336,7 +8336,7 @@ loc_A808:
 C D 1 - - - 0x00A818 02:A808: A9 00     LDA #$00
 C - - - - - 0x00A81A 02:A80A: 85 95     STA ram_0095
 loc_A80C:
-C D 1 - - - 0x00A81C 02:A80C: A9 90     LDA #$90
+C D 1 - - - 0x00A81C 02:A80C: A9 90     LDA #con_btn_A + con_btn_Start
 C - - - - - 0x00A81E 02:A80E: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00A821 02:A811: D0 03     BNE bra_A816
 C - - - - - 0x00A823 02:A813: 4C A9 A7  JMP loc_A7A9
@@ -9342,7 +9342,7 @@ C - - - - - 0x00B42F 02:B41F: A9 01     LDA #$01
 C - - - - - 0x00B431 02:B421: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00B434 02:B424: 20 58 B4  JSR sub_B458
 C - - - - - 0x00B437 02:B427: 20 88 B4  JSR sub_B488
-C - - - - - 0x00B43A 02:B42A: A9 90     LDA #$90
+C - - - - - 0x00B43A 02:B42A: A9 90     LDA #con_btn_A + con_btn_Start
 C - - - - - 0x00B43C 02:B42C: 2D 26 00  AND ram_btn_press
 C - - - - - 0x00B43F 02:B42F: D0 21     BNE bra_B452
 C - - - - - 0x00B441 02:B431: A9 01     LDA #$01
