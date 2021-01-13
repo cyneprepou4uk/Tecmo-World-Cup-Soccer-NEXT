@@ -1324,9 +1324,9 @@ C - - - - - 0x00481E 01:880E: F0 30     BEQ bra_8840
 C - - - - - 0x004820 01:8810: C9 0B     CMP #$0B
 C - - - - - 0x004822 01:8812: F0 2C     BEQ bra_8840
 C - - - - - 0x004824 01:8814: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x004827 01:8817: A0 12     LDY #con_plr_state
+C - - - - - 0x004827 01:8817: A0 12     LDY #con_plr_behavior
 C - - - - - 0x004829 01:8819: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00482B 01:881B: C9 15     CMP #$15
+C - - - - - 0x00482B 01:881B: C9 15     CMP #con_behavior_run_base
 C - - - - - 0x00482D 01:881D: F0 21     BEQ bra_8840
                                         JSR sub_0x00C953_clear_FB
 C - - - - - 0x004837 01:8827: A0 1E     LDY #con_plr_tbl_lo
@@ -1515,7 +1515,7 @@ C - - - - - 0x004940 01:8930: 20 2A C0  JSR sub_0x00CACD_bytes_after_JSR
 
 ofs_8941_00:
 ofs_8941_01:
-C - - J - - 0x004951 01:8941: A9 00     LDA #con_player_state_idle
+C - - J - - 0x004951 01:8941: A9 00     LDA #con_behavior_idle
 C - - - - - 0x004953 01:8943: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x004956 01:8946: 60        RTS
 
@@ -1540,7 +1540,7 @@ C - - - - - 0x00496A 01:895A: 68        PLA
 C - - - - - 0x00496B 01:895B: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00496D 01:895D: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00496F 01:895F: 20 48 C0  JSR sub_0x00C8AD
-C - - - - - 0x004972 01:8962: A9 0F     LDA #con_player_run_area
+C - - - - - 0x004972 01:8962: A9 0F     LDA #con_behavior_run_area
 C - - - - - 0x004974 01:8964: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x004977 01:8967: 60        RTS
 
@@ -1569,7 +1569,7 @@ C - - - - - 0x004997 01:8987: 05 2C     ORA ram_002C
 C - - - - - 0x004999 01:8989: 20 96 89  JSR sub_8996
 C - - - - - 0x00499C 01:898C: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00499E 01:898E: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x0049A0 01:8990: A9 10     LDA #con_player_state_10
+C - - - - - 0x0049A0 01:8990: A9 10     LDA #con_behavior_10
 C - - - - - 0x0049A2 01:8992: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x0049A5 01:8995: 60        RTS
 
@@ -1598,7 +1598,7 @@ C - - - - - 0x0049BF 01:89AF: 60        RTS
 
 loc_89B0:
 ofs_89B0_04:
-C D 0 J - - 0x0049C0 01:89B0: A9 11     LDA #con_player_state_follow_enemy
+C D 0 J - - 0x0049C0 01:89B0: A9 11     LDA #con_behavior_follow_enemy
 C - - - - - 0x0049C2 01:89B2: 20 5A C0  JSR sub_0x00C63F_player_state_handler
                                         JSR sub_0x00C94B_set_04_clear_F7
 C - - - - - 0x0049CF 01:89BF: 60        RTS
@@ -1622,7 +1622,7 @@ C - - - - - 0x0049E3 01:89D3: 90 02     BCC bra_89D7
 C - - - - - 0x0049E5 01:89D5: 69 81     ADC #$81
 bra_89D7:
 C - - - - - 0x0049E7 01:89D7: 20 4B 89  JSR sub_894B
-C - - - - - 0x0049EA 01:89DA: A9 14     LDA #con_player_state_14
+C - - - - - 0x0049EA 01:89DA: A9 14     LDA #con_behavior_14
 C - - - - - 0x0049EC 01:89DC: 20 5A C0  JSR sub_0x00C63F_player_state_handler
                                         JSR sub_0x00C94B_set_04_clear_F7
 C - - - - - 0x0049F9 01:89E9: 60        RTS
@@ -1631,7 +1631,7 @@ C - - - - - 0x0049F9 01:89E9: 60        RTS
 
 ofs_89EA_06:
 C - - J - - 0x0049FA 01:89EA: 20 47 89  JSR sub_8947
-C - - - - - 0x0049FD 01:89ED: A9 15     LDA #con_player_state_run_base
+C - - - - - 0x0049FD 01:89ED: A9 15     LDA #con_behavior_run_base
 C - - - - - 0x0049FF 01:89EF: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x004A02 01:89F2: 60        RTS
 

@@ -4644,7 +4644,7 @@ C - - - - - 0x00978B 02:977B: 4C 38 98  JMP loc_9838
 bra_977E:
 C - - - - - 0x00978E 02:977E: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
                                         JSR sub_0x00C953_clear_FB
-C - - - - - 0x009799 02:9789: A9 00     LDA #con_player_state_idle
+C - - - - - 0x009799 02:9789: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00979B 02:978B: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00979E 02:978E: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x0097A1 02:9791: A6 2C     LDX ram_002C
@@ -4788,7 +4788,7 @@ C - - - - - 0x009869 02:9859: 4C 16 99  JMP loc_9916
 bra_985C:
 C - - - - - 0x00986C 02:985C: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
                                         JSR sub_0x00C953_clear_FB
-C - - - - - 0x009877 02:9867: A9 00     LDA #con_player_state_idle
+C - - - - - 0x009877 02:9867: A9 00     LDA #con_behavior_idle
 C - - - - - 0x009879 02:9869: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00987C 02:986C: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00987F 02:986F: A6 2C     LDX ram_002C
@@ -6903,7 +6903,7 @@ bra_A10E_loop:
 C - - - - - 0x00A11E 02:A10E: 48        PHA
 C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
                                         JSR sub_0x00C953_clear_FB
-C - - - - - 0x00A12A 02:A11A: A9 19     LDA #con_player_state_19
+C - - - - - 0x00A12A 02:A11A: A9 19     LDA #con_behavior_19
 C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A12F 02:A11F: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x00A131 02:A121: A9 00     LDA #$00
@@ -6918,14 +6918,14 @@ C - - - - - 0x00A140 02:A130: 18        CLC
 C - - - - - 0x00A141 02:A131: 69 09     ADC #$09
 C - - - - - 0x00A143 02:A133: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00A146 02:A136: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00A149 02:A139: A9 17     LDA #con_player_state_17
+C - - - - - 0x00A149 02:A139: A9 17     LDA #con_behavior_17
 C - - - - - 0x00A14B 02:A13B: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A14E 02:A13E: A2 00     LDX #$00
 C - - - - - 0x00A150 02:A140: 20 74 A1  JSR sub_A174
 C - - - - - 0x00A153 02:A143: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00A156 02:A146: 49 0B     EOR #$0B
 C - - - - - 0x00A158 02:A148: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00A15B 02:A14B: A9 18     LDA #con_player_state_18
+C - - - - - 0x00A15B 02:A14B: A9 18     LDA #con_behavior_18
 C - - - - - 0x00A15D 02:A14D: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A160 02:A150: A2 04     LDX #$04
 C - - - - - 0x00A162 02:A152: 20 74 A1  JSR sub_A174
