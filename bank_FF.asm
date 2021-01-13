@@ -1352,7 +1352,7 @@ C - - - - - 0x00C946 03:C936: 60        RTS
 
 
 
-sub_C937:
+sub_C937_set_01:
 C - - - - - 0x00C947 03:C937: A0 00     LDY #con_plr_flags
 C - - - - - 0x00C949 03:C939: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00C94B 03:C93B: 09 01     ORA #$01
@@ -1361,7 +1361,7 @@ C - - - - - 0x00C94F 03:C93F: 60        RTS
 
 
 
-sub_C940:
+sub_C940_clear_FE:
 C - - - - - 0x00C950 03:C940: A0 00     LDY #con_plr_flags
 C - - - - - 0x00C952 03:C942: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00C954 03:C944: 29 FE     AND #$FE
@@ -5328,7 +5328,7 @@ C - - - - - 0x00E393 03:E383: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E395 03:E385: 09 04     ORA #$04
 C - - - - - 0x00E397 03:E387: 29 F7     AND #$F7
 C - - - - - 0x00E399 03:E389: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00E39B 03:E38B: 20 40 C9  JSR sub_C940
+C - - - - - 0x00E39B 03:E38B: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00E39E 03:E38E: AD E6 03  LDA ram_03E6
 C - - - - - 0x00E3A1 03:E391: 18        CLC
 C - - - - - 0x00E3A2 03:E392: 69 80     ADC #$80
@@ -5399,7 +5399,7 @@ C - - - - - 0x00E41F 03:E40F: 60        RTS
 bra_E410:
 C - - - - - 0x00E420 03:E410: 68        PLA
 C - - - - - 0x00E421 03:E411: 68        PLA
-C - - - - - 0x00E422 03:E412: 20 40 C9  JSR sub_C940
+C - - - - - 0x00E422 03:E412: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00E425 03:E415: A0 00     LDY #con_plr_flags
 C - - - - - 0x00E427 03:E417: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E429 03:E419: 29 FB     AND #$FB
@@ -5920,7 +5920,7 @@ C - - - - - 0x00E716 03:E706: A0 00     LDY #con_plr_flags
 C - - - - - 0x00E718 03:E708: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E71A 03:E70A: 29 01     AND #$01
 C - - - - - 0x00E71C 03:E70C: D0 13     BNE bra_E721
-C - - - - - 0x00E71E 03:E70E: 20 37 C9  JSR sub_C937
+C - - - - - 0x00E71E 03:E70E: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00E721 03:E711: A6 6F     LDX ram_006F
 C - - - - - 0x00E723 03:E713: F0 09     BEQ bra_E71E
 C - - - - - 0x00E725 03:E715: E0 0B     CPX #$0B
@@ -6115,7 +6115,7 @@ C - - - - - 0x00E886 03:E876: 91 61     STA (ram_plr_data),Y
 bra_E878:
 C - - - - - 0x00E888 03:E878: A9 01     LDA #$01
 C - - - - - 0x00E88A 03:E87A: 20 52 C6  JSR sub_C652
-C - - - - - 0x00E88D 03:E87D: 20 37 C9  JSR sub_C937
+C - - - - - 0x00E88D 03:E87D: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00E890 03:E880: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00E893 03:E883: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00E896 03:E886: 2C 29 04  BIT ram_plr_w_ball
@@ -6167,7 +6167,7 @@ C - - - - - 0x00E8EE 03:E8DE: 29 F7     AND #$F7
 C - - - - - 0x00E8F0 03:E8E0: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E8F2 03:E8E2: A5 6F     LDA ram_006F
 C - - - - - 0x00E8F4 03:E8E4: 20 B9 C6  JSR sub_C6B9
-C - - - - - 0x00E8F7 03:E8E7: 20 40 C9  JSR sub_C940
+C - - - - - 0x00E8F7 03:E8E7: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00E8FA 03:E8EA: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E8FC 03:E8EC: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E8FE 03:E8EE: 29 E0     AND #$E0
@@ -6470,7 +6470,7 @@ C - - - - - 0x00EB33 03:EB23: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00EB35 03:EB25: 09 04     ORA #$04
 C - - - - - 0x00EB37 03:EB27: 29 F7     AND #$F7
 C - - - - - 0x00EB39 03:EB29: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00EB3B 03:EB2B: 20 40 C9  JSR sub_C940
+C - - - - - 0x00EB3B 03:EB2B: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00EB3E 03:EB2E: A0 13     LDY #con_plr_direction
 C - - - - - 0x00EB40 03:EB30: A9 FF     LDA #$FF
 C - - - - - 0x00EB42 03:EB32: 91 61     STA (ram_plr_data),Y
@@ -6681,12 +6681,12 @@ C - - - - - 0x00ECBB 03:ECAB: A5 6F     LDA ram_006F
 C - - - - - 0x00ECBD 03:ECAD: 20 93 E0  JSR sub_E093
 loc_ECB0:
 C D 3 - - - 0x00ECC0 03:ECB0: 90 0B     BCC bra_ECBD
-C - - - - - 0x00ECC2 03:ECB2: 20 40 C9  JSR sub_C940
+C - - - - - 0x00ECC2 03:ECB2: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00ECC5 03:ECB5: A9 04     LDA #$04
 C - - - - - 0x00ECC7 03:ECB7: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00ECCA 03:ECBA: 4C C5 EC  JMP loc_ECC5
 bra_ECBD:
-C - - - - - 0x00ECCD 03:ECBD: 20 37 C9  JSR sub_C937
+C - - - - - 0x00ECCD 03:ECBD: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00ECD0 03:ECC0: A9 02     LDA #$02
 C - - - - - 0x00ECD2 03:ECC2: 20 1E 80  JSR sub_0x00479F
 loc_ECC5:
@@ -6742,7 +6742,7 @@ C - - - - - 0x00ED38 03:ED28: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00ED3A 03:ED2A: 09 04     ORA #$04
 C - - - - - 0x00ED3C 03:ED2C: 29 F7     AND #$F7
 C - - - - - 0x00ED3E 03:ED2E: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00ED40 03:ED30: 20 40 C9  JSR sub_C940
+C - - - - - 0x00ED40 03:ED30: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00ED43 03:ED33: 20 77 C6  JSR sub_C677
 C - - - - - 0x00ED46 03:ED36: A5 6F     LDA ram_006F
 C - - - - - 0x00ED48 03:ED38: 20 2B C9  JSR sub_C92B
@@ -7205,7 +7205,7 @@ C - - - - - 0x00F02D 03:F01D: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F02F 03:F01F: 09 04     ORA #$04
 C - - - - - 0x00F031 03:F021: 29 F7     AND #$F7
 C - - - - - 0x00F033 03:F023: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00F035 03:F025: 20 40 C9  JSR sub_C940
+C - - - - - 0x00F035 03:F025: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00F038 03:F028: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F03B 03:F02B: A9 09     LDA #$09
 C - - - - - 0x00F03D 03:F02D: 20 1E 80  JSR sub_0x00479F
@@ -7242,7 +7242,7 @@ C - - - - - 0x00F079 03:F069: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F07B 03:F06B: 09 04     ORA #$04
 C - - - - - 0x00F07D 03:F06D: 29 F7     AND #$F7
 C - - - - - 0x00F07F 03:F06F: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00F081 03:F071: 20 40 C9  JSR sub_C940
+C - - - - - 0x00F081 03:F071: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00F084 03:F074: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F087 03:F077: A9 0A     LDA #$0A
 C - - - - - 0x00F089 03:F079: 20 1E 80  JSR sub_0x00479F
@@ -7277,7 +7277,7 @@ C - - - - - 0x00F0BE 03:F0AE: 91 61     STA (ram_plr_data),Y
 loc_F0B0:
 C D 3 - - - 0x00F0C0 03:F0B0: A9 01     LDA #$01
 C - - - - - 0x00F0C2 03:F0B2: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F0C5 03:F0B5: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F0C5 03:F0B5: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F0C8 03:F0B8: A0 19     LDY #con_plr_unknown_19
 C - - - - - 0x00F0CA 03:F0BA: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F0CC 03:F0BC: A0 06     LDY #con_plr_action_timer_1
@@ -7301,7 +7301,7 @@ C - - - - - 0x00F0E9 03:F0D9: 91 61     STA (ram_plr_data),Y
 loc_F0DB:
 C D 3 - - - 0x00F0EB 03:F0DB: A9 01     LDA #$01
 C - - - - - 0x00F0ED 03:F0DD: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F0F0 03:F0E0: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F0F0 03:F0E0: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F0F3 03:F0E3: 20 67 E4  JSR sub_E467
 C - - - - - 0x00F0F6 03:F0E6: 90 0B     BCC bra_F0F3
 C - - - - - 0x00F0F8 03:F0E8: 20 77 C6  JSR sub_C677
@@ -7323,7 +7323,7 @@ C - - - - - 0x00F112 03:F102: 29 20     AND #con_gm_out_of_play
 C - - - - - 0x00F114 03:F104: F0 10     BEQ bra_F116
 C - - - - - 0x00F116 03:F106: A9 01     LDA #$01
 C - - - - - 0x00F118 03:F108: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F11B 03:F10B: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F11B 03:F10B: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F11E 03:F10E: A9 01     LDA #$01
 C - - - - - 0x00F120 03:F110: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F123 03:F113: 4C FF F0  JMP loc_F0FF
@@ -7338,7 +7338,7 @@ C - - - - - 0x00F132 03:F122: 91 61     STA (ram_plr_data),Y
 bra_F124:
 C - - - - - 0x00F134 03:F124: A9 01     LDA #$01
 C - - - - - 0x00F136 03:F126: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F139 03:F129: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F139 03:F129: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F13C 03:F12C: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00F13F 03:F12F: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00F142 03:F132: A5 6F     LDA ram_006F
@@ -7373,7 +7373,7 @@ C - - - - - 0x00F179 03:F169: 90 B9     BCC bra_F124
 C - - - - - 0x00F17B 03:F16B: AD 7E 03  LDA ram_random
 C - - - - - 0x00F17E 03:F16E: C9 E0     CMP #$E0
 C - - - - - 0x00F180 03:F170: 90 B2     BCC bra_F124
-C - - - - - 0x00F182 03:F172: 20 40 C9  JSR sub_C940
+C - - - - - 0x00F182 03:F172: 20 40 C9  JSR sub_C940_clear_FE
 C - - - - - 0x00F185 03:F175: 4C 76 E1  JMP loc_E176
 bra_F178:
 C - - - - - 0x00F188 03:F178: A9 16     LDA #$16
@@ -7445,7 +7445,7 @@ C - - - - - 0x00F207 03:F1F7: A0 00     LDY #con_plr_flags
 C - - - - - 0x00F209 03:F1F9: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F20B 03:F1FB: 29 01     AND #$01
 C - - - - - 0x00F20D 03:F1FD: D0 F3     BNE bra_F1F2
-C - - - - - 0x00F20F 03:F1FF: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F20F 03:F1FF: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F212 03:F202: A9 02     LDA #$02
 C - - - - - 0x00F214 03:F204: A6 6F     LDX ram_006F
 C - - - - - 0x00F216 03:F206: F0 06     BEQ bra_F20E
@@ -7466,7 +7466,7 @@ C - - - - - 0x00F22A 03:F21A: 29 F7     AND #$F7
 C - - - - - 0x00F22C 03:F21C: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00F22E 03:F21E: A9 01     LDA #$01
 C - - - - - 0x00F230 03:F220: 8D E4 03  STA ram_03E4
-C - - - - - 0x00F233 03:F223: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F233 03:F223: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F236 03:F226: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F239 03:F229: AD 7E 03  LDA ram_random
 C - - - - - 0x00F23C 03:F22C: 29 0F     AND #$0F
@@ -7532,7 +7532,7 @@ loc_F2A4:
 ofs_F2A4_14:
 C D 3 - - - 0x00F2B4 03:F2A4: A9 01     LDA #$01
 C - - - - - 0x00F2B6 03:F2A6: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F2B9 03:F2A9: 20 37 C9  JSR sub_C937
+C - - - - - 0x00F2B9 03:F2A9: 20 37 C9  JSR sub_C937_set_01
 C - - - - - 0x00F2BC 03:F2AC: A0 19     LDY #con_plr_unknown_19
 C - - - - - 0x00F2BE 03:F2AE: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F2C0 03:F2B0: A0 06     LDY #$06
@@ -9011,6 +9011,7 @@ tbl_FBFB:
 .export _common_RTS
 _common_RTS:
     RTS
+
 
 
 .segment "VECTORS"
