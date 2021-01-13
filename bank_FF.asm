@@ -712,14 +712,14 @@ C - - - - - 0x00C5AA 03:C59A: 85 68     STA ram_0068
 C - - - - - 0x00C5AC 03:C59C: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C5AF 03:C59F: 68        PLA
 C - - - - - 0x00C5B0 03:C5A0: 20 30 80  JSR sub_0x008043
-bra_C5A3:
+bra_C5A3_loop:
 C - - - - - 0x00C5B3 03:C5A3: A5 23     LDA ram_0023
-C - - - - - 0x00C5B5 03:C5A5: 10 FC     BPL bra_C5A3
+C - - - - - 0x00C5B5 03:C5A5: 10 FC     BPL bra_C5A3_loop
 C - - - - - 0x00C5B7 03:C5A7: 29 7F     AND #$7F
 C - - - - - 0x00C5B9 03:C5A9: 85 23     STA ram_0023
 C - - - - - 0x00C5BB 03:C5AB: A9 10     LDA #$10
 C - - - - - 0x00C5BD 03:C5AD: 2D 26 00  AND ram_btn_press
-C - - - - - 0x00C5C0 03:C5B0: F0 F1     BEQ bra_C5A3
+C - - - - - 0x00C5C0 03:C5B0: F0 F1     BEQ bra_C5A3_loop
 C - - - - - 0x00C5C2 03:C5B2: 60        RTS
 
 
