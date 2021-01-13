@@ -1803,15 +1803,15 @@ sub_CBE3_get_base_player_address:
 sub_0x00CBF3_get_base_player_address:
 C D 2 - - - 0x00CBF3 03:CBE3: 0A        ASL
 C - - - - - 0x00CBF4 03:CBE4: AA        TAX
-C - - - - - 0x00CBF5 03:CBE5: BD F0 CB  LDA tbl_CBF0,X
+C - - - - - 0x00CBF5 03:CBE5: BD F0 CB  LDA tbl_CBF0_address,X
 C - - - - - 0x00CBF8 03:CBE8: 85 61     STA ram_0061
-C - - - - - 0x00CBFA 03:CBEA: BD F1 CB  LDA tbl_CBF0 + 1,X
+C - - - - - 0x00CBFA 03:CBEA: BD F1 CB  LDA tbl_CBF0_address + 1,X
 C - - - - - 0x00CBFD 03:CBED: 85 62     STA ram_0062
 C - - - - - 0x00CBFF 03:CBEF: 60        RTS
 
 
 
-tbl_CBF0:
+tbl_CBF0_address:
 - D 2 - - - 0x00CC00 03:CBF0: 2D 04     .word ram_042D      ; 00 вратарь внизу
 - D 2 - - - 0x00CC02 03:CBF2: 4D 04     .word ram_044D      ; 01
 - D 2 - - - 0x00CC04 03:CBF4: 6D 04     .word ram_046D      ; 02
@@ -8580,9 +8580,9 @@ sub_FA60:
 C - - - - - 0x00FA70 03:FA60: 86 72     STX ram_0072
 C - - - - - 0x00FA72 03:FA62: 0A        ASL
 C - - - - - 0x00FA73 03:FA63: AA        TAX
-C - - - - - 0x00FA74 03:FA64: BD F0 CB  LDA tbl_CBF0,X
+C - - - - - 0x00FA74 03:FA64: BD F0 CB  LDA tbl_CBF0_address,X
 C - - - - - 0x00FA77 03:FA67: 85 70     STA ram_0070
-C - - - - - 0x00FA79 03:FA69: BD F1 CB  LDA tbl_CBF0 + 1,X
+C - - - - - 0x00FA79 03:FA69: BD F1 CB  LDA tbl_CBF0_address + 1,X
 C - - - - - 0x00FA7C 03:FA6C: 85 71     STA ram_0071
 C - - - - - 0x00FA7E 03:FA6E: 38        SEC
 C - - - - - 0x00FA7F 03:FA6F: A0 05     LDY #$05

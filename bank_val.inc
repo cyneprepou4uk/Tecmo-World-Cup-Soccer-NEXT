@@ -30,5 +30,5 @@ con_gm_2p                       = $80   ; режим 2 игрока (проти�
 
 
 ; MISC разное
-con_ball_index                  = $16   ; 
-con_shadow_index                = $17   ; тень мяча
+con_ball_index                  = $16   ; мяч 03D3
+con_shadow_index                = $17   ; тень мяча 03F3
