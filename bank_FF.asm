@@ -776,7 +776,7 @@ sub_0x00C63F_player_state_handler:
 C D 2 - - - 0x00C63F 03:C62F: AA        TAX
 C - - - - - 0x00C640 03:C630: A0 00     LDY #con_plr_flags
 C - - - - - 0x00C642 03:C632: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00C644 03:C634: 29 04     AND #$04
+C - - - - - 0x00C644 03:C634: 29 04     AND #con_player_flag_control
 C - - - - - 0x00C646 03:C636: D0 19     BNE bra_C651_RTS
 C - - - - - 0x00C648 03:C638: 8A        TXA
 C - - - - - 0x00C649 03:C639: A0 12     LDY #con_plr_behavior
@@ -894,7 +894,7 @@ sub_C6E1:
 C - - - - - 0x00C6F1 03:C6E1: AD 2A 04  LDA ram_plr_wo_ball
 C - - - - - 0x00C6F4 03:C6E4: 30 10     BMI bra_C6F6
 C - - - - - 0x00C6F6 03:C6E6: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00C701 03:C6F1: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00C703 03:C6F3: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_C6F6:
@@ -908,7 +908,7 @@ C - - - - - 0x00C713 03:C703: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00C716 03:C706: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00C719 03:C709: A0 00     LDY #con_plr_flags
 C - - - - - 0x00C71B 03:C70B: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00C71D 03:C70D: 29 04     AND #$04
+C - - - - - 0x00C71D 03:C70D: 29 04     AND #con_player_flag_control
 C - - - - - 0x00C71F 03:C70F: D0 06     BNE bra_C717
 C - - - - - 0x00C721 03:C711: A9 04     LDA #con_behavior_wo_ball
 C - - - - - 0x00C723 03:C713: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -1349,67 +1349,67 @@ C - - - - - 0x00C946 03:C936: 60        RTS
 
 
 
-sub_C937_set_01:
+sub_C937_set_player_flag___unknown:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    ORA #$01
+    ORA #con_player_flag_unknown_01
     STA (ram_plr_data),Y
     RTS
 
-.export sub_0x00C949_set_02
-sub_0x00C949_set_02:
+.export sub_0x00C949_set_player_flag___visible
+sub_0x00C949_set_player_flag___visible:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    ORA #$02
+    ORA #con_player_flag_visible
     STA (ram_plr_data),Y
     RTS
 
-sub_C93B_set_04_clear_F7:
-.export sub_0x00C94B_set_04_clear_F7
-sub_0x00C94B_set_04_clear_F7:
+sub_C93B_set_player_flag___control:
+.export sub_0x00C94B_set_player_flag___control
+sub_0x00C94B_set_player_flag___control:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    ORA #$04
-    AND #$F7
+    ORA #con_player_flag_control
+    AND #con_player_flag_busy ^ $FF
     STA (ram_plr_data),Y
     RTS
 
-.export sub_0x00C94D_set_08
-sub_0x00C94D_set_08:
+.export sub_0x00C94DB_set_player_flag___busy
+sub_0x00C94DB_set_player_flag___busy:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    ORA #$08
+    ORA #con_player_flag_busy
     STA (ram_plr_data),Y
     RTS
 
-sub_C93F_clear_01:
+sub_C93F_clear_player_flag___unknown:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    AND #$FE
+    AND #con_player_flag_unknown_01 ^ $FF
     STA (ram_plr_data),Y
     RTS
 
-.export sub_0x00C951_clear_FD
-sub_0x00C951_clear_FD:
+.export sub_0x00C951_clear_player_flag___visible
+sub_0x00C951_clear_player_flag___visible:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    AND #$FD
+    AND #con_player_flag_visible ^ $FF
     STA (ram_plr_data),Y
     RTS
 
-sub_C943_clear_FB:
-.export sub_0x00C953_clear_FB
-sub_0x00C953_clear_FB:
+sub_C943_clear_player_flag___control:
+.export sub_0x00C953_clear_player_flag___control
+sub_0x00C953_clear_player_flag___control:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    AND #$FB
+    AND #con_player_flag_control ^ $FF
     STA (ram_plr_data),Y
     RTS
 
-sub_C945_clear_F0:
+sub_C945_clear_player_flag___all:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
-    AND #$F0
+    AND #con_player_flags_all ^ $FF
     STA (ram_plr_data),Y
     RTS
 
@@ -1434,7 +1434,7 @@ C - - - - - 0x00C97F 03:C96F: A5 2D     LDA ram_002D
 C - - - - - 0x00C981 03:C971: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00C984 03:C974: A0 00     LDY #con_plr_flags
 C - - - - - 0x00C986 03:C976: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00C988 03:C978: 29 04     AND #$04
+C - - - - - 0x00C988 03:C978: 29 04     AND #con_player_flag_control
 C - - - - - 0x00C98A 03:C97A: D0 05     BNE bra_C981
 C - - - - - 0x00C98C 03:C97C: 20 98 C9  JSR sub_C998
 C - - - - - 0x00C98F 03:C97F: B0 14     BCS bra_C995
@@ -1522,7 +1522,7 @@ C - - - - - 0x00C9FE 03:C9EE: A5 2D     LDA ram_002D
 C - - - - - 0x00CA00 03:C9F0: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00CA03 03:C9F3: A0 00     LDY #con_plr_flags
 C - - - - - 0x00CA05 03:C9F5: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00CA07 03:C9F7: 29 04     AND #$04
+C - - - - - 0x00CA07 03:C9F7: 29 04     AND #con_player_flag_control
 C - - - - - 0x00CA09 03:C9F9: D0 05     BNE bra_CA00
 C - - - - - 0x00CA0B 03:C9FB: 20 17 CA  JSR sub_CA17
 C - - - - - 0x00CA0E 03:C9FE: B0 14     BCS bra_CA14
@@ -2040,7 +2040,7 @@ C - - - - - 0x00CD4B 03:CD3B: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00CD4E 03:CD3E: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00CD51 03:CD41: A9 13     LDA #con_behavior_13
 C - - - - - 0x00CD53 03:CD43: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00CD60 03:CD50: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00CD63 03:CD53: 09 20     ORA #con_gm_out_of_play
 C - - - - - 0x00CD65 03:CD55: 8D A4 03  STA ram_game_mode_flags
@@ -2140,7 +2140,7 @@ C - - - - - 0x00CE30 03:CE20: 48        PHA
 C - - - - - 0x00CE31 03:CE21: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00CE34 03:CE24: 30 10     BMI bra_CE36
 C - - - - - 0x00CE36 03:CE26: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00CE41 03:CE31: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00CE43 03:CE33: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_CE36:
@@ -2417,9 +2417,9 @@ C - - - - - 0x00D010 03:D000: C9 04     CMP #con_behavior_wo_ball
 C - - - - - 0x00D012 03:D002: D0 15     BNE bra_D019
 C - - - - - 0x00D014 03:D004: A0 00     LDY #con_plr_flags
 C - - - - - 0x00D016 03:D006: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00D018 03:D008: 29 02     AND #$02
+C - - - - - 0x00D018 03:D008: 29 02     AND #con_player_flag_visible
 C - - - - - 0x00D01A 03:D00A: D0 67     BNE bra_D073_RTS
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00D024 03:D014: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00D026 03:D016: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_D019:
@@ -2437,10 +2437,10 @@ C - - - - - 0x00D03C 03:D02C: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00D03F 03:D02F: A0 00     LDY #con_plr_flags
 C - - - - - 0x00D041 03:D031: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00D043 03:D033: AA        TAX
-C - - - - - 0x00D044 03:D034: 29 02     AND #$02
+C - - - - - 0x00D044 03:D034: 29 02     AND #con_player_flag_visible
 C - - - - - 0x00D046 03:D036: F0 07     BEQ bra_D03F
 C - - - - - 0x00D048 03:D038: 8A        TXA
-C - - - - - 0x00D049 03:D039: 29 04     AND #$04
+C - - - - - 0x00D049 03:D039: 29 04     AND #con_player_flag_control
 C - - - - - 0x00D04B 03:D03B: D0 02     BNE bra_D03F
 C - - - - - 0x00D04D 03:D03D: E6 2C     INC ram_002C
 bra_D03F:
@@ -2459,11 +2459,11 @@ C - - - - - 0x00D066 03:D056: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00D069 03:D059: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00D06C 03:D05C: A0 00     LDY #con_plr_flags
 C - - - - - 0x00D06E 03:D05E: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00D070 03:D060: 29 04     AND #$04
+C - - - - - 0x00D070 03:D060: 29 04     AND #con_player_flag_control
 C - - - - - 0x00D072 03:D062: D0 10     BNE bra_D074
 C - - - - - 0x00D074 03:D064: A9 04     LDA #con_behavior_wo_ball
 C - - - - - 0x00D076 03:D066: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 bra_D073_RTS:
 C - - - - - 0x00D083 03:D073: 60        RTS
 bra_D074:
@@ -2541,10 +2541,10 @@ C - - - - - 0x00D105 03:D0F5: AD E0 03  LDA ram_03E0
 C - - - - - 0x00D108 03:D0F8: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00D10A 03:D0FA: A9 02     LDA #$02
 C - - - - - 0x00D10C 03:D0FC: 20 9E C7  JSR sub_C79E
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00D117 03:D107: A9 0C     LDA #con_behavior_throw_in
 C - - - - - 0x00D119 03:D109: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00D126 03:D116: AD 27 04  LDA ram_area_id
 C - - - - - 0x00D129 03:D119: A2 00     LDX #$00
 bra_D11B_loop:
@@ -2673,10 +2673,10 @@ C - - - - - 0x00D1F8 03:D1E8: 68        PLA
 C - - - - - 0x00D1F9 03:D1E9: 20 1E 80  JSR sub_0x009852
 C - - - - - 0x00D1FC 03:D1EC: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00D1FF 03:D1EF: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00D20A 03:D1FA: A9 0D     LDA #con_behavior_goal_kick
 C - - - - - 0x00D20C 03:D1FC: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00D219 03:D209: AD D4 03  LDA ram_03D4
 C - - - - - 0x00D21C 03:D20C: 29 DF     AND #$DF
 C - - - - - 0x00D21E 03:D20E: 8D D4 03  STA ram_03D4
@@ -2800,10 +2800,10 @@ C - - - - - 0x00D303 03:D2F3: C8        INY
 C - - - - - 0x00D304 03:D2F4: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x00D305 03:D2F5: BD 66 D3  LDA tbl_D366,X
 C - - - - - 0x00D308 03:D2F8: 91 61     STA (ram_plr_data),Y
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00D312 03:D302: A9 0E     LDA #con_behavior_corner_kick
 C - - - - - 0x00D314 03:D304: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00D321 03:D311: 68        PLA
 C - - - - - 0x00D322 03:D312: 48        PHA
 C - - - - - 0x00D323 03:D313: A9 04     LDA #$04
@@ -2896,7 +2896,7 @@ C - - - - - 0x00D399 03:D389: A9 00     LDA #$00
 bra_D38B_loop:
 C - - - - - 0x00D39B 03:D38B: 48        PHA
 C - - - - - 0x00D39C 03:D38C: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C945_clear_F0
+                                        JSR sub_C945_clear_player_flag___all
 C - - - - - 0x00D3A7 03:D397: A9 12     LDA #con_behavior_freeze
 C - - - - - 0x00D3A9 03:D399: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00D3AC 03:D39C: 68        PLA
@@ -3038,7 +3038,7 @@ C - - - - - 0x00D4B9 03:D4A9: F0 14     BEQ bra_D4BF_it_is_gk
 C - - - - - 0x00D4BB 03:D4AB: C9 0B     CMP #$0B
 C - - - - - 0x00D4BD 03:D4AD: F0 10     BEQ bra_D4BF_it_is_gk
 C - - - - - 0x00D4BF 03:D4AF: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C945_clear_F0
+                                        JSR sub_C945_clear_player_flag___all
 C - - - - - 0x00D4CA 03:D4BA: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00D4CC 03:D4BC: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_D4BF_it_is_gk:
@@ -4281,12 +4281,12 @@ C - - - - - 0x00DCD4 03:DCC4: A9 00     LDA #$00
 C - - - - - 0x00DCD6 03:DCC6: 20 5B C9  JSR sub_C95B
 C - - - - - 0x00DCD9 03:DCC9: A9 01     LDA #con_behavior_01
 C - - - - - 0x00DCDB 03:DCCB: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00DCE8 03:DCD8: A9 0B     LDA #$0B
 C - - - - - 0x00DCEA 03:DCDA: 20 5B C9  JSR sub_C95B
 C - - - - - 0x00DCED 03:DCDD: A9 01     LDA #con_behavior_01
 C - - - - - 0x00DCEF 03:DCDF: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 bra_DCEC_RTS:
 C - - - - - 0x00DCFC 03:DCEC: 60        RTS
 
@@ -4679,7 +4679,7 @@ C - - - - - 0x00DF7B 03:DF6B: A0 12     LDY #con_plr_behavior
 C - - - - - 0x00DF7D 03:DF6D: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00DF7F 03:DF6F: C9 03     CMP #con_behavior_follow_ball
 C - - - - - 0x00DF81 03:DF71: D0 0D     BNE bra_DF80
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00DF8B 03:DF7B: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00DF8D 03:DF7D: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_DF80:
@@ -4692,13 +4692,13 @@ C - - - - - 0x00DF98 03:DF88: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00DF9B 03:DF8B: 20 DA C9  JSR sub_C9DA
 C - - - - - 0x00DF9E 03:DF8E: A9 03     LDA #con_behavior_follow_ball
 C - - - - - 0x00DFA0 03:DF90: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00DFAD 03:DF9D: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00DFB0 03:DFA0: 49 0B     EOR #$0B
 C - - - - - 0x00DFB2 03:DFA2: 20 DA C9  JSR sub_C9DA
 C - - - - - 0x00DFB5 03:DFA5: A9 03     LDA #con_behavior_follow_ball
 C - - - - - 0x00DFB7 03:DFA7: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00DFC4 03:DFB4: A5 6F     LDA ram_006F
 C - - - - - 0x00DFC6 03:DFB6: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 bra_DFB9_RTS:
@@ -5015,7 +5015,7 @@ C - - - - - 0x00E18E 03:E17E: C9 0B     CMP #$0B
 C - - - - - 0x00E190 03:E180: D0 03     BNE bra_E185
 C - - - - - 0x00E192 03:E182: 4C 09 E2  JMP loc_E209
 bra_E185:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E19F 03:E18F: A9 08     LDA #$08
 C - - - - - 0x00E1A1 03:E191: 20 10 C9  JSR sub_C910
 C - - - - - 0x00E1A4 03:E194: 20 77 C6  JSR sub_C677
@@ -5078,7 +5078,7 @@ C - - - - - 0x00E21B 03:E20B: CD 2A 04  CMP ram_plr_wo_ball
 C - - - - - 0x00E21E 03:E20E: D0 03     BNE bra_E213
 C - - - - - 0x00E220 03:E210: 4C 21 EB  JMP loc_EB21
 bra_E213:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E22B 03:E21B: A9 11     LDA #con_behavior_follow_enemy
 C - - - - - 0x00E22D 03:E21D: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00E230 03:E220: 4C 55 DF  JMP loc_DF55
@@ -5147,7 +5147,7 @@ C - - - - - 0x00E281 03:E271: 20 43 FA  JSR sub_FA43
 C - - - - - 0x00E284 03:E274: 90 16     BCC bra_E28C
 C - - - - - 0x00E286 03:E276: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00E289 03:E279: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E294 03:E284: A9 06     LDA #con_behavior_dodge
 C - - - - - 0x00E296 03:E286: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00E299 03:E289: 4C 42 E3  JMP loc_E342
@@ -5226,10 +5226,10 @@ C - - - - - 0x00E326 03:E316: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00E329 03:E319: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00E32C 03:E31C: 30 24     BMI bra_E342
 C - - - - - 0x00E32E 03:E31E: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E339 03:E329: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00E33B 03:E32B: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E348 03:E338: A9 80     LDA #$80
 C - - - - - 0x00E34A 03:E33A: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00E34D 03:E33D: A5 6F     LDA ram_006F
@@ -5294,8 +5294,8 @@ C - - - - - 0x00E386 03:E376: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00E389 03:E379: 20 E1 E3  JSR sub_E3E1
 C - - - - - 0x00E38C 03:E37C: A9 05     LDA #$05
 C - - - - - 0x00E38E 03:E37E: 20 10 C9  JSR sub_C910
-                                        JSR sub_C93B_set_04_clear_F7
-C - - - - - 0x00E39B 03:E38B: 20 40 C9  JSR sub_C93F_clear_01
+                                        JSR sub_C93B_set_player_flag___control
+C - - - - - 0x00E39B 03:E38B: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00E39E 03:E38E: AD E6 03  LDA ram_03E6
 C - - - - - 0x00E3A1 03:E391: 18        CLC
 C - - - - - 0x00E3A2 03:E392: 69 80     ADC #$80
@@ -5322,10 +5322,10 @@ C - - - - - 0x00E3CF 03:E3BF: 20 ED DC  JSR sub_DCED
 C - - - - - 0x00E3D2 03:E3C2: CE 24 04  DEC ram_ball_Z_lo
 C - - - - - 0x00E3D5 03:E3C5: D0 F0     BNE bra_E3B7
 bra_E3C7:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E3DF 03:E3CF: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00E3E1 03:E3D1: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E3EE 03:E3DE: 4C 55 DF  JMP loc_DF55
 
 
@@ -5359,8 +5359,8 @@ C - - - - - 0x00E41F 03:E40F: 60        RTS
 bra_E410:
 C - - - - - 0x00E420 03:E410: 68        PLA
 C - - - - - 0x00E421 03:E411: 68        PLA
-C - - - - - 0x00E422 03:E412: 20 40 C9  JSR sub_C93F_clear_01
-                                        JSR sub_C943_clear_FB
+C - - - - - 0x00E422 03:E412: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E42D 03:E41D: A2 00     LDX #$00
 C - - - - - 0x00E42F 03:E41F: A0 00     LDY #$00
 bra_E421:
@@ -5395,7 +5395,7 @@ ofs_E44F_02:
 C - - J - - 0x00E45F 03:E44F: A9 0A     LDA #con_behavior_0A
 bra_E450:
                                         JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E46E 03:E45E: 4C 55 DF  JMP loc_DF55
 
 
@@ -5509,22 +5509,22 @@ C - - - - - 0x00E4FE 03:E4EE: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E500 03:E4F0: A0 00     LDY #con_plr_flags
 C - - - - - 0x00E502 03:E4F2: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E504 03:E4F4: AA        TAX
-C - - - - - 0x00E505 03:E4F5: 29 04     AND #$04
+C - - - - - 0x00E505 03:E4F5: 29 04     AND #con_player_flag_control
 C - - - - - 0x00E507 03:E4F7: D0 0D     BNE bra_E506
 C - - - - - 0x00E509 03:E4F9: 8A        TXA
-C - - - - - 0x00E50A 03:E4FA: 29 08     AND #$08
+C - - - - - 0x00E50A 03:E4FA: 29 08     AND #con_player_flag_busy
 C - - - - - 0x00E50C 03:E4FC: F0 08     BEQ bra_E506
 C - - - - - 0x00E50E 03:E4FE: 8A        TXA
-C - - - - - 0x00E50F 03:E4FF: 29 F7     AND #$F7
+C - - - - - 0x00E50F 03:E4FF: 29 F7     AND #con_player_flag_busy ^ $FF
 C - - - - - 0x00E511 03:E501: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E513 03:E503: 20 12 80  JSR sub_0x0048F0
 bra_E506:
 C - - - - - 0x00E516 03:E506: A0 00     LDY #con_plr_flags
 C - - - - - 0x00E518 03:E508: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00E51A 03:E50A: 29 01     AND #$01
+C - - - - - 0x00E51A 03:E50A: 29 01     AND #con_player_flag_unknown_01
 C - - - - - 0x00E51C 03:E50C: F0 09     BEQ bra_E517
 C - - - - - 0x00E51E 03:E50E: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00E520 03:E510: 29 FE     AND #$FE
+C - - - - - 0x00E520 03:E510: 29 FE     AND #con_player_flag_unknown_01 ^ $FF
 C - - - - - 0x00E522 03:E512: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E524 03:E514: 20 27 E5  JSR sub_E527
 bra_E517:
@@ -5851,7 +5851,7 @@ tbl_E6C2_player_state_subroutine:
 
 
 ofs_E6F6_00_idle:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E70E 03:E6FE: 20 77 C6  JSR sub_C677
 bra_E701:
 loc_E701:
@@ -5859,9 +5859,9 @@ C D 3 - - - 0x00E711 03:E701: A9 01     LDA #$01
 C - - - - - 0x00E713 03:E703: 20 52 C6  JSR sub_C652
 C - - - - - 0x00E716 03:E706: A0 00     LDY #con_plr_flags
 C - - - - - 0x00E718 03:E708: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00E71A 03:E70A: 29 01     AND #$01
+C - - - - - 0x00E71A 03:E70A: 29 01     AND #con_player_flag_unknown_01
 C - - - - - 0x00E71C 03:E70C: D0 13     BNE bra_E721
-C - - - - - 0x00E71E 03:E70E: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00E71E 03:E70E: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00E721 03:E711: A6 6F     LDX ram_006F
 C - - - - - 0x00E723 03:E713: F0 09     BEQ bra_E71E
 C - - - - - 0x00E725 03:E715: E0 0B     CPX #$0B
@@ -5905,23 +5905,23 @@ C - - - - - 0x00E76A 03:E75A: C9 40     CMP #$40
 C - - - - - 0x00E76C 03:E75C: 90 A3     BCC bra_E701
 C - - - - - 0x00E76E 03:E75E: 2C 7E 03  BIT ram_random
 C - - - - - 0x00E771 03:E761: 10 3C     BPL bra_E79F
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E77B 03:E76B: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00E77D 03:E76D: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E78A 03:E77A: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00E78D 03:E77D: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E798 03:E788: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00E79A 03:E78A: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E7A7 03:E797: A5 6F     LDA ram_006F
 C - - - - - 0x00E7A9 03:E799: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00E7AC 03:E79C: 4C 55 DF  JMP loc_DF55
 bra_E79F:
 C - - - - - 0x00E7AF 03:E79F: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00E7B1 03:E7A1: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E7BE 03:E7AE: 4C 55 DF  JMP loc_DF55
 bra_E7B1:
 C - - - - - 0x00E7C1 03:E7B1: AD 1E 04  LDA ram_041E
@@ -5957,7 +5957,7 @@ C - - - - - 0x00E805 03:E7F5: A9 04     LDA #$04
 C - - - - - 0x00E807 03:E7F7: 20 52 C6  JSR sub_C652
 C - - - - - 0x00E80A 03:E7FA: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00E80C 03:E7FC: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E819 03:E809: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00E81C 03:E80C: A5 6F     LDA ram_006F
 C - - - - - 0x00E81E 03:E80E: 20 E3 CB  JSR sub_CBE3_get_base_player_address
@@ -6026,16 +6026,16 @@ C - - - - - 0x00E87D 03:E86D: 60        RTS
 
 
 ofs_E86E_01:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 bra_E878:
 C - - - - - 0x00E888 03:E878: A9 01     LDA #$01
 C - - - - - 0x00E88A 03:E87A: 20 52 C6  JSR sub_C652
-C - - - - - 0x00E88D 03:E87D: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00E88D 03:E87D: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00E890 03:E880: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00E893 03:E883: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00E896 03:E886: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00E899 03:E889: 30 10     BMI bra_E89B
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E8A3 03:E893: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00E8A5 03:E895: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00E8A8 03:E898: 4C 55 DF  JMP loc_DF55
@@ -6047,25 +6047,25 @@ C - - - - - 0x00E8B2 03:E8A2: 90 D4     BCC bra_E878
 C - - - - - 0x00E8B4 03:E8A4: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00E8B7 03:E8A7: 30 10     BMI bra_E8B9
 - - - - - - 0x00E8B9 03:E8A9: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 - - - - - - 0x00E8C4 03:E8B4: A9 00     LDA #con_behavior_idle
 - - - - - - 0x00E8C6 03:E8B6: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_E8B9:
 C - - - - - 0x00E8C9 03:E8B9: A5 6F     LDA ram_006F
 C - - - - - 0x00E8CB 03:E8BB: 20 B9 C6  JSR sub_C6B9
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E8D6 03:E8C6: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00E8D8 03:E8C8: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E8E5 03:E8D5: 4C 55 DF  JMP loc_DF55
 
 
 
 ofs_E8D8_02_w_ball:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E8F2 03:E8E2: A5 6F     LDA ram_006F
 C - - - - - 0x00E8F4 03:E8E4: 20 B9 C6  JSR sub_C6B9
-C - - - - - 0x00E8F7 03:E8E7: 20 40 C9  JSR sub_C93F_clear_01
+C - - - - - 0x00E8F7 03:E8E7: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00E8FA 03:E8EA: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E8FC 03:E8EC: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E8FE 03:E8EE: 29 E0     AND #$E0
@@ -6211,7 +6211,7 @@ C - - - - - 0x00EA1B 03:EA0B: A9 05     LDA #$05
 C - - - - - 0x00EA1D 03:EA0D: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00EA20 03:EA10: A9 30     LDA #$30
 C - - - - - 0x00EA22 03:EA12: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EA2D 03:EA1D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EA2F 03:EA1F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EA32 03:EA22: 4C 55 DF  JMP loc_DF55
@@ -6295,7 +6295,7 @@ C - - - - - 0x00EABC 03:EAAC: 60        RTS
 
 
 ofs_EAAD_03_follow_ball:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 bra_EAB7:
 loc_EAB7:
 C D 3 - - - 0x00EAC7 03:EAB7: A9 01     LDA #$01
@@ -6338,7 +6338,7 @@ C - - - - - 0x00EB0D 03:EAFD: 20 1E 80  JSR sub_0x00479F
 loc_EB00:
 C D 3 - - - 0x00EB10 03:EB00: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00EB13 03:EB03: 30 10     BMI bra_EB15
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EB1D 03:EB0D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EB1F 03:EB0F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EB22 03:EB12: 4C 55 DF  JMP loc_DF55
@@ -6353,8 +6353,8 @@ C - - - - - 0x00EB2E 03:EB1E: 4C 6E E3  JMP loc_E36E
 
 loc_EB21:
 ofs_EB21_04_wo_ball:
-                                        JSR sub_C93B_set_04_clear_F7
-C - - - - - 0x00EB3B 03:EB2B: 20 40 C9  JSR sub_C93F_clear_01
+                                        JSR sub_C93B_set_player_flag___control
+C - - - - - 0x00EB3B 03:EB2B: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00EB3E 03:EB2E: A0 13     LDY #con_plr_direction
 C - - - - - 0x00EB40 03:EB30: A9 FF     LDA #$FF
 C - - - - - 0x00EB42 03:EB32: 91 61     STA (ram_plr_data),Y
@@ -6384,7 +6384,7 @@ C - - - - - 0x00EB70 03:EB60: C9 0B     CMP #$0B
 C - - - - - 0x00EB72 03:EB62: 90 15     BCC bra_EB79
 C - - - - - 0x00EB74 03:EB64: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00EB77 03:EB67: 30 10     BMI bra_EB79    ; con_gm_2p
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EB81 03:EB71: A9 11     LDA #con_behavior_follow_enemy
 C - - - - - 0x00EB83 03:EB73: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EB86 03:EB76: 4C 55 DF  JMP loc_DF55
@@ -6395,7 +6395,7 @@ C - - - - - 0x00EB8B 03:EB7B: 20 52 C6  JSR sub_C652
 C - - - - - 0x00EB8E 03:EB7E: A5 6F     LDA ram_006F
 C - - - - - 0x00EB90 03:EB80: CD 2A 04  CMP ram_plr_wo_ball
 C - - - - - 0x00EB93 03:EB83: F0 10     BEQ bra_EB95
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EB9D 03:EB8D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EB9F 03:EB8F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EBA2 03:EB92: 4C 55 DF  JMP loc_DF55
@@ -6423,17 +6423,17 @@ C - - - - - 0x00EBCF 03:EBBF: 90 3E     BCC bra_EBFF
 C - - - - - 0x00EBD1 03:EBC1: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00EBD4 03:EBC4: 30 1A     BMI bra_EBE0
 C - - - - - 0x00EBD6 03:EBC6: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EBE1 03:EBD1: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00EBE3 03:EBD3: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 bra_EBE0:
 C - - - - - 0x00EBF0 03:EBE0: A5 6F     LDA ram_006F
 C - - - - - 0x00EBF2 03:EBE2: 20 B9 C6  JSR sub_C6B9
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EBFD 03:EBED: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00EBFF 03:EBEF: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00EC0C 03:EBFC: 4C 55 DF  JMP loc_DF55
 bra_EBFF:
 C - - - - - 0x00EC0F 03:EBFF: AD AD 03  LDA ram_team_w_ball
@@ -6515,7 +6515,7 @@ bra_EC71:
 C - - - - - 0x00EC81 03:EC71: E4 6F     CPX ram_006F
 C - - - - - 0x00EC83 03:EC73: D0 15     BNE bra_EC8A
 bra_EC75:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EC8D 03:EC7D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EC8F 03:EC7F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EC92 03:EC82: A9 80     LDA #$80
@@ -6542,12 +6542,12 @@ C - - - - - 0x00ECBB 03:ECAB: A5 6F     LDA ram_006F
 C - - - - - 0x00ECBD 03:ECAD: 20 93 E0  JSR sub_E093
 loc_ECB0:
 C D 3 - - - 0x00ECC0 03:ECB0: 90 0B     BCC bra_ECBD
-C - - - - - 0x00ECC2 03:ECB2: 20 40 C9  JSR sub_C93F_clear_01
+C - - - - - 0x00ECC2 03:ECB2: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00ECC5 03:ECB5: A9 04     LDA #$04
 C - - - - - 0x00ECC7 03:ECB7: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00ECCA 03:ECBA: 4C C5 EC  JMP loc_ECC5
 bra_ECBD:
-C - - - - - 0x00ECCD 03:ECBD: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00ECCD 03:ECBD: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00ECD0 03:ECC0: A9 02     LDA #$02
 C - - - - - 0x00ECD2 03:ECC2: 20 1E 80  JSR sub_0x00479F
 loc_ECC5:
@@ -6598,8 +6598,8 @@ C - - - - - 0x00ED2B 03:ED1B: 8D E4 03  STA ram_03E4
 C - - - - - 0x00ED2E 03:ED1E: A9 00     LDA #$00
 C - - - - - 0x00ED30 03:ED20: 8D 24 04  STA ram_ball_Z_lo
 C - - - - - 0x00ED33 03:ED23: 8D 26 04  STA ram_0426
-                                        JSR sub_C93B_set_04_clear_F7
-C - - - - - 0x00ED40 03:ED30: 20 40 C9  JSR sub_C93F_clear_01
+                                        JSR sub_C93B_set_player_flag___control
+C - - - - - 0x00ED40 03:ED30: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00ED43 03:ED33: 20 77 C6  JSR sub_C677
 C - - - - - 0x00ED46 03:ED36: A5 6F     LDA ram_006F
 C - - - - - 0x00ED48 03:ED38: 20 2B C9  JSR sub_C92B
@@ -6751,7 +6751,7 @@ bra_EE4A:
 C - - - - - 0x00EE5A 03:EE4A: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00EE5D 03:EE4D: 30 10     BMI bra_EE5F
 C - - - - - 0x00EE5F 03:EE4F: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EE6A 03:EE5A: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EE6C 03:EE5C: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_EE5F:
@@ -6822,7 +6822,7 @@ C - - - - - 0x00EEEE 03:EEDE: 85 98     STA ram_0098
 C - - - - - 0x00EEF0 03:EEE0: 60        RTS
 bra_EEE1:
 C - - - - - 0x00EEF1 03:EEE1: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EEFC 03:EEEC: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EEFE 03:EEEE: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EF01 03:EEF1: A5 6F     LDA ram_006F
@@ -6835,10 +6835,10 @@ C - - - - - 0x00EF0C 03:EEFC: 60        RTS
 
 
 loc_EEFD:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EF15 03:EF05: A9 16     LDA #con_behavior_gk_get_ball
 C - - - - - 0x00EF17 03:EF07: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00EF24 03:EF14: AD 7E 03  LDA ram_random
 C - - - - - 0x00EF27 03:EF17: 29 0F     AND #$0F
 C - - - - - 0x00EF29 03:EF19: 18        CLC
@@ -7044,8 +7044,8 @@ tbl_EFE7:
 ofs_F016_05_dead:
 C - - - - - 0x00F026 03:F016: A9 02     LDA #$02
 C - - - - - 0x00F028 03:F018: 20 10 C9  JSR sub_C910
-                                        JSR sub_C93B_set_04_clear_F7
-C - - - - - 0x00F035 03:F025: 20 40 C9  JSR sub_C93F_clear_01
+                                        JSR sub_C93B_set_player_flag___control
+C - - - - - 0x00F035 03:F025: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00F038 03:F028: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F03B 03:F02B: A9 09     LDA #$09
 C - - - - - 0x00F03D 03:F02D: 20 1E 80  JSR sub_0x00479F
@@ -7056,7 +7056,7 @@ C - - - - - 0x00F048 03:F038: A9 09     LDA #$09
 C - - - - - 0x00F04A 03:F03A: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F04D 03:F03D: A9 0C     LDA #$0C
 C - - - - - 0x00F04F 03:F03F: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F05A 03:F04A: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F05C 03:F04C: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F05F 03:F04F: A5 6F     LDA ram_006F
@@ -7074,8 +7074,8 @@ C - - - - - 0x00F074 03:F064: 4C 55 DF  JMP loc_DF55
 
 
 ofs_F067_06_dodge:
-                                        JSR sub_C93B_set_04_clear_F7
-C - - - - - 0x00F081 03:F071: 20 40 C9  JSR sub_C93F_clear_01
+                                        JSR sub_C93B_set_player_flag___control
+C - - - - - 0x00F081 03:F071: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00F084 03:F074: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F087 03:F077: A9 0A     LDA #$0A
 C - - - - - 0x00F089 03:F079: 20 1E 80  JSR sub_0x00479F
@@ -7086,21 +7086,21 @@ C - - - - - 0x00F094 03:F084: A9 0A     LDA #$0A
 C - - - - - 0x00F096 03:F086: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F099 03:F089: A9 06     LDA #$06
 C - - - - - 0x00F09B 03:F08B: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F0A6 03:F096: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F0A8 03:F098: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F0B5 03:F0A5: 4C 55 DF  JMP loc_DF55
 
 
 
 ofs_F0A8_0F_run_area:
 ofs_F0A8_15_run_base:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 loc_F0B0:
 C D 3 - - - 0x00F0C0 03:F0B0: A9 01     LDA #$01
 C - - - - - 0x00F0C2 03:F0B2: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F0C5 03:F0B5: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F0C5 03:F0B5: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F0C8 03:F0B8: A0 19     LDY #con_plr_unknown_19
 C - - - - - 0x00F0CA 03:F0BA: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F0CC 03:F0BC: A0 06     LDY #con_plr_action_timer_1
@@ -7117,11 +7117,11 @@ C - - - - - 0x00F0E0 03:F0D0: 4C B0 F0  JMP loc_F0B0
 
 
 ofs_F0D3_10:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 loc_F0DB:
 C D 3 - - - 0x00F0EB 03:F0DB: A9 01     LDA #$01
 C - - - - - 0x00F0ED 03:F0DD: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F0F0 03:F0E0: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F0F0 03:F0E0: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F0F3 03:F0E3: 20 67 E4  JSR sub_E467
 C - - - - - 0x00F0F6 03:F0E6: 90 0B     BCC bra_F0F3
 C - - - - - 0x00F0F8 03:F0E8: 20 77 C6  JSR sub_C677
@@ -7143,19 +7143,19 @@ C - - - - - 0x00F112 03:F102: 29 20     AND #con_gm_out_of_play
 C - - - - - 0x00F114 03:F104: F0 10     BEQ bra_F116
 C - - - - - 0x00F116 03:F106: A9 01     LDA #$01
 C - - - - - 0x00F118 03:F108: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F11B 03:F10B: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F11B 03:F10B: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F11E 03:F10E: A9 01     LDA #$01
 C - - - - - 0x00F120 03:F110: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F123 03:F113: 4C FF F0  JMP loc_F0FF
 bra_F116:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F12E 03:F11E: A9 00     LDA #$00
 C - - - - - 0x00F130 03:F120: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00F132 03:F122: 91 61     STA (ram_plr_data),Y
 bra_F124:
 C - - - - - 0x00F134 03:F124: A9 01     LDA #$01
 C - - - - - 0x00F136 03:F126: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F139 03:F129: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F139 03:F129: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F13C 03:F12C: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00F13F 03:F12F: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00F142 03:F132: A5 6F     LDA ram_006F
@@ -7166,7 +7166,7 @@ C - - - - - 0x00F14A 03:F13A: A9 0B     LDA #$0B
 bra_F13C:
 C - - - - - 0x00F14C 03:F13C: 4D AD 03  EOR ram_team_w_ball
 C - - - - - 0x00F14F 03:F13F: D0 10     BNE bra_F151
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F159 03:F149: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F15B 03:F14B: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F15E 03:F14E: 4C 55 DF  JMP loc_DF55
@@ -7187,7 +7187,7 @@ C - - - - - 0x00F179 03:F169: 90 B9     BCC bra_F124
 C - - - - - 0x00F17B 03:F16B: AD 7E 03  LDA ram_random
 C - - - - - 0x00F17E 03:F16E: C9 E0     CMP #$E0
 C - - - - - 0x00F180 03:F170: 90 B2     BCC bra_F124
-C - - - - - 0x00F182 03:F172: 20 40 C9  JSR sub_C93F_clear_01
+C - - - - - 0x00F182 03:F172: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00F185 03:F175: 4C 76 E1  JMP loc_E176
 bra_F178:
 C - - - - - 0x00F188 03:F178: A9 16     LDA #$16
@@ -7200,31 +7200,31 @@ C - - - - - 0x00F196 03:F186: AE 7E 03  LDX ram_random
 C - - - - - 0x00F199 03:F189: E0 40     CPX #$40
 C - - - - - 0x00F19B 03:F18B: 90 3E     BCC bra_F1CB
 C - - - - - 0x00F19D 03:F18D: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F1A8 03:F198: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00F1AA 03:F19A: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F1B7 03:F1A7: A5 6F     LDA ram_006F
 C - - - - - 0x00F1B9 03:F1A9: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 bra_F1AC:
 C - - - - - 0x00F1BC 03:F1AC: A5 6F     LDA ram_006F
 C - - - - - 0x00F1BE 03:F1AE: 20 B9 C6  JSR sub_C6B9
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F1C9 03:F1B9: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F1CB 03:F1BB: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F1D8 03:F1C8: 4C 55 DF  JMP loc_DF55
 bra_F1CB:
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F1E3 03:F1D3: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00F1E5 03:F1D5: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F1F2 03:F1E2: 4C 55 DF  JMP loc_DF55
 
 
 
 ofs_F1E5_freeze:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F1FF 03:F1EF: 20 77 C6  JSR sub_C677
 bra_F1F2:
 loc_F1F2:
@@ -7232,9 +7232,9 @@ C D 3 - - - 0x00F202 03:F1F2: A9 01     LDA #$01
 C - - - - - 0x00F204 03:F1F4: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F207 03:F1F7: A0 00     LDY #con_plr_flags
 C - - - - - 0x00F209 03:F1F9: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00F20B 03:F1FB: 29 01     AND #$01
+C - - - - - 0x00F20B 03:F1FB: 29 01     AND #con_player_flag_unknown_01
 C - - - - - 0x00F20D 03:F1FD: D0 F3     BNE bra_F1F2
-C - - - - - 0x00F20F 03:F1FF: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F20F 03:F1FF: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F212 03:F202: A9 02     LDA #$02
 C - - - - - 0x00F214 03:F204: A6 6F     LDX ram_006F
 C - - - - - 0x00F216 03:F206: F0 06     BEQ bra_F20E
@@ -7248,10 +7248,10 @@ C - - - - - 0x00F221 03:F211: 4C F2 F1  JMP loc_F1F2
 
 
 ofs_F214_13:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F22E 03:F21E: A9 01     LDA #$01
 C - - - - - 0x00F230 03:F220: 8D E4 03  STA ram_03E4
-C - - - - - 0x00F233 03:F223: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F233 03:F223: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F236 03:F226: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F239 03:F229: AD 7E 03  LDA ram_random
 C - - - - - 0x00F23C 03:F22C: 29 0F     AND #$0F
@@ -7283,13 +7283,13 @@ C - - - - - 0x00F26D 03:F25D: F0 D5     BEQ bra_F234_loop
 bra_F25F:
 C - - - - - 0x00F26F 03:F25F: A9 0C     LDA #$0C
 C - - - - - 0x00F271 03:F261: 20 10 C9  JSR sub_C910
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F27C 03:F26C: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F27E 03:F26E: 20 2F C6  JSR sub_C62F_player_state_handler
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F28B 03:F27B: AD 2A 04  LDA ram_plr_wo_ball
 C - - - - - 0x00F28E 03:F27E: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F299 03:F289: A9 04     LDA #con_behavior_wo_ball
 C - - - - - 0x00F29B 03:F28B: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F29E 03:F28E: AD 29 04  LDA ram_plr_w_ball
@@ -7307,13 +7307,13 @@ loc_F2A4:
 ofs_F2A4_14:
 C D 3 - - - 0x00F2B4 03:F2A4: A9 01     LDA #$01
 C - - - - - 0x00F2B6 03:F2A6: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F2B9 03:F2A9: 20 37 C9  JSR sub_C937_set_01
+C - - - - - 0x00F2B9 03:F2A9: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F2BC 03:F2AC: A0 19     LDY #con_plr_unknown_19
 C - - - - - 0x00F2BE 03:F2AE: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F2C0 03:F2B0: A0 06     LDY #$06
 C - - - - - 0x00F2C2 03:F2B2: D1 61     CMP (ram_plr_data),Y
 C - - - - - 0x00F2C4 03:F2B4: D0 10     BNE bra_F2C6
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F2CE 03:F2BE: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F2D0 03:F2C0: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F2D3 03:F2C3: 4C 55 DF  JMP loc_DF55
@@ -7325,7 +7325,7 @@ C - - - - - 0x00F2DC 03:F2CC: 4C A4 F2  JMP loc_F2A4
 
 
 ofs_F2D2_07:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F2EC 03:F2DC: 20 BA DF  JSR sub_DFBA
 C - - - - - 0x00F2EF 03:F2DF: A9 03     LDA #$03
 C - - - - - 0x00F2F1 03:F2E1: 20 10 C9  JSR sub_C910
@@ -7343,7 +7343,7 @@ C - - - - - 0x00F30F 03:F2FF: A9 0B     LDA #$0B
 C - - - - - 0x00F311 03:F301: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F314 03:F304: A9 30     LDA #$30
 C - - - - - 0x00F316 03:F306: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F321 03:F311: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F323 03:F313: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F326 03:F316: 4C 55 DF  JMP loc_DF55
@@ -7351,7 +7351,7 @@ C - - - - - 0x00F326 03:F316: 4C 55 DF  JMP loc_DF55
 
 
 ofs_F319_08:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F333 03:F323: 20 BA DF  JSR sub_DFBA
 C - - - - - 0x00F336 03:F326: A9 03     LDA #$03
 C - - - - - 0x00F338 03:F328: 20 10 C9  JSR sub_C910
@@ -7379,7 +7379,7 @@ C - - - - - 0x00F370 03:F360: A9 0C     LDA #$0C
 C - - - - - 0x00F372 03:F362: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F375 03:F365: A9 0C     LDA #$0C
 C - - - - - 0x00F377 03:F367: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F382 03:F372: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F384 03:F374: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F387 03:F377: 4C 55 DF  JMP loc_DF55
@@ -7387,7 +7387,7 @@ C - - - - - 0x00F387 03:F377: 4C 55 DF  JMP loc_DF55
 
 
 ofs_F37D_0A:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F397 03:F387: 20 BA DF  JSR sub_DFBA
 C - - - - - 0x00F39A 03:F38A: A9 04     LDA #$04
 C - - - - - 0x00F39C 03:F38C: 20 10 C9  JSR sub_C910
@@ -7417,7 +7417,7 @@ C - - - - - 0x00F3CF 03:F3BF: A9 0D     LDA #$0D
 C - - - - - 0x00F3D1 03:F3C1: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F3D4 03:F3C4: A9 30     LDA #$30
 C - - - - - 0x00F3D6 03:F3C6: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F3E1 03:F3D1: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F3E3 03:F3D3: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F3E6 03:F3D6: 4C 55 DF  JMP loc_DF55
@@ -7449,7 +7449,7 @@ C - - - - - 0x00F41E 03:F40E: A9 0E     LDA #$0E
 C - - - - - 0x00F420 03:F410: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F423 03:F413: A9 18     LDA #$18
 C - - - - - 0x00F425 03:F415: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F430 03:F420: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F432 03:F422: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F435 03:F425: 4C 55 DF  JMP loc_DF55
@@ -7484,7 +7484,7 @@ C - - - - - 0x00F469 03:F459: 60        RTS
 
 ; !!!
 ofs_F45A_0C_throw_in:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F474 03:F464: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F477 03:F467: A5 6F     LDA ram_006F
 C - - - - - 0x00F479 03:F469: 20 2B C9  JSR sub_C92B
@@ -7596,7 +7596,7 @@ C - - - - - 0x00F550 03:F540: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F553 03:F543: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F556 03:F546: A9 10     LDA #$10
 C - - - - - 0x00F558 03:F548: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F563 03:F553: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F565 03:F555: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F568 03:F558: A9 80     LDA #$80
@@ -7608,7 +7608,7 @@ C - - - - - 0x00F570 03:F560: 4C 55 DF  JMP loc_DF55
 
 ofs_F563_0D_goal_kick:
 ofs_F563_16_gk_get_ball:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F57D 03:F56D: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F580 03:F570: A0 0C     LDY #con_plr_action_timer_2
 C - - - - - 0x00F582 03:F572: A9 00     LDA #$00
@@ -7727,7 +7727,7 @@ C - - - - - 0x00F67B 03:F66B: A9 11     LDA #$11
 C - - - - - 0x00F67D 03:F66D: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F680 03:F670: A9 10     LDA #$10
 C - - - - - 0x00F682 03:F672: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F68D 03:F67D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F68F 03:F67F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F692 03:F682: 4C 55 DF  JMP loc_DF55
@@ -7735,7 +7735,7 @@ C - - - - - 0x00F692 03:F682: 4C 55 DF  JMP loc_DF55
 
 
 ofs_F685_0E_corner_kick:
-                                        JSR sub_C93B_set_04_clear_F7
+                                        JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F69F 03:F68F: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F6A2 03:F692: A5 6F     LDA ram_006F
 C - - - - - 0x00F6A4 03:F694: 20 2B C9  JSR sub_C92B
@@ -7857,7 +7857,7 @@ C - - - - - 0x00F792 03:F782: A9 05     LDA #$05
 C - - - - - 0x00F794 03:F784: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F797 03:F787: A9 30     LDA #$30
 C - - - - - 0x00F799 03:F789: 20 52 C6  JSR sub_C652
-                                        JSR sub_C943_clear_FB
+                                        JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F7A4 03:F794: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F7A6 03:F796: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F7A9 03:F799: 4C 55 DF  JMP loc_DF55

@@ -1076,7 +1076,7 @@ C - - - - - 0x0046A5 01:8695: 60        RTS
 sub_8696_draw_animation:
 .export sub_0x0046A6_draw_animation
 sub_0x0046A6_draw_animation:
-                                        JSR sub_0x00C951_clear_FD
+                                        JSR sub_0x00C951_clear_player_flag___visible
 C - - - - - 0x0046AE 01:869E: 24 5D     BIT ram_005D
 C - - - - - 0x0046B0 01:86A0: 30 26     BMI bra_86C8_RTS
 C - - - - - 0x0046B2 01:86A2: A0 0B     LDY #con_plr_pos_Y_lo
@@ -1102,7 +1102,7 @@ C - - - - - 0x0046D6 01:86C6: F0 01     BEQ bra_86C9
 bra_86C8_RTS:
 C - - - - - 0x0046D8 01:86C8: 60        RTS
 bra_86C9:
-                                        JSR sub_0x00C949_set_02
+                                        JSR sub_0x00C949_set_player_flag___visible
 C - - - - - 0x0046E1 01:86D1: A9 00     LDA #$00
 C - - - - - 0x0046E3 01:86D3: 85 2F     STA ram_002F
 C - - - - - 0x0046E5 01:86D5: A9 01     LDA #$01
@@ -1310,7 +1310,7 @@ C - - - - - 0x004827 01:8817: A0 12     LDY #con_plr_behavior
 C - - - - - 0x004829 01:8819: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00482B 01:881B: C9 15     CMP #con_behavior_run_base
 C - - - - - 0x00482D 01:881D: F0 21     BEQ bra_8840
-                                        JSR sub_0x00C953_clear_FB
+                                        JSR sub_0x00C953_clear_player_flag___control
 C - - - - - 0x004837 01:8827: A0 1E     LDY #con_plr_tbl_lo
 C - - - - - 0x004839 01:8829: A5 2A     LDA ram_002A
 C - - - - - 0x00483B 01:882B: 0A        ASL
@@ -1321,7 +1321,7 @@ C - - - - - 0x004841 01:8831: C8        INY ; con_plr_tbl_hi
 C - - - - - 0x004842 01:8832: A9 00     LDA #$00
 C - - - - - 0x004844 01:8834: 69 A5     ADC #> tbl_A5D6
 C - - - - - 0x004846 01:8836: 91 61     STA (ram_plr_data),Y
-                                        JSR sub_0x00C94D_set_08
+                                        JSR sub_0x00C94DB_set_player_flag___busy
 bra_8840:
 C - - - - - 0x004850 01:8840: E6 2A     INC ram_002A
 C - - - - - 0x004852 01:8842: A5 2A     LDA ram_002A
@@ -1431,7 +1431,7 @@ C - - - - - 0x0048E0 01:88D0: C8        INY ; con_plr_tbl_hi
 C - - - - - 0x0048E1 01:88D1: A5 2D     LDA ram_002D
 C - - - - - 0x0048E3 01:88D3: 69 00     ADC #$00
 C - - - - - 0x0048E5 01:88D5: 91 61     STA (ram_plr_data),Y
-                                        JSR sub_0x00C94D_set_08
+                                        JSR sub_0x00C94DB_set_player_flag___busy
 C - - - - - 0x0048EF 01:88DF: 60        RTS
 
 
@@ -1582,7 +1582,7 @@ loc_89B0:
 ofs_89B0_04:
 C D 0 J - - 0x0049C0 01:89B0: A9 11     LDA #con_behavior_follow_enemy
 C - - - - - 0x0049C2 01:89B2: 20 5A C0  JSR sub_0x00C63F_player_state_handler
-                                        JSR sub_0x00C94B_set_04_clear_F7
+                                        JSR sub_0x00C94B_set_player_flag___control
 C - - - - - 0x0049CF 01:89BF: 60        RTS
 
 
@@ -1606,7 +1606,7 @@ bra_89D7:
 C - - - - - 0x0049E7 01:89D7: 20 4B 89  JSR sub_894B
 C - - - - - 0x0049EA 01:89DA: A9 14     LDA #con_behavior_14
 C - - - - - 0x0049EC 01:89DC: 20 5A C0  JSR sub_0x00C63F_player_state_handler
-                                        JSR sub_0x00C94B_set_04_clear_F7
+                                        JSR sub_0x00C94B_set_player_flag___control
 C - - - - - 0x0049F9 01:89E9: 60        RTS
 
 

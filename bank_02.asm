@@ -4643,7 +4643,7 @@ C - - - - - 0x009789 02:9779: D0 03     BNE bra_977E
 C - - - - - 0x00978B 02:977B: 4C 38 98  JMP loc_9838
 bra_977E:
 C - - - - - 0x00978E 02:977E: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-                                        JSR sub_0x00C953_clear_FB
+                                        JSR sub_0x00C953_clear_player_flag___control
 C - - - - - 0x009799 02:9789: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00979B 02:978B: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00979E 02:978E: AD AD 03  LDA ram_team_w_ball
@@ -4787,7 +4787,7 @@ C - - - - - 0x009867 02:9857: D0 03     BNE bra_985C
 C - - - - - 0x009869 02:9859: 4C 16 99  JMP loc_9916
 bra_985C:
 C - - - - - 0x00986C 02:985C: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-                                        JSR sub_0x00C953_clear_FB
+                                        JSR sub_0x00C953_clear_player_flag___control
 C - - - - - 0x009877 02:9867: A9 00     LDA #con_behavior_idle
 C - - - - - 0x009879 02:9869: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00987C 02:986C: AD AD 03  LDA ram_team_w_ball
@@ -6902,7 +6902,7 @@ C - - - - - 0x00A11C 02:A10C: A9 00     LDA #$00
 bra_A10E_loop:
 C - - - - - 0x00A11E 02:A10E: 48        PHA
 C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-                                        JSR sub_0x00C953_clear_FB
+                                        JSR sub_0x00C953_clear_player_flag___control
 C - - - - - 0x00A12A 02:A11A: A9 19     LDA #con_behavior_19
 C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A12F 02:A11F: A0 11     LDY #con_plr_anim_id
