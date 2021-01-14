@@ -6,6 +6,9 @@
 
 
 .export sub_0x000010
+
+
+
 sub_0x000010:
 C D 0 - - - 0x000010 00:8000: A5 FC     LDA ram_00FC
 C - - - - - 0x000012 00:8002: F0 01     BEQ bra_8005

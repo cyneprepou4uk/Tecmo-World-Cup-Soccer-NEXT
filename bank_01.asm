@@ -6,6 +6,33 @@
 
 
 .export sub_0x00405E
+.export sub_0x0040B3
+.export sub_0x0041E9
+.export sub_0x00428E
+.export sub_0x004351
+.export sub_0x004371
+.export sub_0x0043BA
+.export sub_0x00448D
+.export sub_0x004531
+.export sub_0x0045A6
+.export sub_0x00464C
+.export sub_0x0046A6_draw_animation
+.export sub_0x00479F
+.export sub_0x0047FD
+.export sub_0x00487C
+.export sub_0x0048C2
+.export sub_0x0048F0
+.export sub_0x004A03
+.export sub_0x004A81
+.export sub_0x004B34
+.export sub_0x004B4F
+.export sub_0x004B7B
+.export sub_0x004BEC
+.export sub_0x004BF8
+.export sub_0x004D2A
+
+
+
 sub_0x00405E:
 C D 0 - - - 0x00405E 01:804E: A9 00     LDA #$00
 C - - - - - 0x004060 01:8050: 85 2A     STA ram_002A
@@ -72,7 +99,6 @@ C - - - - - 0x0040B2 01:80A2: 60        RTS
 
 loc_80A3:
 off_0x0040B3:
-.export sub_0x0040B3
 sub_0x0040B3 = off_0x0040B3 - 1
 C D 0 - - - 0x0040B3 01:80A3: A9 01     LDA #$01
 C - - - - - 0x0040B5 01:80A5: 20 09 C0  JSR sub_0x00C619_delay
@@ -230,7 +256,6 @@ C - - - - - 0x0041E6 01:81D6: 4C A3 80  JMP loc_80A3
 
 
 
-.export sub_0x0041E9
 sub_0x0041E9:
 C D 0 - - - 0x0041E9 01:81D9: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x0041EC 01:81DC: 10 02     BPL bra_81E0_someone_has_ball
@@ -328,7 +353,6 @@ C - - - - - 0x004284 01:8274: 98        TYA
 C - - - - - 0x004285 01:8275: 6D BD 03  ADC ram_03BD
 C - - - - - 0x004288 01:8278: 8D BD 03  STA ram_03BD
 C - - - - - 0x00428B 01:827B: 8C B9 03  STY ram_03B9
-.export sub_0x00428E
 sub_0x00428E:
 C D 0 - - - 0x00428E 01:827E: AE BC 03  LDX ram_03BC
 C - - - - - 0x004291 01:8281: AC BD 03  LDY ram_03BD
@@ -468,7 +492,6 @@ tbl_8332:
 
 
 off_0x004351:
-.export sub_0x004351
 sub_0x004351 = off_0x004351 - 1
 C D 0 - - - 0x004351 01:8341: A9 21     LDA #$21
 loc_8343:
@@ -489,7 +512,6 @@ C - - - - - 0x00436E 01:835E: 4C 43 83  JMP loc_8343
 
 
 
-.export sub_0x004371
 sub_0x004371:
 C D 0 - - - 0x004371 01:8361: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x004374 01:8364: A9 00     LDA #$00
@@ -544,7 +566,6 @@ tbl_83A7:
 
 
 
-.export sub_0x0043BA
 sub_0x0043BA:
 C D 0 - - - 0x0043BA 01:83AA: A9 00     LDA #$00
 bra_83AC_loop:
@@ -716,7 +737,6 @@ tbl_8456:
 
 
 
-.export sub_0x00448D
 sub_0x00448D:
 C D 0 - - - 0x00448D 01:847D: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x004490 01:8480: 29 10     AND #con_gm_penalty
@@ -815,7 +835,6 @@ C - - - - - 0x004530 01:8520: 60        RTS
 
 
 
-.export sub_0x004531
 sub_0x004531:
 C D 0 - - - 0x004531 01:8521: A2 00     LDX #$00
 C - - - - - 0x004533 01:8523: AD A9 03  LDA ram_team_id
@@ -921,7 +940,6 @@ tbl_8559:
 
 loc_8596:
 off_0x0045A6:
-.export sub_0x0045A6
 sub_0x0045A6 = off_0x0045A6 - 1
 C D 0 - - - 0x0045A6 01:8596: 2C D2 03  BIT ram_03D2
 C - - - - - 0x0045A9 01:8599: 30 08     BMI bra_85A3
@@ -1016,7 +1034,6 @@ C - - - - - 0x00464B 01:863B: 60        RTS
 
 
 
-.export sub_0x00464C
 sub_0x00464C:
 C D 0 - - - 0x00464C 01:863C: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00464F 01:863F: 29 10     AND #con_gm_penalty
@@ -1074,7 +1091,6 @@ C - - - - - 0x0046A5 01:8695: 60        RTS
 
 
 sub_8696_draw_animation:
-.export sub_0x0046A6_draw_animation
 sub_0x0046A6_draw_animation:
                                         JSR sub_0x00C951_clear_player_flag___visible
 C - - - - - 0x0046AE 01:869E: 24 5D     BIT ram_005D
@@ -1209,7 +1225,6 @@ C - - - - - 0x004780 01:8770: D0 C7     BNE bra_8739_loop
 
 
 
-.export sub_0x00479F
 sub_0x00479F:
 C D 0 - - - 0x00479F 01:878F: 0A        ASL
 C - - - - - 0x0047A0 01:8790: AA        TAX
@@ -1282,7 +1297,6 @@ tbl_87DE:
 
 
 
-.export sub_0x0047FD
 sub_0x0047FD:
 C D 0 - - - 0x0047FD 01:87ED: 2C 2C 04  BIT ram_042C
 C - - - - - 0x004800 01:87F0: 70 16     BVS bra_8808
@@ -1321,7 +1335,7 @@ C - - - - - 0x004841 01:8831: C8        INY ; con_plr_tbl_hi
 C - - - - - 0x004842 01:8832: A9 00     LDA #$00
 C - - - - - 0x004844 01:8834: 69 A5     ADC #> tbl_A5D6
 C - - - - - 0x004846 01:8836: 91 61     STA (ram_plr_data),Y
-                                        JSR sub_0x00C94DB_set_player_flag___busy
+                                        JSR sub_0x00C94D_set_player_flag___busy
 bra_8840:
 C - - - - - 0x004850 01:8840: E6 2A     INC ram_002A
 C - - - - - 0x004852 01:8842: A5 2A     LDA ram_002A
@@ -1355,7 +1369,6 @@ C - - - - - 0x00487B 01:886B: 60        RTS
 
 
 sub_886C:
-.export sub_0x00487C
 sub_0x00487C:
 C D 0 - - - 0x00487C 01:886C: 48        PHA
 C - - - - - 0x00487D 01:886D: C9 0B     CMP #$0B
@@ -1406,7 +1419,6 @@ C - - - - - 0x0048C1 01:88B1: 60        RTS
 
 
 sub_88B2:
-.export sub_0x0048C2
 sub_0x0048C2:
 C D 0 - - - 0x0048C2 01:88B2: 48        PHA
 C - - - - - 0x0048C3 01:88B3: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
@@ -1431,12 +1443,11 @@ C - - - - - 0x0048E0 01:88D0: C8        INY ; con_plr_tbl_hi
 C - - - - - 0x0048E1 01:88D1: A5 2D     LDA ram_002D
 C - - - - - 0x0048E3 01:88D3: 69 00     ADC #$00
 C - - - - - 0x0048E5 01:88D5: 91 61     STA (ram_plr_data),Y
-                                        JSR sub_0x00C94DB_set_player_flag___busy
+                                        JSR sub_0x00C94D_set_player_flag___busy
 C - - - - - 0x0048EF 01:88DF: 60        RTS
 
 
 
-.export sub_0x0048F0
 sub_0x0048F0:
 C D 0 - - - 0x0048F0 01:88E0: 2C 2C 04  BIT ram_042C
 C - - - - - 0x0048F3 01:88E3: 70 38     BVS bra_891D
@@ -1619,7 +1630,6 @@ C - - - - - 0x004A02 01:89F2: 60        RTS
 
 
 
-.export sub_0x004A03
 sub_0x004A03:
 C D 0 - - - 0x004A03 01:89F3: 85 7A     STA ram_007A
 C - - - - - 0x004A05 01:89F5: A0 00     LDY #$00
@@ -1703,7 +1713,6 @@ loc_8A67:
 
 
 
-.export sub_0x004A81
 sub_0x004A81:
 C D 0 - - - 0x004A81 01:8A71: A9 00     LDA #$00
 C - - - - - 0x004A83 01:8A73: 2C A4 03  BIT ram_game_mode_flags
@@ -1823,7 +1832,6 @@ tbl_8B19:
 
 
 
-.export sub_0x004B34
 sub_0x004B34:
 C D 0 - - - 0x004B34 01:8B24: AA        TAX
 C - - - - - 0x004B35 01:8B25: A0 00     LDY #$00
@@ -1850,7 +1858,6 @@ tbl_8B3C:
 
 
 
-.export sub_0x004B4F
 sub_0x004B4F:
 C D 0 - - - 0x004B4F 01:8B3F: 38        SEC
 C - - - - - 0x004B50 01:8B40: AD DE 03  LDA ram_03DE
@@ -1880,7 +1887,6 @@ C - - - - - 0x004B7A 01:8B6A: 60        RTS
 
 
 
-.export sub_0x004B7B
 sub_0x004B7B:
 C D 0 - - - 0x004B7B 01:8B6B: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x004B7E 01:8B6E: 10 03     BPL bra_8B73
@@ -1965,7 +1971,6 @@ C - - - - - 0x004BEB 01:8BDB: 60        RTS
 
 
 
-.export sub_0x004BEC
 sub_0x004BEC:
 C D 0 - - - 0x004BEC 01:8BDC: AD 7F 03  LDA ram_random + 1
 C - - - - - 0x004BEF 01:8BDF: A0 0C     LDY #con_plr_action_timer_2
@@ -1976,7 +1981,6 @@ C - - - - - 0x004BF7 01:8BE7: 60        RTS
 
 
 
-.export sub_0x004BF8
 sub_0x004BF8:
 C D 0 - - - 0x004BF8 01:8BE8: 24 82     BIT ram_0082
 C - - - - - 0x004BFA 01:8BEA: 30 11     BMI bra_8BFD
@@ -2173,7 +2177,6 @@ C - - - - - 0x004D29 01:8D19: 60        RTS
 
 
 
-.export sub_0x004D2A
 sub_0x004D2A:
 C D 0 - - - 0x004D2A 01:8D1A: A9 00     LDA #$00
 C - - - - - 0x004D2C 01:8D1C: 85 2B     STA ram_002B

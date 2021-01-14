@@ -6,6 +6,22 @@
 
 
 .export sub_0x008043
+.export sub_0x0080E1
+.export sub_0x0083D9
+.export sub_0x008501
+.export sub_0x008A2A
+.export sub_0x008AD9
+.export sub_0x008B30
+.export sub_0x00975F
+.export sub_0x009852
+.export sub_0x00A03A
+.export sub_0x00A100
+.export sub_0x00A1FD
+.export sub_0x00B010
+.export sub_0x00A340
+
+
+
 sub_0x008043:
 C D 0 - - - 0x008043 02:8033: A9 09     LDA #$09
 C - - - - - 0x008045 02:8035: 85 6D     STA ram_006D
@@ -113,7 +129,6 @@ C - - - - - 0x0080E0 02:80D0: 60        RTS
 
 
 off_0x0080E1:
-.export sub_0x0080E1
 sub_0x0080E1 = off_0x0080E1 - 1
 C D 0 - - - 0x0080E1 02:80D1: 20 75 C0  JSR sub_0x00CA69_clear_nametables
 C - - - - - 0x0080E4 02:80D4: 20 51 C0  JSR sub_0x00CABF_hide_sprites
@@ -574,7 +589,6 @@ tbl_8399:
 
 
 
-.export sub_0x0083D9
 sub_0x0083D9:
 C D 0 - - - 0x0083D9 02:83C9: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x0083DC 02:83CC: 30 3B     BMI bra_8409_RTS    ; con_gm_2p
@@ -739,7 +753,6 @@ C - - - - - 0x0084F5 02:84E5: 4C 87 84  JMP loc_8487
 
 
 
-.export sub_0x008501
 sub_0x008501:
 C D 0 - - - 0x008501 02:84F1: 20 75 C0  JSR sub_0x00CA69_clear_nametables
 C - - - - - 0x008504 02:84F4: 20 51 C0  JSR sub_0x00CABF_hide_sprites
@@ -1552,7 +1565,6 @@ C - - - - - 0x008A29 02:8A19: 60        RTS
 
 
 off_0x008A2A:
-.export sub_0x008A2A
 sub_0x008A2A = off_0x008A2A - 1
 C D 0 - - - 0x008A2A 02:8A1A: A5 28     LDA ram_0028
 C - - - - - 0x008A2C 02:8A1C: 29 FC     AND #$FC
@@ -1652,7 +1664,6 @@ C - - - - - 0x008AD8 02:8AC8: 60        RTS
 
 
 sub_8AC9:
-.export sub_0x008AD9
 sub_0x008AD9:
 C D 0 - - - 0x008AD9 02:8AC9: A9 00     LDA #$00
 sub_8ACB:
@@ -1705,7 +1716,6 @@ C - - - - - 0x008B2F 02:8B1F: 60        RTS
 
 
 
-.export sub_0x008B30
 sub_0x008B30:
 C D 0 - - - 0x008B30 02:8B20: A9 1D     LDA #$1D
 C - - - - - 0x008B32 02:8B22: 85 6C     STA ram_006C
@@ -4610,7 +4620,6 @@ tbl_95BF:
 
 
 
-.export sub_0x00975F
 sub_0x00975F:
 C D 0 - - - 0x00975F 02:974F: A2 00     LDX #$00
 C - - - - - 0x009761 02:9751: 86 2C     STX ram_002C
@@ -4770,7 +4779,6 @@ C - - - - - 0x009851 02:9841: 60        RTS
 
 
 
-.export sub_0x009852
 sub_0x009852:
 C D 0 - - - 0x009852 02:9842: 0A        ASL
 C - - - - - 0x009853 02:9843: AA        TAX
@@ -6780,7 +6788,6 @@ _off007_9FD2_13:
 
 
 
-.export sub_0x00A03A
 sub_0x00A03A:
 C D 1 - - - 0x00A03A 02:A02A: A2 00     LDX #$00
 C - - - - - 0x00A03C 02:A02C: A9 02     LDA #$02
@@ -6883,7 +6890,6 @@ C - - - - - 0x00A0FF 02:A0EF: 60        RTS
 
 
 
-.export sub_0x00A100
 sub_0x00A100:
 C D 1 - - - 0x00A100 02:A0F0: 20 9F A1  JSR sub_A19F
 C - - - - - 0x00A103 02:A0F3: 20 51 C0  JSR sub_0x00CABF_hide_sprites
@@ -7029,7 +7035,6 @@ C - - - - - 0x00A1FC 02:A1EC: 60        RTS
 
 
 
-.export sub_0x00A1FD
 sub_0x00A1FD:
 C D 1 - - - 0x00A1FD 02:A1ED: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x00A200 02:A1F0: A5 28     LDA ram_0028
@@ -7233,7 +7238,6 @@ C - - - - - 0x00A33F 02:A32F: 60        RTS
 
 
 off_0x00A340:
-.export sub_0x00A340
 sub_0x00A340 = off_0x00A340 - 1
 C D 1 - - - 0x00A340 02:A330: A9 00     LDA #$00
 bra_A332_loop:
@@ -8593,7 +8597,6 @@ tbl_A9AC:
 
 
 
-.export sub_0x00B010
 sub_0x00B010:
 C - - - - - 0x00B010 02:B000: 20 07 B0  JSR sub_B007
 C - - - - - 0x00B013 02:B003: 20 F1 B3  JSR sub_B3F1

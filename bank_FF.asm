@@ -5,6 +5,31 @@
 
 
 
+.export sub_0x00C5F1_prepare_return_address
+.export loc_0x00C601
+.export sub_0x00C619_delay
+.export sub_0x00C63F_player_state_handler
+.export sub_0x00C762
+.export sub_0x00C8AD
+.export sub_0x00C920
+.export sub_0x00C92E
+.export sub_0x00C949_set_player_flag___visible
+.export sub_0x00C94B_set_player_flag___control
+.export sub_0x00C94D_set_player_flag___busy
+.export sub_0x00C951_clear_player_flag___visible
+.export sub_0x00C953_clear_player_flag___control
+.export sub_0x00CA69_clear_nametables
+.export sub_0x00CABF_hide_sprites
+.export sub_0x00CACD_bytes_after_JSR
+.export sub_0x00CAE4
+.export sub_0x00CB5A
+.export sub_0x00CB60
+.export sub_0x00CBF3_get_base_player_address
+.export sub_0x00F9B5
+.export _common_RTS
+
+
+
 vec_C081_RESET:
                                         LDA #$00
                                         STA $8000
@@ -720,7 +745,6 @@ C - - - - - 0x00C5C2 03:C5B2: 60        RTS
 
 
 sub_C5E1_prepare_return_address:
-.export sub_0x00C5F1_prepare_return_address
 sub_0x00C5F1_prepare_return_address:
 C D 2 - - - 0x00C5F1 03:C5E1: 48        PHA
 C - - - - - 0x00C5F2 03:C5E2: 98        TYA
@@ -735,7 +759,6 @@ C - - - - - 0x00C600 03:C5F0: 60        RTS
 
 
 loc_C5F1:
-.export loc_0x00C601
 loc_0x00C601:
 C D 2 - - - 0x00C601 03:C5F1: A9 00     LDA #$00
 C - - - - - 0x00C603 03:C5F3: A6 00     LDX ram_0000
@@ -746,7 +769,6 @@ C - - - - - 0x00C609 03:C5F9: 4C 7A C5  JMP loc_C57A
 
 
 sub_C609_delay:
-.export sub_0x00C619_delay
 sub_0x00C619_delay:
 ; искусственная задержка, в A подается количество кадров
 C D 2 - - - 0x00C619 03:C609: 85 49     STA ram_0049
@@ -771,7 +793,6 @@ C - - - - - 0x00C634 03:C624: 4C 7A C5  JMP loc_C57A
 
 
 sub_C62F_player_state_handler:
-.export sub_0x00C63F_player_state_handler
 sub_0x00C63F_player_state_handler:
 C D 2 - - - 0x00C63F 03:C62F: AA        TAX
 C - - - - - 0x00C640 03:C630: A0 00     LDY #con_plr_flags
@@ -957,7 +978,6 @@ C - - - - - 0x00C761 03:C751: 60        RTS
 
 
 
-.export sub_0x00C762
 sub_0x00C762:
 C D 2 - - - 0x00C762 03:C752: 86 43     STX ram_0043
 C - - - - - 0x00C764 03:C754: 84 44     STY ram_0044
@@ -1218,7 +1238,6 @@ C - - - - - 0x00C8AC 03:C89C: 60        RTS
 
 
 
-.export sub_0x00C8AD
 sub_0x00C8AD:
 C D 2 - - - 0x00C8AD 03:C89D: A2 00     LDX #$00
 bra_C89F_loop:
@@ -1309,7 +1328,6 @@ C - - - - - 0x00C91F 03:C90F: 60        RTS
 
 
 sub_C910:
-.export sub_0x00C920
 sub_0x00C920:
 C D 2 - - - 0x00C920 03:C910: AC 00 07  LDY ram_0700
 C - - - - - 0x00C923 03:C913: C0 04     CPY #$04
@@ -1322,7 +1340,6 @@ C - - - - - 0x00C92D 03:C91D: 60        RTS
 
 
 sub_C91E:
-.export sub_0x00C92E
 sub_0x00C92E:
 C D 2 - - - 0x00C92E 03:C91E: 8A        TXA
 C - - - - - 0x00C92F 03:C91F: 49 FF     EOR #$FF
@@ -1356,7 +1373,6 @@ sub_C937_set_player_flag___unknown:
     STA (ram_plr_data),Y
     RTS
 
-.export sub_0x00C949_set_player_flag___visible
 sub_0x00C949_set_player_flag___visible:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
@@ -1365,7 +1381,6 @@ sub_0x00C949_set_player_flag___visible:
     RTS
 
 sub_C93B_set_player_flag___control:
-.export sub_0x00C94B_set_player_flag___control
 sub_0x00C94B_set_player_flag___control:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
@@ -1374,8 +1389,7 @@ sub_0x00C94B_set_player_flag___control:
     STA (ram_plr_data),Y
     RTS
 
-.export sub_0x00C94DB_set_player_flag___busy
-sub_0x00C94DB_set_player_flag___busy:
+sub_0x00C94D_set_player_flag___busy:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
     ORA #con_player_flag_busy
@@ -1389,7 +1403,6 @@ sub_C93F_clear_player_flag___unknown:
     STA (ram_plr_data),Y
     RTS
 
-.export sub_0x00C951_clear_player_flag___visible
 sub_0x00C951_clear_player_flag___visible:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
@@ -1398,7 +1411,6 @@ sub_0x00C951_clear_player_flag___visible:
     RTS
 
 sub_C943_clear_player_flag___control:
-.export sub_0x00C953_clear_player_flag___control
 sub_0x00C953_clear_player_flag___control:
     LDY #con_plr_flags
     LDA (ram_plr_data),Y
@@ -1592,7 +1604,6 @@ C - - - - - 0x00CA68 03:CA58: 60        RTS
 
 
 sub_CA59_clear_nametables:
-.export sub_0x00CA69_clear_nametables
 sub_0x00CA69_clear_nametables:
 C D 2 - - - 0x00CA69 03:CA59: A5 28     LDA ram_0028
 C - - - - - 0x00CA6B 03:CA5B: 29 7F     AND #$7F
@@ -1643,7 +1654,6 @@ C - - - - - 0x00CABE 03:CAAE: 60        RTS
 
 
 sub_CAAF_hide_sprites:
-.export sub_0x00CABF_hide_sprites
 sub_0x00CABF_hide_sprites:
 C D 2 - - - 0x00CABF 03:CAAF: A0 00     LDY #$00
 C - - - - - 0x00CAC1 03:CAB1: A9 F8     LDA #$F8
@@ -1659,7 +1669,6 @@ C - - - - - 0x00CACC 03:CABC: 60        RTS
 
 
 sub_CABD_bytes_after_JSR:
-.export sub_0x00CACD_bytes_after_JSR
 sub_0x00CACD_bytes_after_JSR:
 C D 2 - - - 0x00CACD 03:CABD: 0A        ASL
 C - - - - - 0x00CACE 03:CABE: A8        TAY
@@ -1680,7 +1689,6 @@ C - - - - - 0x00CAE1 03:CAD1: 6C 3C 00  JMP (ram_003C)
 
 
 sub_CAD4:
-.export sub_0x00CAE4
 sub_0x00CAE4:
 C D 2 - - - 0x00CAE4 03:CAD4: A0 00     LDY #$00
 C - - - - - 0x00CAE6 03:CAD6: 84 42     STY ram_0042
@@ -1727,7 +1735,6 @@ C - - - - - 0x00CB27 03:CB17: 60        RTS
 
 
 sub_CB4A:
-.export sub_0x00CB5A
 sub_0x00CB5A:
 C D 2 - - - 0x00CB5A 03:CB4A: 20 1E C9  JSR sub_C91E
 C - - - - - 0x00CB5D 03:CB4D: C8        INY
@@ -1737,7 +1744,6 @@ C - - - - - 0x00CB5F 03:CB4F: 60        RTS
 
 
 sub_CB50:
-.export sub_0x00CB60
 sub_0x00CB60:
 C D 2 - - - 0x00CB60 03:CB50: 20 1E C9  JSR sub_C91E
 C - - - - - 0x00CB63 03:CB53: C8        INY
@@ -1842,7 +1848,6 @@ C - - - - - 0x00CBF2 03:CBE2: 60        RTS
 
 
 sub_CBE3_get_base_player_address:
-.export sub_0x00CBF3_get_base_player_address
 sub_0x00CBF3_get_base_player_address:
 C D 2 - - - 0x00CBF3 03:CBE3: 0A        ASL
 C - - - - - 0x00CBF4 03:CBE4: AA        TAX
@@ -5498,7 +5503,7 @@ off_E4D9:
 ofs_E4D9 = off_E4D9 - 1
 C - - - - - 0x00E4E9 03:E4D9: A9 00     LDA #$00
 C - - - - - 0x00E4EB 03:E4DB: 8D 2B 04  STA ram_plr_frame_id
-loc_E4DE:
+loc_E4DE_loop:
 C D 3 - - - 0x00E4EE 03:E4DE: A9 01     LDA #$01
 C - - - - - 0x00E4F0 03:E4E0: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00E4F3 03:E4E3: AD 2B 04  LDA ram_plr_frame_id
@@ -5535,7 +5540,7 @@ C - - - - - 0x00E52D 03:E51D: D0 02     BNE bra_E521
 C - - - - - 0x00E52F 03:E51F: A2 00     LDX #$00
 bra_E521:
 C - - - - - 0x00E531 03:E521: 8E 2B 04  STX ram_plr_frame_id
-C - - - - - 0x00E534 03:E524: 4C DE E4  JMP loc_E4DE
+C - - - - - 0x00E534 03:E524: 4C DE E4  JMP loc_E4DE_loop
 sub_E527:
 C - - - - - 0x00E537 03:E527: A0 12     LDY #con_plr_behavior
 C - - - - - 0x00E539 03:E529: B1 61     LDA (ram_plr_data),Y
@@ -8168,7 +8173,6 @@ C - - - - - 0x00F9B4 03:F9A4: 60        RTS
 
 
 
-.export sub_0x00F9B5
 sub_0x00F9B5:
 C D 3 - - - 0x00F9B5 03:F9A5: E8        INX
 C - - - - - 0x00F9B6 03:F9A6: E8        INX
@@ -8734,7 +8738,6 @@ tbl_FBFB:
 
 
 
-.export _common_RTS
 _common_RTS:
     RTS
 
@@ -8744,6 +8747,3 @@ _common_RTS:
 - D 3 - - - 0x01000A 03:FFFA: 00 C0     .word vec_C14A_NMI
 - D 3 - - - 0x01000C 03:FFFC: D0 FF     .word vec_C081_RESET
 - - - - - - 0x01000E 03:FFFE: D0 FF     .word $0000
-
-
-
