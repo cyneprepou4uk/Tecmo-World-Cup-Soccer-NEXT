@@ -1061,7 +1061,7 @@ C - - - - - 0x004692 01:8682: 90 02     BCC bra_8686
 C - - - - - 0x004694 01:8684: A9 30     LDA #$30
 bra_8686:
 C - - - - - 0x004696 01:8686: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x004698 01:8688: 20 96 86  JSR sub_8696
+C - - - - - 0x004698 01:8688: 20 96 86  JSR sub_8696_draw_animation
 C - - - - - 0x00469B 01:868B: 68        PLA
 C - - - - - 0x00469C 01:868C: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x00469E 01:868E: 91 61     STA (ram_plr_data),Y
@@ -1073,9 +1073,9 @@ C - - - - - 0x0046A5 01:8695: 60        RTS
 
 
 
-sub_8696:
-.export sub_0x0046A6
-sub_0x0046A6:
+sub_8696_draw_animation:
+.export sub_0x0046A6_draw_animation
+sub_0x0046A6_draw_animation:
                                         JSR sub_0x00C951_clear_FD
 C - - - - - 0x0046AE 01:869E: 24 5D     BIT ram_005D
 C - - - - - 0x0046B0 01:86A0: 30 26     BMI bra_86C8_RTS

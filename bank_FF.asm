@@ -4562,14 +4562,14 @@ C - - - - - 0x00DEBB 03:DEAB: 20 24 80  JSR sub_0x00448D
 C - - - - - 0x00DEBE 03:DEAE: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00DEC1 03:DEB1: 30 06     BMI bra_DEB9
 C - - - - - 0x00DEC3 03:DEB3: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-C - - - - - 0x00DEC6 03:DEB6: 20 1B 80  JSR sub_0x0046A6
+C - - - - - 0x00DEC6 03:DEB6: 20 1B 80  JSR sub_0x0046A6_draw_animation
 bra_DEB9:
 C - - - - - 0x00DEC9 03:DEB9: A9 16     LDA #con_ball_index
 C - - - - - 0x00DECB 03:DEBB: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-C - - - - - 0x00DECE 03:DEBE: 20 1B 80  JSR sub_0x0046A6
+C - - - - - 0x00DECE 03:DEBE: 20 1B 80  JSR sub_0x0046A6_draw_animation
 C - - - - - 0x00DED1 03:DEC1: A9 17     LDA #con_shadow_index
 C - - - - - 0x00DED3 03:DEC3: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-C - - - - - 0x00DED6 03:DEC6: 20 1B 80  JSR sub_0x0046A6
+C - - - - - 0x00DED6 03:DEC6: 20 1B 80  JSR sub_0x0046A6_draw_animation
 C - - - - - 0x00DED9 03:DEC9: 20 18 80  JSR sub_0x00464C
 C - - - - - 0x00DEDC 03:DECC: A5 5C     LDA ram_005C
 C - - - - - 0x00DEDE 03:DECE: 48        PHA
@@ -4596,7 +4596,7 @@ C - - - - - 0x00DEFB 03:DEEB: 48        PHA
 C - - - - - 0x00DEFC 03:DEEC: CD 29 04  CMP ram_plr_w_ball
 C - - - - - 0x00DEFF 03:DEEF: F0 06     BEQ bra_DEF7
 C - - - - - 0x00DF01 03:DEF1: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-C - - - - - 0x00DF04 03:DEF4: 20 1B 80  JSR sub_0x0046A6
+C - - - - - 0x00DF04 03:DEF4: 20 1B 80  JSR sub_0x0046A6_draw_animation
 bra_DEF7:
 C - - - - - 0x00DF07 03:DEF7: 68        PLA
 C - - - - - 0x00DF08 03:DEF8: 18        CLC
