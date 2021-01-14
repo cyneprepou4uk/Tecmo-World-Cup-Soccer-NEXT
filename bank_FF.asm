@@ -1416,6 +1416,7 @@ sub_C945_clear_F0:
 
 
 sub_C95B:
+; bzk похожий код в 0x00C9EA
 C - - - - - 0x00C96B 03:C95B: 85 2A     STA ram_002A
 C - - - - - 0x00C96D 03:C95D: E6 2A     INC ram_002A
 C - - - - - 0x00C96F 03:C95F: A9 10     LDA #$10
@@ -1455,6 +1456,7 @@ C - - - - - 0x00C9A7 03:C997: 60        RTS
 
 
 sub_C998:
+; bzk похожий код в 0x00CA27
 C - - - - - 0x00C9A8 03:C998: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00C9AA 03:C99A: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00C9AC 03:C99C: 38        SEC
@@ -1502,6 +1504,7 @@ C - - - - - 0x00C9E9 03:C9D9: 60        RTS
 
 
 sub_C9DA:
+; bzk похожий код в 0x00C96B
 C - - - - - 0x00C9EA 03:C9DA: 85 2A     STA ram_002A
 C - - - - - 0x00C9EC 03:C9DC: E6 2A     INC ram_002A
 C - - - - - 0x00C9EE 03:C9DE: A9 10     LDA #$10
@@ -1541,6 +1544,7 @@ C - - - - - 0x00CA26 03:CA16: 60        RTS
 
 
 sub_CA17:
+; bzk похожий код в 0x00C9A8
 C - - - - - 0x00CA27 03:CA17: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00CA29 03:CA19: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00CA2B 03:CA1B: 38        SEC
