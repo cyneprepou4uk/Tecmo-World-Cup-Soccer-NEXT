@@ -5385,16 +5385,16 @@ C - - - - - 0x00E446 03:E436: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 
 ofs_E43F_00:
 C - - J - - 0x00E44F 03:E43F: A9 07     LDA #con_behavior_07
-                                        BNE bra_E45D
+                                        BNE bra_E450
 
 ofs_E447_01:
 C - - J - - 0x00E457 03:E447: A9 08     LDA #con_behavior_08
-                                        BNE bra_E45D
+                                        BNE bra_E450
 
 ofs_E44F_02:
 C - - J - - 0x00E45F 03:E44F: A9 0A     LDA #con_behavior_0A
+bra_E450:
                                         JSR sub_C62F_player_state_handler
-bra_E45D:
                                         JSR sub_C93B_set_04_clear_F7
 C - - - - - 0x00E46E 03:E45E: 4C 55 DF  JMP loc_DF55
 
