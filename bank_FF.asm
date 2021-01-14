@@ -1648,7 +1648,7 @@ sub_0x00CABF_hide_sprites:
 C D 2 - - - 0x00CABF 03:CAAF: A0 00     LDY #$00
 C - - - - - 0x00CAC1 03:CAB1: A9 F8     LDA #$F8
 bra_CAB3_loop:
-C - - - - - 0x00CAC3 03:CAB3: 99 00 02  STA ram_0200,Y
+C - - - - - 0x00CAC3 03:CAB3: 99 00 02  STA ram_spr_Y,Y
 C - - - - - 0x00CAC6 03:CAB6: C8        INY
 C - - - - - 0x00CAC7 03:CAB7: C8        INY
 C - - - - - 0x00CAC8 03:CAB8: C8        INY
@@ -4609,7 +4609,7 @@ C - - - - - 0x00DF13 03:DF03: A4 5C     LDY ram_005C
 C - - - - - 0x00DF15 03:DF05: A6 5B     LDX ram_005B
 C - - - - - 0x00DF17 03:DF07: A9 F8     LDA #$F8
 bra_DF09:
-C - - - - - 0x00DF19 03:DF09: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00DF19 03:DF09: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00DF1C 03:DF0C: E8        INX
 C - - - - - 0x00DF1D 03:DF0D: E8        INX
 C - - - - - 0x00DF1E 03:DF0E: E8        INX
@@ -8235,11 +8235,11 @@ C - - - - - 0x00FA0C 03:F9FC: 85 2E     STA ram_002E
 C - - - - - 0x00FA0E 03:F9FE: C8        INY
 bra_F9FF:
 C - - - - - 0x00FA0F 03:F9FF: A5 2E     LDA ram_002E
-C - - - - - 0x00FA11 03:FA01: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00FA11 03:FA01: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00FA14 03:FA04: A9 01     LDA #$01
-C - - - - - 0x00FA16 03:FA06: 9D 02 02  STA ram_0202,X
+C - - - - - 0x00FA16 03:FA06: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x00FA19 03:FA09: A5 2D     LDA ram_002D
-C - - - - - 0x00FA1B 03:FA0B: 9D 03 02  STA ram_0203,X
+C - - - - - 0x00FA1B 03:FA0B: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x00FA1E 03:FA0E: 18        CLC
 C - - - - - 0x00FA1F 03:FA0F: 69 08     ADC #$08
 C - - - - - 0x00FA21 03:FA11: 85 2D     STA ram_002D
@@ -8248,13 +8248,13 @@ C - - - - - 0x00FA25 03:FA15: C9 20     CMP #$20
 C - - - - - 0x00FA27 03:FA17: F0 17     BEQ bra_FA30
 C - - - - - 0x00FA29 03:FA19: 48        PHA
 C - - - - - 0x00FA2A 03:FA1A: 29 E0     AND #$E0
-C - - - - - 0x00FA2C 03:FA1C: 9D 01 02  STA ram_0201,X
+C - - - - - 0x00FA2C 03:FA1C: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x00FA2F 03:FA1F: 68        PLA
 C - - - - - 0x00FA30 03:FA20: 29 1F     AND #$1F
 C - - - - - 0x00FA32 03:FA22: 0A        ASL
-C - - - - - 0x00FA33 03:FA23: 1D 01 02  ORA ram_0201,X
-C - - - - - 0x00FA36 03:FA26: 9D 01 02  STA ram_0201,X
-C - - - - - 0x00FA39 03:FA29: FE 01 02  INC ram_0201,X
+C - - - - - 0x00FA33 03:FA23: 1D 01 02  ORA ram_spr_T,X
+C - - - - - 0x00FA36 03:FA26: 9D 01 02  STA ram_spr_T,X
+C - - - - - 0x00FA39 03:FA29: FE 01 02  INC ram_spr_T,X
 C - - - - - 0x00FA3C 03:FA2C: E8        INX
 C - - - - - 0x00FA3D 03:FA2D: E8        INX
 C - - - - - 0x00FA3E 03:FA2E: E8        INX
@@ -8267,7 +8267,7 @@ C - - - - - 0x00FA45 03:FA35: F0 B7     BEQ bra_F9EE
 bra_FA37:
 C - - - - - 0x00FA47 03:FA37: A9 F8     LDA #$F8
 bra_FA39_loop:
-C - - - - - 0x00FA49 03:FA39: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00FA49 03:FA39: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00FA4C 03:FA3C: E8        INX
 C - - - - - 0x00FA4D 03:FA3D: E8        INX
 C - - - - - 0x00FA4E 03:FA3E: E8        INX

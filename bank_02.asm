@@ -36,11 +36,11 @@ C - - - - - 0x00806C 02:805C: 0A        ASL
 C - - - - - 0x00806D 02:805D: 0A        ASL
 C - - - - - 0x00806E 02:805E: 0A        ASL
 C - - - - - 0x00806F 02:805F: 65 2B     ADC ram_002B
-C - - - - - 0x008071 02:8061: 9D 03 02  STA ram_0203,X
+C - - - - - 0x008071 02:8061: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x008074 02:8064: A9 70     LDA #$70
-C - - - - - 0x008076 02:8066: 9D 00 02  STA ram_0200,X
+C - - - - - 0x008076 02:8066: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x008079 02:8069: A9 01     LDA #$01
-C - - - - - 0x00807B 02:806B: 9D 02 02  STA ram_0202,X
+C - - - - - 0x00807B 02:806B: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x00807E 02:806E: B9 99 83  LDA tbl_8399,Y
 C - - - - - 0x008081 02:8071: 20 B9 80  JSR sub_80B9
 C - - - - - 0x008084 02:8074: C8        INY
@@ -78,14 +78,14 @@ tbl_809A:
 sub_809C:
 C - - - - - 0x0080AC 02:809C: 48        PHA
 C - - - - - 0x0080AD 02:809D: A5 2B     LDA ram_002B
-C - - - - - 0x0080AF 02:809F: 9D 03 02  STA ram_0203,X
+C - - - - - 0x0080AF 02:809F: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x0080B2 02:80A2: 18        CLC
 C - - - - - 0x0080B3 02:80A3: 69 08     ADC #$08
 C - - - - - 0x0080B5 02:80A5: 85 2B     STA ram_002B
 C - - - - - 0x0080B7 02:80A7: A9 01     LDA #$01
-C - - - - - 0x0080B9 02:80A9: 9D 02 02  STA ram_0202,X
+C - - - - - 0x0080B9 02:80A9: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x0080BC 02:80AC: A9 80     LDA #$80
-C - - - - - 0x0080BE 02:80AE: 9D 00 02  STA ram_0200,X
+C - - - - - 0x0080BE 02:80AE: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x0080C1 02:80B1: 68        PLA
 C - - - - - 0x0080C2 02:80B2: 18        CLC
 C - - - - - 0x0080C3 02:80B3: 69 80     ADC #$80
@@ -97,13 +97,13 @@ C - - - - - 0x0080C8 02:80B8: 60        RTS
 sub_80B9:
 C - - - - - 0x0080C9 02:80B9: 48        PHA
 C - - - - - 0x0080CA 02:80BA: 29 E0     AND #$E0
-C - - - - - 0x0080CC 02:80BC: 9D 01 02  STA ram_0201,X
+C - - - - - 0x0080CC 02:80BC: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x0080CF 02:80BF: 68        PLA
 C - - - - - 0x0080D0 02:80C0: 29 1F     AND #$1F
 C - - - - - 0x0080D2 02:80C2: 0A        ASL
-C - - - - - 0x0080D3 02:80C3: 1D 01 02  ORA ram_0201,X
-C - - - - - 0x0080D6 02:80C6: 9D 01 02  STA ram_0201,X
-C - - - - - 0x0080D9 02:80C9: FE 01 02  INC ram_0201,X
+C - - - - - 0x0080D3 02:80C3: 1D 01 02  ORA ram_spr_T,X
+C - - - - - 0x0080D6 02:80C6: 9D 01 02  STA ram_spr_T,X
+C - - - - - 0x0080D9 02:80C9: FE 01 02  INC ram_spr_T,X
 C - - - - - 0x0080DC 02:80CC: E8        INX
 C - - - - - 0x0080DD 02:80CD: E8        INX
 C - - - - - 0x0080DE 02:80CE: E8        INX
@@ -309,7 +309,7 @@ C - - - - - 0x008267 02:8257: 69 40     ADC #$40
 C - - - - - 0x008269 02:8259: 90 F4     BCC bra_824F
 C - - - - - 0x00826B 02:825B: A2 00     LDX #$00
 bra_825D:
-C - - - - - 0x00826D 02:825D: DE 03 02  DEC ram_0203,X
+C - - - - - 0x00826D 02:825D: DE 03 02  DEC ram_spr_X,X
 C - - - - - 0x008270 02:8260: E8        INX
 C - - - - - 0x008271 02:8261: E8        INX
 C - - - - - 0x008272 02:8262: E8        INX
@@ -704,22 +704,22 @@ C - - - - - 0x0084B9 02:84A9: C8        INY
 bra_84AA:
 C - - - - - 0x0084BA 02:84AA: A6 2C     LDX ram_002C
 C - - - - - 0x0084BC 02:84AC: A5 2E     LDA ram_002E
-C - - - - - 0x0084BE 02:84AE: 9D 00 02  STA ram_0200,X
+C - - - - - 0x0084BE 02:84AE: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x0084C1 02:84B1: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x0084C3 02:84B3: 48        PHA
 C - - - - - 0x0084C4 02:84B4: 29 3F     AND #$3F
-C - - - - - 0x0084C6 02:84B6: 9D 01 02  STA ram_0201,X
+C - - - - - 0x0084C6 02:84B6: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x0084C9 02:84B9: A9 08     LDA #$08
-C - - - - - 0x0084CB 02:84BB: 9D 02 02  STA ram_0202,X
+C - - - - - 0x0084CB 02:84BB: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x0084CE 02:84BE: 68        PLA
 C - - - - - 0x0084CF 02:84BF: 0A        ASL
-C - - - - - 0x0084D0 02:84C0: 3E 02 02  ROL ram_0202,X
+C - - - - - 0x0084D0 02:84C0: 3E 02 02  ROL ram_spr_A,X
 C - - - - - 0x0084D3 02:84C3: 0A        ASL
-C - - - - - 0x0084D4 02:84C4: 3E 02 02  ROL ram_0202,X
+C - - - - - 0x0084D4 02:84C4: 3E 02 02  ROL ram_spr_A,X
 C - - - - - 0x0084D7 02:84C7: C8        INY
 C - - - - - 0x0084D8 02:84C8: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x0084DA 02:84CA: 6D B8 03  ADC ram_03B8
-C - - - - - 0x0084DD 02:84CD: 9D 03 02  STA ram_0203,X
+C - - - - - 0x0084DD 02:84CD: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x0084E0 02:84D0: C8        INY
 C - - - - - 0x0084E1 02:84D1: E8        INX
 C - - - - - 0x0084E2 02:84D2: E8        INX
@@ -941,13 +941,13 @@ C - - - - - 0x008686 02:8676: A8        TAY
 C - - - - - 0x008687 02:8677: 28        PLP
 C - - - - - 0x008688 02:8678: B0 06     BCS bra_8680
 C - - - - - 0x00868A 02:867A: A9 F8     LDA #$F8
-C - - - - - 0x00868C 02:867C: 99 00 02  STA ram_0200,Y
+C - - - - - 0x00868C 02:867C: 99 00 02  STA ram_spr_Y,Y
 C - - - - - 0x00868F 02:867F: 60        RTS
 bra_8680:
 C - - - - - 0x008690 02:8680: BD A8 86  LDA tbl_86A8,X
-C - - - - - 0x008693 02:8683: 99 02 02  STA ram_0202,Y
+C - - - - - 0x008693 02:8683: 99 02 02  STA ram_spr_A,Y
 C - - - - - 0x008696 02:8686: BD A9 86  LDA tbl_86A9,X
-C - - - - - 0x008699 02:8689: 99 01 02  STA ram_0201,Y
+C - - - - - 0x008699 02:8689: 99 01 02  STA ram_spr_T,Y
 C - - - - - 0x00869C 02:868C: A5 2A     LDA ram_002A
 C - - - - - 0x00869E 02:868E: 29 07     AND #$07
 C - - - - - 0x0086A0 02:8690: 0A        ASL
@@ -956,14 +956,14 @@ C - - - - - 0x0086A2 02:8692: 0A        ASL
 C - - - - - 0x0086A3 02:8693: 0A        ASL
 C - - - - - 0x0086A4 02:8694: 18        CLC
 C - - - - - 0x0086A5 02:8695: 69 47     ADC #$47
-C - - - - - 0x0086A7 02:8697: 99 00 02  STA ram_0200,Y
+C - - - - - 0x0086A7 02:8697: 99 00 02  STA ram_spr_Y,Y
 C - - - - - 0x0086AA 02:869A: A9 2C     LDA #$2C
 C - - - - - 0x0086AC 02:869C: A6 2A     LDX ram_002A
 C - - - - - 0x0086AE 02:869E: E0 08     CPX #$08
 C - - - - - 0x0086B0 02:86A0: 90 02     BCC bra_86A4
 C - - - - - 0x0086B2 02:86A2: A9 8C     LDA #$8C
 bra_86A4:
-C - - - - - 0x0086B4 02:86A4: 99 03 02  STA ram_0203,Y
+C - - - - - 0x0086B4 02:86A4: 99 03 02  STA ram_spr_X,Y
 C - - - - - 0x0086B7 02:86A7: 60        RTS
 
 
@@ -1042,8 +1042,8 @@ C - - - - - 0x008731 02:8721: 0A        ASL
 C - - - - - 0x008732 02:8722: 0A        ASL
 C - - - - - 0x008733 02:8723: AA        TAX
 C - - - - - 0x008734 02:8724: A9 F8     LDA #$F8
-C - - - - - 0x008736 02:8726: 9D 40 02  STA ram_0240,X
-C - - - - - 0x008739 02:8729: 9D 44 02  STA ram_0244,X
+C - - - - - 0x008736 02:8726: 9D 40 02  STA ram_spr_Y + $40,X
+C - - - - - 0x008739 02:8729: 9D 44 02  STA ram_spr_Y + $44,X
 bra_872C:
 C - - - - - 0x00873C 02:872C: 68        PLA
 C - - - - - 0x00873D 02:872D: 18        CLC
@@ -1091,16 +1091,16 @@ C - - - - - 0x00877A 02:876A: A8        TAY
 C - - - - - 0x00877B 02:876B: 0A        ASL
 C - - - - - 0x00877C 02:876C: AA        TAX
 C - - - - - 0x00877D 02:876D: A9 D0     LDA #$D0
-C - - - - - 0x00877F 02:876F: 9D 40 02  STA ram_0240,X
-C - - - - - 0x008782 02:8772: 9D 44 02  STA ram_0244,X
+C - - - - - 0x00877F 02:876F: 9D 40 02  STA ram_spr_Y + $40,X
+C - - - - - 0x008782 02:8772: 9D 44 02  STA ram_spr_Y + $44,X
 C - - - - - 0x008785 02:8775: B9 A8 87  LDA tbl_87A8,Y
-C - - - - - 0x008788 02:8778: 9D 43 02  STA ram_0243,X
+C - - - - - 0x008788 02:8778: 9D 43 02  STA ram_spr_X + $40,X
 C - - - - - 0x00878B 02:877B: B9 A9 87  LDA tbl_87A9,Y
-C - - - - - 0x00878E 02:877E: 9D 41 02  STA ram_0241,X
+C - - - - - 0x00878E 02:877E: 9D 41 02  STA ram_spr_T + $40,X
 C - - - - - 0x008791 02:8781: B9 AA 87  LDA tbl_87AA,Y
-C - - - - - 0x008794 02:8784: 9D 47 02  STA ram_0247,X
+C - - - - - 0x008794 02:8784: 9D 47 02  STA ram_spr_X + $44,X
 C - - - - - 0x008797 02:8787: B9 AB 87  LDA tbl_87AB,Y
-C - - - - - 0x00879A 02:878A: 9D 45 02  STA ram_0245,X
+C - - - - - 0x00879A 02:878A: 9D 45 02  STA ram_spr_T + $44,X
 C - - - - - 0x00879D 02:878D: A0 03     LDY #$03
 C - - - - - 0x00879F 02:878F: A5 2A     LDA ram_002A
 C - - - - - 0x0087A1 02:8791: CD AF 03  CMP ram_option_timer
@@ -1108,8 +1108,8 @@ C - - - - - 0x0087A4 02:8794: D0 02     BNE bra_8798
 C - - - - - 0x0087A6 02:8796: A0 00     LDY #$00
 bra_8798:
 C - - - - - 0x0087A8 02:8798: 98        TYA
-C - - - - - 0x0087A9 02:8799: 9D 42 02  STA ram_0242,X
-C - - - - - 0x0087AC 02:879C: 9D 46 02  STA ram_0246,X
+C - - - - - 0x0087A9 02:8799: 9D 42 02  STA ram_spr_A + $40,X
+C - - - - - 0x0087AC 02:879C: 9D 46 02  STA ram_spr_A + $44,X
 C - - - - - 0x0087AF 02:879F: E6 2A     INC ram_002A
 C - - - - - 0x0087B1 02:87A1: A5 2A     LDA ram_002A
 C - - - - - 0x0087B3 02:87A3: C9 03     CMP #$03
@@ -1366,13 +1366,13 @@ C - - - - - 0x0088F7 02:88E7: 0A        ASL
 C - - - - - 0x0088F8 02:88E8: 0A        ASL
 C - - - - - 0x0088F9 02:88E9: AA        TAX
 C - - - - - 0x0088FA 02:88EA: B9 3E 89  LDA tbl_893E,Y
-C - - - - - 0x0088FD 02:88ED: 9D C3 02  STA ram_02C3,X
+C - - - - - 0x0088FD 02:88ED: 9D C3 02  STA ram_spr_X + $C0,X
 C - - - - - 0x008900 02:88F0: 18        CLC
 C - - - - - 0x008901 02:88F1: 69 08     ADC #$08
-C - - - - - 0x008903 02:88F3: 9D C7 02  STA ram_02C7,X
+C - - - - - 0x008903 02:88F3: 9D C7 02  STA ram_spr_X + $C4,X
 C - - - - - 0x008906 02:88F6: B9 3F 89  LDA tbl_893F,Y
-C - - - - - 0x008909 02:88F9: 9D C0 02  STA ram_02C0,X
-C - - - - - 0x00890C 02:88FC: 9D C4 02  STA ram_02C4,X
+C - - - - - 0x008909 02:88F9: 9D C0 02  STA ram_spr_Y + $C0,X
+C - - - - - 0x00890C 02:88FC: 9D C4 02  STA ram_spr_Y + $C4,X
 C - - - - - 0x00890F 02:88FF: A5 2A     LDA ram_002A
 C - - - - - 0x008911 02:8901: 18        CLC
 C - - - - - 0x008912 02:8902: 6D BA 03  ADC ram_03BA
@@ -1383,16 +1383,16 @@ bra_890B:
 C - - - - - 0x00891B 02:890B: 0A        ASL
 C - - - - - 0x00891C 02:890C: A8        TAY
 C - - - - - 0x00891D 02:890D: B9 46 89  LDA tbl_8946,Y
-C - - - - - 0x008920 02:8910: 9D C1 02  STA ram_02C1,X
+C - - - - - 0x008920 02:8910: 9D C1 02  STA ram_spr_T + $C0,X
 C - - - - - 0x008923 02:8913: B9 47 89  LDA tbl_8947,Y
-C - - - - - 0x008926 02:8916: 9D C5 02  STA ram_02C5,X
+C - - - - - 0x008926 02:8916: 9D C5 02  STA ram_spr_T + $C4,X
 C - - - - - 0x008929 02:8919: D0 05     BNE bra_8920
 C - - - - - 0x00892B 02:891B: A9 F8     LDA #$F8
-C - - - - - 0x00892D 02:891D: 9D C4 02  STA ram_02C4,X
+C - - - - - 0x00892D 02:891D: 9D C4 02  STA ram_spr_Y + $C4,X
 bra_8920:
 C - - - - - 0x008930 02:8920: A9 00     LDA #$00
-C - - - - - 0x008932 02:8922: 9D C2 02  STA ram_02C2,X
-C - - - - - 0x008935 02:8925: 9D C6 02  STA ram_02C6,X
+C - - - - - 0x008932 02:8922: 9D C2 02  STA ram_spr_A + $C0,X
+C - - - - - 0x008935 02:8925: 9D C6 02  STA ram_spr_A + $C4,X
 C - - - - - 0x008938 02:8928: E6 2A     INC ram_002A
 C - - - - - 0x00893A 02:892A: A5 2A     LDA ram_002A
 C - - - - - 0x00893C 02:892C: C9 04     CMP #$04
@@ -1817,13 +1817,13 @@ C - - - - - 0x008BF5 02:8BE5: 0A        ASL
 C - - - - - 0x008BF6 02:8BE6: 0A        ASL
 C - - - - - 0x008BF7 02:8BE7: 18        CLC
 C - - - - - 0x008BF8 02:8BE8: 69 97     ADC #$97
-C - - - - - 0x008BFA 02:8BEA: 8D 00 02  STA ram_0200
+C - - - - - 0x008BFA 02:8BEA: 8D 00 02  STA ram_spr_Y
 C - - - - - 0x008BFD 02:8BED: A9 7F     LDA #$7F
-C - - - - - 0x008BFF 02:8BEF: 8D 01 02  STA ram_0201
+C - - - - - 0x008BFF 02:8BEF: 8D 01 02  STA ram_spr_T
 C - - - - - 0x008C02 02:8BF2: A9 03     LDA #$03
-C - - - - - 0x008C04 02:8BF4: 8D 02 02  STA ram_0202
+C - - - - - 0x008C04 02:8BF4: 8D 02 02  STA ram_spr_A
 C - - - - - 0x008C07 02:8BF7: A9 53     LDA #$53
-C - - - - - 0x008C09 02:8BF9: 8D 03 02  STA ram_0203
+C - - - - - 0x008C09 02:8BF9: 8D 03 02  STA ram_spr_X
 C - - - - - 0x008C0C 02:8BFC: 60        RTS
 
 
@@ -7099,13 +7099,13 @@ C - - - - - 0x00A26D 02:A25D: 0A        ASL
 C - - - - - 0x00A26E 02:A25E: 0A        ASL
 C - - - - - 0x00A26F 02:A25F: 0A        ASL
 C - - - - - 0x00A270 02:A260: 69 B8     ADC #$B8
-C - - - - - 0x00A272 02:A262: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00A272 02:A262: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00A275 02:A265: B9 99 83  LDA tbl_8399,Y
-C - - - - - 0x00A278 02:A268: 9D 01 02  STA ram_0201,X
+C - - - - - 0x00A278 02:A268: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x00A27B 02:A26B: A9 01     LDA #$01
-C - - - - - 0x00A27D 02:A26D: 9D 02 02  STA ram_0202,X
+C - - - - - 0x00A27D 02:A26D: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x00A280 02:A270: A5 2B     LDA ram_002B
-C - - - - - 0x00A282 02:A272: 9D 03 02  STA ram_0203,X
+C - - - - - 0x00A282 02:A272: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x00A285 02:A275: 18        CLC
 C - - - - - 0x00A286 02:A276: 69 08     ADC #$08
 C - - - - - 0x00A288 02:A278: 85 2B     STA ram_002B
@@ -7163,22 +7163,22 @@ C - - - - - 0x00A2C8 02:A2B8: 85 2E     STA ram_002E
 C - - - - - 0x00A2CA 02:A2BA: 0A        ASL
 C - - - - - 0x00A2CB 02:A2BB: 65 2E     ADC ram_002E
 C - - - - - 0x00A2CD 02:A2BD: 69 5C     ADC #$5C
-C - - - - - 0x00A2CF 02:A2BF: 9D 03 02  STA ram_0203,X
+C - - - - - 0x00A2CF 02:A2BF: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x00A2D2 02:A2C2: A5 8E     LDA ram_008E
 C - - - - - 0x00A2D4 02:A2C4: C9 0A     CMP #$0A
 C - - - - - 0x00A2D6 02:A2C6: 90 05     BCC bra_A2CD
 C - - - - - 0x00A2D8 02:A2C8: A9 7C     LDA #$7C
-C - - - - - 0x00A2DA 02:A2CA: 9D 03 02  STA ram_0203,X
+C - - - - - 0x00A2DA 02:A2CA: 9D 03 02  STA ram_spr_X,X
 bra_A2CD:
 C - - - - - 0x00A2DD 02:A2CD: 98        TYA
-C - - - - - 0x00A2DE 02:A2CE: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00A2DE 02:A2CE: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00A2E1 02:A2D1: A9 01     LDA #$01
-C - - - - - 0x00A2E3 02:A2D3: 9D 02 02  STA ram_0202,X
+C - - - - - 0x00A2E3 02:A2D3: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x00A2E6 02:A2D6: 46 2B     LSR ram_002B
 C - - - - - 0x00A2E8 02:A2D8: 66 2A     ROR ram_002A
 C - - - - - 0x00A2EA 02:A2DA: A9 3A     LDA #$3A
 C - - - - - 0x00A2EC 02:A2DC: 69 00     ADC #$00
-C - - - - - 0x00A2EE 02:A2DE: 9D 01 02  STA ram_0201,X
+C - - - - - 0x00A2EE 02:A2DE: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x00A2F1 02:A2E1: E8        INX
 C - - - - - 0x00A2F2 02:A2E2: E8        INX
 C - - - - - 0x00A2F3 02:A2E3: E8        INX
@@ -7209,13 +7209,13 @@ C D 1 - - - 0x00A314 02:A304: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x00A316 02:A306: F0 25     BEQ bra_A32D
 C - - - - - 0x00A318 02:A308: C9 20     CMP #$20
 C - - - - - 0x00A31A 02:A30A: F0 16     BEQ bra_A322
-C - - - - - 0x00A31C 02:A30C: 9D 01 02  STA ram_0201,X
+C - - - - - 0x00A31C 02:A30C: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x00A31F 02:A30F: A5 2D     LDA ram_002D
-C - - - - - 0x00A321 02:A311: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00A321 02:A311: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00A324 02:A314: A9 01     LDA #$01
-C - - - - - 0x00A326 02:A316: 9D 02 02  STA ram_0202,X
+C - - - - - 0x00A326 02:A316: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x00A329 02:A319: A5 2C     LDA ram_002C
-C - - - - - 0x00A32B 02:A31B: 9D 03 02  STA ram_0203,X
+C - - - - - 0x00A32B 02:A31B: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x00A32E 02:A31E: E8        INX
 C - - - - - 0x00A32F 02:A31F: E8        INX
 C - - - - - 0x00A330 02:A320: E8        INX
@@ -8561,17 +8561,17 @@ C - - - - - 0x00A99F 02:A98F: 4A        LSR
 C - - - - - 0x00A9A0 02:A990: 90 02     BCC bra_A994
 C - - - - - 0x00A9A2 02:A992: A2 6F     LDX #$6F
 bra_A994:
-C - - - - - 0x00A9A4 02:A994: 8E 00 02  STX ram_0200
+C - - - - - 0x00A9A4 02:A994: 8E 00 02  STX ram_spr_Y
 C - - - - - 0x00A9A7 02:A997: A5 94     LDA ram_0094
 C - - - - - 0x00A9A9 02:A999: 0A        ASL
 C - - - - - 0x00A9AA 02:A99A: 0A        ASL
 C - - - - - 0x00A9AB 02:A99B: 0A        ASL
 C - - - - - 0x00A9AC 02:A99C: 69 88     ADC #$88
-C - - - - - 0x00A9AE 02:A99E: 8D 03 02  STA ram_0203
+C - - - - - 0x00A9AE 02:A99E: 8D 03 02  STA ram_spr_X
 C - - - - - 0x00A9B1 02:A9A1: A9 5D     LDA #$5D
-C - - - - - 0x00A9B3 02:A9A3: 8D 01 02  STA ram_0201
+C - - - - - 0x00A9B3 02:A9A3: 8D 01 02  STA ram_spr_T
 C - - - - - 0x00A9B6 02:A9A6: A9 00     LDA #$00
-C - - - - - 0x00A9B8 02:A9A8: 8D 02 02  STA ram_0202
+C - - - - - 0x00A9B8 02:A9A8: 8D 02 02  STA ram_spr_A
 bra_A9AB_RTS:
 C - - - - - 0x00A9BB 02:A9AB: 60        RTS
 
@@ -9311,7 +9311,7 @@ sub_B3F1:
 C - - - - - 0x00B401 02:B3F1: A2 00     LDX #$00
 bra_B3F3:
 C - - - - - 0x00B403 02:B3F3: BD AD B4  LDA tbl_B4AD,X
-C - - - - - 0x00B406 02:B3F6: 9D 00 02  STA ram_0200,X
+C - - - - - 0x00B406 02:B3F6: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00B409 02:B3F9: E8        INX
 C - - - - - 0x00B40A 02:B3FA: E0 18     CPX #$18
 C - - - - - 0x00B40C 02:B3FC: D0 F5     BNE bra_B3F3
@@ -9369,7 +9369,7 @@ C - - - - - 0x00B474 02:B464: AA        TAX
 C - - - - - 0x00B475 02:B465: A0 00     LDY #$00
 bra_B467:
 C - - - - - 0x00B477 02:B467: BD C5 B4  LDA tbl_B4C5,X
-C - - - - - 0x00B47A 02:B46A: 99 00 02  STA ram_0200,Y
+C - - - - - 0x00B47A 02:B46A: 99 00 02  STA ram_spr_Y,Y
 C - - - - - 0x00B47D 02:B46D: E8        INX
 C - - - - - 0x00B47E 02:B46E: C8        INY
 C - - - - - 0x00B47F 02:B46F: C0 10     CPY #$10
