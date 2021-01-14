@@ -312,14 +312,14 @@ C - - - - - 0x00C2DD 03:C2CD: 60        RTS
 
 sub_C2CE_roll_rng:
 C - - - - - 0x00C2DE 03:C2CE: AE 93 00  LDX ram_frame_counter
-C - - - - - 0x00C2E1 03:C2D1: BD 00 03  LDA ram_0300,X
-C - - - - - 0x00C2E4 03:C2D4: 7D 00 07  ADC ram_0700,X
+C - - - - - 0x00C2E1 03:C2D1: BD 00 03  LDA $0300,X
+C - - - - - 0x00C2E4 03:C2D4: 7D 00 07  ADC $0700,X
 C - - - - - 0x00C2E7 03:C2D7: 2E 7E 03  ROL ram_random
 C - - - - - 0x00C2EA 03:C2DA: 49 FF     EOR #$FF
 C - - - - - 0x00C2EC 03:C2DC: 2E 7E 03  ROL ram_random
 C - - - - - 0x00C2EF 03:C2DF: 6D 7E 03  ADC ram_random
 C - - - - - 0x00C2F2 03:C2E2: 8D 7E 03  STA ram_random
-C - - - - - 0x00C2F5 03:C2E5: FD 80 07  SBC ram_0780,X
+C - - - - - 0x00C2F5 03:C2E5: FD 80 07  SBC $0780,X
 C - - - - - 0x00C2F8 03:C2E8: 6D 93 00  ADC ram_frame_counter
 C - - - - - 0x00C2FB 03:C2EB: 8D 7F 03  STA ram_random + 1
 C - - - - - 0x00C2FE 03:C2EE: EE 93 00  INC ram_frame_counter
