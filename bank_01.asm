@@ -1127,28 +1127,35 @@ C - - - - - 0x004708 01:86F8: 85 2A     STA ram_002A
 C - - - - - 0x00470A 01:86FA: C8        INY
 C - - - - - 0x00470B 01:86FB: B1 2E     LDA (ram_002E),Y
 C - - - - - 0x00470D 01:86FD: 85 2B     STA ram_002B
-loc_86FF_loop:
-C D 0 - - - 0x00470F 01:86FF: 20 05 87  JSR sub_8705
-C - - - - - 0x004712 01:8702: 4C FF 86  JMP loc_86FF_loop
-
-
-
-sub_8705:
+loc_8705_draw_sprites_main_loop:
 C - - - - - 0x004715 01:8705: A4 2C     LDY ram_002C
 C - - - - - 0x004717 01:8707: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x004719 01:8709: 29 07     AND #$07
 C - - - - - 0x00471B 01:870B: F0 11     BEQ bra_871E
 C - - - - - 0x00471D 01:870D: C9 01     CMP #$01
 C - - - - - 0x00471F 01:870F: D0 03     BNE bra_8714
-                                        PLA
-                                        PLA
                                         RTS
 bra_8714:
 C - - - - - 0x004724 01:8714: C9 02     CMP #$02
 C - - - - - 0x004726 01:8716: D0 03     BNE bra_871B
-C - - - - - 0x004728 01:8718: 4C 76 87  JMP loc_8776
+                                        LDA #$00
+                                        STA ram_0038
+                                        INC ram_002C
+                                        JMP loc_8705_draw_sprites_main_loop
 bra_871B:
-C - - - - - 0x00472B 01:871B: 4C 7D 87  JMP loc_877D
+                                        LDY ram_002C
+                                        INY
+                                        LDA (ram_002A),Y
+                                        INY
+                                        STY ram_002C
+                                        TAY
+                                        AND #$03
+                                        TAX
+                                        TYA
+                                        LSR
+                                        LSR
+                                        STA ram_006B,X
+                                        JMP loc_8705_draw_sprites_main_loop               
 bra_871E:
 C - - - - - 0x00472E 01:871E: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x004730 01:8720: 4A        LSR
@@ -1198,32 +1205,7 @@ C - - - - - 0x004779 01:8769: 20 7B C0  JSR sub_0x00F9B5
 C - - - - - 0x00477C 01:876C: E6 2C     INC ram_002C
 C - - - - - 0x00477E 01:876E: C6 2D     DEC ram_002D
 C - - - - - 0x004780 01:8770: D0 C7     BNE bra_8739_loop
-C - - - - - 0x004782 01:8772: 60        RTS
-
-
-
-loc_8776:
-C D 0 - - - 0x004786 01:8776: A9 00     LDA #$00
-C - - - - - 0x004788 01:8778: 85 38     STA ram_0038
-C - - - - - 0x00478A 01:877A: E6 2C     INC ram_002C
-C - - - - - 0x00478C 01:877C: 60        RTS
-
-
-
-loc_877D:
-C D 0 - - - 0x00478D 01:877D: A4 2C     LDY ram_002C
-C - - - - - 0x00478F 01:877F: C8        INY
-C - - - - - 0x004790 01:8780: B1 2A     LDA (ram_002A),Y
-C - - - - - 0x004792 01:8782: C8        INY
-C - - - - - 0x004793 01:8783: 84 2C     STY ram_002C
-C - - - - - 0x004795 01:8785: A8        TAY
-C - - - - - 0x004796 01:8786: 29 03     AND #$03
-C - - - - - 0x004798 01:8788: AA        TAX
-C - - - - - 0x004799 01:8789: 98        TYA
-C - - - - - 0x00479A 01:878A: 4A        LSR
-C - - - - - 0x00479B 01:878B: 4A        LSR
-C - - - - - 0x00479C 01:878C: 95 6B     STA ram_006B,X
-C - - - - - 0x00479E 01:878E: 60        RTS
+                                        JMP loc_8705_draw_sprites_main_loop
 
 
 
