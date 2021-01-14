@@ -1115,10 +1115,10 @@ C - - - - - 0x0046F1 01:86E1: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x0046F3 01:86E3: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x0046F5 01:86E5: 0A        ASL
 C - - - - - 0x0046F6 01:86E6: 26 2F     ROL ram_002F
-C - - - - - 0x0046F8 01:86E8: 69 C6     ADC #< tbl_97C6
+C - - - - - 0x0046F8 01:86E8: 69 C6     ADC #< tbl_97C6_animation_data
 C - - - - - 0x0046FA 01:86EA: 85 2E     STA ram_002E
 C - - - - - 0x0046FC 01:86EC: A5 2F     LDA ram_002F
-C - - - - - 0x0046FE 01:86EE: 69 97     ADC #> tbl_97C6
+C - - - - - 0x0046FE 01:86EE: 69 97     ADC #> tbl_97C6_animation_data
 C - - - - - 0x004700 01:86F0: 85 2F     STA ram_002F
 C - - - - - 0x004702 01:86F2: A0 00     LDY #$00
 C - - - - - 0x004704 01:86F4: 84 2C     STY ram_002C
@@ -4434,197 +4434,196 @@ _off003_97BA_16:
 
 
 
-tbl_97C6:
-; 256 параметров спрайтов анимаций
-- D 0 - I - 0x0057D6 01:97C6: C6 99     .word _off010_99C6_00
-- D 0 - I - 0x0057D8 01:97C8: C7 99     .word _off010_99C7_01
-- D 0 - I - 0x0057DA 01:97CA: CE 99     .word _off010_99CE_02
-- D 0 - I - 0x0057DC 01:97CC: D5 99     .word _off010_99D5_03
-- D 0 - I - 0x0057DE 01:97CE: DE 99     .word _off010_99DE_04
-- D 0 - I - 0x0057E0 01:97D0: E7 99     .word _off010_99E7_05
-- D 0 - I - 0x0057E2 01:97D2: F0 99     .word _off010_99F0_06
-- D 0 - I - 0x0057E4 01:97D4: F9 99     .word _off010_99F9_07
-- D 0 - I - 0x0057E6 01:97D6: 02 9A     .word _off010_9A02_08
-- D 0 - I - 0x0057E8 01:97D8: 0B 9A     .word _off010_9A0B_09
-- D 0 - I - 0x0057EA 01:97DA: 14 9A     .word _off010_9A14_0A
-- D 0 - I - 0x0057EC 01:97DC: DE 99     .word _off010_99DE_0B
-- D 0 - I - 0x0057EE 01:97DE: 1D 9A     .word _off010_9A1D_0C
-- D 0 - I - 0x0057F0 01:97E0: F0 99     .word _off010_99F0_0D
-- D 0 - I - 0x0057F2 01:97E2: 26 9A     .word _off010_9A26_0E
-- D 0 - I - 0x0057F4 01:97E4: 02 9A     .word _off010_9A02_0F
-- D 0 - I - 0x0057F6 01:97E6: 2F 9A     .word _off010_9A2F_10
-- D 0 - I - 0x0057F8 01:97E8: 38 9A     .word _off010_9A38_11
-- D 0 - I - 0x0057FA 01:97EA: 42 9A     .word _off010_9A42_12
-- D 0 - I - 0x0057FC 01:97EC: 4C 9A     .word _off010_9A4C_13
-- D 0 - I - 0x0057FE 01:97EE: 58 9A     .word _off010_9A58_14
-- D 0 - I - 0x005800 01:97F0: 64 9A     .word _off010_9A64_15
-- D 0 - I - 0x005802 01:97F2: 70 9A     .word _off010_9A70_16
-- D 0 - I - 0x005804 01:97F4: 7C 9A     .word _off010_9A7C_17
-- D 0 - I - 0x005806 01:97F6: 86 9A     .word _off010_9A86_18
-- D 0 - I - 0x005808 01:97F8: 8E 9A     .word _off010_9A8E_19
-- D 0 - I - 0x00580A 01:97FA: 9B 9A     .word _off010_9A9B_1A
-- D 0 - I - 0x00580C 01:97FC: A8 9A     .word _off010_9AA8_1B
-- D 0 - I - 0x00580E 01:97FE: B4 9A     .word _off010_9AB4_1C
-- D 0 - I - 0x005810 01:9800: C0 9A     .word _off010_9AC0_1D
+tbl_97C6_animation_data:
+- D 0 - I - 0x0057D6 01:97C6: C6 99     .word _animation_99C6_00
+- D 0 - I - 0x0057D8 01:97C8: C7 99     .word _animation_99C7_01
+- D 0 - I - 0x0057DA 01:97CA: CE 99     .word _animation_99CE_02
+- D 0 - I - 0x0057DC 01:97CC: D5 99     .word _animation_99D5_03
+- D 0 - I - 0x0057DE 01:97CE: DE 99     .word _animation_99DE_04
+- D 0 - I - 0x0057E0 01:97D0: E7 99     .word _animation_99E7_05
+- D 0 - I - 0x0057E2 01:97D2: F0 99     .word _animation_99F0_06
+- D 0 - I - 0x0057E4 01:97D4: F9 99     .word _animation_99F9_07
+- D 0 - I - 0x0057E6 01:97D6: 02 9A     .word _animation_9A02_08
+- D 0 - I - 0x0057E8 01:97D8: 0B 9A     .word _animation_9A0B_09
+- D 0 - I - 0x0057EA 01:97DA: 14 9A     .word _animation_9A14_0A
+- D 0 - I - 0x0057EC 01:97DC: DE 99     .word _animation_99DE_0B
+- D 0 - I - 0x0057EE 01:97DE: 1D 9A     .word _animation_9A1D_0C
+- D 0 - I - 0x0057F0 01:97E0: F0 99     .word _animation_99F0_0D
+- D 0 - I - 0x0057F2 01:97E2: 26 9A     .word _animation_9A26_0E
+- D 0 - I - 0x0057F4 01:97E4: 02 9A     .word _animation_9A02_0F
+- D 0 - I - 0x0057F6 01:97E6: 2F 9A     .word _animation_9A2F_10
+- D 0 - I - 0x0057F8 01:97E8: 38 9A     .word _animation_9A38_11
+- D 0 - I - 0x0057FA 01:97EA: 42 9A     .word _animation_9A42_12
+- D 0 - I - 0x0057FC 01:97EC: 4C 9A     .word _animation_9A4C_13
+- D 0 - I - 0x0057FE 01:97EE: 58 9A     .word _animation_9A58_14
+- D 0 - I - 0x005800 01:97F0: 64 9A     .word _animation_9A64_15
+- D 0 - I - 0x005802 01:97F2: 70 9A     .word _animation_9A70_16
+- D 0 - I - 0x005804 01:97F4: 7C 9A     .word _animation_9A7C_17
+- D 0 - I - 0x005806 01:97F6: 86 9A     .word _animation_9A86_18
+- D 0 - I - 0x005808 01:97F8: 8E 9A     .word _animation_9A8E_19
+- D 0 - I - 0x00580A 01:97FA: 9B 9A     .word _animation_9A9B_1A
+- D 0 - I - 0x00580C 01:97FC: A8 9A     .word _animation_9AA8_1B
+- D 0 - I - 0x00580E 01:97FE: B4 9A     .word _animation_9AB4_1C
+- D 0 - I - 0x005810 01:9800: C0 9A     .word _animation_9AC0_1D
 - - - - - - 0x005812 01:9802: CC 9A     .word $0000      ; 1E
 - - - - - - 0x005814 01:9804: CD 9A     .word $0000      ; 1F
 - - - - - - 0x005816 01:9806: CE 9A     .word $0000      ; 20
-- D 0 - I - 0x005818 01:9808: CF 9A     .word _off010_9ACF_21
-- D 0 - I - 0x00581A 01:980A: DE 9A     .word _off010_9ADE_22
-- D 0 - I - 0x00581C 01:980C: EB 9A     .word _off010_9AEB_23
-- D 0 - I - 0x00581E 01:980E: FA 9A     .word _off010_9AFA_24
-- D 0 - I - 0x005820 01:9810: 09 9B     .word _off010_9B09_25
-- D 0 - I - 0x005822 01:9812: 16 9B     .word _off010_9B16_26
-- D 0 - I - 0x005824 01:9814: 27 9B     .word _off010_9B27_27
-- D 0 - I - 0x005826 01:9816: 36 9B     .word _off010_9B36_28
-- D 0 - I - 0x005828 01:9818: 43 9B     .word _off010_9B43_29
-- D 0 - I - 0x00582A 01:981A: 52 9B     .word _off010_9B52_2A
-- D 0 - I - 0x00582C 01:981C: 5F 9B     .word _off010_9B5F_2B
+- D 0 - I - 0x005818 01:9808: CF 9A     .word _animation_9ACF_21
+- D 0 - I - 0x00581A 01:980A: DE 9A     .word _animation_9ADE_22
+- D 0 - I - 0x00581C 01:980C: EB 9A     .word _animation_9AEB_23
+- D 0 - I - 0x00581E 01:980E: FA 9A     .word _animation_9AFA_24
+- D 0 - I - 0x005820 01:9810: 09 9B     .word _animation_9B09_25
+- D 0 - I - 0x005822 01:9812: 16 9B     .word _animation_9B16_26
+- D 0 - I - 0x005824 01:9814: 27 9B     .word _animation_9B27_27
+- D 0 - I - 0x005826 01:9816: 36 9B     .word _animation_9B36_28
+- D 0 - I - 0x005828 01:9818: 43 9B     .word _animation_9B43_29
+- D 0 - I - 0x00582A 01:981A: 52 9B     .word _animation_9B52_2A
+- D 0 - I - 0x00582C 01:981C: 5F 9B     .word _animation_9B5F_2B
 - - - - - - 0x00582E 01:981E: 6C 9B     .word $0000      ; 2C
-- D 0 - I - 0x005830 01:9820: 6D 9B     .word _off010_9B6D_2D
-- D 0 - I - 0x005832 01:9822: 7C 9B     .word _off010_9B7C_2E
-- D 0 - I - 0x005834 01:9824: 8F 9B     .word _off010_9B8F_2F
-- D 0 - I - 0x005836 01:9826: 96 9B     .word _off010_9B96_30
-- D 0 - I - 0x005838 01:9828: 9D 9B     .word _off010_9B9D_31
-- D 0 - I - 0x00583A 01:982A: AA 9B     .word _off010_9BAA_32
-- D 0 - I - 0x00583C 01:982C: B9 9B     .word _off010_9BB9_33
+- D 0 - I - 0x005830 01:9820: 6D 9B     .word _animation_9B6D_2D
+- D 0 - I - 0x005832 01:9822: 7C 9B     .word _animation_9B7C_2E
+- D 0 - I - 0x005834 01:9824: 8F 9B     .word _animation_9B8F_2F
+- D 0 - I - 0x005836 01:9826: 96 9B     .word _animation_9B96_30
+- D 0 - I - 0x005838 01:9828: 9D 9B     .word _animation_9B9D_31
+- D 0 - I - 0x00583A 01:982A: AA 9B     .word _animation_9BAA_32
+- D 0 - I - 0x00583C 01:982C: B9 9B     .word _animation_9BB9_33
 - - - - - - 0x00583E 01:982E: CA 9B     .word $0000      ; 34
 - - - - - - 0x005840 01:9830: CB 9B     .word $0000      ; 35
-- D 0 - I - 0x005842 01:9832: CC 9B     .word _off010_9BCC_36
-- D 0 - I - 0x005844 01:9834: D9 9B     .word _off010_9BD9_37
-- D 0 - I - 0x005846 01:9836: E8 9B     .word _off010_9BE8_38
+- D 0 - I - 0x005842 01:9832: CC 9B     .word _animation_9BCC_36
+- D 0 - I - 0x005844 01:9834: D9 9B     .word _animation_9BD9_37
+- D 0 - I - 0x005846 01:9836: E8 9B     .word _animation_9BE8_38
 - - - - - - 0x005848 01:9838: F9 9B     .word $0000      ; 39
 - - - - - - 0x00584A 01:983A: FA 9B     .word $0000      ; 3A
-- D 0 - I - 0x00584C 01:983C: FB 9B     .word _off010_9BFB_3B
-- - - - - - 0x00584E 01:983E: 08 9C     .word _off010_9C08_3C
-- - - - - - 0x005850 01:9840: 15 9C     .word _off010_9C15_3D
-- D 0 - I - 0x005852 01:9842: 22 9C     .word _off010_9C22_3E
-- D 0 - I - 0x005854 01:9844: 2F 9C     .word _off010_9C2F_3F
-- D 0 - I - 0x005856 01:9846: 3C 9C     .word _off010_9C3C_40
-- D 0 - I - 0x005858 01:9848: 45 9C     .word _off010_9C45_41
-- D 0 - I - 0x00585A 01:984A: 50 9C     .word _off010_9C50_42
+- D 0 - I - 0x00584C 01:983C: FB 9B     .word _animation_9BFB_3B
+- - - - - - 0x00584E 01:983E: 08 9C     .word _animation_9C08_3C
+- - - - - - 0x005850 01:9840: 15 9C     .word _animation_9C15_3D
+- D 0 - I - 0x005852 01:9842: 22 9C     .word _animation_9C22_3E
+- D 0 - I - 0x005854 01:9844: 2F 9C     .word _animation_9C2F_3F
+- D 0 - I - 0x005856 01:9846: 3C 9C     .word _animation_9C3C_40
+- D 0 - I - 0x005858 01:9848: 45 9C     .word _animation_9C45_41
+- D 0 - I - 0x00585A 01:984A: 50 9C     .word _animation_9C50_42
 - - - - - - 0x00585C 01:984C: 5F 9C     .word $0000      ; 43
-- D 0 - I - 0x00585E 01:984E: 60 9C     .word _off010_9C60_44
+- D 0 - I - 0x00585E 01:984E: 60 9C     .word _animation_9C60_44
 - - - - - - 0x005860 01:9850: 6D 9C     .word $0000      ; 45
-- D 0 - I - 0x005862 01:9852: 6E 9C     .word _off010_9C6E_46
+- D 0 - I - 0x005862 01:9852: 6E 9C     .word _animation_9C6E_46
 - - - - - - 0x005864 01:9854: 7D 9C     .word $0000      ; 47
 - - - - - - 0x005866 01:9856: 7E 9C     .word $0000      ; 48
 - - - - - - 0x005868 01:9858: 7F 9C     .word $0000      ; 49
-- D 0 - I - 0x00586A 01:985A: 80 9C     .word _off010_9C80_4A
-- D 0 - I - 0x00586C 01:985C: 91 9C     .word _off010_9C91_4B
+- D 0 - I - 0x00586A 01:985A: 80 9C     .word _animation_9C80_4A
+- D 0 - I - 0x00586C 01:985C: 91 9C     .word _animation_9C91_4B
 - - - - - - 0x00586E 01:985E: 9E 9C     .word $0000      ; 4C
 - - - - - - 0x005870 01:9860: 9F 9C     .word $0000      ; 4D
-- D 0 - I - 0x005872 01:9862: A0 9C     .word _off010_9CA0_4E
-- D 0 - I - 0x005874 01:9864: B5 9C     .word _off010_9CB5_4F
+- D 0 - I - 0x005872 01:9862: A0 9C     .word _animation_9CA0_4E
+- D 0 - I - 0x005874 01:9864: B5 9C     .word _animation_9CB5_4F
 - - - - - - 0x005876 01:9866: C2 9C     .word $0000      ; 50
 - - - - - - 0x005878 01:9868: C3 9C     .word $0000      ; 51
-- D 0 - I - 0x00587A 01:986A: C4 9C     .word _off010_9CC4_52
-- D 0 - I - 0x00587C 01:986C: D3 9C     .word _off010_9CD3_53
-- D 0 - I - 0x00587E 01:986E: E0 9C     .word _off010_9CE0_54
-- D 0 - I - 0x005880 01:9870: EF 9C     .word _off010_9CEF_55
-- D 0 - I - 0x005882 01:9872: 02 9D     .word _off010_9D02_56
+- D 0 - I - 0x00587A 01:986A: C4 9C     .word _animation_9CC4_52
+- D 0 - I - 0x00587C 01:986C: D3 9C     .word _animation_9CD3_53
+- D 0 - I - 0x00587E 01:986E: E0 9C     .word _animation_9CE0_54
+- D 0 - I - 0x005880 01:9870: EF 9C     .word _animation_9CEF_55
+- D 0 - I - 0x005882 01:9872: 02 9D     .word _animation_9D02_56
 - - - - - - 0x005884 01:9874: 11 9D     .word $0000      ; 57
 - - - - - - 0x005886 01:9876: 12 9D     .word $0000      ; 58
-- D 0 - I - 0x005888 01:9878: 13 9D     .word _off010_9D13_59
-- D 0 - I - 0x00588A 01:987A: 22 9D     .word _off010_9D22_5A
-- D 0 - I - 0x00588C 01:987C: 33 9D     .word _off010_9D33_5B
+- D 0 - I - 0x005888 01:9878: 13 9D     .word _animation_9D13_59
+- D 0 - I - 0x00588A 01:987A: 22 9D     .word _animation_9D22_5A
+- D 0 - I - 0x00588C 01:987C: 33 9D     .word _animation_9D33_5B
 - - - - - - 0x00588E 01:987E: 44 9D     .word $0000      ; 5C
 - - - - - - 0x005890 01:9880: 45 9D     .word $0000      ; 5D
-- D 0 - I - 0x005892 01:9882: 46 9D     .word _off010_9D46_5E
-- D 0 - I - 0x005894 01:9884: 59 9D     .word _off010_9D59_5F
-- D 0 - I - 0x005896 01:9886: 68 9D     .word _off010_9D68_60
+- D 0 - I - 0x005892 01:9882: 46 9D     .word _animation_9D46_5E
+- D 0 - I - 0x005894 01:9884: 59 9D     .word _animation_9D59_5F
+- D 0 - I - 0x005896 01:9886: 68 9D     .word _animation_9D68_60
 - - - - - - 0x005898 01:9888: 77 9D     .word $0000      ; 61
 - - - - - - 0x00589A 01:988A: 78 9D     .word $0000      ; 62
-- D 0 - I - 0x00589C 01:988C: 79 9D     .word _off010_9D79_63
-- D 0 - I - 0x00589E 01:988E: 86 9D     .word _off010_9D86_64
-- D 0 - I - 0x0058A0 01:9890: 95 9D     .word _off010_9D95_65
-- D 0 - I - 0x0058A2 01:9892: A2 9D     .word _off010_9DA2_66
-- D 0 - I - 0x0058A4 01:9894: B3 9D     .word _off010_9DB3_67
-- D 0 - I - 0x0058A6 01:9896: C0 9D     .word _off010_9DC0_68
-- - - - - - 0x0058A8 01:9898: CF 9D     .word _off010_9DCF_69
-- - - - - - 0x0058AA 01:989A: E2 9D     .word _off010_9DE2_6A
-- - - - - - 0x0058AC 01:989C: EF 9D     .word _off010_9DEF_6B
-- D 0 - I - 0x0058AE 01:989E: FE 9D     .word _off010_9DFE_6C
-- D 0 - I - 0x0058B0 01:98A0: 11 9E     .word _off010_9E11_6D
-- D 0 - I - 0x0058B2 01:98A2: 24 9E     .word _off010_9E24_6E
-- D 0 - I - 0x0058B4 01:98A4: 37 9E     .word _off010_9E37_6F
-- D 0 - I - 0x0058B6 01:98A6: 46 9E     .word _off010_9E46_70
-- D 0 - I - 0x0058B8 01:98A8: 57 9E     .word _off010_9E57_71
-- - - - - - 0x0058BA 01:98AA: 66 9E     .word _off010_9E66_72
-- - - - - - 0x0058BC 01:98AC: 79 9E     .word _off010_9E79_73
-- - - - - - 0x0058BE 01:98AE: 86 9E     .word _off010_9E86_74
-- D 0 - I - 0x0058C0 01:98B0: 99 9E     .word _off010_9E99_75
-- D 0 - I - 0x0058C2 01:98B2: A6 9E     .word _off010_9EA6_76
-- D 0 - I - 0x0058C4 01:98B4: B3 9E     .word _off010_9EB3_77
-- - - - - - 0x0058C6 01:98B6: BC 9E     .word _off010_9EBC_78
-- - - - - - 0x0058C8 01:98B8: C9 9E     .word _off010_9EC9_79
-- - - - - - 0x0058CA 01:98BA: D4 9E     .word _off010_9ED4_7A
-- D 0 - I - 0x0058CC 01:98BC: E1 9E     .word _off010_9EE1_7B
-- D 0 - I - 0x0058CE 01:98BE: EC 9E     .word _off010_9EEC_7C
-- D 0 - I - 0x0058D0 01:98C0: F7 9E     .word _off010_9EF7_7D
-- D 0 - I - 0x0058D2 01:98C2: 04 9F     .word _off010_9F04_7E
-- D 0 - I - 0x0058D4 01:98C4: 11 9F     .word _off010_9F11_7F
-- D 0 - I - 0x0058D6 01:98C6: 1E 9F     .word _off010_9F1E_80
-- D 0 - I - 0x0058D8 01:98C8: 2B 9F     .word _off010_9F2B_81
-- D 0 - I - 0x0058DA 01:98CA: 36 9F     .word _off010_9F36_82
-- D 0 - I - 0x0058DC 01:98CC: 3F 9F     .word _off010_9F3F_83
-- D 0 - I - 0x0058DE 01:98CE: 4E 9F     .word _off010_9F4E_84
-- D 0 - I - 0x0058E0 01:98D0: 5B 9F     .word _off010_9F5B_85
-- D 0 - I - 0x0058E2 01:98D2: 6A 9F     .word _off010_9F6A_86
-- D 0 - I - 0x0058E4 01:98D4: 77 9F     .word _off010_9F77_87
-- D 0 - I - 0x0058E6 01:98D6: 86 9F     .word _off010_9F86_88
-- D 0 - I - 0x0058E8 01:98D8: 93 9F     .word _off010_9F93_89
-- D 0 - I - 0x0058EA 01:98DA: A6 9F     .word _off010_9FA6_8A
-- D 0 - I - 0x0058EC 01:98DC: B3 9F     .word _off010_9FB3_8B
-- D 0 - I - 0x0058EE 01:98DE: C2 9F     .word _off010_9FC2_8C
-- D 0 - I - 0x0058F0 01:98E0: CF 9F     .word _off010_9FCF_8D
-- D 0 - I - 0x0058F2 01:98E2: DE 9F     .word _off010_9FDE_8E
-- D 0 - I - 0x0058F4 01:98E4: EB 9F     .word _off010_9FEB_8F
-- D 0 - I - 0x0058F6 01:98E6: F8 9F     .word _off010_9FF8_90
-- D 0 - I - 0x0058F8 01:98E8: 05 A0     .word _off010_A005_91
-- D 0 - I - 0x0058FA 01:98EA: 10 A0     .word _off010_A010_92
-- D 0 - I - 0x0058FC 01:98EC: 1D A0     .word _off010_A01D_93
-- D 0 - I - 0x0058FE 01:98EE: 28 A0     .word _off010_A028_94
-- D 0 - I - 0x005900 01:98F0: 35 A0     .word _off010_A035_95
-- D 0 - I - 0x005902 01:98F2: 42 A0     .word _off010_A042_96
-- D 0 - I - 0x005904 01:98F4: 4F A0     .word _off010_A04F_97
-- - - - - - 0x005906 01:98F6: 5C A0     .word _off010_A05C_98
-- - - - - - 0x005908 01:98F8: 69 A0     .word _off010_A069_99
-- - - - - - 0x00590A 01:98FA: 76 A0     .word _off010_A076_9A
-- - - - - - 0x00590C 01:98FC: 83 A0     .word _off010_A083_9B
-- - - - - - 0x00590E 01:98FE: 94 A0     .word _off010_A094_9C
-- - - - - - 0x005910 01:9900: A5 A0     .word _off010_A0A5_9D
-- D 0 - I - 0x005912 01:9902: B6 A0     .word _off010_A0B6_9E
-- D 0 - I - 0x005914 01:9904: C5 A0     .word _off010_A0C5_9F
-- D 0 - I - 0x005916 01:9906: D2 A0     .word _off010_A0D2_A0
-- - - - - - 0x005918 01:9908: DF A0     .word _off010_A0DF_A1
-- - - - - - 0x00591A 01:990A: F2 A0     .word _off010_A0F2_A2
-- - - - - - 0x00591C 01:990C: 05 A1     .word _off010_A105_A3
-- D 0 - I - 0x00591E 01:990E: 1A A1     .word _off010_A11A_A4
-- D 0 - I - 0x005920 01:9910: 27 A1     .word _off010_A127_A5
-- D 0 - I - 0x005922 01:9912: 32 A1     .word _off010_A132_A6
-- D 0 - I - 0x005924 01:9914: 3F A1     .word _off010_A13F_A7
-- D 0 - I - 0x005926 01:9916: 50 A1     .word _off010_A150_A8
-- D 0 - I - 0x005928 01:9918: 5F A1     .word _off010_A15F_A9
-- - - - - - 0x00592A 01:991A: 70 A1     .word _off010_A170_AA
-- D 0 - I - 0x00592C 01:991C: 81 A1     .word _off010_A181_AB
-- D 0 - I - 0x00592E 01:991E: 92 A1     .word _off010_A192_AC
-- D 0 - I - 0x005930 01:9920: A3 A1     .word _off010_A1A3_AD
-- - - - - - 0x005932 01:9922: B4 A1     .word _off010_A1B4_AE
-- D 0 - I - 0x005934 01:9924: C5 A1     .word _off010_A1C5_AF
-- D 0 - I - 0x005936 01:9926: D4 A1     .word _off010_A1D4_B0
-- D 0 - I - 0x005938 01:9928: E1 A1     .word _off010_A1E1_B1
-- D 0 - I - 0x00593A 01:992A: EE A1     .word _off010_A1EE_B2
-- D 0 - I - 0x00593C 01:992C: 01 A2     .word _off010_A201_B3
-- D 0 - I - 0x00593E 01:992E: 14 A2     .word _off010_A214_B4
-- - - - - - 0x005940 01:9930: 25 A2     .word _off010_A225_B5
-- D 0 - I - 0x005942 01:9932: 34 A2     .word _off010_A234_B6
-- D 0 - I - 0x005944 01:9934: 45 A2     .word _off010_A245_B7
-- D 0 - I - 0x005946 01:9936: 50 A2     .word _off010_A250_B8
-- D 0 - I - 0x005948 01:9938: 5D A2     .word _off010_A25D_B9
-- D 0 - I - 0x00594A 01:993A: 6E A2     .word _off010_A26E_BA
-- D 0 - I - 0x00594C 01:993C: 7F A2     .word _off010_A27F_BB
-- - - - - - 0x00594E 01:993E: 90 A2     .word _off010_A290_BC
+- D 0 - I - 0x00589C 01:988C: 79 9D     .word _animation_9D79_63
+- D 0 - I - 0x00589E 01:988E: 86 9D     .word _animation_9D86_64
+- D 0 - I - 0x0058A0 01:9890: 95 9D     .word _animation_9D95_65
+- D 0 - I - 0x0058A2 01:9892: A2 9D     .word _animation_9DA2_66
+- D 0 - I - 0x0058A4 01:9894: B3 9D     .word _animation_9DB3_67
+- D 0 - I - 0x0058A6 01:9896: C0 9D     .word _animation_9DC0_68
+- - - - - - 0x0058A8 01:9898: CF 9D     .word _animation_9DCF_69
+- - - - - - 0x0058AA 01:989A: E2 9D     .word _animation_9DE2_6A
+- - - - - - 0x0058AC 01:989C: EF 9D     .word _animation_9DEF_6B
+- D 0 - I - 0x0058AE 01:989E: FE 9D     .word _animation_9DFE_6C
+- D 0 - I - 0x0058B0 01:98A0: 11 9E     .word _animation_9E11_6D
+- D 0 - I - 0x0058B2 01:98A2: 24 9E     .word _animation_9E24_6E
+- D 0 - I - 0x0058B4 01:98A4: 37 9E     .word _animation_9E37_6F
+- D 0 - I - 0x0058B6 01:98A6: 46 9E     .word _animation_9E46_70
+- D 0 - I - 0x0058B8 01:98A8: 57 9E     .word _animation_9E57_71
+- - - - - - 0x0058BA 01:98AA: 66 9E     .word _animation_9E66_72
+- - - - - - 0x0058BC 01:98AC: 79 9E     .word _animation_9E79_73
+- - - - - - 0x0058BE 01:98AE: 86 9E     .word _animation_9E86_74
+- D 0 - I - 0x0058C0 01:98B0: 99 9E     .word _animation_9E99_75
+- D 0 - I - 0x0058C2 01:98B2: A6 9E     .word _animation_9EA6_76
+- D 0 - I - 0x0058C4 01:98B4: B3 9E     .word _animation_9EB3_77
+- - - - - - 0x0058C6 01:98B6: BC 9E     .word _animation_9EBC_78
+- - - - - - 0x0058C8 01:98B8: C9 9E     .word _animation_9EC9_79
+- - - - - - 0x0058CA 01:98BA: D4 9E     .word _animation_9ED4_7A
+- D 0 - I - 0x0058CC 01:98BC: E1 9E     .word _animation_9EE1_7B
+- D 0 - I - 0x0058CE 01:98BE: EC 9E     .word _animation_9EEC_7C
+- D 0 - I - 0x0058D0 01:98C0: F7 9E     .word _animation_9EF7_7D
+- D 0 - I - 0x0058D2 01:98C2: 04 9F     .word _animation_9F04_7E
+- D 0 - I - 0x0058D4 01:98C4: 11 9F     .word _animation_9F11_7F
+- D 0 - I - 0x0058D6 01:98C6: 1E 9F     .word _animation_9F1E_80
+- D 0 - I - 0x0058D8 01:98C8: 2B 9F     .word _animation_9F2B_81
+- D 0 - I - 0x0058DA 01:98CA: 36 9F     .word _animation_9F36_82
+- D 0 - I - 0x0058DC 01:98CC: 3F 9F     .word _animation_9F3F_83
+- D 0 - I - 0x0058DE 01:98CE: 4E 9F     .word _animation_9F4E_84
+- D 0 - I - 0x0058E0 01:98D0: 5B 9F     .word _animation_9F5B_85
+- D 0 - I - 0x0058E2 01:98D2: 6A 9F     .word _animation_9F6A_86
+- D 0 - I - 0x0058E4 01:98D4: 77 9F     .word _animation_9F77_87
+- D 0 - I - 0x0058E6 01:98D6: 86 9F     .word _animation_9F86_88
+- D 0 - I - 0x0058E8 01:98D8: 93 9F     .word _animation_9F93_89
+- D 0 - I - 0x0058EA 01:98DA: A6 9F     .word _animation_9FA6_8A
+- D 0 - I - 0x0058EC 01:98DC: B3 9F     .word _animation_9FB3_8B
+- D 0 - I - 0x0058EE 01:98DE: C2 9F     .word _animation_9FC2_8C
+- D 0 - I - 0x0058F0 01:98E0: CF 9F     .word _animation_9FCF_8D
+- D 0 - I - 0x0058F2 01:98E2: DE 9F     .word _animation_9FDE_8E
+- D 0 - I - 0x0058F4 01:98E4: EB 9F     .word _animation_9FEB_8F
+- D 0 - I - 0x0058F6 01:98E6: F8 9F     .word _animation_9FF8_90
+- D 0 - I - 0x0058F8 01:98E8: 05 A0     .word _animation_A005_91
+- D 0 - I - 0x0058FA 01:98EA: 10 A0     .word _animation_A010_92
+- D 0 - I - 0x0058FC 01:98EC: 1D A0     .word _animation_A01D_93
+- D 0 - I - 0x0058FE 01:98EE: 28 A0     .word _animation_A028_94
+- D 0 - I - 0x005900 01:98F0: 35 A0     .word _animation_A035_95
+- D 0 - I - 0x005902 01:98F2: 42 A0     .word _animation_A042_96
+- D 0 - I - 0x005904 01:98F4: 4F A0     .word _animation_A04F_97
+- - - - - - 0x005906 01:98F6: 5C A0     .word _animation_A05C_98
+- - - - - - 0x005908 01:98F8: 69 A0     .word _animation_A069_99
+- - - - - - 0x00590A 01:98FA: 76 A0     .word _animation_A076_9A
+- - - - - - 0x00590C 01:98FC: 83 A0     .word _animation_A083_9B
+- - - - - - 0x00590E 01:98FE: 94 A0     .word _animation_A094_9C
+- - - - - - 0x005910 01:9900: A5 A0     .word _animation_A0A5_9D
+- D 0 - I - 0x005912 01:9902: B6 A0     .word _animation_A0B6_9E
+- D 0 - I - 0x005914 01:9904: C5 A0     .word _animation_A0C5_9F
+- D 0 - I - 0x005916 01:9906: D2 A0     .word _animation_A0D2_A0
+- - - - - - 0x005918 01:9908: DF A0     .word _animation_A0DF_A1
+- - - - - - 0x00591A 01:990A: F2 A0     .word _animation_A0F2_A2
+- - - - - - 0x00591C 01:990C: 05 A1     .word _animation_A105_A3
+- D 0 - I - 0x00591E 01:990E: 1A A1     .word _animation_A11A_A4
+- D 0 - I - 0x005920 01:9910: 27 A1     .word _animation_A127_A5
+- D 0 - I - 0x005922 01:9912: 32 A1     .word _animation_A132_A6
+- D 0 - I - 0x005924 01:9914: 3F A1     .word _animation_A13F_A7
+- D 0 - I - 0x005926 01:9916: 50 A1     .word _animation_A150_A8
+- D 0 - I - 0x005928 01:9918: 5F A1     .word _animation_A15F_A9
+- - - - - - 0x00592A 01:991A: 70 A1     .word _animation_A170_AA
+- D 0 - I - 0x00592C 01:991C: 81 A1     .word _animation_A181_AB
+- D 0 - I - 0x00592E 01:991E: 92 A1     .word _animation_A192_AC
+- D 0 - I - 0x005930 01:9920: A3 A1     .word _animation_A1A3_AD
+- - - - - - 0x005932 01:9922: B4 A1     .word _animation_A1B4_AE
+- D 0 - I - 0x005934 01:9924: C5 A1     .word _animation_A1C5_AF
+- D 0 - I - 0x005936 01:9926: D4 A1     .word _animation_A1D4_B0
+- D 0 - I - 0x005938 01:9928: E1 A1     .word _animation_A1E1_B1
+- D 0 - I - 0x00593A 01:992A: EE A1     .word _animation_A1EE_B2
+- D 0 - I - 0x00593C 01:992C: 01 A2     .word _animation_A201_B3
+- D 0 - I - 0x00593E 01:992E: 14 A2     .word _animation_A214_B4
+- - - - - - 0x005940 01:9930: 25 A2     .word _animation_A225_B5
+- D 0 - I - 0x005942 01:9932: 34 A2     .word _animation_A234_B6
+- D 0 - I - 0x005944 01:9934: 45 A2     .word _animation_A245_B7
+- D 0 - I - 0x005946 01:9936: 50 A2     .word _animation_A250_B8
+- D 0 - I - 0x005948 01:9938: 5D A2     .word _animation_A25D_B9
+- D 0 - I - 0x00594A 01:993A: 6E A2     .word _animation_A26E_BA
+- D 0 - I - 0x00594C 01:993C: 7F A2     .word _animation_A27F_BB
+- - - - - - 0x00594E 01:993E: 90 A2     .word _animation_A290_BC
 - - - - - - 0x005950 01:9940: A3 A2     .word $0000      ; BD
 - - - - - - 0x005952 01:9942: A4 A2     .word $0000      ; BE
 - - - - - - 0x005954 01:9944: A5 A2     .word $0000      ; BF
@@ -4660,32 +4659,32 @@ tbl_97C6:
 - - - - - - 0x005990 01:9980: C3 A2     .word $0000      ; DD
 - - - - - - 0x005992 01:9982: C4 A2     .word $0000      ; DE
 - - - - - - 0x005994 01:9984: C5 A2     .word $0000      ; DF
-- D 0 - I - 0x005996 01:9986: C6 A2     .word _off010_A2C6_E0
-- D 0 - I - 0x005998 01:9988: CD A2     .word _off010_A2CD_E1
-- D 0 - I - 0x00599A 01:998A: DE A2     .word _off010_A2DE_E2
-- D 0 - I - 0x00599C 01:998C: EB A2     .word _off010_A2EB_E3
-- D 0 - I - 0x00599E 01:998E: FE A2     .word _off010_A2FE_E4
-- D 0 - I - 0x0059A0 01:9990: 0B A3     .word _off010_A30B_E5
-- D 0 - I - 0x0059A2 01:9992: 18 A3     .word _off010_A318_E6
+- D 0 - I - 0x005996 01:9986: C6 A2     .word _animation_A2C6_E0
+- D 0 - I - 0x005998 01:9988: CD A2     .word _animation_A2CD_E1
+- D 0 - I - 0x00599A 01:998A: DE A2     .word _animation_A2DE_E2
+- D 0 - I - 0x00599C 01:998C: EB A2     .word _animation_A2EB_E3
+- D 0 - I - 0x00599E 01:998E: FE A2     .word _animation_A2FE_E4
+- D 0 - I - 0x0059A0 01:9990: 0B A3     .word _animation_A30B_E5
+- D 0 - I - 0x0059A2 01:9992: 18 A3     .word _animation_A318_E6
 - - - - - - 0x0059A4 01:9994: 25 A3     .word $0000      ; E7
-- D 0 - I - 0x0059A6 01:9996: 26 A3     .word _off010_A326_E8
-- D 0 - I - 0x0059A8 01:9998: 4B A3     .word _off010_A34B_E9
-- D 0 - I - 0x0059AA 01:999A: 72 A3     .word _off010_A372_EA
-- D 0 - I - 0x0059AC 01:999C: 9F A3     .word _off010_A39F_EB
-- D 0 - I - 0x0059AE 01:999E: C6 A3     .word _off010_A3C6_EC
-- D 0 - I - 0x0059B0 01:99A0: E3 A3     .word _off010_A3E3_ED
-- D 0 - I - 0x0059B2 01:99A2: FE A3     .word _off010_A3FE_EE
-- - - - - - 0x0059B4 01:99A4: 1B A4     .word _off010_A41B_EF
-- D 0 - I - 0x0059B6 01:99A6: 26 A4     .word _off010_A426_F0
+- D 0 - I - 0x0059A6 01:9996: 26 A3     .word _animation_A326_E8
+- D 0 - I - 0x0059A8 01:9998: 4B A3     .word _animation_A34B_E9
+- D 0 - I - 0x0059AA 01:999A: 72 A3     .word _animation_A372_EA
+- D 0 - I - 0x0059AC 01:999C: 9F A3     .word _animation_A39F_EB
+- D 0 - I - 0x0059AE 01:999E: C6 A3     .word _animation_A3C6_EC
+- D 0 - I - 0x0059B0 01:99A0: E3 A3     .word _animation_A3E3_ED
+- D 0 - I - 0x0059B2 01:99A2: FE A3     .word _animation_A3FE_EE
+- - - - - - 0x0059B4 01:99A4: 1B A4     .word _animation_A41B_EF
+- D 0 - I - 0x0059B6 01:99A6: 26 A4     .word _animation_A426_F0
 
 
 
-_off010_99C6_00:
+_animation_99C6_00:
 - D 0 - I - 0x0059D6 01:99C6: 01        .byte $01   ; 
 
 
 
-_off010_99C7_01:
+_animation_99C7_01:
 - D 0 - I - 0x0059D7 01:99C7: 03        .byte $03   ; 
 - D 0 - I - 0x0059D8 01:99C8: 10        .byte $10   ; 
 - D 0 - I - 0x0059D9 01:99C9: 08        .byte $08   ; 
@@ -4696,7 +4695,7 @@ _off010_99C7_01:
 
 
 
-_off010_99CE_02:
+_animation_99CE_02:
 - D 0 - I - 0x0059DE 01:99CE: 03        .byte $03   ; 
 - D 0 - I - 0x0059DF 01:99CF: 10        .byte $10   ; 
 - D 0 - I - 0x0059E0 01:99D0: 08        .byte $08   ; 
@@ -4707,7 +4706,7 @@ _off010_99CE_02:
 
 
 
-_off010_99D5_03:
+_animation_99D5_03:
 - D 0 - I - 0x0059E5 01:99D5: 03        .byte $03   ; 
 - D 0 - I - 0x0059E6 01:99D6: 10        .byte $10   ; 
 - D 0 - I - 0x0059E7 01:99D7: 10        .byte $10   ; 
@@ -4720,8 +4719,8 @@ _off010_99D5_03:
 
 
 
-_off010_99DE_04:
-_off010_99DE_0B:
+_animation_99DE_04:
+_animation_99DE_0B:
 - D 0 - I - 0x0059EE 01:99DE: 03        .byte $03   ; 
 - D 0 - I - 0x0059EF 01:99DF: 10        .byte $10   ; 
 - D 0 - I - 0x0059F0 01:99E0: 10        .byte $10   ; 
@@ -4734,7 +4733,7 @@ _off010_99DE_0B:
 
 
 
-_off010_99E7_05:
+_animation_99E7_05:
 - D 0 - I - 0x0059F7 01:99E7: 03        .byte $03   ; 
 - D 0 - I - 0x0059F8 01:99E8: 10        .byte $10   ; 
 - D 0 - I - 0x0059F9 01:99E9: 10        .byte $10   ; 
@@ -4747,8 +4746,8 @@ _off010_99E7_05:
 
 
 
-_off010_99F0_06:
-_off010_99F0_0D:
+_animation_99F0_06:
+_animation_99F0_0D:
 - D 0 - I - 0x005A00 01:99F0: 03        .byte $03   ; 
 - D 0 - I - 0x005A01 01:99F1: 10        .byte $10   ; 
 - D 0 - I - 0x005A02 01:99F2: 10        .byte $10   ; 
@@ -4761,7 +4760,7 @@ _off010_99F0_0D:
 
 
 
-_off010_99F9_07:
+_animation_99F9_07:
 - D 0 - I - 0x005A09 01:99F9: 03        .byte $03   ; 
 - D 0 - I - 0x005A0A 01:99FA: 10        .byte $10   ; 
 - D 0 - I - 0x005A0B 01:99FB: 10        .byte $10   ; 
@@ -4774,8 +4773,8 @@ _off010_99F9_07:
 
 
 
-_off010_9A02_08:
-_off010_9A02_0F:
+_animation_9A02_08:
+_animation_9A02_0F:
 - D 0 - I - 0x005A12 01:9A02: 03        .byte $03   ; 
 - D 0 - I - 0x005A13 01:9A03: 10        .byte $10   ; 
 - D 0 - I - 0x005A14 01:9A04: 10        .byte $10   ; 
@@ -4788,7 +4787,7 @@ _off010_9A02_0F:
 
 
 
-_off010_9A0B_09:
+_animation_9A0B_09:
 - D 0 - I - 0x005A1B 01:9A0B: 03        .byte $03   ; 
 - D 0 - I - 0x005A1C 01:9A0C: 10        .byte $10   ; 
 - D 0 - I - 0x005A1D 01:9A0D: 10        .byte $10   ; 
@@ -4801,7 +4800,7 @@ _off010_9A0B_09:
 
 
 
-_off010_9A14_0A:
+_animation_9A14_0A:
 - D 0 - I - 0x005A24 01:9A14: 03        .byte $03   ; 
 - D 0 - I - 0x005A25 01:9A15: 10        .byte $10   ; 
 - D 0 - I - 0x005A26 01:9A16: 10        .byte $10   ; 
@@ -4814,7 +4813,7 @@ _off010_9A14_0A:
 
 
 
-_off010_9A1D_0C:
+_animation_9A1D_0C:
 - D 0 - I - 0x005A2D 01:9A1D: 03        .byte $03   ; 
 - D 0 - I - 0x005A2E 01:9A1E: 10        .byte $10   ; 
 - D 0 - I - 0x005A2F 01:9A1F: 10        .byte $10   ; 
@@ -4827,7 +4826,7 @@ _off010_9A1D_0C:
 
 
 
-_off010_9A26_0E:
+_animation_9A26_0E:
 - D 0 - I - 0x005A36 01:9A26: 03        .byte $03   ; 
 - D 0 - I - 0x005A37 01:9A27: 10        .byte $10   ; 
 - D 0 - I - 0x005A38 01:9A28: 10        .byte $10   ; 
@@ -4840,7 +4839,7 @@ _off010_9A26_0E:
 
 
 
-_off010_9A2F_10:
+_animation_9A2F_10:
 - D 0 - I - 0x005A3F 01:9A2F: 03        .byte $03   ; 
 - D 0 - I - 0x005A40 01:9A30: 10        .byte $10   ; 
 - D 0 - I - 0x005A41 01:9A31: 10        .byte $10   ; 
@@ -4853,7 +4852,7 @@ _off010_9A2F_10:
 
 
 
-_off010_9A38_11:
+_animation_9A38_11:
 - D 0 - I - 0x005A48 01:9A38: 02        .byte $02   ; 
 - D 0 - I - 0x005A49 01:9A39: 18        .byte $18   ; 
 - D 0 - I - 0x005A4A 01:9A3A: F9        .byte $F9   ; 
@@ -4867,7 +4866,7 @@ _off010_9A38_11:
 
 
 
-_off010_9A42_12:
+_animation_9A42_12:
 - D 0 - I - 0x005A52 01:9A42: 02        .byte $02   ; 
 - D 0 - I - 0x005A53 01:9A43: 18        .byte $18   ; 
 - D 0 - I - 0x005A54 01:9A44: F9        .byte $F9   ; 
@@ -4881,7 +4880,7 @@ _off010_9A42_12:
 
 
 
-_off010_9A4C_13:
+_animation_9A4C_13:
 - D 0 - I - 0x005A5C 01:9A4C: 02        .byte $02   ; 
 - D 0 - I - 0x005A5D 01:9A4D: 10        .byte $10   ; 
 - D 0 - I - 0x005A5E 01:9A4E: F9        .byte $F9   ; 
@@ -4897,7 +4896,7 @@ _off010_9A4C_13:
 
 
 
-_off010_9A58_14:
+_animation_9A58_14:
 - D 0 - I - 0x005A68 01:9A58: 02        .byte $02   ; 
 - D 0 - I - 0x005A69 01:9A59: 10        .byte $10   ; 
 - D 0 - I - 0x005A6A 01:9A5A: F9        .byte $F9   ; 
@@ -4913,7 +4912,7 @@ _off010_9A58_14:
 
 
 
-_off010_9A64_15:
+_animation_9A64_15:
 - D 0 - I - 0x005A74 01:9A64: 02        .byte $02   ; 
 - D 0 - I - 0x005A75 01:9A65: 10        .byte $10   ; 
 - D 0 - I - 0x005A76 01:9A66: F9        .byte $F9   ; 
@@ -4929,7 +4928,7 @@ _off010_9A64_15:
 
 
 
-_off010_9A70_16:
+_animation_9A70_16:
 - D 0 - I - 0x005A80 01:9A70: 02        .byte $02   ; 
 - D 0 - I - 0x005A81 01:9A71: 10        .byte $10   ; 
 - D 0 - I - 0x005A82 01:9A72: F9        .byte $F9   ; 
@@ -4945,7 +4944,7 @@ _off010_9A70_16:
 
 
 
-_off010_9A7C_17:
+_animation_9A7C_17:
 - D 0 - I - 0x005A8C 01:9A7C: 02        .byte $02   ; 
 - D 0 - I - 0x005A8D 01:9A7D: 18        .byte $18   ; 
 - D 0 - I - 0x005A8E 01:9A7E: F9        .byte $F9   ; 
@@ -4959,7 +4958,7 @@ _off010_9A7C_17:
 
 
 
-_off010_9A86_18:
+_animation_9A86_18:
 - D 0 - I - 0x005A96 01:9A86: 02        .byte $02   ; 
 - D 0 - I - 0x005A97 01:9A87: 10        .byte $10   ; 
 - D 0 - I - 0x005A98 01:9A88: F9        .byte $F9   ; 
@@ -4971,7 +4970,7 @@ _off010_9A86_18:
 
 
 
-_off010_9A8E_19:
+_animation_9A8E_19:
 - D 0 - I - 0x005A9E 01:9A8E: 03        .byte $03   ; 
 - D 0 - I - 0x005A9F 01:9A8F: 39        .byte $39   ; 
 - D 0 - I - 0x005AA0 01:9A90: 10        .byte $10   ; 
@@ -4988,7 +4987,7 @@ _off010_9A8E_19:
 
 
 
-_off010_9A9B_1A:
+_animation_9A9B_1A:
 - D 0 - I - 0x005AAB 01:9A9B: 03        .byte $03   ; 
 - D 0 - I - 0x005AAC 01:9A9C: 39        .byte $39   ; 
 - D 0 - I - 0x005AAD 01:9A9D: 10        .byte $10   ; 
@@ -5005,7 +5004,7 @@ _off010_9A9B_1A:
 
 
 
-_off010_9AA8_1B:
+_animation_9AA8_1B:
 - D 0 - I - 0x005AB8 01:9AA8: 02        .byte $02   ; 
 - D 0 - I - 0x005AB9 01:9AA9: 10        .byte $10   ; 
 - D 0 - I - 0x005ABA 01:9AAA: F4        .byte $F4   ; 
@@ -5021,7 +5020,7 @@ _off010_9AA8_1B:
 
 
 
-_off010_9AB4_1C:
+_animation_9AB4_1C:
 - D 0 - I - 0x005AC4 01:9AB4: 02        .byte $02   ; 
 - D 0 - I - 0x005AC5 01:9AB5: 10        .byte $10   ; 
 - D 0 - I - 0x005AC6 01:9AB6: F7        .byte $F7   ; 
@@ -5037,7 +5036,7 @@ _off010_9AB4_1C:
 
 
 
-_off010_9AC0_1D:
+_animation_9AC0_1D:
 - D 0 - I - 0x005AD0 01:9AC0: 02        .byte $02   ; 
 - D 0 - I - 0x005AD1 01:9AC1: 10        .byte $10   ; 
 - D 0 - I - 0x005AD2 01:9AC2: F9        .byte $F9   ; 
@@ -5053,7 +5052,7 @@ _off010_9AC0_1D:
 
 
 
-_off010_9ACF_21:
+_animation_9ACF_21:
 - D 0 - I - 0x005ADF 01:9ACF: 03        .byte $03   ; 
 - D 0 - I - 0x005AE0 01:9AD0: B3        .byte $B3   ; 
 - D 0 - I - 0x005AE1 01:9AD1: 08        .byte $08   ; 
@@ -5072,7 +5071,7 @@ _off010_9ACF_21:
 
 
 
-_off010_9ADE_22:
+_animation_9ADE_22:
 - D 0 - I - 0x005AEE 01:9ADE: 03        .byte $03   ; 
 - D 0 - I - 0x005AEF 01:9ADF: B7        .byte $B7   ; 
 - D 0 - I - 0x005AF0 01:9AE0: 10        .byte $10   ; 
@@ -5089,7 +5088,7 @@ _off010_9ADE_22:
 
 
 
-_off010_9AEB_23:
+_animation_9AEB_23:
 - D 0 - I - 0x005AFB 01:9AEB: 03        .byte $03   ; 
 - D 0 - I - 0x005AFC 01:9AEC: BB        .byte $BB   ; 
 - D 0 - I - 0x005AFD 01:9AED: 08        .byte $08   ; 
@@ -5108,7 +5107,7 @@ _off010_9AEB_23:
 
 
 
-_off010_9AFA_24:
+_animation_9AFA_24:
 - D 0 - I - 0x005B0A 01:9AFA: 03        .byte $03   ; 
 - D 0 - I - 0x005B0B 01:9AFB: B3        .byte $B3   ; 
 - D 0 - I - 0x005B0C 01:9AFC: 18        .byte $18   ; 
@@ -5127,7 +5126,7 @@ _off010_9AFA_24:
 
 
 
-_off010_9B09_25:
+_animation_9B09_25:
 - D 0 - I - 0x005B19 01:9B09: 03        .byte $03   ; 
 - D 0 - I - 0x005B1A 01:9B0A: B7        .byte $B7   ; 
 - D 0 - I - 0x005B1B 01:9B0B: 10        .byte $10   ; 
@@ -5144,7 +5143,7 @@ _off010_9B09_25:
 
 
 
-_off010_9B16_26:
+_animation_9B16_26:
 - D 0 - I - 0x005B26 01:9B16: 03        .byte $03   ; 
 - D 0 - I - 0x005B27 01:9B17: BB        .byte $BB   ; 
 - D 0 - I - 0x005B28 01:9B18: 10        .byte $10   ; 
@@ -5165,7 +5164,7 @@ _off010_9B16_26:
 
 
 
-_off010_9B27_27:
+_animation_9B27_27:
 - D 0 - I - 0x005B37 01:9B27: 03        .byte $03   ; 
 - D 0 - I - 0x005B38 01:9B28: B3        .byte $B3   ; 
 - D 0 - I - 0x005B39 01:9B29: 18        .byte $18   ; 
@@ -5184,7 +5183,7 @@ _off010_9B27_27:
 
 
 
-_off010_9B36_28:
+_animation_9B36_28:
 - D 0 - I - 0x005B46 01:9B36: 03        .byte $03   ; 
 - D 0 - I - 0x005B47 01:9B37: B7        .byte $B7   ; 
 - D 0 - I - 0x005B48 01:9B38: 10        .byte $10   ; 
@@ -5201,7 +5200,7 @@ _off010_9B36_28:
 
 
 
-_off010_9B43_29:
+_animation_9B43_29:
 - D 0 - I - 0x005B53 01:9B43: 03        .byte $03   ; 
 - D 0 - I - 0x005B54 01:9B44: BB        .byte $BB   ; 
 - D 0 - I - 0x005B55 01:9B45: 18        .byte $18   ; 
@@ -5220,7 +5219,7 @@ _off010_9B43_29:
 
 
 
-_off010_9B52_2A:
+_animation_9B52_2A:
 - D 0 - I - 0x005B62 01:9B52: 03        .byte $03   ; 
 - D 0 - I - 0x005B63 01:9B53: 39        .byte $39   ; 
 - D 0 - I - 0x005B64 01:9B54: 10        .byte $10   ; 
@@ -5237,7 +5236,7 @@ _off010_9B52_2A:
 
 
 
-_off010_9B5F_2B:
+_animation_9B5F_2B:
 - D 0 - I - 0x005B6F 01:9B5F: 03        .byte $03   ; 
 - D 0 - I - 0x005B70 01:9B60: 39        .byte $39   ; 
 - D 0 - I - 0x005B71 01:9B61: 10        .byte $10   ; 
@@ -5254,7 +5253,7 @@ _off010_9B5F_2B:
 
 
 
-_off010_9B6D_2D:
+_animation_9B6D_2D:
 - D 0 - I - 0x005B7D 01:9B6D: 03        .byte $03   ; 
 - D 0 - I - 0x005B7E 01:9B6E: B2        .byte $B2   ; 
 - D 0 - I - 0x005B7F 01:9B6F: 08        .byte $08   ; 
@@ -5273,7 +5272,7 @@ _off010_9B6D_2D:
 
 
 
-_off010_9B7C_2E:
+_animation_9B7C_2E:
 - D 0 - I - 0x005B8C 01:9B7C: 03        .byte $03   ; 
 - D 0 - I - 0x005B8D 01:9B7D: 1A        .byte $1A   ; 
 - D 0 - I - 0x005B8E 01:9B7E: 08        .byte $08   ; 
@@ -5296,7 +5295,7 @@ _off010_9B7C_2E:
 
 
 
-_off010_9B8F_2F:
+_animation_9B8F_2F:
 - D 0 - I - 0x005B9F 01:9B8F: 10        .byte $10   ; 
 - D 0 - I - 0x005BA0 01:9B90: 10        .byte $10   ; 
 - D 0 - I - 0x005BA1 01:9B91: F1        .byte $F1   ; 
@@ -5307,7 +5306,7 @@ _off010_9B8F_2F:
 
 
 
-_off010_9B96_30:
+_animation_9B96_30:
 - D 0 - I - 0x005BA6 01:9B96: 10        .byte $10   ; 
 - D 0 - I - 0x005BA7 01:9B97: 10        .byte $10   ; 
 - D 0 - I - 0x005BA8 01:9B98: F1        .byte $F1   ; 
@@ -5318,7 +5317,7 @@ _off010_9B96_30:
 
 
 
-_off010_9B9D_31:
+_animation_9B9D_31:
 - D 0 - I - 0x005BAD 01:9B9D: 03        .byte $03   ; 
 - D 0 - I - 0x005BAE 01:9B9E: 1A        .byte $1A   ; 
 - D 0 - I - 0x005BAF 01:9B9F: 10        .byte $10   ; 
@@ -5335,7 +5334,7 @@ _off010_9B9D_31:
 
 
 
-_off010_9BAA_32:
+_animation_9BAA_32:
 - D 0 - I - 0x005BBA 01:9BAA: 03        .byte $03   ; 
 - D 0 - I - 0x005BBB 01:9BAB: B2        .byte $B2   ; 
 - D 0 - I - 0x005BBC 01:9BAC: 18        .byte $18   ; 
@@ -5354,7 +5353,7 @@ _off010_9BAA_32:
 
 
 
-_off010_9BB9_33:
+_animation_9BB9_33:
 - D 0 - I - 0x005BC9 01:9BB9: 03        .byte $03   ; 
 - D 0 - I - 0x005BCA 01:9BBA: 1A        .byte $1A   ; 
 - D 0 - I - 0x005BCB 01:9BBB: 08        .byte $08   ; 
@@ -5375,7 +5374,7 @@ _off010_9BB9_33:
 
 
 
-_off010_9BCC_36:
+_animation_9BCC_36:
 - D 0 - I - 0x005BDC 01:9BCC: 03        .byte $03   ; 
 - D 0 - I - 0x005BDD 01:9BCD: 1A        .byte $1A   ; 
 - D 0 - I - 0x005BDE 01:9BCE: 10        .byte $10   ; 
@@ -5392,7 +5391,7 @@ _off010_9BCC_36:
 
 
 
-_off010_9BD9_37:
+_animation_9BD9_37:
 - D 0 - I - 0x005BE9 01:9BD9: 03        .byte $03   ; 
 - D 0 - I - 0x005BEA 01:9BDA: B2        .byte $B2   ; 
 - D 0 - I - 0x005BEB 01:9BDB: 18        .byte $18   ; 
@@ -5411,7 +5410,7 @@ _off010_9BD9_37:
 
 
 
-_off010_9BE8_38:
+_animation_9BE8_38:
 - D 0 - I - 0x005BF8 01:9BE8: 03        .byte $03   ; 
 - D 0 - I - 0x005BF9 01:9BE9: 1A        .byte $1A   ; 
 - D 0 - I - 0x005BFA 01:9BEA: 20        .byte $20   ; 
@@ -5432,7 +5431,7 @@ _off010_9BE8_38:
 
 
 
-_off010_9BFB_3B:
+_animation_9BFB_3B:
 - D 0 - I - 0x005C0B 01:9BFB: 03        .byte $03   ; 
 - D 0 - I - 0x005C0C 01:9BFC: 1A        .byte $1A   ; 
 - D 0 - I - 0x005C0D 01:9BFD: 10        .byte $10   ; 
@@ -5449,7 +5448,7 @@ _off010_9BFB_3B:
 
 
 
-_off010_9C08_3C:
+_animation_9C08_3C:
 - - - - - - 0x005C18 01:9C08: 03        .byte $03   ; 
 - - - - - - 0x005C19 01:9C09: 47        .byte $47   ; 
 - - - - - - 0x005C1A 01:9C0A: 10        .byte $10   ; 
@@ -5466,7 +5465,7 @@ _off010_9C08_3C:
 
 
 
-_off010_9C15_3D:
+_animation_9C15_3D:
 - - - - - - 0x005C25 01:9C15: 03        .byte $03   ; 
 - - - - - - 0x005C26 01:9C16: 47        .byte $47   ; 
 - - - - - - 0x005C27 01:9C17: 10        .byte $10   ; 
@@ -5483,7 +5482,7 @@ _off010_9C15_3D:
 
 
 
-_off010_9C22_3E:
+_animation_9C22_3E:
 - D 0 - I - 0x005C32 01:9C22: 03        .byte $03   ; 
 - D 0 - I - 0x005C33 01:9C23: 47        .byte $47   ; 
 - D 0 - I - 0x005C34 01:9C24: 10        .byte $10   ; 
@@ -5500,7 +5499,7 @@ _off010_9C22_3E:
 
 
 
-_off010_9C2F_3F:
+_animation_9C2F_3F:
 - D 0 - I - 0x005C3F 01:9C2F: 03        .byte $03   ; 
 - D 0 - I - 0x005C40 01:9C30: 47        .byte $47   ; 
 - D 0 - I - 0x005C41 01:9C31: 10        .byte $10   ; 
@@ -5517,7 +5516,7 @@ _off010_9C2F_3F:
 
 
 
-_off010_9C3C_40:
+_animation_9C3C_40:
 - D 0 - I - 0x005C4C 01:9C3C: 03        .byte $03   ; 
 - D 0 - I - 0x005C4D 01:9C3D: 47        .byte $47   ; 
 - D 0 - I - 0x005C4E 01:9C3E: 10        .byte $10   ; 
@@ -5530,7 +5529,7 @@ _off010_9C3C_40:
 
 
 
-_off010_9C45_41:
+_animation_9C45_41:
 - D 0 - I - 0x005C55 01:9C45: 03        .byte $03   ; 
 - D 0 - I - 0x005C56 01:9C46: 47        .byte $47   ; 
 - D 0 - I - 0x005C57 01:9C47: 18        .byte $18   ; 
@@ -5545,7 +5544,7 @@ _off010_9C45_41:
 
 
 
-_off010_9C50_42:
+_animation_9C50_42:
 - D 0 - I - 0x005C60 01:9C50: 03        .byte $03   ; 
 - D 0 - I - 0x005C61 01:9C51: B3        .byte $B3   ; 
 - D 0 - I - 0x005C62 01:9C52: 18        .byte $18   ; 
@@ -5564,7 +5563,7 @@ _off010_9C50_42:
 
 
 
-_off010_9C60_44:
+_animation_9C60_44:
 - D 0 - I - 0x005C70 01:9C60: 03        .byte $03   ; 
 - D 0 - I - 0x005C71 01:9C61: B3        .byte $B3   ; 
 - D 0 - I - 0x005C72 01:9C62: 10        .byte $10   ; 
@@ -5581,7 +5580,7 @@ _off010_9C60_44:
 
 
 
-_off010_9C6E_46:
+_animation_9C6E_46:
 - D 0 - I - 0x005C7E 01:9C6E: 03        .byte $03   ; 
 - D 0 - I - 0x005C7F 01:9C6F: B3        .byte $B3   ; 
 - D 0 - I - 0x005C80 01:9C70: 08        .byte $08   ; 
@@ -5600,7 +5599,7 @@ _off010_9C6E_46:
 
 
 
-_off010_9C80_4A:
+_animation_9C80_4A:
 - D 0 - I - 0x005C90 01:9C80: 03        .byte $03   ; 
 - D 0 - I - 0x005C91 01:9C81: 1A        .byte $1A   ; 
 - D 0 - I - 0x005C92 01:9C82: 10        .byte $10   ; 
@@ -5621,7 +5620,7 @@ _off010_9C80_4A:
 
 
 
-_off010_9C91_4B:
+_animation_9C91_4B:
 - D 0 - I - 0x005CA1 01:9C91: 03        .byte $03   ; 
 - D 0 - I - 0x005CA2 01:9C92: 1A        .byte $1A   ; 
 - D 0 - I - 0x005CA3 01:9C93: 10        .byte $10   ; 
@@ -5638,7 +5637,7 @@ _off010_9C91_4B:
 
 
 
-_off010_9CA0_4E:
+_animation_9CA0_4E:
 - D 0 - I - 0x005CB0 01:9CA0: 03        .byte $03   ; 
 - D 0 - I - 0x005CB1 01:9CA1: 1A        .byte $1A   ; 
 - D 0 - I - 0x005CB2 01:9CA2: 10        .byte $10   ; 
@@ -5663,7 +5662,7 @@ _off010_9CA0_4E:
 
 
 
-_off010_9CB5_4F:
+_animation_9CB5_4F:
 - D 0 - I - 0x005CC5 01:9CB5: 03        .byte $03   ; 
 - D 0 - I - 0x005CC6 01:9CB6: 1A        .byte $1A   ; 
 - D 0 - I - 0x005CC7 01:9CB7: 10        .byte $10   ; 
@@ -5680,7 +5679,7 @@ _off010_9CB5_4F:
 
 
 
-_off010_9CC4_52:
+_animation_9CC4_52:
 - D 0 - I - 0x005CD4 01:9CC4: 03        .byte $03   ; 
 - D 0 - I - 0x005CD5 01:9CC5: 1A        .byte $1A   ; 
 - D 0 - I - 0x005CD6 01:9CC6: 18        .byte $18   ; 
@@ -5699,7 +5698,7 @@ _off010_9CC4_52:
 
 
 
-_off010_9CD3_53:
+_animation_9CD3_53:
 - D 0 - I - 0x005CE3 01:9CD3: 03        .byte $03   ; 
 - D 0 - I - 0x005CE4 01:9CD4: 1A        .byte $1A   ; 
 - D 0 - I - 0x005CE5 01:9CD5: 10        .byte $10   ; 
@@ -5716,7 +5715,7 @@ _off010_9CD3_53:
 
 
 
-_off010_9CE0_54:
+_animation_9CE0_54:
 - D 0 - I - 0x005CF0 01:9CE0: 03        .byte $03   ; 
 - D 0 - I - 0x005CF1 01:9CE1: B3        .byte $B3   ; 
 - D 0 - I - 0x005CF2 01:9CE2: 18        .byte $18   ; 
@@ -5735,7 +5734,7 @@ _off010_9CE0_54:
 
 
 
-_off010_9CEF_55:
+_animation_9CEF_55:
 - D 0 - I - 0x005CFF 01:9CEF: 03        .byte $03   ; 
 - D 0 - I - 0x005D00 01:9CF0: B7        .byte $B7   ; 
 - D 0 - I - 0x005D01 01:9CF1: 08        .byte $08   ; 
@@ -5758,7 +5757,7 @@ _off010_9CEF_55:
 
 
 
-_off010_9D02_56:
+_animation_9D02_56:
 - D 0 - I - 0x005D12 01:9D02: 03        .byte $03   ; 
 - D 0 - I - 0x005D13 01:9D03: BB        .byte $BB   ; 
 - D 0 - I - 0x005D14 01:9D04: 08        .byte $08   ; 
@@ -5777,7 +5776,7 @@ _off010_9D02_56:
 
 
 
-_off010_9D13_59:
+_animation_9D13_59:
 - D 0 - I - 0x005D23 01:9D13: 03        .byte $03   ; 
 - D 0 - I - 0x005D24 01:9D14: B3        .byte $B3   ; 
 - D 0 - I - 0x005D25 01:9D15: 18        .byte $18   ; 
@@ -5796,7 +5795,7 @@ _off010_9D13_59:
 
 
 
-_off010_9D22_5A:
+_animation_9D22_5A:
 - D 0 - I - 0x005D32 01:9D22: 03        .byte $03   ; 
 - D 0 - I - 0x005D33 01:9D23: B7        .byte $B7   ; 
 - D 0 - I - 0x005D34 01:9D24: 08        .byte $08   ; 
@@ -5817,7 +5816,7 @@ _off010_9D22_5A:
 
 
 
-_off010_9D33_5B:
+_animation_9D33_5B:
 - D 0 - I - 0x005D43 01:9D33: 03        .byte $03   ; 
 - D 0 - I - 0x005D44 01:9D34: BB        .byte $BB   ; 
 - D 0 - I - 0x005D45 01:9D35: 20        .byte $20   ; 
@@ -5838,7 +5837,7 @@ _off010_9D33_5B:
 
 
 
-_off010_9D46_5E:
+_animation_9D46_5E:
 - D 0 - I - 0x005D56 01:9D46: 03        .byte $03   ; 
 - D 0 - I - 0x005D57 01:9D47: B3        .byte $B3   ; 
 - D 0 - I - 0x005D58 01:9D48: 10        .byte $10   ; 
@@ -5861,7 +5860,7 @@ _off010_9D46_5E:
 
 
 
-_off010_9D59_5F:
+_animation_9D59_5F:
 - D 0 - I - 0x005D69 01:9D59: 03        .byte $03   ; 
 - D 0 - I - 0x005D6A 01:9D5A: B7        .byte $B7   ; 
 - D 0 - I - 0x005D6B 01:9D5B: 18        .byte $18   ; 
@@ -5880,7 +5879,7 @@ _off010_9D59_5F:
 
 
 
-_off010_9D68_60:
+_animation_9D68_60:
 - D 0 - I - 0x005D78 01:9D68: 03        .byte $03   ; 
 - D 0 - I - 0x005D79 01:9D69: BB        .byte $BB   ; 
 - D 0 - I - 0x005D7A 01:9D6A: 18        .byte $18   ; 
@@ -5899,7 +5898,7 @@ _off010_9D68_60:
 
 
 
-_off010_9D79_63:
+_animation_9D79_63:
 - D 0 - I - 0x005D89 01:9D79: 03        .byte $03   ; 
 - D 0 - I - 0x005D8A 01:9D7A: B7        .byte $B7   ; 
 - D 0 - I - 0x005D8B 01:9D7B: 10        .byte $10   ; 
@@ -5916,7 +5915,7 @@ _off010_9D79_63:
 
 
 
-_off010_9D86_64:
+_animation_9D86_64:
 - D 0 - I - 0x005D96 01:9D86: 03        .byte $03   ; 
 - D 0 - I - 0x005D97 01:9D87: BB        .byte $BB   ; 
 - D 0 - I - 0x005D98 01:9D88: 18        .byte $18   ; 
@@ -5935,7 +5934,7 @@ _off010_9D86_64:
 
 
 
-_off010_9D95_65:
+_animation_9D95_65:
 - D 0 - I - 0x005DA5 01:9D95: 03        .byte $03   ; 
 - D 0 - I - 0x005DA6 01:9D96: B7        .byte $B7   ; 
 - D 0 - I - 0x005DA7 01:9D97: 10        .byte $10   ; 
@@ -5952,7 +5951,7 @@ _off010_9D95_65:
 
 
 
-_off010_9DA2_66:
+_animation_9DA2_66:
 - D 0 - I - 0x005DB2 01:9DA2: 03        .byte $03   ; 
 - D 0 - I - 0x005DB3 01:9DA3: BB        .byte $BB   ; 
 - D 0 - I - 0x005DB4 01:9DA4: 10        .byte $10   ; 
@@ -5973,7 +5972,7 @@ _off010_9DA2_66:
 
 
 
-_off010_9DB3_67:
+_animation_9DB3_67:
 - D 0 - I - 0x005DC3 01:9DB3: 03        .byte $03   ; 
 - D 0 - I - 0x005DC4 01:9DB4: B7        .byte $B7   ; 
 - D 0 - I - 0x005DC5 01:9DB5: 10        .byte $10   ; 
@@ -5990,7 +5989,7 @@ _off010_9DB3_67:
 
 
 
-_off010_9DC0_68:
+_animation_9DC0_68:
 - D 0 - I - 0x005DD0 01:9DC0: 03        .byte $03   ; 
 - D 0 - I - 0x005DD1 01:9DC1: BB        .byte $BB   ; 
 - D 0 - I - 0x005DD2 01:9DC2: 08        .byte $08   ; 
@@ -6009,7 +6008,7 @@ _off010_9DC0_68:
 
 
 
-_off010_9DCF_69:
+_animation_9DCF_69:
 - - - - - - 0x005DDF 01:9DCF: 03        .byte $03   ; 
 - - - - - - 0x005DE0 01:9DD0: 2B        .byte $2B   ; 
 - - - - - - 0x005DE1 01:9DD1: 10        .byte $10   ; 
@@ -6032,7 +6031,7 @@ _off010_9DCF_69:
 
 
 
-_off010_9DE2_6A:
+_animation_9DE2_6A:
 - - - - - - 0x005DF2 01:9DE2: 03        .byte $03   ; 
 - - - - - - 0x005DF3 01:9DE3: 2B        .byte $2B   ; 
 - - - - - - 0x005DF4 01:9DE4: 10        .byte $10   ; 
@@ -6049,7 +6048,7 @@ _off010_9DE2_6A:
 
 
 
-_off010_9DEF_6B:
+_animation_9DEF_6B:
 - - - - - - 0x005DFF 01:9DEF: 03        .byte $03   ; 
 - - - - - - 0x005E00 01:9DF0: 2B        .byte $2B   ; 
 - - - - - - 0x005E01 01:9DF1: 18        .byte $18   ; 
@@ -6068,7 +6067,7 @@ _off010_9DEF_6B:
 
 
 
-_off010_9DFE_6C:
+_animation_9DFE_6C:
 - D 0 - I - 0x005E0E 01:9DFE: 03        .byte $03   ; 
 - D 0 - I - 0x005E0F 01:9DFF: 17        .byte $17   ; 
 - D 0 - I - 0x005E10 01:9E00: 08        .byte $08   ; 
@@ -6091,7 +6090,7 @@ _off010_9DFE_6C:
 
 
 
-_off010_9E11_6D:
+_animation_9E11_6D:
 - D 0 - I - 0x005E21 01:9E11: 03        .byte $03   ; 
 - D 0 - I - 0x005E22 01:9E12: 17        .byte $17   ; 
 - D 0 - I - 0x005E23 01:9E13: 08        .byte $08   ; 
@@ -6114,7 +6113,7 @@ _off010_9E11_6D:
 
 
 
-_off010_9E24_6E:
+_animation_9E24_6E:
 - D 0 - I - 0x005E34 01:9E24: 03        .byte $03   ; 
 - D 0 - I - 0x005E35 01:9E25: 17        .byte $17   ; 
 - D 0 - I - 0x005E36 01:9E26: 08        .byte $08   ; 
@@ -6137,7 +6136,7 @@ _off010_9E24_6E:
 
 
 
-_off010_9E37_6F:
+_animation_9E37_6F:
 - D 0 - I - 0x005E47 01:9E37: 03        .byte $03   ; 
 - D 0 - I - 0x005E48 01:9E38: 17        .byte $17   ; 
 - D 0 - I - 0x005E49 01:9E39: 08        .byte $08   ; 
@@ -6156,7 +6155,7 @@ _off010_9E37_6F:
 
 
 
-_off010_9E46_70:
+_animation_9E46_70:
 - D 0 - I - 0x005E56 01:9E46: 03        .byte $03   ; 
 - D 0 - I - 0x005E57 01:9E47: 17        .byte $17   ; 
 - D 0 - I - 0x005E58 01:9E48: 10        .byte $10   ; 
@@ -6177,7 +6176,7 @@ _off010_9E46_70:
 
 
 
-_off010_9E57_71:
+_animation_9E57_71:
 - D 0 - I - 0x005E67 01:9E57: 03        .byte $03   ; 
 - D 0 - I - 0x005E68 01:9E58: 17        .byte $17   ; 
 - D 0 - I - 0x005E69 01:9E59: 18        .byte $18   ; 
@@ -6196,7 +6195,7 @@ _off010_9E57_71:
 
 
 
-_off010_9E66_72:
+_animation_9E66_72:
 - - - - - - 0x005E76 01:9E66: 03        .byte $03   ; 
 - - - - - - 0x005E77 01:9E67: 17        .byte $17   ; 
 - - - - - - 0x005E78 01:9E68: 08        .byte $08   ; 
@@ -6219,7 +6218,7 @@ _off010_9E66_72:
 
 
 
-_off010_9E79_73:
+_animation_9E79_73:
 - - - - - - 0x005E89 01:9E79: 03        .byte $03   ; 
 - - - - - - 0x005E8A 01:9E7A: 17        .byte $17   ; 
 - - - - - - 0x005E8B 01:9E7B: 20        .byte $20   ; 
@@ -6236,7 +6235,7 @@ _off010_9E79_73:
 
 
 
-_off010_9E86_74:
+_animation_9E86_74:
 - - - - - - 0x005E96 01:9E86: 03        .byte $03   ; 
 - - - - - - 0x005E97 01:9E87: 17        .byte $17   ; 
 - - - - - - 0x005E98 01:9E88: 18        .byte $18   ; 
@@ -6259,7 +6258,7 @@ _off010_9E86_74:
 
 
 
-_off010_9E99_75:
+_animation_9E99_75:
 - D 0 - I - 0x005EA9 01:9E99: 03        .byte $03   ; 
 - D 0 - I - 0x005EAA 01:9E9A: 31        .byte $31   ; 
 - D 0 - I - 0x005EAB 01:9E9B: 10        .byte $10   ; 
@@ -6276,7 +6275,7 @@ _off010_9E99_75:
 
 
 
-_off010_9EA6_76:
+_animation_9EA6_76:
 - D 0 - I - 0x005EB6 01:9EA6: 03        .byte $03   ; 
 - D 0 - I - 0x005EB7 01:9EA7: 31        .byte $31   ; 
 - D 0 - I - 0x005EB8 01:9EA8: 10        .byte $10   ; 
@@ -6293,7 +6292,7 @@ _off010_9EA6_76:
 
 
 
-_off010_9EB3_77:
+_animation_9EB3_77:
 - D 0 - I - 0x005EC3 01:9EB3: 03        .byte $03   ; 
 - D 0 - I - 0x005EC4 01:9EB4: 31        .byte $31   ; 
 - D 0 - I - 0x005EC5 01:9EB5: 10        .byte $10   ; 
@@ -6306,7 +6305,7 @@ _off010_9EB3_77:
 
 
 
-_off010_9EBC_78:
+_animation_9EBC_78:
 - - - - - - 0x005ECC 01:9EBC: 03        .byte $03   ; 
 - - - - - - 0x005ECD 01:9EBD: 31        .byte $31   ; 
 - - - - - - 0x005ECE 01:9EBE: 10        .byte $10   ; 
@@ -6323,7 +6322,7 @@ _off010_9EBC_78:
 
 
 
-_off010_9EC9_79:
+_animation_9EC9_79:
 - - - - - - 0x005ED9 01:9EC9: 03        .byte $03   ; 
 - - - - - - 0x005EDA 01:9ECA: 31        .byte $31   ; 
 - - - - - - 0x005EDB 01:9ECB: 18        .byte $18   ; 
@@ -6338,7 +6337,7 @@ _off010_9EC9_79:
 
 
 
-_off010_9ED4_7A:
+_animation_9ED4_7A:
 - - - - - - 0x005EE4 01:9ED4: 03        .byte $03   ; 
 - - - - - - 0x005EE5 01:9ED5: 31        .byte $31   ; 
 - - - - - - 0x005EE6 01:9ED6: 10        .byte $10   ; 
@@ -6355,7 +6354,7 @@ _off010_9ED4_7A:
 
 
 
-_off010_9EE1_7B:
+_animation_9EE1_7B:
 - D 0 - I - 0x005EF1 01:9EE1: 03        .byte $03   ; 
 - D 0 - I - 0x005EF2 01:9EE2: 31        .byte $31   ; 
 - D 0 - I - 0x005EF3 01:9EE3: 18        .byte $18   ; 
@@ -6370,7 +6369,7 @@ _off010_9EE1_7B:
 
 
 
-_off010_9EEC_7C:
+_animation_9EEC_7C:
 - D 0 - I - 0x005EFC 01:9EEC: 03        .byte $03   ; 
 - D 0 - I - 0x005EFD 01:9EED: 31        .byte $31   ; 
 - D 0 - I - 0x005EFE 01:9EEE: 18        .byte $18   ; 
@@ -6385,7 +6384,7 @@ _off010_9EEC_7C:
 
 
 
-_off010_9EF7_7D:
+_animation_9EF7_7D:
 - D 0 - I - 0x005F07 01:9EF7: 03        .byte $03   ; 
 - D 0 - I - 0x005F08 01:9EF8: 31        .byte $31   ; 
 - D 0 - I - 0x005F09 01:9EF9: 10        .byte $10   ; 
@@ -6402,7 +6401,7 @@ _off010_9EF7_7D:
 
 
 
-_off010_9F04_7E:
+_animation_9F04_7E:
 - D 0 - I - 0x005F14 01:9F04: 03        .byte $03   ; 
 - D 0 - I - 0x005F15 01:9F05: 31        .byte $31   ; 
 - D 0 - I - 0x005F16 01:9F06: 10        .byte $10   ; 
@@ -6419,7 +6418,7 @@ _off010_9F04_7E:
 
 
 
-_off010_9F11_7F:
+_animation_9F11_7F:
 - D 0 - I - 0x005F21 01:9F11: 03        .byte $03   ; 
 - D 0 - I - 0x005F22 01:9F12: 31        .byte $31   ; 
 - D 0 - I - 0x005F23 01:9F13: 10        .byte $10   ; 
@@ -6436,7 +6435,7 @@ _off010_9F11_7F:
 
 
 
-_off010_9F1E_80:
+_animation_9F1E_80:
 - D 0 - I - 0x005F2E 01:9F1E: 03        .byte $03   ; 
 - D 0 - I - 0x005F2F 01:9F1F: 31        .byte $31   ; 
 - D 0 - I - 0x005F30 01:9F20: 10        .byte $10   ; 
@@ -6453,7 +6452,7 @@ _off010_9F1E_80:
 
 
 
-_off010_9F2B_81:
+_animation_9F2B_81:
 - D 0 - I - 0x005F3B 01:9F2B: 03        .byte $03   ; 
 - D 0 - I - 0x005F3C 01:9F2C: 31        .byte $31   ; 
 - D 0 - I - 0x005F3D 01:9F2D: 18        .byte $18   ; 
@@ -6468,7 +6467,7 @@ _off010_9F2B_81:
 
 
 
-_off010_9F36_82:
+_animation_9F36_82:
 - D 0 - I - 0x005F46 01:9F36: 03        .byte $03   ; 
 - D 0 - I - 0x005F47 01:9F37: 31        .byte $31   ; 
 - D 0 - I - 0x005F48 01:9F38: 10        .byte $10   ; 
@@ -6481,7 +6480,7 @@ _off010_9F36_82:
 
 
 
-_off010_9F3F_83:
+_animation_9F3F_83:
 - D 0 - I - 0x005F4F 01:9F3F: 03        .byte $03   ; 
 - D 0 - I - 0x005F50 01:9F40: 35        .byte $35   ; 
 - D 0 - I - 0x005F51 01:9F41: 08        .byte $08   ; 
@@ -6500,7 +6499,7 @@ _off010_9F3F_83:
 
 
 
-_off010_9F4E_84:
+_animation_9F4E_84:
 - D 0 - I - 0x005F5E 01:9F4E: 03        .byte $03   ; 
 - D 0 - I - 0x005F5F 01:9F4F: 35        .byte $35   ; 
 - D 0 - I - 0x005F60 01:9F50: 10        .byte $10   ; 
@@ -6517,7 +6516,7 @@ _off010_9F4E_84:
 
 
 
-_off010_9F5B_85:
+_animation_9F5B_85:
 - D 0 - I - 0x005F6B 01:9F5B: 03        .byte $03   ; 
 - D 0 - I - 0x005F6C 01:9F5C: 35        .byte $35   ; 
 - D 0 - I - 0x005F6D 01:9F5D: 08        .byte $08   ; 
@@ -6536,7 +6535,7 @@ _off010_9F5B_85:
 
 
 
-_off010_9F6A_86:
+_animation_9F6A_86:
 - D 0 - I - 0x005F7A 01:9F6A: 03        .byte $03   ; 
 - D 0 - I - 0x005F7B 01:9F6B: 39        .byte $39   ; 
 - D 0 - I - 0x005F7C 01:9F6C: 10        .byte $10   ; 
@@ -6553,7 +6552,7 @@ _off010_9F6A_86:
 
 
 
-_off010_9F77_87:
+_animation_9F77_87:
 - D 0 - I - 0x005F87 01:9F77: 03        .byte $03   ; 
 - D 0 - I - 0x005F88 01:9F78: 35        .byte $35   ; 
 - D 0 - I - 0x005F89 01:9F79: 18        .byte $18   ; 
@@ -6572,7 +6571,7 @@ _off010_9F77_87:
 
 
 
-_off010_9F86_88:
+_animation_9F86_88:
 - D 0 - I - 0x005F96 01:9F86: 03        .byte $03   ; 
 - D 0 - I - 0x005F97 01:9F87: 35        .byte $35   ; 
 - D 0 - I - 0x005F98 01:9F88: 10        .byte $10   ; 
@@ -6589,7 +6588,7 @@ _off010_9F86_88:
 
 
 
-_off010_9F93_89:
+_animation_9F93_89:
 - D 0 - I - 0x005FA3 01:9F93: 03        .byte $03   ; 
 - D 0 - I - 0x005FA4 01:9F94: 35        .byte $35   ; 
 - D 0 - I - 0x005FA5 01:9F95: 08        .byte $08   ; 
@@ -6612,7 +6611,7 @@ _off010_9F93_89:
 
 
 
-_off010_9FA6_8A:
+_animation_9FA6_8A:
 - D 0 - I - 0x005FB6 01:9FA6: 03        .byte $03   ; 
 - D 0 - I - 0x005FB7 01:9FA7: 39        .byte $39   ; 
 - D 0 - I - 0x005FB8 01:9FA8: 10        .byte $10   ; 
@@ -6629,7 +6628,7 @@ _off010_9FA6_8A:
 
 
 
-_off010_9FB3_8B:
+_animation_9FB3_8B:
 - D 0 - I - 0x005FC3 01:9FB3: 03        .byte $03   ; 
 - D 0 - I - 0x005FC4 01:9FB4: 35        .byte $35   ; 
 - D 0 - I - 0x005FC5 01:9FB5: 18        .byte $18   ; 
@@ -6648,7 +6647,7 @@ _off010_9FB3_8B:
 
 
 
-_off010_9FC2_8C:
+_animation_9FC2_8C:
 - D 0 - I - 0x005FD2 01:9FC2: 03        .byte $03   ; 
 - D 0 - I - 0x005FD3 01:9FC3: 35        .byte $35   ; 
 - D 0 - I - 0x005FD4 01:9FC4: 10        .byte $10   ; 
@@ -6665,7 +6664,7 @@ _off010_9FC2_8C:
 
 
 
-_off010_9FCF_8D:
+_animation_9FCF_8D:
 - D 0 - I - 0x005FDF 01:9FCF: 03        .byte $03   ; 
 - D 0 - I - 0x005FE0 01:9FD0: 35        .byte $35   ; 
 - D 0 - I - 0x005FE1 01:9FD1: 18        .byte $18   ; 
@@ -6684,7 +6683,7 @@ _off010_9FCF_8D:
 
 
 
-_off010_9FDE_8E:
+_animation_9FDE_8E:
 - D 0 - I - 0x005FEE 01:9FDE: 03        .byte $03   ; 
 - D 0 - I - 0x005FEF 01:9FDF: 39        .byte $39   ; 
 - D 0 - I - 0x005FF0 01:9FE0: 10        .byte $10   ; 
@@ -6701,7 +6700,7 @@ _off010_9FDE_8E:
 
 
 
-_off010_9FEB_8F:
+_animation_9FEB_8F:
 - D 0 - I - 0x005FFB 01:9FEB: 03        .byte $03   ; 
 - D 0 - I - 0x005FFC 01:9FEC: 3D        .byte $3D   ; 
 - D 0 - I - 0x005FFD 01:9FED: 10        .byte $10   ; 
@@ -6718,7 +6717,7 @@ _off010_9FEB_8F:
 
 
 
-_off010_9FF8_90:
+_animation_9FF8_90:
 - D 0 - I - 0x006008 01:9FF8: 03        .byte $03   ; 
 - D 0 - I - 0x006009 01:9FF9: 3D        .byte $3D   ; 
 - D 0 - I - 0x00600A 01:9FFA: 10        .byte $10   ; 
@@ -6735,7 +6734,7 @@ _off010_9FF8_90:
 
 
 
-_off010_A005_91:
+_animation_A005_91:
 - D 1 - I - 0x006015 01:A005: 03        .byte $03   ; 
 - D 1 - I - 0x006016 01:A006: 3D        .byte $3D   ; 
 - D 1 - I - 0x006017 01:A007: 18        .byte $18   ; 
@@ -6750,7 +6749,7 @@ _off010_A005_91:
 
 
 
-_off010_A010_92:
+_animation_A010_92:
 - D 1 - I - 0x006020 01:A010: 03        .byte $03   ; 
 - D 1 - I - 0x006021 01:A011: 3D        .byte $3D   ; 
 - D 1 - I - 0x006022 01:A012: 10        .byte $10   ; 
@@ -6767,7 +6766,7 @@ _off010_A010_92:
 
 
 
-_off010_A01D_93:
+_animation_A01D_93:
 - D 1 - I - 0x00602D 01:A01D: 03        .byte $03   ; 
 - D 1 - I - 0x00602E 01:A01E: 3D        .byte $3D   ; 
 - D 1 - I - 0x00602F 01:A01F: 18        .byte $18   ; 
@@ -6782,7 +6781,7 @@ _off010_A01D_93:
 
 
 
-_off010_A028_94:
+_animation_A028_94:
 - D 1 - I - 0x006038 01:A028: 03        .byte $03   ; 
 - D 1 - I - 0x006039 01:A029: 3D        .byte $3D   ; 
 - D 1 - I - 0x00603A 01:A02A: 10        .byte $10   ; 
@@ -6799,7 +6798,7 @@ _off010_A028_94:
 
 
 
-_off010_A035_95:
+_animation_A035_95:
 - D 1 - I - 0x006045 01:A035: 03        .byte $03   ; 
 - D 1 - I - 0x006046 01:A036: 3D        .byte $3D   ; 
 - D 1 - I - 0x006047 01:A037: 10        .byte $10   ; 
@@ -6816,7 +6815,7 @@ _off010_A035_95:
 
 
 
-_off010_A042_96:
+_animation_A042_96:
 - D 1 - I - 0x006052 01:A042: 03        .byte $03   ; 
 - D 1 - I - 0x006053 01:A043: 3D        .byte $3D   ; 
 - D 1 - I - 0x006054 01:A044: 10        .byte $10   ; 
@@ -6833,7 +6832,7 @@ _off010_A042_96:
 
 
 
-_off010_A04F_97:
+_animation_A04F_97:
 - D 1 - I - 0x00605F 01:A04F: 03        .byte $03   ; 
 - D 1 - I - 0x006060 01:A050: 3D        .byte $3D   ; 
 - D 1 - I - 0x006061 01:A051: 10        .byte $10   ; 
@@ -6850,7 +6849,7 @@ _off010_A04F_97:
 
 
 
-_off010_A05C_98:
+_animation_A05C_98:
 - - - - - - 0x00606C 01:A05C: 03        .byte $03   ; 
 - - - - - - 0x00606D 01:A05D: 3D        .byte $3D   ; 
 - - - - - - 0x00606E 01:A05E: 10        .byte $10   ; 
@@ -6867,7 +6866,7 @@ _off010_A05C_98:
 
 
 
-_off010_A069_99:
+_animation_A069_99:
 - - - - - - 0x006079 01:A069: 03        .byte $03   ; 
 - - - - - - 0x00607A 01:A06A: 3D        .byte $3D   ; 
 - - - - - - 0x00607B 01:A06B: 10        .byte $10   ; 
@@ -6884,7 +6883,7 @@ _off010_A069_99:
 
 
 
-_off010_A076_9A:
+_animation_A076_9A:
 - - - - - - 0x006086 01:A076: 03        .byte $03   ; 
 - - - - - - 0x006087 01:A077: 3D        .byte $3D   ; 
 - - - - - - 0x006088 01:A078: 10        .byte $10   ; 
@@ -6901,7 +6900,7 @@ _off010_A076_9A:
 
 
 
-_off010_A083_9B:
+_animation_A083_9B:
 - - - - - - 0x006093 01:A083: 03        .byte $03   ; 
 - - - - - - 0x006094 01:A084: 41        .byte $41   ; 
 - - - - - - 0x006095 01:A085: 20        .byte $20   ; 
@@ -6922,7 +6921,7 @@ _off010_A083_9B:
 
 
 
-_off010_A094_9C:
+_animation_A094_9C:
 - - - - - - 0x0060A4 01:A094: 03        .byte $03   ; 
 - - - - - - 0x0060A5 01:A095: 41        .byte $41   ; 
 - - - - - - 0x0060A6 01:A096: 20        .byte $20   ; 
@@ -6943,7 +6942,7 @@ _off010_A094_9C:
 
 
 
-_off010_A0A5_9D:
+_animation_A0A5_9D:
 - - - - - - 0x0060B5 01:A0A5: 03        .byte $03   ; 
 - - - - - - 0x0060B6 01:A0A6: 41        .byte $41   ; 
 - - - - - - 0x0060B7 01:A0A7: 20        .byte $20   ; 
@@ -6964,7 +6963,7 @@ _off010_A0A5_9D:
 
 
 
-_off010_A0B6_9E:
+_animation_A0B6_9E:
 - D 1 - I - 0x0060C6 01:A0B6: 03        .byte $03   ; 
 - D 1 - I - 0x0060C7 01:A0B7: 45        .byte $45   ; 
 - D 1 - I - 0x0060C8 01:A0B8: 18        .byte $18   ; 
@@ -6983,7 +6982,7 @@ _off010_A0B6_9E:
 
 
 
-_off010_A0C5_9F:
+_animation_A0C5_9F:
 - D 1 - I - 0x0060D5 01:A0C5: 03        .byte $03   ; 
 - D 1 - I - 0x0060D6 01:A0C6: 45        .byte $45   ; 
 - D 1 - I - 0x0060D7 01:A0C7: 10        .byte $10   ; 
@@ -7000,7 +6999,7 @@ _off010_A0C5_9F:
 
 
 
-_off010_A0D2_A0:
+_animation_A0D2_A0:
 - D 1 - I - 0x0060E2 01:A0D2: 03        .byte $03   ; 
 - D 1 - I - 0x0060E3 01:A0D3: 3D        .byte $3D   ; 
 - D 1 - I - 0x0060E4 01:A0D4: 10        .byte $10   ; 
@@ -7017,7 +7016,7 @@ _off010_A0D2_A0:
 
 
 
-_off010_A0DF_A1:
+_animation_A0DF_A1:
 - - - - - - 0x0060EF 01:A0DF: 03        .byte $03   ; 
 - - - - - - 0x0060F0 01:A0E0: 41        .byte $41   ; 
 - - - - - - 0x0060F1 01:A0E1: 10        .byte $10   ; 
@@ -7040,7 +7039,7 @@ _off010_A0DF_A1:
 
 
 
-_off010_A0F2_A2:
+_animation_A0F2_A2:
 - - - - - - 0x006102 01:A0F2: 03        .byte $03   ; 
 - - - - - - 0x006103 01:A0F3: 41        .byte $41   ; 
 - - - - - - 0x006104 01:A0F4: 10        .byte $10   ; 
@@ -7063,7 +7062,7 @@ _off010_A0F2_A2:
 
 
 
-_off010_A105_A3:
+_animation_A105_A3:
 - - - - - - 0x006115 01:A105: 03        .byte $03   ; 
 - - - - - - 0x006116 01:A106: 41        .byte $41   ; 
 - - - - - - 0x006117 01:A107: 08        .byte $08   ; 
@@ -7088,7 +7087,7 @@ _off010_A105_A3:
 
 
 
-_off010_A11A_A4:
+_animation_A11A_A4:
 - D 1 - I - 0x00612A 01:A11A: 03        .byte $03   ; 
 - D 1 - I - 0x00612B 01:A11B: 45        .byte $45   ; 
 - D 1 - I - 0x00612C 01:A11C: 08        .byte $08   ; 
@@ -7105,7 +7104,7 @@ _off010_A11A_A4:
 
 
 
-_off010_A127_A5:
+_animation_A127_A5:
 - D 1 - I - 0x006137 01:A127: 03        .byte $03   ; 
 - D 1 - I - 0x006138 01:A128: 45        .byte $45   ; 
 - D 1 - I - 0x006139 01:A129: 18        .byte $18   ; 
@@ -7120,7 +7119,7 @@ _off010_A127_A5:
 
 
 
-_off010_A132_A6:
+_animation_A132_A6:
 - D 1 - I - 0x006142 01:A132: 03        .byte $03   ; 
 - D 1 - I - 0x006143 01:A133: 3D        .byte $3D   ; 
 - D 1 - I - 0x006144 01:A134: 10        .byte $10   ; 
@@ -7137,7 +7136,7 @@ _off010_A132_A6:
 
 
 
-_off010_A13F_A7:
+_animation_A13F_A7:
 - D 1 - I - 0x00614F 01:A13F: 03        .byte $03   ; 
 - D 1 - I - 0x006150 01:A140: 49        .byte $49   ; 
 - D 1 - I - 0x006151 01:A141: 20        .byte $20   ; 
@@ -7158,7 +7157,7 @@ _off010_A13F_A7:
 
 
 
-_off010_A150_A8:
+_animation_A150_A8:
 - D 1 - I - 0x006160 01:A150: 03        .byte $03   ; 
 - D 1 - I - 0x006161 01:A151: 49        .byte $49   ; 
 - D 1 - I - 0x006162 01:A152: 08        .byte $08   ; 
@@ -7177,7 +7176,7 @@ _off010_A150_A8:
 
 
 
-_off010_A15F_A9:
+_animation_A15F_A9:
 - D 1 - I - 0x00616F 01:A15F: 03        .byte $03   ; 
 - D 1 - I - 0x006170 01:A160: 49        .byte $49   ; 
 - D 1 - I - 0x006171 01:A161: 20        .byte $20   ; 
@@ -7198,7 +7197,7 @@ _off010_A15F_A9:
 
 
 
-_off010_A170_AA:
+_animation_A170_AA:
 - - - - - - 0x006180 01:A170: 03        .byte $03   ; 
 - - - - - - 0x006181 01:A171: 49        .byte $49   ; 
 - - - - - - 0x006182 01:A172: 20        .byte $20   ; 
@@ -7219,7 +7218,7 @@ _off010_A170_AA:
 
 
 
-_off010_A181_AB:
+_animation_A181_AB:
 - D 1 - I - 0x006191 01:A181: 03        .byte $03   ; 
 - D 1 - I - 0x006192 01:A182: 49        .byte $49   ; 
 - D 1 - I - 0x006193 01:A183: 10        .byte $10   ; 
@@ -7240,7 +7239,7 @@ _off010_A181_AB:
 
 
 
-_off010_A192_AC:
+_animation_A192_AC:
 - D 1 - I - 0x0061A2 01:A192: 03        .byte $03   ; 
 - D 1 - I - 0x0061A3 01:A193: 49        .byte $49   ; 
 - D 1 - I - 0x0061A4 01:A194: 20        .byte $20   ; 
@@ -7261,7 +7260,7 @@ _off010_A192_AC:
 
 
 
-_off010_A1A3_AD:
+_animation_A1A3_AD:
 - D 1 - I - 0x0061B3 01:A1A3: 03        .byte $03   ; 
 - D 1 - I - 0x0061B4 01:A1A4: 49        .byte $49   ; 
 - D 1 - I - 0x0061B5 01:A1A5: 20        .byte $20   ; 
@@ -7282,7 +7281,7 @@ _off010_A1A3_AD:
 
 
 
-_off010_A1B4_AE:
+_animation_A1B4_AE:
 - - - - - - 0x0061C4 01:A1B4: 03        .byte $03   ; 
 - - - - - - 0x0061C5 01:A1B5: 49        .byte $49   ; 
 - - - - - - 0x0061C6 01:A1B6: 20        .byte $20   ; 
@@ -7303,7 +7302,7 @@ _off010_A1B4_AE:
 
 
 
-_off010_A1C5_AF:
+_animation_A1C5_AF:
 - D 1 - I - 0x0061D5 01:A1C5: 03        .byte $03   ; 
 - D 1 - I - 0x0061D6 01:A1C6: 45        .byte $45   ; 
 - D 1 - I - 0x0061D7 01:A1C7: 18        .byte $18   ; 
@@ -7322,7 +7321,7 @@ _off010_A1C5_AF:
 
 
 
-_off010_A1D4_B0:
+_animation_A1D4_B0:
 - D 1 - I - 0x0061E4 01:A1D4: 03        .byte $03   ; 
 - D 1 - I - 0x0061E5 01:A1D5: 45        .byte $45   ; 
 - D 1 - I - 0x0061E6 01:A1D6: 10        .byte $10   ; 
@@ -7339,7 +7338,7 @@ _off010_A1D4_B0:
 
 
 
-_off010_A1E1_B1:
+_animation_A1E1_B1:
 - D 1 - I - 0x0061F1 01:A1E1: 03        .byte $03   ; 
 - D 1 - I - 0x0061F2 01:A1E2: 3D        .byte $3D   ; 
 - D 1 - I - 0x0061F3 01:A1E3: 10        .byte $10   ; 
@@ -7356,7 +7355,7 @@ _off010_A1E1_B1:
 
 
 
-_off010_A1EE_B2:
+_animation_A1EE_B2:
 - D 1 - I - 0x0061FE 01:A1EE: 03        .byte $03   ; 
 - D 1 - I - 0x0061FF 01:A1EF: 4D        .byte $4D   ; 
 - D 1 - I - 0x006200 01:A1F0: 10        .byte $10   ; 
@@ -7379,7 +7378,7 @@ _off010_A1EE_B2:
 
 
 
-_off010_A201_B3:
+_animation_A201_B3:
 - D 1 - I - 0x006211 01:A201: 03        .byte $03   ; 
 - D 1 - I - 0x006212 01:A202: 4D        .byte $4D   ; 
 - D 1 - I - 0x006213 01:A203: 10        .byte $10   ; 
@@ -7402,7 +7401,7 @@ _off010_A201_B3:
 
 
 
-_off010_A214_B4:
+_animation_A214_B4:
 - D 1 - I - 0x006224 01:A214: 03        .byte $03   ; 
 - D 1 - I - 0x006225 01:A215: 4D        .byte $4D   ; 
 - D 1 - I - 0x006226 01:A216: 08        .byte $08   ; 
@@ -7423,7 +7422,7 @@ _off010_A214_B4:
 
 
 
-_off010_A225_B5:
+_animation_A225_B5:
 - - - - - - 0x006235 01:A225: 03        .byte $03   ; 
 - - - - - - 0x006236 01:A226: 4D        .byte $4D   ; 
 - - - - - - 0x006237 01:A227: 08        .byte $08   ; 
@@ -7442,7 +7441,7 @@ _off010_A225_B5:
 
 
 
-_off010_A234_B6:
+_animation_A234_B6:
 - D 1 - I - 0x006244 01:A234: 03        .byte $03   ; 
 - D 1 - I - 0x006245 01:A235: 45        .byte $45   ; 
 - D 1 - I - 0x006246 01:A236: 08        .byte $08   ; 
@@ -7463,7 +7462,7 @@ _off010_A234_B6:
 
 
 
-_off010_A245_B7:
+_animation_A245_B7:
 - D 1 - I - 0x006255 01:A245: 03        .byte $03   ; 
 - D 1 - I - 0x006256 01:A246: 45        .byte $45   ; 
 - D 1 - I - 0x006257 01:A247: 18        .byte $18   ; 
@@ -7478,7 +7477,7 @@ _off010_A245_B7:
 
 
 
-_off010_A250_B8:
+_animation_A250_B8:
 - D 1 - I - 0x006260 01:A250: 03        .byte $03   ; 
 - D 1 - I - 0x006261 01:A251: 3D        .byte $3D   ; 
 - D 1 - I - 0x006262 01:A252: 10        .byte $10   ; 
@@ -7495,7 +7494,7 @@ _off010_A250_B8:
 
 
 
-_off010_A25D_B9:
+_animation_A25D_B9:
 - D 1 - I - 0x00626D 01:A25D: 03        .byte $03   ; 
 - D 1 - I - 0x00626E 01:A25E: 4D        .byte $4D   ; 
 - D 1 - I - 0x00626F 01:A25F: 08        .byte $08   ; 
@@ -7516,7 +7515,7 @@ _off010_A25D_B9:
 
 
 
-_off010_A26E_BA:
+_animation_A26E_BA:
 - D 1 - I - 0x00627E 01:A26E: 03        .byte $03   ; 
 - D 1 - I - 0x00627F 01:A26F: 4D        .byte $4D   ; 
 - D 1 - I - 0x006280 01:A270: 08        .byte $08   ; 
@@ -7537,7 +7536,7 @@ _off010_A26E_BA:
 
 
 
-_off010_A27F_BB:
+_animation_A27F_BB:
 - D 1 - I - 0x00628F 01:A27F: 03        .byte $03   ; 
 - D 1 - I - 0x006290 01:A280: 4D        .byte $4D   ; 
 - D 1 - I - 0x006291 01:A281: 10        .byte $10   ; 
@@ -7558,7 +7557,7 @@ _off010_A27F_BB:
 
 
 
-_off010_A290_BC:
+_animation_A290_BC:
 - - - - - - 0x0062A0 01:A290: 03        .byte $03   ; 
 - - - - - - 0x0062A1 01:A291: 4D        .byte $4D   ; 
 - - - - - - 0x0062A2 01:A292: 08        .byte $08   ; 
@@ -7581,7 +7580,7 @@ _off010_A290_BC:
 
 
 
-_off010_A2C6_E0:
+_animation_A2C6_E0:
 - D 1 - I - 0x0062D6 01:A2C6: 03        .byte $03   ; 
 - D 1 - I - 0x0062D7 01:A2C7: 10        .byte $10   ; 
 - D 1 - I - 0x0062D8 01:A2C8: 08        .byte $08   ; 
@@ -7592,7 +7591,7 @@ _off010_A2C6_E0:
 
 
 
-_off010_A2CD_E1:
+_animation_A2CD_E1:
 - D 1 - I - 0x0062DD 01:A2CD: 03        .byte $03   ; 
 - D 1 - I - 0x0062DE 01:A2CE: B7        .byte $B7   ; 
 - D 1 - I - 0x0062DF 01:A2CF: 10        .byte $10   ; 
@@ -7613,7 +7612,7 @@ _off010_A2CD_E1:
 
 
 
-_off010_A2DE_E2:
+_animation_A2DE_E2:
 - D 1 - I - 0x0062EE 01:A2DE: 03        .byte $03   ; 
 - D 1 - I - 0x0062EF 01:A2DF: BB        .byte $BB   ; 
 - D 1 - I - 0x0062F0 01:A2E0: 10        .byte $10   ; 
@@ -7630,7 +7629,7 @@ _off010_A2DE_E2:
 
 
 
-_off010_A2EB_E3:
+_animation_A2EB_E3:
 - D 1 - I - 0x0062FB 01:A2EB: 03        .byte $03   ; 
 - D 1 - I - 0x0062FC 01:A2EC: B7        .byte $B7   ; 
 - D 1 - I - 0x0062FD 01:A2ED: 08        .byte $08   ; 
@@ -7653,7 +7652,7 @@ _off010_A2EB_E3:
 
 
 
-_off010_A2FE_E4:
+_animation_A2FE_E4:
 - D 1 - I - 0x00630E 01:A2FE: 03        .byte $03   ; 
 - D 1 - I - 0x00630F 01:A2FF: BB        .byte $BB   ; 
 - D 1 - I - 0x006310 01:A300: 10        .byte $10   ; 
@@ -7670,7 +7669,7 @@ _off010_A2FE_E4:
 
 
 
-_off010_A30B_E5:
+_animation_A30B_E5:
 - D 1 - I - 0x00631B 01:A30B: 03        .byte $03   ; 
 - D 1 - I - 0x00631C 01:A30C: B7        .byte $B7   ; 
 - D 1 - I - 0x00631D 01:A30D: 20        .byte $20   ; 
@@ -7687,7 +7686,7 @@ _off010_A30B_E5:
 
 
 
-_off010_A318_E6:
+_animation_A318_E6:
 - D 1 - I - 0x006328 01:A318: 03        .byte $03   ; 
 - D 1 - I - 0x006329 01:A319: BB        .byte $BB   ; 
 - D 1 - I - 0x00632A 01:A31A: 10        .byte $10   ; 
@@ -7704,7 +7703,7 @@ _off010_A318_E6:
 
 
 
-_off010_A326_E8:
+_animation_A326_E8:
 - D 1 - I - 0x006336 01:A326: 10        .byte $10   ; 
 - D 1 - I - 0x006337 01:A327: F1        .byte $F1   ; 
 - D 1 - I - 0x006338 01:A328: E9        .byte $E9   ; 
@@ -7745,7 +7744,7 @@ _off010_A326_E8:
 
 
 
-_off010_A34B_E9:
+_animation_A34B_E9:
 - D 1 - I - 0x00635B 01:A34B: 10        .byte $10   ; 
 - D 1 - I - 0x00635C 01:A34C: F1        .byte $F1   ; 
 - D 1 - I - 0x00635D 01:A34D: F1        .byte $F1   ; 
@@ -7788,7 +7787,7 @@ _off010_A34B_E9:
 
 
 
-_off010_A372_EA:
+_animation_A372_EA:
 - D 1 - I - 0x006382 01:A372: 20        .byte $20   ; 
 - D 1 - I - 0x006383 01:A373: F1        .byte $F1   ; 
 - D 1 - I - 0x006384 01:A374: F2        .byte $F2   ; 
@@ -7837,7 +7836,7 @@ _off010_A372_EA:
 
 
 
-_off010_A39F_EB:
+_animation_A39F_EB:
 - D 1 - I - 0x0063AF 01:A39F: 28        .byte $28   ; 
 - D 1 - I - 0x0063B0 01:A3A0: F1        .byte $F1   ; 
 - D 1 - I - 0x0063B1 01:A3A1: F1        .byte $F1   ; 
@@ -7880,7 +7879,7 @@ _off010_A39F_EB:
 
 
 
-_off010_A3C6_EC:
+_animation_A3C6_EC:
 - D 1 - I - 0x0063D6 01:A3C6: 10        .byte $10   ; 
 - D 1 - I - 0x0063D7 01:A3C7: F1        .byte $F1   ; 
 - D 1 - I - 0x0063D8 01:A3C8: FE        .byte $FE   ; 
@@ -7913,7 +7912,7 @@ _off010_A3C6_EC:
 
 
 
-_off010_A3E3_ED:
+_animation_A3E3_ED:
 - D 1 - I - 0x0063F3 01:A3E3: 20        .byte $20   ; 
 - D 1 - I - 0x0063F4 01:A3E4: F1        .byte $F1   ; 
 - D 1 - I - 0x0063F5 01:A3E5: E9        .byte $E9   ; 
@@ -7944,7 +7943,7 @@ _off010_A3E3_ED:
 
 
 
-_off010_A3FE_EE:
+_animation_A3FE_EE:
 - D 1 - I - 0x00640E 01:A3FE: 38        .byte $38   ; 
 - D 1 - I - 0x00640F 01:A3FF: F1        .byte $F1   ; 
 - D 1 - I - 0x006410 01:A400: E9        .byte $E9   ; 
@@ -7977,7 +7976,7 @@ _off010_A3FE_EE:
 
 
 
-_off010_A41B_EF:
+_animation_A41B_EF:
 - - - - - - 0x00642B 01:A41B: 20        .byte $20   ; 
 - - - - - - 0x00642C 01:A41C: 00        .byte $00   ; 
 - - - - - - 0x00642D 01:A41D: F1        .byte $F1   ; 
@@ -7992,7 +7991,7 @@ _off010_A41B_EF:
 
 
 
-_off010_A426_F0:
+_animation_A426_F0:
 - D 1 - I - 0x006436 01:A426: 18        .byte $18   ; 
 - D 1 - I - 0x006437 01:A427: E9        .byte $E9   ; 
 - D 1 - I - 0x006438 01:A428: F9        .byte $F9   ; 
