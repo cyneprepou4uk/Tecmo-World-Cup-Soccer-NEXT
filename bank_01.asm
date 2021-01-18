@@ -27,7 +27,7 @@
 .export sub_0x004B34
 .export sub_0x004B4F
 .export sub_0x004B7B
-.export sub_0x004BEC
+.export sub_0x004BEC_bot_throw_in_timer
 .export sub_0x004BF8
 .export sub_0x004D2A
 
@@ -113,7 +113,7 @@ C - - - - - 0x0040C7 01:80B7: ED C1 03  SBC ram_03C1
 C - - - - - 0x0040CA 01:80BA: A8        TAY
 C - - - - - 0x0040CB 01:80BB: 10 05     BPL bra_80C2
 C - - - - - 0x0040CD 01:80BD: C6 2C     DEC ram_002C
-C - - - - - 0x0040CF 01:80BF: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x0040CF 01:80BF: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_80C2:
 C - - - - - 0x0040D2 01:80C2: 98        TYA
 C - - - - - 0x0040D3 01:80C3: D0 07     BNE bra_80CC
@@ -125,7 +125,7 @@ C - - - - - 0x0040DC 01:80CC: A2 10     LDX #$10
 C - - - - - 0x0040DE 01:80CE: A0 00     LDY #$00
 C - - - - - 0x0040E0 01:80D0: 24 2C     BIT ram_002C
 C - - - - - 0x0040E2 01:80D2: 10 03     BPL bra_80D7
-C - - - - - 0x0040E4 01:80D4: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x0040E4 01:80D4: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_80D7:
 C - - - - - 0x0040E7 01:80D7: 8A        TXA
 C - - - - - 0x0040E8 01:80D8: 18        CLC
@@ -304,7 +304,7 @@ C - - - - - 0x004233 01:8223: ED BD 03  SBC ram_03BD
 C - - - - - 0x004236 01:8226: A8        TAY
 C - - - - - 0x004237 01:8227: 08        PHP
 C - - - - - 0x004238 01:8228: 10 03     BPL bra_822D
-C - - - - - 0x00423A 01:822A: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x00423A 01:822A: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_822D:
 C - - - - - 0x00423D 01:822D: A9 00     LDA #$00
 C - - - - - 0x00423F 01:822F: 8D C2 03  STA ram_03C2
@@ -1114,10 +1114,10 @@ C - - - - - 0x0046CF 01:86BF: C8        INY
 C - - - - - 0x0046D0 01:86C0: C8        INY ; con_plr_pos_X_hi
 C - - - - - 0x0046D1 01:86C1: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x0046D3 01:86C3: ED B8 03  SBC ram_03B8
-C - - - - - 0x0046D6 01:86C6: F0 01     BEQ bra_86C9
+C - - - - - 0x0046D6 01:86C6: F0 01     BEQ bra_86C9_player_is_on_the_screen
 bra_86C8_RTS:
 C - - - - - 0x0046D8 01:86C8: 60        RTS
-bra_86C9:
+bra_86C9_player_is_on_the_screen:
                                         JSR sub_0x00C949_set_player_flag___visible
 C - - - - - 0x0046E1 01:86D1: A9 00     LDA #$00
 C - - - - - 0x0046E3 01:86D3: 85 2F     STA ram_002F
@@ -1952,7 +1952,7 @@ sub_8BC3:
 C - - - - - 0x004BD3 01:8BC3: A8        TAY
 C - - - - - 0x004BD4 01:8BC4: 08        PHP
 C - - - - - 0x004BD5 01:8BC5: 10 03     BPL bra_8BCA
-C - - - - - 0x004BD7 01:8BC7: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x004BD7 01:8BC7: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_8BCA:
 C - - - - - 0x004BDA 01:8BCA: 98        TYA
 C - - - - - 0x004BDB 01:8BCB: D0 08     BNE bra_8BD5
@@ -1971,7 +1971,7 @@ C - - - - - 0x004BEB 01:8BDB: 60        RTS
 
 
 
-sub_0x004BEC:
+sub_0x004BEC_bot_throw_in_timer:
 C D 0 - - - 0x004BEC 01:8BDC: AD 7F 03  LDA ram_random + 1
 C - - - - - 0x004BEF 01:8BDF: A0 0C     LDY #con_plr_action_timer_2
 C - - - - - 0x004BF1 01:8BE1: 29 0F     AND #$0F

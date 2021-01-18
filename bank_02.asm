@@ -134,7 +134,7 @@ C D 0 - - - 0x0080E1 02:80D1: 20 75 C0  JSR sub_0x00CA69_clear_nametables
 C - - - - - 0x0080E4 02:80D4: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x0080E7 02:80D7: A2 00     LDX #$00
 C - - - - - 0x0080E9 02:80D9: A9 02     LDA #$02
-C - - - - - 0x0080EB 02:80DB: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0080EB 02:80DB: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x0080F3 02:80E3: A9 24     LDA #$24
 C - - - - - 0x0080F5 02:80E5: 85 69     STA ram_0069
@@ -169,7 +169,7 @@ C - - - - - 0x008131 02:8121: A9 80     LDA #$80
 C - - - - - 0x008133 02:8123: 20 4C 89  JSR sub_894C
 C - - - - - 0x008136 02:8126: A2 00     LDX #$00
 C - - - - - 0x008138 02:8128: A9 06     LDA #$06
-C - - - - - 0x00813A 02:812A: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00813A 02:812A: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008142 02:8132: A9 15     LDA #$15
 C - - - - - 0x008144 02:8134: 20 7E C0  JSR sub_0x00C920
@@ -190,7 +190,7 @@ C - - - - - 0x008165 02:8155: A9 46     LDA #$46
 C - - - - - 0x008167 02:8157: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00816A 02:815A: A2 00     LDX #$00
 C - - - - - 0x00816C 02:815C: A9 06     LDA #$06
-C - - - - - 0x00816E 02:815E: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00816E 02:815E: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008176 02:8166: A9 1E     LDA #$1E
 C - - - - - 0x008178 02:8168: 85 6A     STA ram_006A
@@ -346,31 +346,31 @@ C - - - - - 0x00828C 02:827C: A9 14     LDA #$14
 C - - - - - 0x00828E 02:827E: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x008291 02:8281: A2 10     LDX #$10
 C - - - - - 0x008293 02:8283: A9 0D     LDA #$0D
-C - - - - - 0x008295 02:8285: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x008295 02:8285: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x00829D 02:828D: A9 04     LDA #$04
 C - - - - - 0x00829F 02:828F: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0082A2 02:8292: A2 10     LDX #$10
 C - - - - - 0x0082A4 02:8294: A9 0E     LDA #$0E
-C - - - - - 0x0082A6 02:8296: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0082A6 02:8296: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x0082AE 02:829E: A9 04     LDA #$04
 C - - - - - 0x0082B0 02:82A0: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0082B3 02:82A3: A2 10     LDX #$10
 C - - - - - 0x0082B5 02:82A5: A9 0F     LDA #$0F
-C - - - - - 0x0082B7 02:82A7: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0082B7 02:82A7: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x0082BF 02:82AF: A9 04     LDA #$04
 C - - - - - 0x0082C1 02:82B1: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0082C4 02:82B4: A2 10     LDX #$10
 C - - - - - 0x0082C6 02:82B6: A9 02     LDA #$02
-C - - - - - 0x0082C8 02:82B8: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0082C8 02:82B8: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x0082D0 02:82C0: A9 08     LDA #$08
 C - - - - - 0x0082D2 02:82C2: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0082D5 02:82C5: A2 10     LDX #$10
 C - - - - - 0x0082D7 02:82C7: A9 10     LDA #$10
-C - - - - - 0x0082D9 02:82C9: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0082D9 02:82C9: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 loc_82D1:
 C D 0 - - - 0x0082E1 02:82D1: A9 01     LDA #$01
@@ -383,25 +383,25 @@ off_82D9:
 ofs_82D9 = off_82D9 - 1
 C - - - - - 0x0082E9 02:82D9: A2 10     LDX #$10
 C - - - - - 0x0082EB 02:82DB: A9 0A     LDA #$0A
-C - - - - - 0x0082ED 02:82DD: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0082ED 02:82DD: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x0082F5 02:82E5: A9 04     LDA #$04
 C - - - - - 0x0082F7 02:82E7: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0082FA 02:82EA: A2 10     LDX #$10
 C - - - - - 0x0082FC 02:82EC: A9 0B     LDA #$0B
-C - - - - - 0x0082FE 02:82EE: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0082FE 02:82EE: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008306 02:82F6: A9 04     LDA #$04
 C - - - - - 0x008308 02:82F8: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00830B 02:82FB: A2 10     LDX #$10
 C - - - - - 0x00830D 02:82FD: A9 0C     LDA #$0C
-C - - - - - 0x00830F 02:82FF: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00830F 02:82FF: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008317 02:8307: A9 04     LDA #$04
 C - - - - - 0x008319 02:8309: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00831C 02:830C: A2 10     LDX #$10
 C - - - - - 0x00831E 02:830E: A9 04     LDA #$04
-C - - - - - 0x008320 02:8310: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x008320 02:8310: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008328 02:8318: 4C 0C C0  JMP loc_0x00C601
 
@@ -611,10 +611,10 @@ C - - - - - 0x0083F9 02:83E9: D0 ED     BNE bra_83D8
 bra_83EB:
 C - - - - - 0x0083FB 02:83EB: A2 00     LDX #$00
 C - - - - - 0x0083FD 02:83ED: A9 02     LDA #$02
-C - - - - - 0x0083FF 02:83EF: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x0083FF 02:83EF: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x008402 02:83F2: A2 10     LDX #$10
 C - - - - - 0x008404 02:83F4: A9 02     LDA #$02
-C - - - - - 0x008406 02:83F6: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x008406 02:83F6: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x00840E 02:83FE: A5 28     LDA ram_0028
 C - - - - - 0x008410 02:8400: 09 20     ORA #$20
@@ -631,10 +631,10 @@ C - - - - - 0x00841A 02:840A: 20 75 C0  JSR sub_0x00CA69_clear_nametables
 C - - - - - 0x00841D 02:840D: 20 51 C0  JSR sub_0x00CABF_hide_sprites
 C - - - - - 0x008420 02:8410: A2 00     LDX #$00
 C - - - - - 0x008422 02:8412: A9 05     LDA #$05
-C - - - - - 0x008424 02:8414: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x008424 02:8414: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x008427 02:8417: A2 10     LDX #$10
 C - - - - - 0x008429 02:8419: A9 04     LDA #$04
-C - - - - - 0x00842B 02:841B: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00842B 02:841B: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008433 02:8423: A2 03     LDX #$03
 bra_8425:
@@ -771,10 +771,10 @@ C - - - - - 0x00851D 02:850D: CA        DEX
 C - - - - - 0x00851E 02:850E: 10 F7     BPL bra_8507_loop
 C - - - - - 0x008520 02:8510: A2 10     LDX #$10
 C - - - - - 0x008522 02:8512: A9 02     LDA #$02
-C - - - - - 0x008524 02:8514: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x008524 02:8514: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x008527 02:8517: A2 00     LDX #$00
 C - - - - - 0x008529 02:8519: A9 02     LDA #$02
-C - - - - - 0x00852B 02:851B: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00852B 02:851B: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008533 02:8523: A9 02     LDA #$02
 C - - - - - 0x008535 02:8525: 20 09 C0  JSR sub_0x00C619_delay
@@ -794,10 +794,10 @@ C D 0 - - - 0x008551 02:8541: A9 02     LDA #$02
 C - - - - - 0x008553 02:8543: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x008556 02:8546: A2 00     LDX #$00
 C - - - - - 0x008558 02:8548: A9 05     LDA #$05
-C - - - - - 0x00855A 02:854A: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00855A 02:854A: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x00855D 02:854D: A2 10     LDX #$10
 C - - - - - 0x00855F 02:854F: A9 03     LDA #$03
-C - - - - - 0x008561 02:8551: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x008561 02:8551: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x008569 02:8559: 4C 60 85  JMP loc_8560
 
@@ -4698,7 +4698,7 @@ C - - - - - 0x0097D8 02:97C8: A8        TAY
 C - - - - - 0x0097D9 02:97C9: A5 2C     LDA ram_002C
 C - - - - - 0x0097DB 02:97CB: C9 0B     CMP #$0B
 C - - - - - 0x0097DD 02:97CD: 90 03     BCC bra_97D2
-C - - - - - 0x0097DF 02:97CF: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x0097DF 02:97CF: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_97D2:
 C - - - - - 0x0097E2 02:97D2: 18        CLC
 C - - - - - 0x0097E3 02:97D3: 8A        TXA
@@ -4744,7 +4744,7 @@ C - - - - - 0x00981D 02:980D: A8        TAY
 C - - - - - 0x00981E 02:980E: A5 2C     LDA ram_002C
 C - - - - - 0x009820 02:9810: C9 0B     CMP #$0B
 C - - - - - 0x009822 02:9812: 90 03     BCC bra_9817
-C - - - - - 0x009824 02:9814: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x009824 02:9814: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_9817:
 C - - - - - 0x009827 02:9817: 18        CLC
 C - - - - - 0x009828 02:9818: 8A        TXA
@@ -4841,7 +4841,7 @@ C - - - - - 0x0098B6 02:98A6: A8        TAY
 C - - - - - 0x0098B7 02:98A7: A5 2C     LDA ram_002C
 C - - - - - 0x0098B9 02:98A9: C9 0B     CMP #$0B
 C - - - - - 0x0098BB 02:98AB: 90 03     BCC bra_98B0
-C - - - - - 0x0098BD 02:98AD: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x0098BD 02:98AD: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_98B0:
 C - - - - - 0x0098C0 02:98B0: 18        CLC
 C - - - - - 0x0098C1 02:98B1: 8A        TXA
@@ -4887,7 +4887,7 @@ C - - - - - 0x0098FB 02:98EB: A8        TAY
 C - - - - - 0x0098FC 02:98EC: A5 2C     LDA ram_002C
 C - - - - - 0x0098FE 02:98EE: C9 0B     CMP #$0B
 C - - - - - 0x009900 02:98F0: 90 03     BCC bra_98F5
-C - - - - - 0x009902 02:98F2: 20 42 C0  JSR sub_0x00C92E
+C - - - - - 0x009902 02:98F2: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_98F5:
 C - - - - - 0x009905 02:98F5: 18        CLC
 C - - - - - 0x009906 02:98F6: 8A        TXA
@@ -6791,10 +6791,10 @@ _off007_9FD2_13:
 sub_0x00A03A:
 C D 1 - - - 0x00A03A 02:A02A: A2 00     LDX #$00
 C - - - - - 0x00A03C 02:A02C: A9 02     LDA #$02
-C - - - - - 0x00A03E 02:A02E: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00A03E 02:A02E: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x00A041 02:A031: A2 10     LDX #$10
 C - - - - - 0x00A043 02:A033: A9 02     LDA #$02
-C - - - - - 0x00A045 02:A035: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00A045 02:A035: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x00A04D 02:A03D: 20 75 C0  JSR sub_0x00CA69_clear_nametables
 C - - - - - 0x00A050 02:A040: 20 51 C0  JSR sub_0x00CABF_hide_sprites
@@ -6884,7 +6884,7 @@ C - - - - - 0x00A0EE 02:A0DE: 8D AD 03  STA ram_team_w_ball
 C - - - - - 0x00A0F1 02:A0E1: 85 8E     STA ram_008E
 C - - - - - 0x00A0F3 02:A0E3: A2 00     LDX #$00
 C - - - - - 0x00A0F5 02:A0E5: A9 09     LDA #$09
-C - - - - - 0x00A0F7 02:A0E7: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00A0F7 02:A0E7: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x00A0FF 02:A0EF: 60        RTS
 
@@ -7065,7 +7065,7 @@ C - - - - - 0x00A230 02:A220: A9 01     LDA #$01
 C - - - - - 0x00A232 02:A222: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00A235 02:A225: A2 00     LDX #$00
 C - - - - - 0x00A237 02:A227: A9 09     LDA #$09
-C - - - - - 0x00A239 02:A229: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00A239 02:A229: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_0300
 C - - - - - 0x00A241 02:A231: 60        RTS
 
@@ -8370,10 +8370,10 @@ C - - - - - 0x00A85D 02:A84D: A9 0A     LDA #$0A
 C - - - - - 0x00A85F 02:A84F: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00A862 02:A852: A2 00     LDX #$00
 C - - - - - 0x00A864 02:A854: A9 05     LDA #$05
-C - - - - - 0x00A866 02:A856: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00A866 02:A856: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x00A869 02:A859: A2 10     LDX #$10
 C - - - - - 0x00A86B 02:A85B: A9 03     LDA #$03
-C - - - - - 0x00A86D 02:A85D: 20 18 C0  JSR sub_0x00CAE4
+C - - - - - 0x00A86D 02:A85D: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
 C - - - - - 0x00A870 02:A860: 68        PLA
 C - - - - - 0x00A871 02:A861: 85 2A     STA ram_002A
 C - - - - - 0x00A873 02:A863: A2 00     LDX #$00
