@@ -109,3 +109,34 @@ con_behavior_gk_get_ball        = $16   ; (для киперов) владеет
 con_behavior_17                 = $17   ; 
 con_behavior_18                 = $18   ; 
 con_behavior_19                 = $19   ; 
+
+
+
+con_sound_off                   = $01    ; выключить звук
+con_sound_dead                  = $02    ; игрок умер от мяча или подката, или его затоптали
+con_sound_shot                  = $03    ; обычный удар или навес
+con_sound_fast_shot             = $04    ; удар в одно касание
+con_sound_recieve               = $05    ; принятие мяча на грудь
+con_sound_throw                 = $06    ; бросок мяча руками
+con_sound_catch                 = $07    ; кипер словил мяч
+con_sound_tackle                = $08    ; подкат
+con_sound_unk_09                = $09    ; хз, сигнал какой-то
+con_sound_time_low              = $0A    ; сигнал что время кончается
+con_sound_time_up               = $0B    ; сигнал когда время вышло
+con_sound_whistle_referee       = $0C    ; свисток на разводке или мяч вне игры
+con_sound_hit_goalspot          = $0D    ; удар о штангу или перекладину
+con_sound_fans                  = $0E    ; шум зрителей
+con_sound_option_select         = $0F    ; при выборе одной из опций в главном меню
+con_music_field                 = $10    ; главная мелодия игры на поле
+con_music_logo                  = $11    ; мелодия логотипа
+con_music_goal                  = $12    ; мелодия гола
+con_music_half_time             = $13    ; мелодия в перерыве на эеране со счетом
+con_music_game_number           = $14    ; мелодия экрана с номером игры
+con_music_credits               = $15    ; финальная мелодия титров
+con_music_team_select           = $16    ; мелодия экрана выбора команд
+con_music_penalty               = $17    ; мелодия пенальти
+con_sound_select                = $18    ; выбор чего-либо
+con_sound_whistle_fans          = $1A    ; свисток после гола и шум зрителей
+con_sound_wrong_psw             = $1B    ; неправильный пароль
+con_sound_syndrom               = $1C    ; синдром давителя, когда кипер выпустил мяч из рук во время ловли
+con_music_quiet                 = $20    ; постепенное уменьшение громкости музыки

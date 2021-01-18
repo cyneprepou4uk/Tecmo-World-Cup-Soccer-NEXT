@@ -11,7 +11,7 @@
 .export sub_0x00C63F_player_state_handler
 .export sub_0x00C762
 .export sub_0x00C8AD
-.export sub_0x00C920
+.export sub_0x00C920_prepare_sound
 .export sub_0x00C92E_EOR_16bit
 .export sub_0x00C949_set_player_flag___visible
 .export sub_0x00C94B_set_player_flag___control
@@ -90,18 +90,18 @@ C - - - - - 0x00C113 03:C103: 85 28     STA ram_0028
 C - - - - - 0x00C115 03:C105: A9 1E     LDA #$1E
 C - - - - - 0x00C117 03:C107: 85 29     STA ram_0029
 C - - - - - 0x00C119 03:C109: A9 20     LDA #$20
-C - - - - - 0x00C11B 03:C10B: 8D 80 03  STA ram_0380
+C - - - - - 0x00C11B 03:C10B: 8D 80 03  STA ram_buffer_pal_hi
 C - - - - - 0x00C11E 03:C10E: A9 00     LDA #$00
-C - - - - - 0x00C120 03:C110: 8D 81 03  STA ram_0381
+C - - - - - 0x00C120 03:C110: 8D 81 03  STA ram_buffer_pal_lo
 C - - - - - 0x00C123 03:C113: A9 3F     LDA #$3F
-C - - - - - 0x00C125 03:C115: 8D 82 03  STA ram_0382
+C - - - - - 0x00C125 03:C115: 8D 82 03  STA ram_buffer_pal_cnt
 C - - - - - 0x00C128 03:C118: A2 00     LDX #$00
 C - - - - - 0x00C12A 03:C11A: A9 00     LDA #$00
 C - - - - - 0x00C12C 03:C11C: 20 D4 CA  JSR sub_CAD4_load_screen_palette
 C - - - - - 0x00C12F 03:C11F: A2 10     LDX #$10
 C - - - - - 0x00C131 03:C121: A9 01     LDA #$01
 C - - - - - 0x00C133 03:C123: 20 D4 CA  JSR sub_CAD4_load_screen_palette
-                                        INC ram_0300
+                                        INC ram_buffer_pal_flag
 C - - - - - 0x00C13B 03:C12B: A2 01     LDX #$01
 C - - - - - 0x00C13D 03:C12D: A9 1E     LDA #$1E
 C - - - - - 0x00C13F 03:C12F: 95 01     STA ram_0001,X
@@ -172,12 +172,12 @@ C - - - - - 0x00C1C5 03:C1B5: 85 23     STA ram_0023
 C - - - - - 0x00C1C7 03:C1B7: A5 65     LDA ram_0065
 C - - - - - 0x00C1C9 03:C1B9: 09 07     ORA #$07
 C - - - - - 0x00C1CB 03:C1BB: 8D 00 80  STA $8000
-C - - - - - 0x00C1CE 03:C1BE: A5 68     LDA ram_0068
+C - - - - - 0x00C1CE 03:C1BE: A5 68     LDA ram_prg_bank_1
 C - - - - - 0x00C1D0 03:C1C0: 8D 01 80  STA $8001
 C - - - - - 0x00C1D3 03:C1C3: A5 65     LDA ram_0065
 C - - - - - 0x00C1D5 03:C1C5: 09 06     ORA #$06
 C - - - - - 0x00C1D7 03:C1C7: 8D 00 80  STA $8000
-C - - - - - 0x00C1DA 03:C1CA: A5 67     LDA ram_0067
+C - - - - - 0x00C1DA 03:C1CA: A5 67     LDA ram_prg_bank_0
 C - - - - - 0x00C1DC 03:C1CC: 8D 01 80  STA $8001
 C - - - - - 0x00C1DF 03:C1CF: 20 CE C2  JSR sub_C2CE_roll_rng
 C - - - - - 0x00C1E2 03:C1D2: 68        PLA
@@ -200,12 +200,12 @@ C - - - - - 0x00C1FA 03:C1EA: 40        RTI
 
 
 sub_C1EB:
-C - - - - - 0x00C1FB 03:C1EB: AD 00 03  LDA ram_0300
+C - - - - - 0x00C1FB 03:C1EB: AD 00 03  LDA ram_buffer_pal_flag
 C - - - - - 0x00C1FE 03:C1EE: F0 37     BEQ bra_C227
-C - - - - - 0x00C200 03:C1F0: CE 00 03  DEC ram_0300
-                                        LDA #< ram_0380
+C - - - - - 0x00C200 03:C1F0: CE 00 03  DEC ram_buffer_pal_flag
+                                        LDA #< ram_buffer_pal_hi
 C - - - - - 0x00C20B 03:C1FB: 85 3D     STA ram_003D
-                                        LDA #> ram_0380
+                                        LDA #> ram_buffer_pal_hi
 C - - - - - 0x00C210 03:C200: 85 3E     STA ram_003E
 C - - - - - 0x00C212 03:C202: A0 00     LDY #$00
 bra_C204:
@@ -232,26 +232,26 @@ C - - - - - 0x00C234 03:C224: F0 DE     BEQ bra_C204
 bra_C226_RTS:
 C - - - - - 0x00C236 03:C226: 60        RTS
 bra_C227:
-C - - - - - 0x00C237 03:C227: AD 7D 03  LDA ram_037D
+C - - - - - 0x00C237 03:C227: AD 7D 03  LDA ram_buffer_bg_flag
 C - - - - - 0x00C23A 03:C22A: 10 2B     BPL bra_C257_RTS
 C - - - - - 0x00C23C 03:C22C: A2 00     LDX #$00
-C - - - - - 0x00C23E 03:C22E: 8E 7D 03  STX ram_037D
+C - - - - - 0x00C23E 03:C22E: 8E 7D 03  STX ram_buffer_bg_flag
 bra_C231:
-C - - - - - 0x00C241 03:C231: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C241 03:C231: BD 0D 03  LDA ram_buffer_bg_hi,X
 C - - - - - 0x00C244 03:C234: F0 21     BEQ bra_C257_RTS
 C - - - - - 0x00C246 03:C236: A8        TAY
 C - - - - - 0x00C247 03:C237: E8        INX
-C - - - - - 0x00C248 03:C238: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C248 03:C238: BD 0D 03  LDA ram_buffer_bg_hi,X
 C - - - - - 0x00C24B 03:C23B: 48        PHA
 C - - - - - 0x00C24C 03:C23C: E8        INX
-C - - - - - 0x00C24D 03:C23D: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C24D 03:C23D: BD 0D 03  LDA ram_buffer_bg_hi,X
 C - - - - - 0x00C250 03:C240: 2C 02 20  BIT $2002
 C - - - - - 0x00C253 03:C243: 8D 06 20  STA $2006
 C - - - - - 0x00C256 03:C246: 68        PLA
 C - - - - - 0x00C257 03:C247: 8D 06 20  STA $2006
 C - - - - - 0x00C25A 03:C24A: E8        INX
 bra_C24B:
-C - - - - - 0x00C25B 03:C24B: BD 0D 03  LDA ram_030D,X
+C - - - - - 0x00C25B 03:C24B: BD 0D 03  LDA ram_buffer_bg_hi,X
 C - - - - - 0x00C25E 03:C24E: 8D 07 20  STA $2007
 C - - - - - 0x00C261 03:C251: E8        INX
 C - - - - - 0x00C262 03:C252: 88        DEY
@@ -363,8 +363,8 @@ C - - - - - 0x00C30B 03:C2FB: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00C30D 03:C2FD: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C310 03:C300: A9 00     LDA #$00
 C - - - - - 0x00C312 03:C302: 8D D2 03  STA ram_03D2
-C - - - - - 0x00C315 03:C305: A9 11     LDA #$11
-C - - - - - 0x00C317 03:C307: 20 10 C9  JSR sub_C910
+C - - - - - 0x00C315 03:C305: A9 11     LDA #con_music_logo
+C - - - - - 0x00C317 03:C307: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00C31A 03:C30A: A9 04     LDA #$04
 C - - - - - 0x00C31C 03:C30C: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C31F 03:C30F: A2 05     LDX #$05
@@ -393,18 +393,18 @@ C - - - - - 0x00C34D 03:C33D: 85 3B     STA ram_003B
 C - - - - - 0x00C34F 03:C33F: 85 3A     STA ram_003A
 C - - - - - 0x00C351 03:C341: 48        PHA
 C - - - - - 0x00C352 03:C342: A9 04     LDA #$04
-C - - - - - 0x00C354 03:C344: 85 67     STA ram_0067
+C - - - - - 0x00C354 03:C344: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C356 03:C346: A9 05     LDA #$05
-C - - - - - 0x00C358 03:C348: 85 68     STA ram_0068
+C - - - - - 0x00C358 03:C348: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C35A 03:C34A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C35D 03:C34D: 68        PLA
 C - - - - - 0x00C35E 03:C34E: 20 12 80  JSR sub_0x008AD9
 bra_C351:
 C - - - - - 0x00C361 03:C351: 48        PHA
 C - - - - - 0x00C362 03:C352: A9 04     LDA #$04
-C - - - - - 0x00C364 03:C354: 85 67     STA ram_0067
+C - - - - - 0x00C364 03:C354: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C366 03:C356: A9 05     LDA #$05
-C - - - - - 0x00C368 03:C358: 85 68     STA ram_0068
+C - - - - - 0x00C368 03:C358: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C36A 03:C35A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C36D 03:C35D: 68        PLA
 C - - - - - 0x00C36E 03:C35E: 20 18 80  JSR sub_0x008B30
@@ -413,9 +413,9 @@ C - - - - - 0x00C374 03:C364: 09 08     ORA #con_gm_team_select
 C - - - - - 0x00C376 03:C366: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00C379 03:C369: A9 FF     LDA #$FF
 C - - - - - 0x00C37B 03:C36B: 8D A9 03  STA ram_team_id
-loc_C36E:
-C D 2 - - - 0x00C37E 03:C36E: A9 01     LDA #$01
-C - - - - - 0x00C380 03:C370: 20 10 C9  JSR sub_C910
+loc_C36E_continue_walkrthough:      ; переход сюда если играть против компа и победить/проиграть
+C D 2 - - - 0x00C37E 03:C36E: A9 01     LDA #con_sound_off
+C - - - - - 0x00C380 03:C370: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00C383 03:C373: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00C386 03:C376: 29 FB     AND #con_gm_playable ^ $FF
 C - - - - - 0x00C388 03:C378: 8D A4 03  STA ram_game_mode_flags
@@ -430,25 +430,25 @@ C - - - - - 0x00C39F 03:C38F: 8D AD 03  STA ram_team_w_ball
 C - - - - - 0x00C3A2 03:C392: 8D AE 03  STA ram_half_time_cnt
 C - - - - - 0x00C3A5 03:C395: 48        PHA
 C - - - - - 0x00C3A6 03:C396: A9 04     LDA #$04
-C - - - - - 0x00C3A8 03:C398: 85 67     STA ram_0067
+C - - - - - 0x00C3A8 03:C398: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C3AA 03:C39A: A9 05     LDA #$05
-C - - - - - 0x00C3AC 03:C39C: 85 68     STA ram_0068
+C - - - - - 0x00C3AC 03:C39C: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C3AE 03:C39E: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C3B1 03:C3A1: 68        PLA
 C - - - - - 0x00C3B2 03:C3A2: 20 00 80  JSR sub_0x008501
 C - - - - - 0x00C3B5 03:C3A5: 48        PHA
 C - - - - - 0x00C3B6 03:C3A6: A9 04     LDA #$04
-C - - - - - 0x00C3B8 03:C3A8: 85 67     STA ram_0067
+C - - - - - 0x00C3B8 03:C3A8: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C3BA 03:C3AA: A9 05     LDA #$05
-C - - - - - 0x00C3BC 03:C3AC: 85 68     STA ram_0068
+C - - - - - 0x00C3BC 03:C3AC: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C3BE 03:C3AE: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C3C1 03:C3B1: 68        PLA
 C - - - - - 0x00C3C2 03:C3B2: 20 03 80  JSR sub_0x0083D9
 C - - - - - 0x00C3C5 03:C3B5: 48        PHA
 C - - - - - 0x00C3C6 03:C3B6: A9 02     LDA #$02
-C - - - - - 0x00C3C8 03:C3B8: 85 67     STA ram_0067
+C - - - - - 0x00C3C8 03:C3B8: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C3CA 03:C3BA: A9 03     LDA #$03
-C - - - - - 0x00C3CC 03:C3BC: 85 68     STA ram_0068
+C - - - - - 0x00C3CC 03:C3BC: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C3CE 03:C3BE: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C3D1 03:C3C1: 68        PLA
 C - - - - - 0x00C3D2 03:C3C2: 20 2D 80  JSR sub_0x004A81
@@ -522,7 +522,7 @@ C - - - - - 0x00C462 03:C452: C9 0E     CMP #$0E
 C - - - - - 0x00C464 03:C454: D0 03     BNE bra_C459
 C - - - - - 0x00C466 03:C456: 4C 5D C4  JMP loc_C45D
 bra_C459:
-C - - - - - 0x00C469 03:C459: 4C 6E C3  JMP loc_C36E
+C - - - - - 0x00C469 03:C459: 4C 6E C3  JMP loc_C36E_continue_walkrthough
 bra_C45C_RTS:
 C - - - - - 0x00C46C 03:C45C: 60        RTS
 
@@ -563,8 +563,8 @@ C - - - - - 0x00C4AE 03:C49E: 85 19     STA ram_0019
 C - - - - - 0x00C4B0 03:C4A0: 85 1A     STA ram_001A
 C - - - - - 0x00C4B4 03:C4A4: 85 1D     STA ram_001D
 C - - - - - 0x00C4B6 03:C4A6: 85 1E     STA ram_001E
-C - - - - - 0x00C4B8 03:C4A8: A9 0B     LDA #$0B
-C - - - - - 0x00C4BA 03:C4AA: 20 10 C9  JSR sub_C910
+C - - - - - 0x00C4B8 03:C4A8: A9 0B     LDA #con_sound_time_up
+C - - - - - 0x00C4BA 03:C4AA: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00C4BD 03:C4AD: A9 01     LDA #$01    ; time up
 C - - - - - 0x00C4BF 03:C4AF: 20 DA F9  JSR sub_F9DA_print_message_with_sprites
 C - - - - - 0x00C4C2 03:C4B2: A9 A0     LDA #$A0
@@ -588,7 +588,7 @@ C - - - - - 0x00C4DE 03:C4CE: 20 D4 CA  JSR sub_CAD4_load_screen_palette
 C - - - - - 0x00C4E1 03:C4D1: A2 10     LDX #$10
 C - - - - - 0x00C4E3 03:C4D3: A9 08     LDA #$08
 C - - - - - 0x00C4E5 03:C4D5: 20 D4 CA  JSR sub_CAD4_load_screen_palette
-                                        INC ram_0300
+                                        INC ram_buffer_pal_flag
 C - - - - - 0x00C4ED 03:C4DD: A9 1C     LDA #$1C
 C - - - - - 0x00C4EF 03:C4DF: 85 69     STA ram_0069
 C - - - - - 0x00C4F1 03:C4E1: A9 1A     LDA #$1A
@@ -601,13 +601,13 @@ C - - - - - 0x00C4F9 03:C4E9: 69 18     ADC #$18
 C - - - - - 0x00C4FB 03:C4EB: 9D 6B 00  STA ram_006B,X
 C - - - - - 0x00C4FE 03:C4EE: CA        DEX
 C - - - - - 0x00C4FF 03:C4EF: 10 F6     BPL bra_C4E7
-C - - - - - 0x00C501 03:C4F1: A9 13     LDA #$13
-C - - - - - 0x00C503 03:C4F3: 20 10 C9  JSR sub_C910
+C - - - - - 0x00C501 03:C4F1: A9 13     LDA #con_music_half_time
+C - - - - - 0x00C503 03:C4F3: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00C506 03:C4F6: 48        PHA
 C - - - - - 0x00C507 03:C4F7: A9 04     LDA #$04
-C - - - - - 0x00C509 03:C4F9: 85 67     STA ram_0067
+C - - - - - 0x00C509 03:C4F9: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C50B 03:C4FB: A9 05     LDA #$05
-C - - - - - 0x00C50D 03:C4FD: 85 68     STA ram_0068
+C - - - - - 0x00C50D 03:C4FD: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C50F 03:C4FF: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C512 03:C502: 68        PLA
 C - - - - - 0x00C513 03:C503: 20 00 B0  JSR sub_0x00B010
@@ -675,10 +675,10 @@ C - - - - - 0x00C582 03:C572: C9 FF     CMP #$FF
 C - - - - - 0x00C584 03:C574: F0 58     BNE bra_C576
 C - - - - - 0x00C5DE 03:C5CE: 86 00     STX ram_0000
 C - - - - - 0x00C5E0 03:C5D0: B5 02     LDA ram_0002,X
-C - - - - - 0x00C5E2 03:C5D2: 85 67     STA ram_0067
+C - - - - - 0x00C5E2 03:C5D2: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C5E4 03:C5D4: 18        CLC
 C - - - - - 0x00C5E5 03:C5D5: 69 01     ADC #$01
-C - - - - - 0x00C5E7 03:C5D7: 85 68     STA ram_0068
+C - - - - - 0x00C5E7 03:C5D7: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C5E9 03:C5D9: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C5EC 03:C5DC: B5 01     LDA ram_0001,X
 C - - - - - 0x00C5EE 03:C5DE: AA        TAX
@@ -690,9 +690,9 @@ C - - - - - 0x00C588 03:C578: F0 39     BNE bra_C57A
 C - - - - - 0x00C5C3 03:C5B3: 46 21     LSR ram_0021
 C - - - - - 0x00C5C5 03:C5B5: 86 00     STX ram_0000
 C - - - - - 0x00C5C7 03:C5B7: B5 02     LDA ram_0002,X
-C - - - - - 0x00C5C9 03:C5B9: 85 67     STA ram_0067
+C - - - - - 0x00C5C9 03:C5B9: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C5CB 03:C5BB: B5 03     LDA ram_0003,X
-C - - - - - 0x00C5CD 03:C5BD: 85 68     STA ram_0068
+C - - - - - 0x00C5CD 03:C5BD: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C5CF 03:C5BF: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C5D2 03:C5C2: B5 01     LDA ram_0001,X
 C - - - - - 0x00C5D4 03:C5C4: AA        TAX
@@ -726,9 +726,9 @@ C - - - - - 0x00C59E 03:C58E: A9 05     LDA #$05    ; pause
 C - - - - - 0x00C5A0 03:C590: 20 DA F9  JSR sub_F9DA_print_message_with_sprites
 C - - - - - 0x00C5A3 03:C593: 48        PHA
 C - - - - - 0x00C5A4 03:C594: A9 04     LDA #$04
-C - - - - - 0x00C5A6 03:C596: 85 67     STA ram_0067
+C - - - - - 0x00C5A6 03:C596: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00C5A8 03:C598: A9 05     LDA #$05
-C - - - - - 0x00C5AA 03:C59A: 85 68     STA ram_0068
+C - - - - - 0x00C5AA 03:C59A: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00C5AC 03:C59C: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C5AF 03:C59F: 68        PLA
 C - - - - - 0x00C5B0 03:C5A0: 20 30 80  JSR sub_0x008043
@@ -777,9 +777,9 @@ C - - - - - 0x00C61C 03:C60C: 48        PHA
 C - - - - - 0x00C61D 03:C60D: 98        TYA
 C - - - - - 0x00C61E 03:C60E: 48        PHA
 C - - - - - 0x00C61F 03:C60F: A6 00     LDX ram_0000
-C - - - - - 0x00C621 03:C611: A5 67     LDA ram_0067
+C - - - - - 0x00C621 03:C611: A5 67     LDA ram_prg_bank_0
 C - - - - - 0x00C623 03:C613: 95 02     STA ram_0002,X
-C - - - - - 0x00C625 03:C615: A5 68     LDA ram_0068
+C - - - - - 0x00C625 03:C615: A5 68     LDA ram_prg_bank_1
 C - - - - - 0x00C627 03:C617: 95 03     STA ram_0003,X
 C - - - - - 0x00C629 03:C619: A5 49     LDA ram_0049
 C - - - - - 0x00C62B 03:C61B: 95 00     STA ram_0000,X
@@ -986,31 +986,31 @@ C D 2 - - - 0x00C766 03:C756: A0 00     LDY #$00
 C - - - - - 0x00C768 03:C758: B1 43     LDA (ram_0043),Y
 C - - - - - 0x00C76A 03:C75A: F0 41     BEQ bra_C79D_RTS
 C - - - - - 0x00C76C 03:C75C: 48        PHA
-bra_C75D:
+bra_C75D_wait_loop:
 C - - - - - 0x00C76D 03:C75D: A9 01     LDA #$01
 C - - - - - 0x00C76F 03:C75F: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00C772 03:C762: AD 7D 03  LDA ram_037D
-C - - - - - 0x00C775 03:C765: D0 F6     BNE bra_C75D
+C - - - - - 0x00C772 03:C762: AD 7D 03  LDA ram_buffer_bg_flag
+C - - - - - 0x00C775 03:C765: D0 F6     BNE bra_C75D_wait_loop
 C - - - - - 0x00C777 03:C767: A9 01     LDA #$01
-C - - - - - 0x00C779 03:C769: 8D 7D 03  STA ram_037D
+C - - - - - 0x00C779 03:C769: 8D 7D 03  STA ram_buffer_bg_flag
 C - - - - - 0x00C77C 03:C76C: 68        PLA
 C - - - - - 0x00C77D 03:C76D: AA        TAX
-C - - - - - 0x00C77E 03:C76E: 8D 0D 03  STA ram_030D
+C - - - - - 0x00C77E 03:C76E: 8D 0D 03  STA ram_buffer_bg_hi
 C - - - - - 0x00C781 03:C771: C8        INY
 C - - - - - 0x00C782 03:C772: B1 43     LDA (ram_0043),Y
-C - - - - - 0x00C784 03:C774: 8D 0E 03  STA ram_030E
+C - - - - - 0x00C784 03:C774: 8D 0E 03  STA ram_buffer_bg_lo
 C - - - - - 0x00C787 03:C777: C8        INY
 C - - - - - 0x00C788 03:C778: B1 43     LDA (ram_0043),Y
-C - - - - - 0x00C78A 03:C77A: 8D 0F 03  STA ram_030F
+C - - - - - 0x00C78A 03:C77A: 8D 0F 03  STA ram_buffer_bg_cnt
 C - - - - - 0x00C78D 03:C77D: C8        INY
 bra_C77E:
 C - - - - - 0x00C78E 03:C77E: B1 43     LDA (ram_0043),Y
-C - - - - - 0x00C790 03:C780: 99 0D 03  STA ram_030D,Y
+C - - - - - 0x00C790 03:C780: 99 0D 03  STA ram_buffer_bg_hi,Y
 C - - - - - 0x00C793 03:C783: C8        INY
 C - - - - - 0x00C794 03:C784: CA        DEX
 C - - - - - 0x00C795 03:C785: D0 F7     BNE bra_C77E
 C - - - - - 0x00C797 03:C787: 8A        TXA
-C - - - - - 0x00C798 03:C788: 99 0D 03  STA ram_030D,Y
+C - - - - - 0x00C798 03:C788: 99 0D 03  STA ram_buffer_bg_hi,Y
 C - - - - - 0x00C79B 03:C78B: 98        TYA
 C - - - - - 0x00C79C 03:C78C: 18        CLC
 C - - - - - 0x00C79D 03:C78D: 65 43     ADC ram_0043
@@ -1019,7 +1019,7 @@ C - - - - - 0x00C7A1 03:C791: 90 02     BCC bra_C795
 C - - - - - 0x00C7A3 03:C793: E6 44     INC ram_0044
 bra_C795:
 C - - - - - 0x00C7A5 03:C795: A9 80     LDA #$80
-C - - - - - 0x00C7A7 03:C797: 8D 7D 03  STA ram_037D
+C - - - - - 0x00C7A7 03:C797: 8D 7D 03  STA ram_buffer_bg_flag
 C - - - - - 0x00C7AA 03:C79A: 4C 56 C7  JMP loc_C756
 bra_C79D_RTS:
 C - - - - - 0x00C7AD 03:C79D: 60        RTS
@@ -1327,13 +1327,13 @@ C - - - - - 0x00C91F 03:C90F: 60        RTS
 
 
 
-sub_C910:
-sub_0x00C920:
-C D 2 - - - 0x00C920 03:C910: AC 00 07  LDY ram_0700
-C - - - - - 0x00C923 03:C913: C0 04     CPY #$04
+sub_C910_prepare_sound:
+sub_0x00C920_prepare_sound:
+C D 2 - - - 0x00C920 03:C910: AC 00 07  LDY ram_sound_cnt
+C - - - - - 0x00C923 03:C913: C0 04     CPY #$04    ; если буфер заполнен
 C - - - - - 0x00C925 03:C915: B0 06     BCS bra_C91D_RTS
-C - - - - - 0x00C927 03:C917: 99 01 07  STA ram_0701,Y
-C - - - - - 0x00C92A 03:C91A: EE 00 07  INC ram_0700
+C - - - - - 0x00C927 03:C917: 99 01 07  STA ram_sound_queue,Y
+C - - - - - 0x00C92A 03:C91A: EE 00 07  INC ram_sound_cnt
 bra_C91D_RTS:
 C - - - - - 0x00C92D 03:C91D: 60        RTS
 
@@ -1712,7 +1712,7 @@ C - - - - - 0x00CB00 03:CAF0: A5 42     LDA ram_0042
 C - - - - - 0x00CB02 03:CAF2: 69 FA     ADC #> tbl_FAA8_palette
 C - - - - - 0x00CB04 03:CAF4: 85 42     STA ram_0042
 C - - - - - 0x00CB06 03:CAF6: A9 10     LDA #$10
-C - - - - - 0x00CB08 03:CAF8: 8D 80 03  STA ram_0380
+C - - - - - 0x00CB08 03:CAF8: 8D 80 03  STA ram_buffer_pal_hi
 C - - - - - 0x00CB0B 03:CAFB: A0 00     LDY #$00
 bra_CAFD_loop:
 C - - - - - 0x00CB0D 03:CAFD: 8A        TXA
@@ -1724,12 +1724,12 @@ C - - - - - 0x00CB15 03:CB05: D0 02     BNE bra_CB09
 bra_CB07:
 C - - - - - 0x00CB17 03:CB07: A9 0F     LDA #$0F
 bra_CB09:
-C - - - - - 0x00CB19 03:CB09: 9D 83 03  STA ram_0383,X
+C - - - - - 0x00CB19 03:CB09: 9D 83 03  STA ram_buffer_pal_data,X
 C - - - - - 0x00CB1C 03:CB0C: E8        INX
-C - - - - - 0x00CB1D 03:CB0D: CE 80 03  DEC ram_0380
+C - - - - - 0x00CB1D 03:CB0D: CE 80 03  DEC ram_buffer_pal_hi
 C - - - - - 0x00CB20 03:CB10: D0 EB     BNE bra_CAFD_loop
 C - - - - - 0x00CB22 03:CB12: A9 20     LDA #$20
-C - - - - - 0x00CB24 03:CB14: 8D 80 03  STA ram_0380
+C - - - - - 0x00CB24 03:CB14: 8D 80 03  STA ram_buffer_pal_hi
 C - - - - - 0x00CB27 03:CB17: 60        RTS
 
 
@@ -1759,13 +1759,13 @@ C - - - - - 0x00CB68 03:CB58: A5 65     LDA ram_0065
 C - - - - - 0x00CB6A 03:CB5A: 09 06     ORA #$06
 C - - - - - 0x00CB6C 03:CB5C: 85 66     STA ram_0066
 C - - - - - 0x00CB6E 03:CB5E: 8D 00 80  STA $8000
-C - - - - - 0x00CB71 03:CB61: A5 67     LDA ram_0067
+C - - - - - 0x00CB71 03:CB61: A5 67     LDA ram_prg_bank_0
 C - - - - - 0x00CB73 03:CB63: 8D 01 80  STA $8001
 C - - - - - 0x00CB76 03:CB66: A5 65     LDA ram_0065
 C - - - - - 0x00CB78 03:CB68: 09 07     ORA #$07
 C - - - - - 0x00CB7A 03:CB6A: 85 66     STA ram_0066
 C - - - - - 0x00CB7C 03:CB6C: 8D 00 80  STA $8000
-C - - - - - 0x00CB7F 03:CB6F: A5 68     LDA ram_0068
+C - - - - - 0x00CB7F 03:CB6F: A5 68     LDA ram_prg_bank_1
 C - - - - - 0x00CB81 03:CB71: 8D 01 80  STA $8001
 C - - - - - 0x00CB84 03:CB74: 60        RTS
 
@@ -1992,17 +1992,17 @@ C - - - - - 0x00CCE6 03:CCD6: 20 D4 CA  JSR sub_CAD4_load_screen_palette
 C - - - - - 0x00CCE9 03:CCD9: A2 10     LDX #$10
 C - - - - - 0x00CCEB 03:CCDB: A9 02     LDA #$02
 C - - - - - 0x00CCED 03:CCDD: 20 D4 CA  JSR sub_CAD4_load_screen_palette
-                                        INC ram_0300
-C - - - - - 0x00CCF5 03:CCE5: A9 10     LDA #$10
-C - - - - - 0x00CCF7 03:CCE7: 20 10 C9  JSR sub_C910
+                                        INC ram_buffer_pal_flag
+C - - - - - 0x00CCF5 03:CCE5: A9 10     LDA #con_music_field
+C - - - - - 0x00CCF7 03:CCE7: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00CCFA 03:CCEA: A9 00     LDA #$00
 C - - - - - 0x00CCFC 03:CCEC: 8D D3 03  STA ram_03D3
 C - - - - - 0x00CCFF 03:CCEF: 20 AD D5  JSR sub_D5AD
 C - - - - - 0x00CD02 03:CCF2: 48        PHA
 C - - - - - 0x00CD03 03:CCF3: A9 02     LDA #$02
-C - - - - - 0x00CD05 03:CCF5: 85 67     STA ram_0067
+C - - - - - 0x00CD05 03:CCF5: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CD07 03:CCF7: A9 03     LDA #$03
-C - - - - - 0x00CD09 03:CCF9: 85 68     STA ram_0068
+C - - - - - 0x00CD09 03:CCF9: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CD0B 03:CCFB: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CD0E 03:CCFE: 68        PLA
 C - - - - - 0x00CD0F 03:CCFF: 20 39 80  JSR sub_0x004D2A
@@ -2065,17 +2065,17 @@ C - - - - - 0x00CD97 03:CD87: A9 01     LDA #$01
 C - - - - - 0x00CD99 03:CD89: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CD9C 03:CD8C: 48        PHA
 C - - - - - 0x00CD9D 03:CD8D: A9 02     LDA #$02
-C - - - - - 0x00CD9F 03:CD8F: 85 67     STA ram_0067
+C - - - - - 0x00CD9F 03:CD8F: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CDA1 03:CD91: A9 03     LDA #$03
-C - - - - - 0x00CDA3 03:CD93: 85 68     STA ram_0068
+C - - - - - 0x00CDA3 03:CD93: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CDA5 03:CD95: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDA8 03:CD98: 68        PLA
 C - - - - - 0x00CDA9 03:CD99: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00CDAC 03:CD9C: 48        PHA
 C - - - - - 0x00CDAD 03:CD9D: A9 02     LDA #$02
-C - - - - - 0x00CDAF 03:CD9F: 85 67     STA ram_0067
+C - - - - - 0x00CDAF 03:CD9F: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CDB1 03:CDA1: A9 03     LDA #$03
-C - - - - - 0x00CDB3 03:CDA3: 85 68     STA ram_0068
+C - - - - - 0x00CDB3 03:CDA3: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CDB5 03:CDA5: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDB8 03:CDA8: 68        PLA
 C - - - - - 0x00CDB9 03:CDA9: 20 09 80  JSR sub_0x0041E9
@@ -2093,17 +2093,17 @@ C D 2 - - - 0x00CDD1 03:CDC1: A9 01     LDA #$01
 C - - - - - 0x00CDD3 03:CDC3: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CDD6 03:CDC6: 48        PHA
 C - - - - - 0x00CDD7 03:CDC7: A9 02     LDA #$02
-C - - - - - 0x00CDD9 03:CDC9: 85 67     STA ram_0067
+C - - - - - 0x00CDD9 03:CDC9: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CDDB 03:CDCB: A9 03     LDA #$03
-C - - - - - 0x00CDDD 03:CDCD: 85 68     STA ram_0068
+C - - - - - 0x00CDDD 03:CDCD: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CDDF 03:CDCF: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDE2 03:CDD2: 68        PLA
 C - - - - - 0x00CDE3 03:CDD3: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00CDE6 03:CDD6: 48        PHA
 C - - - - - 0x00CDE7 03:CDD7: A9 02     LDA #$02
-C - - - - - 0x00CDE9 03:CDD9: 85 67     STA ram_0067
+C - - - - - 0x00CDE9 03:CDD9: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CDEB 03:CDDB: A9 03     LDA #$03
-C - - - - - 0x00CDED 03:CDDD: 85 68     STA ram_0068
+C - - - - - 0x00CDED 03:CDDD: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CDEF 03:CDDF: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CDF2 03:CDE2: 68        PLA
 C - - - - - 0x00CDF3 03:CDE3: 20 09 80  JSR sub_0x0041E9
@@ -2113,9 +2113,9 @@ C - - - - - 0x00CDFC 03:CDEC: B0 29     BCS bra_CE17
 C - - - - - 0x00CDFE 03:CDEE: 20 2F D7  JSR sub_D72F
 C - - - - - 0x00CE01 03:CDF1: 48        PHA
 C - - - - - 0x00CE02 03:CDF2: A9 02     LDA #$02
-C - - - - - 0x00CE04 03:CDF4: 85 67     STA ram_0067
+C - - - - - 0x00CE04 03:CDF4: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CE06 03:CDF6: A9 03     LDA #$03
-C - - - - - 0x00CE08 03:CDF8: 85 68     STA ram_0068
+C - - - - - 0x00CE08 03:CDF8: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CE0A 03:CDFA: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CE0D 03:CDFD: 68        PLA
 C - - - - - 0x00CE0E 03:CDFE: 20 0F 80  JSR sub_0x0047FD
@@ -2149,9 +2149,9 @@ C - - - - - 0x00CE4B 03:CE3B: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CE4E 03:CE3E: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00CE51 03:CE41: 48        PHA
 C - - - - - 0x00CE52 03:CE42: A9 02     LDA #$02
-C - - - - - 0x00CE54 03:CE44: 85 67     STA ram_0067
+C - - - - - 0x00CE54 03:CE44: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CE56 03:CE46: A9 03     LDA #$03
-C - - - - - 0x00CE58 03:CE48: 85 68     STA ram_0068
+C - - - - - 0x00CE58 03:CE48: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CE5A 03:CE4A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CE5D 03:CE4D: 68        PLA
 C - - - - - 0x00CE5E 03:CE4E: 20 0F 80  JSR sub_0x0047FD
@@ -2188,9 +2188,9 @@ C - - - - - 0x00CE94 03:CE84: A9 02     LDA #$02
 C - - - - - 0x00CE96 03:CE86: 20 D4 CA  JSR sub_CAD4_load_screen_palette
 C - - - - - 0x00CE99 03:CE89: 48        PHA
 C - - - - - 0x00CE9A 03:CE8A: A9 04     LDA #$04
-C - - - - - 0x00CE9C 03:CE8C: 85 67     STA ram_0067
+C - - - - - 0x00CE9C 03:CE8C: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CE9E 03:CE8E: A9 05     LDA #$05
-C - - - - - 0x00CEA0 03:CE90: 85 68     STA ram_0068
+C - - - - - 0x00CEA0 03:CE90: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CEA2 03:CE92: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CEA5 03:CE95: 68        PLA
 C - - - - - 0x00CEA6 03:CE96: 20 24 80  JSR sub_0x00A03A
@@ -2204,21 +2204,21 @@ C - - - - - 0x00CEB7 03:CEA7: A9 09     LDA #$09
 C - - - - - 0x00CEB9 03:CEA9: 20 D4 CA  JSR sub_CAD4_load_screen_palette
 C - - - - - 0x00CEBC 03:CEAC: A2 00     LDX #$00
 C - - - - - 0x00CEBE 03:CEAE: A9 0F     LDA #$0F
-bra_CEB0:
-C - - - - - 0x00CEC0 03:CEB0: 9D 83 03  STA ram_0383,X
+bra_CEB0_loop:
+C - - - - - 0x00CEC0 03:CEB0: 9D 83 03  STA ram_buffer_pal_data,X
 C - - - - - 0x00CEC3 03:CEB3: E8        INX
 C - - - - - 0x00CEC4 03:CEB4: E8        INX
 C - - - - - 0x00CEC5 03:CEB5: E8        INX
 C - - - - - 0x00CEC6 03:CEB6: E8        INX
 C - - - - - 0x00CEC7 03:CEB7: E0 20     CPX #$20
-C - - - - - 0x00CEC9 03:CEB9: D0 F5     BNE bra_CEB0
+C - - - - - 0x00CEC9 03:CEB9: D0 F5     BNE bra_CEB0_loop
 C - - - - - 0x00CECB 03:CEBB: A5 28     LDA ram_0028
 C - - - - - 0x00CECD 03:CEBD: 09 80     ORA #$80
 C - - - - - 0x00CECF 03:CEBF: 85 28     STA ram_0028
 C - - - - - 0x00CED1 03:CEC1: 85 21     STA ram_0021
 C - - - - - 0x00CED3 03:CEC3: 8D 00 20  STA $2000
-C - - - - - 0x00CED6 03:CEC6: A9 17     LDA #$17
-C - - - - - 0x00CED8 03:CEC8: 20 10 C9  JSR sub_C910
+C - - - - - 0x00CED6 03:CEC6: A9 17     LDA #con_music_penalty
+C - - - - - 0x00CED8 03:CEC8: 20 10 C9  JSR sub_C910_prepare_sound
 loc_CECB:
 C D 2 - - - 0x00CEDB 03:CECB: A9 00     LDA #$00
 C - - - - - 0x00CEDD 03:CECD: 85 8A     STA ram_008A
@@ -2232,9 +2232,9 @@ C - - - - - 0x00CEEB 03:CEDB: A0 04     LDY #< ofs_D605
 C - - - - - 0x00CEED 03:CEDD: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00CEF0 03:CEE0: 48        PHA
 C - - - - - 0x00CEF1 03:CEE1: A9 04     LDA #$04
-C - - - - - 0x00CEF3 03:CEE3: 85 67     STA ram_0067
+C - - - - - 0x00CEF3 03:CEE3: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CEF5 03:CEE5: A9 05     LDA #$05
-C - - - - - 0x00CEF7 03:CEE7: 85 68     STA ram_0068
+C - - - - - 0x00CEF7 03:CEE7: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CEF9 03:CEE9: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CEFC 03:CEEC: 68        PLA
 C - - - - - 0x00CEFD 03:CEED: 20 27 80  JSR sub_0x00A100
@@ -2247,9 +2247,9 @@ C - - - - - 0x00CF0A 03:CEFA: 29 20     AND #$20
 C - - - - - 0x00CF0C 03:CEFC: F0 F2     BEQ bra_CEF0
 C - - - - - 0x00CF0E 03:CEFE: 48        PHA
 C - - - - - 0x00CF0F 03:CEFF: A9 04     LDA #$04
-C - - - - - 0x00CF11 03:CF01: 85 67     STA ram_0067
+C - - - - - 0x00CF11 03:CF01: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CF13 03:CF03: A9 05     LDA #$05
-C - - - - - 0x00CF15 03:CF05: 85 68     STA ram_0068
+C - - - - - 0x00CF15 03:CF05: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CF17 03:CF07: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CF1A 03:CF0A: 68        PLA
 C - - - - - 0x00CF1B 03:CF0B: 20 2A 80  JSR sub_0x00A1FD
@@ -2289,8 +2289,8 @@ C - - - - - 0x00CF52 03:CF42: 49 0B     EOR #$0B
 C - - - - - 0x00CF54 03:CF44: 8D AD 03  STA ram_team_w_ball
 C - - - - - 0x00CF57 03:CF47: 4C CB CE  JMP loc_CECB
 bra_CF4A:
-C - - - - - 0x00CF5A 03:CF4A: A9 13     LDA #$13
-C - - - - - 0x00CF5C 03:CF4C: 20 10 C9  JSR sub_C910
+C - - - - - 0x00CF5A 03:CF4A: A9 13     LDA #con_music_half_time
+C - - - - - 0x00CF5C 03:CF4C: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00CF5F 03:CF4F: A9 00     LDA #$00
 bra_CF51:
 C - - - - - 0x00CF61 03:CF51: 48        PHA
@@ -2338,57 +2338,33 @@ C - - - - - 0x00CFA6 03:CF96: 60        RTS
 sub_CF97:
 C - - - - - 0x00CFA7 03:CF97: A2 00     LDX #$00
 bra_CF99_loop:
-C - - - - - 0x00CFA9 03:CF99: BD BA CF  LDA tbl_CFBA,X
-C - - - - - 0x00CFAC 03:CF9C: 9D 83 03  STA ram_0383,X
+C - - - - - 0x00CFA9 03:CF99: BD BA CF  LDA tbl_CFBA_palette,X
+C - - - - - 0x00CFAC 03:CF9C: 9D 83 03  STA ram_buffer_pal_data,X
 C - - - - - 0x00CFAF 03:CF9F: E8        INX
 C - - - - - 0x00CFB0 03:CFA0: E0 20     CPX #$20
 C - - - - - 0x00CFB2 03:CFA2: D0 F5     BNE bra_CF99_loop
 C - - - - - 0x00CFB4 03:CFA4: 48        PHA
 C - - - - - 0x00CFB5 03:CFA5: A9 02     LDA #$02
-C - - - - - 0x00CFB7 03:CFA7: 85 67     STA ram_0067
+C - - - - - 0x00CFB7 03:CFA7: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00CFB9 03:CFA9: A9 03     LDA #$03
-C - - - - - 0x00CFBB 03:CFAB: 85 68     STA ram_0068
+C - - - - - 0x00CFBB 03:CFAB: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00CFBD 03:CFAD: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00CFC0 03:CFB0: 68        PLA
-C - - - - - 0x00CFC1 03:CFB1: 20 21 80  JSR sub_0x004531
-                                        INC ram_0300
+C - - - - - 0x00CFC1 03:CFB1: 20 21 80  JSR sub_0x004531_team_palette
+                                        INC ram_buffer_pal_flag
 C - - - - - 0x00CFC9 03:CFB9: 60        RTS
 
 
 
-tbl_CFBA:
-- D 2 - - - 0x00CFCA 03:CFBA: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFCB 03:CFBB: 0F        .byte $0F   ; 
-- D 2 - - - 0x00CFCC 03:CFBC: 1A        .byte $1A   ; 
-- D 2 - - - 0x00CFCD 03:CFBD: 30        .byte $30   ; 
-- D 2 - - - 0x00CFCE 03:CFBE: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFCF 03:CFBF: 0F        .byte $0F   ; 
-- D 2 - - - 0x00CFD0 03:CFC0: 25        .byte $25   ; 
-- D 2 - - - 0x00CFD1 03:CFC1: 36        .byte $36   ; 
-- D 2 - - - 0x00CFD2 03:CFC2: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFD3 03:CFC3: 0F        .byte $0F   ; 
-- D 2 - - - 0x00CFD4 03:CFC4: 21        .byte $21   ; 
-- D 2 - - - 0x00CFD5 03:CFC5: 36        .byte $36   ; 
-- D 2 - - - 0x00CFD6 03:CFC6: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFD7 03:CFC7: 16        .byte $16   ; 
-- D 2 - - - 0x00CFD8 03:CFC8: 26        .byte $26   ; 
-- D 2 - - - 0x00CFD9 03:CFC9: 36        .byte $36   ; 
-- D 2 - - - 0x00CFDA 03:CFCA: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFDB 03:CFCB: 30        .byte $30   ; 
-- D 2 - - - 0x00CFDC 03:CFCC: 16        .byte $16   ; 
-- D 2 - - - 0x00CFDD 03:CFCD: 35        .byte $35   ; 
-- D 2 - - - 0x00CFDE 03:CFCE: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFDF 03:CFCF: 0F        .byte $0F   ; 
-- D 2 - - - 0x00CFE0 03:CFD0: 0F        .byte $0F   ; 
-- D 2 - - - 0x00CFE1 03:CFD1: 30        .byte $30   ; 
-- D 2 - - - 0x00CFE2 03:CFD2: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFE3 03:CFD3: 2B        .byte $2B   ; 
-- D 2 - - - 0x00CFE4 03:CFD4: 11        .byte $11   ; 
-- D 2 - - - 0x00CFE5 03:CFD5: 26        .byte $26   ; 
-- D 2 - - - 0x00CFE6 03:CFD6: 0A        .byte $0A   ; 
-- D 2 - - - 0x00CFE7 03:CFD7: 28        .byte $28   ; 
-- D 2 - - - 0x00CFE8 03:CFD8: 0F        .byte $0F   ; 
-- D 2 - - - 0x00CFE9 03:CFD9: 30        .byte $30   ; 
+tbl_CFBA_palette:
+- D 2 - - - 0x00CFCA 03:CFBA: 0A        .byte $0A, $0F, $1A, $30   ; 
+- D 2 - - - 0x00CFCE 03:CFBE: 0A        .byte $0A, $0F, $25, $36   ; 
+- D 2 - - - 0x00CFD2 03:CFC2: 0A        .byte $0A, $0F, $21, $36   ; 
+- D 2 - - - 0x00CFD6 03:CFC6: 0A        .byte $0A, $16, $26, $36   ; 
+- D 2 - - - 0x00CFDA 03:CFCA: 0A        .byte $0A, $30, $16, $35   ; 
+- D 2 - - - 0x00CFDE 03:CFCE: 0A        .byte $0A, $0F, $0F, $30   ; 
+- D 2 - - - 0x00CFE2 03:CFD2: 0A        .byte $0A, $2B, $11, $26   ; 
+- D 2 - - - 0x00CFE6 03:CFD6: 0A        .byte $0A, $28, $0F, $30   ; 
 
 
 
@@ -2561,9 +2537,9 @@ C - - - - - 0x00D13C 03:D12C: 18        CLC
 C - - - - - 0x00D13D 03:D12D: 69 04     ADC #$04
 C - - - - - 0x00D13F 03:D12F: 48        PHA
 C - - - - - 0x00D140 03:D130: A9 04     LDA #$04
-C - - - - - 0x00D142 03:D132: 85 67     STA ram_0067
+C - - - - - 0x00D142 03:D132: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D144 03:D134: A9 05     LDA #$05
-C - - - - - 0x00D146 03:D136: 85 68     STA ram_0068
+C - - - - - 0x00D146 03:D136: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D148 03:D138: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D14B 03:D13B: 68        PLA
 C - - - - - 0x00D14C 03:D13C: 20 21 80  JSR sub_0x00975F
@@ -2662,9 +2638,9 @@ C - - - - - 0x00D1E7 03:D1D7: 20 9E C7  JSR sub_C79E
 C - - - - - 0x00D1EA 03:D1DA: A9 01     LDA #$01
 C - - - - - 0x00D1EC 03:D1DC: 48        PHA
 C - - - - - 0x00D1ED 03:D1DD: A9 04     LDA #$04
-C - - - - - 0x00D1EF 03:D1DF: 85 67     STA ram_0067
+C - - - - - 0x00D1EF 03:D1DF: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D1F1 03:D1E1: A9 05     LDA #$05
-C - - - - - 0x00D1F3 03:D1E3: 85 68     STA ram_0068
+C - - - - - 0x00D1F3 03:D1E3: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D1F5 03:D1E5: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D1F8 03:D1E8: 68        PLA
 C - - - - - 0x00D1F9 03:D1E9: 20 1E 80  JSR sub_0x009852
@@ -2690,17 +2666,17 @@ C - - - - - 0x00D232 03:D222: A9 01     LDA #$01
 C - - - - - 0x00D234 03:D224: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D237 03:D227: 48        PHA
 C - - - - - 0x00D238 03:D228: A9 02     LDA #$02
-C - - - - - 0x00D23A 03:D22A: 85 67     STA ram_0067
+C - - - - - 0x00D23A 03:D22A: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D23C 03:D22C: A9 03     LDA #$03
-C - - - - - 0x00D23E 03:D22E: 85 68     STA ram_0068
+C - - - - - 0x00D23E 03:D22E: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D240 03:D230: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D243 03:D233: 68        PLA
 C - - - - - 0x00D244 03:D234: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00D247 03:D237: 48        PHA
 C - - - - - 0x00D248 03:D238: A9 02     LDA #$02
-C - - - - - 0x00D24A 03:D23A: 85 67     STA ram_0067
+C - - - - - 0x00D24A 03:D23A: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D24C 03:D23C: A9 03     LDA #$03
-C - - - - - 0x00D24E 03:D23E: 85 68     STA ram_0068
+C - - - - - 0x00D24E 03:D23E: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D250 03:D240: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D253 03:D243: 68        PLA
 C - - - - - 0x00D254 03:D244: 20 09 80  JSR sub_0x0041E9
@@ -2804,9 +2780,9 @@ C - - - - - 0x00D314 03:D304: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00D321 03:D311: 68        PLA
 C - - - - - 0x00D322 03:D312: 48        PHA
 C - - - - - 0x00D323 03:D313: A9 04     LDA #$04
-C - - - - - 0x00D325 03:D315: 85 67     STA ram_0067
+C - - - - - 0x00D325 03:D315: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D327 03:D317: A9 05     LDA #$05
-C - - - - - 0x00D329 03:D319: 85 68     STA ram_0068
+C - - - - - 0x00D329 03:D319: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D32B 03:D31B: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D32E 03:D31E: 68        PLA
 C - - - - - 0x00D32F 03:D31F: 20 1E 80  JSR sub_0x009852
@@ -2818,17 +2794,17 @@ C - - - - - 0x00D33A 03:D32A: A9 01     LDA #$01
 C - - - - - 0x00D33C 03:D32C: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D33F 03:D32F: 48        PHA
 C - - - - - 0x00D340 03:D330: A9 02     LDA #$02
-C - - - - - 0x00D342 03:D332: 85 67     STA ram_0067
+C - - - - - 0x00D342 03:D332: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D344 03:D334: A9 03     LDA #$03
-C - - - - - 0x00D346 03:D336: 85 68     STA ram_0068
+C - - - - - 0x00D346 03:D336: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D348 03:D338: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D34B 03:D33B: 68        PLA
 C - - - - - 0x00D34C 03:D33C: 20 00 80  JSR sub_0x00405E
 C - - - - - 0x00D34F 03:D33F: 48        PHA
 C - - - - - 0x00D350 03:D340: A9 02     LDA #$02
-C - - - - - 0x00D352 03:D342: 85 67     STA ram_0067
+C - - - - - 0x00D352 03:D342: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D354 03:D344: A9 03     LDA #$03
-C - - - - - 0x00D356 03:D346: 85 68     STA ram_0068
+C - - - - - 0x00D356 03:D346: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D358 03:D348: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D35B 03:D34B: 68        PLA
 C - - - - - 0x00D35C 03:D34C: 20 09 80  JSR sub_0x0041E9
@@ -2885,10 +2861,10 @@ tbl_D366:
 
 
 ofs_D37F_03_goal:
-C - - J - - 0x00D38F 03:D37F: A9 12     LDA #$12
-C - - - - - 0x00D391 03:D381: 20 10 C9  JSR sub_C910
-C - - - - - 0x00D394 03:D384: A9 0E     LDA #$0E
-C - - - - - 0x00D396 03:D386: 20 10 C9  JSR sub_C910
+C - - J - - 0x00D38F 03:D37F: A9 12     LDA #con_music_goal
+C - - - - - 0x00D391 03:D381: 20 10 C9  JSR sub_C910_prepare_sound
+C - - - - - 0x00D394 03:D384: A9 0E     LDA #con_sound_fans
+C - - - - - 0x00D396 03:D386: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D399 03:D389: A9 00     LDA #$00
 bra_D38B_loop:
 C - - - - - 0x00D39B 03:D38B: 48        PHA
@@ -2933,9 +2909,9 @@ C - - - - - 0x00D3EA 03:D3DA: B0 16     BCS bra_D3F2
 bra_D3DC:
 C - - - - - 0x00D3EC 03:D3DC: 48        PHA
 C - - - - - 0x00D3ED 03:D3DD: A9 02     LDA #$02
-C - - - - - 0x00D3EF 03:D3DF: 85 67     STA ram_0067
+C - - - - - 0x00D3EF 03:D3DF: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D3F1 03:D3E1: A9 03     LDA #$03
-C - - - - - 0x00D3F3 03:D3E3: 85 68     STA ram_0068
+C - - - - - 0x00D3F3 03:D3E3: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D3F5 03:D3E5: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D3F8 03:D3E8: 68        PLA
 C - - - - - 0x00D3F9 03:D3E9: 20 0C 80  JSR sub_0x00428E
@@ -2968,17 +2944,17 @@ C - - - - - 0x00D436 03:D426: 29 DF     AND #$DF
 C - - - - - 0x00D438 03:D428: 85 28     STA ram_0028
 C - - - - - 0x00D43A 03:D42A: 48        PHA
 C - - - - - 0x00D43B 03:D42B: A9 02     LDA #$02
-C - - - - - 0x00D43D 03:D42D: 85 67     STA ram_0067
+C - - - - - 0x00D43D 03:D42D: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D43F 03:D42F: A9 03     LDA #$03
-C - - - - - 0x00D441 03:D431: 85 68     STA ram_0068
+C - - - - - 0x00D441 03:D431: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D443 03:D433: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D446 03:D436: 68        PLA
 C - - - - - 0x00D447 03:D437: 20 27 80  JSR sub_0x0043BA
 C - - - - - 0x00D44A 03:D43A: 48        PHA
 C - - - - - 0x00D44B 03:D43B: A9 02     LDA #$02
-C - - - - - 0x00D44D 03:D43D: 85 67     STA ram_0067
+C - - - - - 0x00D44D 03:D43D: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D44F 03:D43F: A9 03     LDA #$03
-C - - - - - 0x00D451 03:D441: 85 68     STA ram_0068
+C - - - - - 0x00D451 03:D441: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D453 03:D443: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D456 03:D446: 68        PLA
 C - - - - - 0x00D457 03:D447: 20 2A 80  JSR sub_0x004371
@@ -2995,9 +2971,9 @@ C - - - - - 0x00D471 03:D461: FE A5 03  INC ram_goals_half,X
 bra_D464:
 C - - - - - 0x00D474 03:D464: 48        PHA
 C - - - - - 0x00D475 03:D465: A9 02     LDA #$02
-C - - - - - 0x00D477 03:D467: 85 67     STA ram_0067
+C - - - - - 0x00D477 03:D467: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D479 03:D469: A9 03     LDA #$03
-C - - - - - 0x00D47B 03:D46B: 85 68     STA ram_0068
+C - - - - - 0x00D47B 03:D46B: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D47D 03:D46D: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D480 03:D470: 68        PLA
 C - - - - - 0x00D481 03:D471: 20 2A 80  JSR sub_0x004371
@@ -3078,8 +3054,8 @@ C - - - - - 0x00D509 03:D4F9: E9 0E     SBC #$0E
 C - - - - - 0x00D50B 03:D4FB: 98        TYA
 C - - - - - 0x00D50C 03:D4FC: E9 00     SBC #$00
 C - - - - - 0x00D50E 03:D4FE: B0 09     BCS bra_D509
-C - - - - - 0x00D510 03:D500: A9 0C     LDA #$0C
-C - - - - - 0x00D512 03:D502: 20 10 C9  JSR sub_C910
+C - - - - - 0x00D510 03:D500: A9 0C     LDA #con_sound_whistle_referee
+C - - - - - 0x00D512 03:D502: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D515 03:D505: A2 00     LDX #$00
 C - - - - - 0x00D517 03:D507: 38        SEC
 C - - - - - 0x00D518 03:D508: 60        RTS
@@ -3125,8 +3101,8 @@ C - - - - - 0x00D562 03:D552: F0 3A     BEQ bra_D58E
 C - - - - - 0x00D564 03:D554: C9 0B     CMP #$0B
 C - - - - - 0x00D566 03:D556: F0 36     BEQ bra_D58E
 bra_D558:
-C - - - - - 0x00D568 03:D558: A9 0C     LDA #$0C
-C - - - - - 0x00D56A 03:D55A: 20 10 C9  JSR sub_C910
+C - - - - - 0x00D568 03:D558: A9 0C     LDA #con_sound_whistle_referee
+C - - - - - 0x00D56A 03:D55A: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D56D 03:D55D: AD D3 03  LDA ram_03D3
 C - - - - - 0x00D570 03:D560: 09 10     ORA #$10
 C - - - - - 0x00D572 03:D562: 8D D3 03  STA ram_03D3
@@ -3151,8 +3127,8 @@ C - - - - - 0x00D591 03:D581: 4D 28 04  EOR ram_0428
 C - - - - - 0x00D594 03:D584: D0 01     BNE bra_D587
 C - - - - - 0x00D596 03:D586: E8        INX
 bra_D587:
-C - - - - - 0x00D597 03:D587: A9 0C     LDA #$0C
-C - - - - - 0x00D599 03:D589: 20 10 C9  JSR sub_C910
+C - - - - - 0x00D597 03:D587: A9 0C     LDA #con_sound_whistle_referee
+C - - - - - 0x00D599 03:D589: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D59C 03:D58C: 38        SEC
 C - - - - - 0x00D59D 03:D58D: 60        RTS
 bra_D58E:
@@ -3210,9 +3186,9 @@ C - - - - - 0x00D5BF 03:D5AF: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00D5C2 03:D5B2: A9 00     LDA #$00
 C - - - - - 0x00D5C4 03:D5B4: 48        PHA
 C - - - - - 0x00D5C5 03:D5B5: A9 04     LDA #$04
-C - - - - - 0x00D5C7 03:D5B7: 85 67     STA ram_0067
+C - - - - - 0x00D5C7 03:D5B7: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00D5C9 03:D5B9: A9 05     LDA #$05
-C - - - - - 0x00D5CB 03:D5BB: 85 68     STA ram_0068
+C - - - - - 0x00D5CB 03:D5BB: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00D5CD 03:D5BD: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00D5D0 03:D5C0: 68        PLA
 C - - - - - 0x00D5D1 03:D5C1: 20 1E 80  JSR sub_0x009852
@@ -3298,8 +3274,8 @@ C - - - - - 0x00D66F 03:D65F: F0 02     BEQ bra_D663
 C - - - - - 0x00D671 03:D661: A2 01     LDX #$01
 bra_D663:
 C - - - - - 0x00D673 03:D663: FE 8F 00  INC ram_goals_pk,X
-C - - - - - 0x00D676 03:D666: A9 0E     LDA #$0E
-C - - - - - 0x00D678 03:D668: 20 10 C9  JSR sub_C910
+C - - - - - 0x00D676 03:D666: A9 0E     LDA #con_sound_fans
+C - - - - - 0x00D678 03:D668: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D67B 03:D66B: A2 0D     LDX #$0D
 C - - - - - 0x00D67D 03:D66D: A9 78     LDA #$78
 C - - - - - 0x00D67F 03:D66F: 95 01     STA ram_0001,X
@@ -3315,8 +3291,8 @@ C - - - - - 0x00D68D 03:D67D: 4C 9F D6  JMP loc_D69F
 
 off_D680:
 ofs_D680 = off_D680 - 1
-C - - - - - 0x00D690 03:D680: A9 07     LDA #$07
-C - - - - - 0x00D692 03:D682: 20 10 C9  JSR sub_C910
+C - - - - - 0x00D690 03:D680: A9 07     LDA #con_sound_catch
+C - - - - - 0x00D692 03:D682: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D695 03:D685: A9 00     LDA #$00
 C - - - - - 0x00D697 03:D687: 8D DB 03  STA ram_03DB
 C - - - - - 0x00D69A 03:D68A: A9 FB     LDA #$FB
@@ -3795,8 +3771,8 @@ C - - - - - 0x00D98D 03:D97D: 8D E6 03  STA ram_03E6
 C - - - - - 0x00D990 03:D980: 20 DF DD  JSR sub_DDDF
 C - - - - - 0x00D993 03:D983: 20 5E DB  JSR sub_DB5E
 C - - - - - 0x00D996 03:D986: 20 5E DF  JSR sub_DF5E
-C - - - - - 0x00D999 03:D989: A9 0D     LDA #$0D
-C - - - - - 0x00D99B 03:D98B: 20 10 C9  JSR sub_C910
+C - - - - - 0x00D999 03:D989: A9 0D     LDA #con_sound_hit_goalspot
+C - - - - - 0x00D99B 03:D98B: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00D99E 03:D98E: 60        RTS
 
 
@@ -3880,8 +3856,8 @@ C - - - - - 0x00DA04 03:D9F4: 90 1F     BCC bra_DA15_RTS
 - - - - - - 0x00DA17 03:DA07: 20 DF DD  JSR sub_DDDF
 - - - - - - 0x00DA1A 03:DA0A: 20 5E DB  JSR sub_DB5E
 - - - - - - 0x00DA1D 03:DA0D: 20 5E DF  JSR sub_DF5E
-- - - - - - 0x00DA20 03:DA10: A9 0D     LDA #$0D
-- - - - - - 0x00DA22 03:DA12: 20 10 C9  JSR sub_C910
+- - - - - - 0x00DA20 03:DA10: A9 0D     LDA #con_sound_hit_goalspot
+- - - - - - 0x00DA22 03:DA12: 20 10 C9  JSR sub_C910_prepare_sound
 bra_DA15_RTS:
 C - - - - - 0x00DA25 03:DA15: 60        RTS
 
@@ -4546,9 +4522,9 @@ C - - - - - 0x00DEA5 03:DE95: 60        RTS
 
 sub_DE96:
 C - - - - - 0x00DEA6 03:DE96: A9 02     LDA #$02
-C - - - - - 0x00DEA8 03:DE98: 85 67     STA ram_0067
+C - - - - - 0x00DEA8 03:DE98: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00DEAA 03:DE9A: A9 03     LDA #$03
-C - - - - - 0x00DEAC 03:DE9C: 85 68     STA ram_0068
+C - - - - - 0x00DEAC 03:DE9C: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00DEAE 03:DE9E: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00DEB1 03:DEA1: A9 00     LDA #$00
 C - - - - - 0x00DEB3 03:DEA3: 85 5B     STA ram_005B
@@ -5013,8 +4989,8 @@ C - - - - - 0x00E190 03:E180: D0 03     BNE bra_E185
 C - - - - - 0x00E192 03:E182: 4C 09 E2  JMP loc_E209
 bra_E185:
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00E19F 03:E18F: A9 08     LDA #$08
-C - - - - - 0x00E1A1 03:E191: 20 10 C9  JSR sub_C910
+C - - - - - 0x00E19F 03:E18F: A9 08     LDA #con_sound_tackle
+C - - - - - 0x00E1A1 03:E191: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00E1A4 03:E194: 20 77 C6  JSR sub_C677
 C - - - - - 0x00E1A7 03:E197: A9 08     LDA #$08
 C - - - - - 0x00E1A9 03:E199: 20 1E 80  JSR sub_0x00479F
@@ -5289,8 +5265,8 @@ C - - - - - 0x00E382 03:E372: 85 0A     STA ram_000A
 C - - - - - 0x00E384 03:E374: A5 6F     LDA ram_006F
 C - - - - - 0x00E386 03:E376: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00E389 03:E379: 20 E1 E3  JSR sub_E3E1
-C - - - - - 0x00E38C 03:E37C: A9 05     LDA #$05
-C - - - - - 0x00E38E 03:E37E: 20 10 C9  JSR sub_C910
+C - - - - - 0x00E38C 03:E37C: A9 05     LDA #con_sound_recieve
+C - - - - - 0x00E38E 03:E37E: 20 10 C9  JSR sub_C910_prepare_sound
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E39B 03:E38B: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00E39E 03:E38E: AD E6 03  LDA ram_03E6
@@ -5336,9 +5312,9 @@ C - - - - - 0x00E3FC 03:E3EC: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00E3FF 03:E3EF: 30 14     BMI bra_E405    ; con_gm_2p
 C - - - - - 0x00E401 03:E3F1: 48        PHA
 C - - - - - 0x00E402 03:E3F2: A9 02     LDA #$02
-C - - - - - 0x00E404 03:E3F4: 85 67     STA ram_0067
+C - - - - - 0x00E404 03:E3F4: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00E406 03:E3F6: A9 03     LDA #$03
-C - - - - - 0x00E408 03:E3F8: 85 68     STA ram_0068
+C - - - - - 0x00E408 03:E3F8: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00E40A 03:E3FA: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00E40D 03:E3FD: 68        PLA
 C - - - - - 0x00E40E 03:E3FE: 20 4B 80  JSR sub_0x004B4F
@@ -6173,8 +6149,8 @@ tbl_E9BA:
 
 
 loc_E9BF:
-C D 3 - - - 0x00E9CF 03:E9BF: A9 03     LDA #$03
-C - - - - - 0x00E9D1 03:E9C1: 20 10 C9  JSR sub_C910
+C D 3 - - - 0x00E9CF 03:E9BF: A9 03     LDA #con_sound_shot
+C - - - - - 0x00E9D1 03:E9C1: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00E9D4 03:E9C4: 20 77 C6  JSR sub_C677
 C - - - - - 0x00E9D7 03:E9C7: A9 05     LDA #$05
 C - - - - - 0x00E9D9 03:E9C9: 20 1E 80  JSR sub_0x00479F
@@ -6525,9 +6501,9 @@ C - - - - - 0x00EC9E 03:EC8E: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00ECA1 03:EC91: 30 18     BMI bra_ECAB    ; con_gm_2p
 C - - - - - 0x00ECA3 03:EC93: 48        PHA
 C - - - - - 0x00ECA4 03:EC94: A9 02     LDA #$02
-C - - - - - 0x00ECA6 03:EC96: 85 67     STA ram_0067
+C - - - - - 0x00ECA6 03:EC96: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00ECA8 03:EC98: A9 03     LDA #$03
-C - - - - - 0x00ECAA 03:EC9A: 85 68     STA ram_0068
+C - - - - - 0x00ECAA 03:EC9A: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00ECAC 03:EC9C: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00ECAF 03:EC9F: 68        PLA
 C - - - - - 0x00ECB0 03:ECA0: 20 3F 80  JSR sub_0x004B7B
@@ -6741,8 +6717,8 @@ C - - - - - 0x00EE48 03:EE38: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00EE4B 03:EE3B: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00EE4E 03:EE3E: A9 80     LDA #$80
 C - - - - - 0x00EE50 03:EE40: 85 98     STA ram_0098
-C - - - - - 0x00EE52 03:EE42: A9 1C     LDA #$1C
-C - - - - - 0x00EE54 03:EE44: 20 10 C9  JSR sub_C910
+C - - - - - 0x00EE52 03:EE42: A9 1C     LDA #con_sound_syndrom
+C - - - - - 0x00EE54 03:EE44: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00EE57 03:EE47: 4C 6F EE  JMP loc_EE6F
 bra_EE4A:
 C - - - - - 0x00EE5A 03:EE4A: AD 29 04  LDA ram_plr_w_ball
@@ -6754,8 +6730,8 @@ C - - - - - 0x00EE6C 03:EE5C: 20 2F C6  JSR sub_C62F_player_state_handler
 bra_EE5F:
 C - - - - - 0x00EE6F 03:EE5F: A5 6F     LDA ram_006F
 C - - - - - 0x00EE71 03:EE61: 20 B9 C6  JSR sub_C6B9
-C - - - - - 0x00EE74 03:EE64: A9 07     LDA #$07
-C - - - - - 0x00EE76 03:EE66: 20 10 C9  JSR sub_C910
+C - - - - - 0x00EE74 03:EE64: A9 07     LDA #con_sound_catch
+C - - - - - 0x00EE76 03:EE66: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00EE79 03:EE69: A9 00     LDA #$00
 C - - - - - 0x00EE7B 03:EE6B: 85 09     STA ram_0009
 C - - - - - 0x00EE7D 03:EE6D: 85 0A     STA ram_000A
@@ -6794,8 +6770,8 @@ C - - - - - 0x00EEBA 03:EEAA: 10 35     BPL bra_EEE1
 C - - - - - 0x00EEBC 03:EEAC: AD 1E 04  LDA ram_041E
 C - - - - - 0x00EEBF 03:EEAF: C9 02     CMP #$02
 C - - - - - 0x00EEC1 03:EEB1: 90 2E     BCC bra_EEE1
-C - - - - - 0x00EEC3 03:EEB3: A9 1C     LDA #$1C
-C - - - - - 0x00EEC5 03:EEB5: 20 10 C9  JSR sub_C910
+C - - - - - 0x00EEC3 03:EEB3: A9 1C     LDA #con_sound_syndrom
+C - - - - - 0x00EEC5 03:EEB5: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00EEC8 03:EEB8: AD 7E 03  LDA ram_random
 C - - - - - 0x00EECB 03:EEBB: C9 A0     CMP #$A0
 C - - - - - 0x00EECD 03:EEBD: 90 02     BCC bra_EEC1
@@ -7039,8 +7015,8 @@ tbl_EFE7:
 
 
 ofs_F016_05_dead:
-C - - - - - 0x00F026 03:F016: A9 02     LDA #$02
-C - - - - - 0x00F028 03:F018: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F026 03:F016: A9 02     LDA #con_sound_dead
+C - - - - - 0x00F028 03:F018: 20 10 C9  JSR sub_C910_prepare_sound
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F035 03:F025: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00F038 03:F028: 20 77 C6  JSR sub_C677
@@ -7059,9 +7035,9 @@ C - - - - - 0x00F05C 03:F04C: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F05F 03:F04F: A5 6F     LDA ram_006F
 C - - - - - 0x00F061 03:F051: 48        PHA
 C - - - - - 0x00F062 03:F052: A9 02     LDA #$02
-C - - - - - 0x00F064 03:F054: 85 67     STA ram_0067
+C - - - - - 0x00F064 03:F054: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00F066 03:F056: A9 03     LDA #$03
-C - - - - - 0x00F068 03:F058: 85 68     STA ram_0068
+C - - - - - 0x00F068 03:F058: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00F06A 03:F05A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F06D 03:F05D: 68        PLA
 C - - - - - 0x00F06E 03:F05E: 20 45 80  JSR sub_0x00487C
@@ -7278,8 +7254,8 @@ C - - - - - 0x00F268 03:F258: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F26A 03:F25A: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F26D 03:F25D: F0 D5     BEQ bra_F234_loop
 bra_F25F:
-C - - - - - 0x00F26F 03:F25F: A9 0C     LDA #$0C
-C - - - - - 0x00F271 03:F261: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F26F 03:F25F: A9 0C     LDA #con_sound_whistle_referee
+C - - - - - 0x00F271 03:F261: 20 10 C9  JSR sub_C910_prepare_sound
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F27C 03:F26C: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F27E 03:F26E: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7324,8 +7300,8 @@ C - - - - - 0x00F2DC 03:F2CC: 4C A4 F2  JMP loc_F2A4
 ofs_F2D2_07:
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F2EC 03:F2DC: 20 BA DF  JSR sub_DFBA
-C - - - - - 0x00F2EF 03:F2DF: A9 03     LDA #$03
-C - - - - - 0x00F2F1 03:F2E1: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F2EF 03:F2DF: A9 03     LDA #con_sound_shot
+C - - - - - 0x00F2F1 03:F2E1: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F2F4 03:F2E4: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F2F7 03:F2E7: A9 0B     LDA #$0B
 C - - - - - 0x00F2F9 03:F2E9: 20 1E 80  JSR sub_0x00479F
@@ -7350,8 +7326,8 @@ C - - - - - 0x00F326 03:F316: 4C 55 DF  JMP loc_DF55
 ofs_F319_08:
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F333 03:F323: 20 BA DF  JSR sub_DFBA
-C - - - - - 0x00F336 03:F326: A9 03     LDA #$03
-C - - - - - 0x00F338 03:F328: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F336 03:F326: A9 03     LDA #con_sound_shot
+C - - - - - 0x00F338 03:F328: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F33B 03:F32B: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F33E 03:F32E: A9 0C     LDA #$0C
 C - - - - - 0x00F340 03:F330: 20 1E 80  JSR sub_0x00479F
@@ -7386,8 +7362,8 @@ C - - - - - 0x00F387 03:F377: 4C 55 DF  JMP loc_DF55
 ofs_F37D_0A:
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F397 03:F387: 20 BA DF  JSR sub_DFBA
-C - - - - - 0x00F39A 03:F38A: A9 04     LDA #$04
-C - - - - - 0x00F39C 03:F38C: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F39A 03:F38A: A9 04     LDA #con_sound_fast_shot
+C - - - - - 0x00F39C 03:F38C: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F39F 03:F38F: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F3A1 03:F391: AD E6 03  LDA ram_03E6
 C - - - - - 0x00F3A4 03:F394: 38        SEC
@@ -7491,14 +7467,14 @@ C - - - - - 0x00F481 03:F471: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00F484 03:F474: 30 10     BMI bra_F486    ; con_gm_2p
 C - - - - - 0x00F486 03:F476: 48        PHA
 C - - - - - 0x00F487 03:F477: A9 02     LDA #$02
-C - - - - - 0x00F489 03:F479: 85 67     STA ram_0067
+C - - - - - 0x00F489 03:F479: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00F48B 03:F47B: A9 03     LDA #$03
-C - - - - - 0x00F48D 03:F47D: 85 68     STA ram_0068
+C - - - - - 0x00F48D 03:F47D: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00F48F 03:F47F: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F492 03:F482: 68        PLA
 C - - - - - 0x00F493 03:F483: 20 3C 80  JSR sub_0x004BEC_bot_throw_in_timer
 bra_F486:
-loc_F486:
+loc_F486_loop:
 C D 3 - - - 0x00F496 03:F486: A9 01     LDA #$01
 C - - - - - 0x00F498 03:F488: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F49B 03:F48B: A9 02     LDA #$02
@@ -7554,19 +7530,19 @@ C - - - - - 0x00F4FA 03:F4EA: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F4FC 03:F4EC: 38        SEC
 C - - - - - 0x00F4FD 03:F4ED: E9 01     SBC #$01
 C - - - - - 0x00F4FF 03:F4EF: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00F501 03:F4F1: F0 08     BEQ bra_F4FB
-C - - - - - 0x00F503 03:F4F3: 4C 86 F4  JMP loc_F486
+C - - - - - 0x00F501 03:F4F1: F0 08     BEQ bra_F4FB_throw_ball
+C - - - - - 0x00F503 03:F4F3: 4C 86 F4  JMP loc_F486_loop
 bra_F4F6:
 C - - - - - 0x00F506 03:F4F6: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F509 03:F4F9: F0 8B     BEQ bra_F486
-bra_F4FB:
+bra_F4FB_throw_ball:
 C - - - - - 0x00F50B 03:F4FB: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F50E 03:F4FE: A9 0F     LDA #$0F
 C - - - - - 0x00F510 03:F500: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F513 03:F503: A9 03     LDA #$03
 C - - - - - 0x00F515 03:F505: 20 9E C7  JSR sub_C79E
-C - - - - - 0x00F518 03:F508: A9 06     LDA #$06
-C - - - - - 0x00F51A 03:F50A: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F518 03:F508: A9 06     LDA #con_sound_throw
+C - - - - - 0x00F51A 03:F50A: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F51D 03:F50D: A9 00     LDA #$00
 C - - - - - 0x00F51F 03:F50F: 8D 1D 04  STA ram_041D
 C - - - - - 0x00F522 03:F512: A9 02     LDA #$02
@@ -7689,8 +7665,8 @@ C - - - - - 0x00F625 03:F615: A9 11     LDA #$11
 C - - - - - 0x00F627 03:F617: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F62A 03:F61A: A9 04     LDA #$04
 C - - - - - 0x00F62C 03:F61C: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F62F 03:F61F: A9 03     LDA #$03
-C - - - - - 0x00F631 03:F621: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F62F 03:F61F: A9 03     LDA #con_sound_shot
+C - - - - - 0x00F631 03:F621: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F634 03:F624: A9 00     LDA #$00
 C - - - - - 0x00F636 03:F626: 8D 1D 04  STA ram_041D
 C - - - - - 0x00F639 03:F629: A9 02     LDA #$02
@@ -7844,8 +7820,8 @@ C - - - - - 0x00F779 03:F769: 95 02     STA ram_0002,X
 C - - - - - 0x00F77B 03:F76B: A9 D6     LDA #> ofs_D6FA
 C - - - - - 0x00F77D 03:F76D: A0 F9     LDY #< ofs_D6FA
 C - - - - - 0x00F77F 03:F76F: 20 E1 C5  JSR sub_C5E1_prepare_return_address
-C - - - - - 0x00F782 03:F772: A9 03     LDA #$03
-C - - - - - 0x00F784 03:F774: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F782 03:F772: A9 03     LDA #con_sound_shot
+C - - - - - 0x00F784 03:F774: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F787 03:F777: A9 02     LDA #$02
 C - - - - - 0x00F789 03:F779: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F78C 03:F77C: 20 5E DF  JSR sub_DF5E
@@ -7906,9 +7882,9 @@ C - - - - - 0x00F7EE 03:F7DE: D0 EB     BNE bra_F7CB
 C - - - - - 0x00F7F0 03:F7E0: A9 00     LDA #$00
 C - - - - - 0x00F7F2 03:F7E2: 48        PHA
 C - - - - - 0x00F7F3 03:F7E3: A9 02     LDA #$02
-C - - - - - 0x00F7F5 03:F7E5: 85 67     STA ram_0067
+C - - - - - 0x00F7F5 03:F7E5: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00F7F7 03:F7E7: A9 03     LDA #$03
-C - - - - - 0x00F7F9 03:F7E9: 85 68     STA ram_0068
+C - - - - - 0x00F7F9 03:F7E9: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00F7FB 03:F7EB: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F7FE 03:F7EE: 68        PLA
 C - - - - - 0x00F7FF 03:F7EF: 20 42 80  JSR sub_0x004B34
@@ -7937,8 +7913,8 @@ C - - - - - 0x00F830 03:F820: A9 04     LDA #$04
 C - - - - - 0x00F832 03:F822: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F835 03:F825: A9 80     LDA #$80
 C - - - - - 0x00F837 03:F827: 85 8A     STA ram_008A
-C - - - - - 0x00F839 03:F829: A9 03     LDA #$03
-C - - - - - 0x00F83B 03:F82B: 20 10 C9  JSR sub_C910
+C - - - - - 0x00F839 03:F829: A9 03     LDA #con_sound_shot
+C - - - - - 0x00F83B 03:F82B: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F83E 03:F82E: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F841 03:F831: A9 15     LDA #$15
 C - - - - - 0x00F843 03:F833: 20 1E 80  JSR sub_0x00479F
@@ -7970,9 +7946,9 @@ C - - - - - 0x00F870 03:F860: 20 52 C6  JSR sub_C652
 C - - - - - 0x00F873 03:F863: A9 02     LDA #$02
 C - - - - - 0x00F875 03:F865: 48        PHA
 C - - - - - 0x00F876 03:F866: A9 02     LDA #$02
-C - - - - - 0x00F878 03:F868: 85 67     STA ram_0067
+C - - - - - 0x00F878 03:F868: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00F87A 03:F86A: A9 03     LDA #$03
-C - - - - - 0x00F87C 03:F86C: 85 68     STA ram_0068
+C - - - - - 0x00F87C 03:F86C: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00F87E 03:F86E: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F881 03:F871: 68        PLA
 C - - - - - 0x00F882 03:F872: 20 42 80  JSR sub_0x004B34
