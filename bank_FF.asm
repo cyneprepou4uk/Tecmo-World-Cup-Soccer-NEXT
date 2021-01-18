@@ -60,7 +60,6 @@ C - - - - - 0x00C0B6 03:C0A6: D0 F6     BNE bra_C09E_clear_mem_loop
 C - - - - - 0x00C0B8 03:C0A8: A9 28     LDA #$28
 C - - - - - 0x00C0BA 03:C0AA: 85 28     STA ram_0028
 C - - - - - 0x00C0BC 03:C0AC: A9 06     LDA #$06
-C - - - - - 0x00C0BE 03:C0AE: 85 29     STA ram_0029
 C - - - - - 0x00C0C0 03:C0B0: 8D 01 20  STA $2001
 C - - - - - 0x00C0C3 03:C0B3: A9 00     LDA #$00
 C - - - - - 0x00C0C5 03:C0B5: 8D 00 A0  STA $A000
@@ -87,8 +86,6 @@ C - - - - - 0x00C10D 03:C0FD: 85 15     STA ram_0015
 C - - - - - 0x00C10F 03:C0FF: 85 16     STA ram_0016
 C - - - - - 0x00C111 03:C101: A9 28     LDA #$28
 C - - - - - 0x00C113 03:C103: 85 28     STA ram_0028
-C - - - - - 0x00C115 03:C105: A9 1E     LDA #$1E
-C - - - - - 0x00C117 03:C107: 85 29     STA ram_0029
 C - - - - - 0x00C119 03:C109: A9 20     LDA #$20
 C - - - - - 0x00C11B 03:C10B: 8D 80 03  STA ram_buffer_pal_hi
 C - - - - - 0x00C11E 03:C10E: A9 00     LDA #$00
@@ -354,9 +351,6 @@ C - - - - - 0x00C301 03:C2F1: 60        RTS
 
 off_C2F2:
 ofs_C2F2_logo_screen = off_C2F2 - 1
-C - - - - - 0x00C302 03:C2F2: A5 29     LDA ram_0029
-C - - - - - 0x00C304 03:C2F4: 09 1E     ORA #$1E
-C - - - - - 0x00C306 03:C2F6: 85 29     STA ram_0029
 loc_C2F8:
 C D 2 - - - 0x00C308 03:C2F8: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00C30B 03:C2FB: 29 FB     AND #con_gm_playable ^ $FF
