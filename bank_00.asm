@@ -17,9 +17,9 @@ bra_8005:
 C - - - - - 0x000015 00:8005: AA        TAX
 C - - - - - 0x000016 00:8006: AD 00 07  LDA ram_sound_cnt
 C - - - - - 0x000019 00:8009: F0 1E     BEQ bra_8029
-bra_800B:
+bra_800B_loop:
 C - - - - - 0x00001B 00:800B: BC 01 07  LDY ram_sound_queue,X
-C - - - - - 0x00001E 00:800E: F0 0E     BEQ bra_801E
+C - - - - - 0x00001E 00:800E: F0 0E     BEQ bra_801E_empty_queue
 C - - - - - 0x000020 00:8010: C0 20     CPY #$20
 C - - - - - 0x000022 00:8012: D0 03     BNE bra_8017
 C - - - - - 0x000024 00:8014: 4C 0A 84  JMP loc_840A
@@ -27,10 +27,10 @@ bra_8017:
 C - - - - - 0x000027 00:8017: 86 F2     STX ram_00F2
 C - - - - - 0x000029 00:8019: 20 B9 83  JSR sub_83B9
 C - - - - - 0x00002C 00:801C: A6 F2     LDX ram_00F2
-bra_801E:
+bra_801E_empty_queue:
 C - - - - - 0x00002E 00:801E: E8        INX
 C - - - - - 0x00002F 00:801F: EC 00 07  CPX ram_sound_cnt
-C - - - - - 0x000032 00:8022: D0 E7     BNE bra_800B
+C - - - - - 0x000032 00:8022: D0 E7     BNE bra_800B_loop
 C - - - - - 0x000034 00:8024: A9 00     LDA #$00
 C - - - - - 0x000036 00:8026: 8D 00 07  STA ram_sound_cnt
 bra_8029:
