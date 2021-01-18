@@ -10,13 +10,9 @@
 
 
 sub_0x000010:
-C D 0 - - - 0x000010 00:8000: A5 FC     LDA ram_00FC
-C - - - - - 0x000012 00:8002: F0 01     BEQ bra_8005
-- - - - - - 0x000014 00:8004: 60        RTS
-bra_8005:
-C - - - - - 0x000015 00:8005: AA        TAX
 C - - - - - 0x000016 00:8006: AD 00 07  LDA ram_sound_cnt
 C - - - - - 0x000019 00:8009: F0 1E     BEQ bra_8029
+                                        LDX #$00
 bra_800B_loop:
 C - - - - - 0x00001B 00:800B: BC 01 07  LDY ram_sound_queue,X
 C - - - - - 0x00001E 00:800E: F0 0E     BEQ bra_801E_empty_queue
@@ -641,8 +637,8 @@ tbl_8447:
 - D 0 - - - 0x00047B 00:846B: AC 84     .word ofs_84AC_F2
 - D 0 - - - 0x00047D 00:846D: D8 85     .word ofs_85D8_F3
 - D 0 - - - 0x00047F 00:846F: E3 85     .word ofs_85E3_F4
-- - - - - - 0x000481 00:8471: EE 85     .word ofs_85EE_F5
-- - - - - - 0x000483 00:8473: F5 85     .word ofs_85F5_F6
+- - - - - - 0x000481 00:8471: EE 85     .word $0000  ; F5
+- - - - - - 0x000483 00:8473: F5 85     .word $0000  ; F6
 - - - - - - 0x000485 00:8475: 87 84     .word ofs_8487_F7
 - - - - - - 0x000487 00:8477: 87 84     .word ofs_8487_F8
 - - - - - - 0x000489 00:8479: FC 85     .word ofs_85FC_F9
@@ -903,20 +899,6 @@ C - - J - - 0x0005F3 00:85E3: A9 FB     LDA #$FB
 C - - - - - 0x0005F5 00:85E5: 3D 16 07  AND ram_0716,X
 C - - - - - 0x0005F8 00:85E8: 9D 16 07  STA ram_0716,X
 C - - - - - 0x0005FB 00:85EB: 4C CF 82  JMP loc_82CF
-
-
-
-ofs_85EE_F5:
-- - - - - - 0x0005FE 00:85EE: A5 01     LDA ram_0001
-- - - - - - 0x000600 00:85F0: 85 FC     STA ram_00FC
-- - - - - - 0x000602 00:85F2: 4C CF 82  JMP loc_82CF
-
-
-
-ofs_85F5_F6:
-- - - - - - 0x000605 00:85F5: A9 00     LDA #$00
-- - - - - - 0x000607 00:85F7: 85 FC     STA ram_00FC
-- - - - - - 0x000609 00:85F9: 4C CF 82  JMP loc_82CF
 
 
 
