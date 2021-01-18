@@ -1904,15 +1904,7 @@ C - - - - - 0x00CC40 03:CC30: BD 44 CC  LDA tbl_CC44,X
 C - - - - - 0x00CC43 03:CC33: AA        TAX
 C - - - - - 0x00CC44 03:CC34: 28        PLP
 C - - - - - 0x00CC45 03:CC35: 90 0C     BCC bra_CC43_RTS
-C - - - - - 0x00CC47 03:CC37: 8A        TXA
-C - - - - - 0x00CC48 03:CC38: 49 FF     EOR #$FF
-C - - - - - 0x00CC4A 03:CC3A: AA        TAX
-C - - - - - 0x00CC4B 03:CC3B: 98        TYA
-C - - - - - 0x00CC4C 03:CC3C: 49 FF     EOR #$FF
-C - - - - - 0x00CC4E 03:CC3E: A8        TAY
-C - - - - - 0x00CC4F 03:CC3F: E8        INX
-C - - - - - 0x00CC50 03:CC40: D0 01     BNE bra_CC43_RTS
-C - - - - - 0x00CC52 03:CC42: C8        INY
+                                        JSR sub_C91E_EOR_16bit
 bra_CC43_RTS:
 C - - - - - 0x00CC53 03:CC43: 60        RTS
 
