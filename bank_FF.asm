@@ -39,24 +39,24 @@ C - - - - - 0x00C096 03:C086: 78        SEI
 C - - - - - 0x00C097 03:C087: D8        CLD
 C - - - - - 0x00C098 03:C088: A2 FF     LDX #$FF
 C - - - - - 0x00C09A 03:C08A: 9A        TXS
-bra_C08B:
+bra_C08B_vblank_wait_loop:
 C - - - - - 0x00C09B 03:C08B: AD 02 20  LDA $2002
-C - - - - - 0x00C09E 03:C08E: 10 FB     BPL bra_C08B
-bra_C090:
+C - - - - - 0x00C09E 03:C08E: 10 FB     BPL bra_C08B_vblank_wait_loop
+bra_C090_vblank_wait_loop:
 C - - - - - 0x00C0A0 03:C090: AD 02 20  LDA $2002
-C - - - - - 0x00C0A3 03:C093: 10 FB     BPL bra_C090
+C - - - - - 0x00C0A3 03:C093: 10 FB     BPL bra_C090_vblank_wait_loop
 C - - - - - 0x00C0A5 03:C095: A9 00     LDA #$00
 C - - - - - 0x00C0A7 03:C097: 85 00     STA ram_0000
 C - - - - - 0x00C0A9 03:C099: 85 01     STA ram_0001
 C - - - - - 0x00C0AB 03:C09B: A8        TAY
 C - - - - - 0x00C0AC 03:C09C: A2 08     LDX #$08
-bra_C09E_loop:      ; очистка оперативки
+bra_C09E_clear_mem_loop:      ; очистка оперативки
 C - - - - - 0x00C0AE 03:C09E: 91 00     STA (ram_0000),Y
 C - - - - - 0x00C0B0 03:C0A0: C8        INY
-C - - - - - 0x00C0B1 03:C0A1: D0 FB     BNE bra_C09E_loop
+C - - - - - 0x00C0B1 03:C0A1: D0 FB     BNE bra_C09E_clear_mem_loop
 C - - - - - 0x00C0B3 03:C0A3: E6 01     INC ram_0001
 C - - - - - 0x00C0B5 03:C0A5: CA        DEX
-C - - - - - 0x00C0B6 03:C0A6: D0 F6     BNE bra_C09E_loop
+C - - - - - 0x00C0B6 03:C0A6: D0 F6     BNE bra_C09E_clear_mem_loop
 C - - - - - 0x00C0B8 03:C0A8: A9 28     LDA #$28
 C - - - - - 0x00C0BA 03:C0AA: 85 28     STA ram_0028
 C - - - - - 0x00C0BC 03:C0AC: A9 06     LDA #$06
@@ -107,8 +107,8 @@ C - - - - - 0x00C13D 03:C12D: A9 1E     LDA #$1E
 C - - - - - 0x00C13F 03:C12F: 95 01     STA ram_0001,X
 C - - - - - 0x00C141 03:C131: A9 0C     LDA #$0C
 C - - - - - 0x00C143 03:C133: 95 02     STA ram_0002,X
-C - - - - - 0x00C145 03:C135: A9 C2     LDA #> ofs_C2F2
-C - - - - - 0x00C147 03:C137: A0 F1     LDY #< ofs_C2F2
+C - - - - - 0x00C145 03:C135: A9 C2     LDA #> ofs_C2F2_logo_screen
+C - - - - - 0x00C147 03:C137: A0 F1     LDY #< ofs_C2F2_logo_screen
 C - - - - - 0x00C149 03:C139: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00C14C 03:C13C: A5 28     LDA ram_0028
 C - - - - - 0x00C14E 03:C13E: 09 80     ORA #$80
@@ -353,7 +353,7 @@ C - - - - - 0x00C301 03:C2F1: 60        RTS
 
 
 off_C2F2:
-ofs_C2F2 = off_C2F2 - 1
+ofs_C2F2_logo_screen = off_C2F2 - 1
 C - - - - - 0x00C302 03:C2F2: A5 29     LDA ram_0029
 C - - - - - 0x00C304 03:C2F4: 09 1E     ORA #$1E
 C - - - - - 0x00C306 03:C2F6: 85 29     STA ram_0029
@@ -634,7 +634,7 @@ C - - - - - 0x00C53D 03:C52D: 8D B0 03  STA ram_timer_ms
 C - - - - - 0x00C540 03:C530: A9 00     LDA #$00
 C - - - - - 0x00C542 03:C532: 8D B1 03  STA ram_timer_sec
 C - - - - - 0x00C545 03:C535: AE AF 03  LDX ram_option_timer
-C - - - - - 0x00C548 03:C538: BD 58 C5  LDA tbl_C558,X
+C - - - - - 0x00C548 03:C538: BD 58 C5  LDA tbl_C558_minutes,X
 C - - - - - 0x00C54B 03:C53B: 8D B2 03  STA ram_timer_min
 C - - - - - 0x00C54E 03:C53E: A2 05     LDX #$05
 C - - - - - 0x00C550 03:C540: A9 3C     LDA #$3C
@@ -651,10 +651,10 @@ C - - - - - 0x00C567 03:C557: 60        RTS
 
 
 
-tbl_C558:
-- - - - - - 0x00C568 03:C558: 0F        .byte $0F   ; 
-- D 2 - - - 0x00C569 03:C559: 1E        .byte $1E   ; 
-- D 2 - - - 0x00C56A 03:C55A: 2D        .byte $2D   ; 
+tbl_C558_minutes:
+- - - - - - 0x00C568 03:C558: 0F        .byte $0F   ; 15
+- D 2 - - - 0x00C569 03:C559: 1E        .byte $1E   ; 30
+- D 2 - - - 0x00C56A 03:C55A: 2D        .byte $2D   ; 45
 
 
 
