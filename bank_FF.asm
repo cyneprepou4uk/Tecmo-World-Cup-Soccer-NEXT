@@ -2673,9 +2673,6 @@ C - - - - - 0x00D33F 03:D32F: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
 C - - - - - 0x00D34B 03:D33B: 68        PLA
 C - - - - - 0x00D34C 03:D33C: 20 00 80  JSR sub_0x00405E
-C - - - - - 0x00D34F 03:D33F: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01
-C - - - - - 0x00D35B 03:D34B: 68        PLA
 C - - - - - 0x00D35C 03:D34C: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00D35F 03:D34F: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D362 03:D352: 2C 29 04  BIT ram_plr_w_ball
