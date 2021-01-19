@@ -196,8 +196,8 @@ C - - - - - 0x008176 02:8166: A9 1E     LDA #$1E
 C - - - - - 0x008178 02:8168: 85 6A     STA ram_006A
 C - - - - - 0x00817A 02:816A: A9 00     LDA #$00
 C - - - - - 0x00817C 02:816C: 8D BB 03  STA ram_03BB
-C - - - - - 0x00817F 02:816F: 8D BC 03  STA ram_03BC
-C - - - - - 0x008182 02:8172: 8D BD 03  STA ram_03BD
+C - - - - - 0x00817F 02:816F: 8D BC 03  STA ram_cam_edge_Y_lo
+C - - - - - 0x008182 02:8172: 8D BD 03  STA ram_cam_edge_Y_hi
 C - - - - - 0x008185 02:8175: 8D 00 A0  STA $A000
 loc_8178_loop:
 C D 0 - - - 0x008188 02:8178: A9 01     LDA #$01
@@ -206,14 +206,14 @@ C - - - - - 0x00818D 02:817D: 18        CLC
 C - - - - - 0x00818E 02:817E: AD BB 03  LDA ram_03BB
 C - - - - - 0x008191 02:8181: 69 40     ADC #$40
 C - - - - - 0x008193 02:8183: 8D BB 03  STA ram_03BB
-C - - - - - 0x008196 02:8186: AD BC 03  LDA ram_03BC
+C - - - - - 0x008196 02:8186: AD BC 03  LDA ram_cam_edge_Y_lo
 C - - - - - 0x008199 02:8189: 69 00     ADC #$00
-C - - - - - 0x00819B 02:818B: 8D BC 03  STA ram_03BC
+C - - - - - 0x00819B 02:818B: 8D BC 03  STA ram_cam_edge_Y_lo
 C - - - - - 0x00819E 02:818E: 90 03     BCC bra_8193
-C - - - - - 0x0081A0 02:8190: EE BD 03  INC ram_03BD
+C - - - - - 0x0081A0 02:8190: EE BD 03  INC ram_cam_edge_Y_hi
 bra_8193:
-C - - - - - 0x0081A3 02:8193: AD BC 03  LDA ram_03BC
-C - - - - - 0x0081A6 02:8196: AE BD 03  LDX ram_03BD
+C - - - - - 0x0081A3 02:8193: AD BC 03  LDA ram_cam_edge_Y_lo
+C - - - - - 0x0081A6 02:8196: AE BD 03  LDX ram_cam_edge_Y_hi
 bra_8199_loop:
 C - - - - - 0x0081A9 02:8199: 38        SEC
 C - - - - - 0x0081AA 02:819A: E9 F0     SBC #$F0
@@ -239,16 +239,16 @@ bra_81B2:
 loc_81B2:
 C D 0 - - - 0x0081C2 02:81B2: A9 01     LDA #$01
 C - - - - - 0x0081C4 02:81B4: 20 09 C0  JSR sub_0x00C619_delay
-C - - - - - 0x0081C7 02:81B7: AD BC 03  LDA ram_03BC
+C - - - - - 0x0081C7 02:81B7: AD BC 03  LDA ram_cam_edge_Y_lo
 C - - - - - 0x0081CA 02:81BA: 18        CLC
 C - - - - - 0x0081CB 02:81BB: 69 08     ADC #$08
 C - - - - - 0x0081CD 02:81BD: 29 F0     AND #$F0
 C - - - - - 0x0081CF 02:81BF: CD BF 03  CMP ram_03BF
 C - - - - - 0x0081D2 02:81C2: F0 EE     BEQ bra_81B2
 C - - - - - 0x0081D4 02:81C4: 8D BF 03  STA ram_03BF
-C - - - - - 0x0081D7 02:81C7: AD BC 03  LDA ram_03BC
+C - - - - - 0x0081D7 02:81C7: AD BC 03  LDA ram_cam_edge_Y_lo
 C - - - - - 0x0081DA 02:81CA: 29 F0     AND #$F0
-C - - - - - 0x0081DC 02:81CC: AE BD 03  LDX ram_03BD
+C - - - - - 0x0081DC 02:81CC: AE BD 03  LDX ram_cam_edge_Y_hi
 C - - - - - 0x0081DF 02:81CF: 86 2B     STX ram_002B
 C - - - - - 0x0081E1 02:81D1: 46 2B     LSR ram_002B
 C - - - - - 0x0081E3 02:81D3: 6A        ROR
@@ -617,7 +617,7 @@ C - - - - - 0x008441 02:8431: 8D 69 00  STA ram_0069
 C - - - - - 0x008444 02:8434: A9 26     LDA #$26
 C - - - - - 0x008446 02:8436: 8D 6A 00  STA ram_006A
 C - - - - - 0x008449 02:8439: A9 7F     LDA #$7F
-C - - - - - 0x00844B 02:843B: 8D B8 03  STA ram_03B8
+C - - - - - 0x00844B 02:843B: 8D B8 03  STA ram_cam_edge_X_hi
 C - - - - - 0x00844E 02:843E: A9 F4     LDA #$F4
 C - - - - - 0x008450 02:8440: 8D B9 03  STA ram_03B9
 C - - - - - 0x008453 02:8443: A5 28     LDA ram_0028
@@ -700,7 +700,7 @@ C - - - - - 0x0084D3 02:84C3: 0A        ASL
 C - - - - - 0x0084D4 02:84C4: 3E 02 02  ROL ram_spr_A,X
 C - - - - - 0x0084D7 02:84C7: C8        INY
 C - - - - - 0x0084D8 02:84C8: B1 2A     LDA (ram_002A),Y
-C - - - - - 0x0084DA 02:84CA: 6D B8 03  ADC ram_03B8
+C - - - - - 0x0084DA 02:84CA: 6D B8 03  ADC ram_cam_edge_X_hi
 C - - - - - 0x0084DD 02:84CD: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x0084E0 02:84D0: C8        INY
 C - - - - - 0x0084E1 02:84D1: E8        INX
@@ -795,13 +795,13 @@ C - - - - - 0x008588 02:8578: 20 06 C0  JSR sub_0x00C5F1_prepare_return_address
 C - - - - - 0x00858B 02:857B: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00858E 02:857E: 10 19     BPL bra_8599    ; con_gm_1p
 C - - - - - 0x008590 02:8580: A9 00     LDA #$00
-C - - - - - 0x008592 02:8582: 8D AB 03  STA ram_03AB
-C - - - - - 0x008595 02:8585: 8D AC 03  STA ram_03AC
+C - - - - - 0x008592 02:8582: 8D AB 03  STA ram_team_ban
+C - - - - - 0x008595 02:8585: 8D AC 03  STA ram_team_ban + 1
 C - - - - - 0x008598 02:8588: 8D A9 03  STA ram_team_id
-C - - - - - 0x00859B 02:858B: 20 98 88  JSR sub_8898
+C - - - - - 0x00859B 02:858B: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x00859E 02:858E: A9 01     LDA #$01
 C - - - - - 0x0085A0 02:8590: 8D AA 03  STA ram_team_id + 1
-C - - - - - 0x0085A3 02:8593: 20 98 88  JSR sub_8898
+C - - - - - 0x0085A3 02:8593: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x0085A6 02:8596: 4C C2 86  JMP loc_86C2
 bra_8599:
 C - - - - - 0x0085A9 02:8599: 2C A4 03  BIT ram_game_mode_flags
@@ -810,15 +810,15 @@ C - - - - - 0x0085AE 02:859E: AD A9 03  LDA ram_team_id
 C - - - - - 0x0085B1 02:85A1: C9 FF     CMP #$FF
 C - - - - - 0x0085B3 02:85A3: D0 14     BNE bra_85B9
 C - - - - - 0x0085B5 02:85A5: A9 00     LDA #$00
-C - - - - - 0x0085B7 02:85A7: 8D AB 03  STA ram_03AB
-C - - - - - 0x0085BA 02:85AA: 8D AC 03  STA ram_03AC
+C - - - - - 0x0085B7 02:85A7: 8D AB 03  STA ram_team_ban
+C - - - - - 0x0085BA 02:85AA: 8D AC 03  STA ram_team_ban + 1
 C - - - - - 0x0085BD 02:85AD: 8D A9 03  STA ram_team_id
-C - - - - - 0x0085C0 02:85B0: 20 98 88  JSR sub_8898
+C - - - - - 0x0085C0 02:85B0: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x0085C3 02:85B3: 20 40 86  JSR sub_8640
 C - - - - - 0x0085C6 02:85B6: 20 B0 86  JSR sub_86B0
 bra_85B9:
 C - - - - - 0x0085C9 02:85B9: AD A9 03  LDA ram_team_id
-C - - - - - 0x0085CC 02:85BC: 20 98 88  JSR sub_8898
+C - - - - - 0x0085CC 02:85BC: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x0085CF 02:85BF: A2 07     LDX #$07
 C - - - - - 0x0085D1 02:85C1: 20 09 88  JSR sub_8809
 C - - - - - 0x0085D4 02:85C4: 20 40 86  JSR sub_8640
@@ -827,7 +827,7 @@ C - - - - - 0x0085DA 02:85CA: 29 08     AND #con_gm_team_select
 C - - - - - 0x0085DC 02:85CC: D0 14     BNE bra_85E2
 C - - - - - 0x0085DE 02:85CE: AD AA 03  LDA ram_team_id + 1
 C - - - - - 0x0085E1 02:85D1: 8D AA 03  STA ram_team_id + 1
-C - - - - - 0x0085E4 02:85D4: 20 98 88  JSR sub_8898
+C - - - - - 0x0085E4 02:85D4: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x0085E7 02:85D7: A2 0B     LDX #$0B
 C - - - - - 0x0085E9 02:85D9: 20 09 88  JSR sub_8809
 C - - - - - 0x0085EC 02:85DC: 20 40 86  JSR sub_8640
@@ -836,7 +836,7 @@ bra_85E2:
 C - - - - - 0x0085F2 02:85E2: A9 00     LDA #$00
 C - - - - - 0x0085F4 02:85E4: 8D B4 03  STA ram_03B4
 C - - - - - 0x0085F7 02:85E7: 8D B5 03  STA ram_03B5
-bra_85EA:
+bra_85EA_loop:
 C - - - - - 0x0085FA 02:85EA: 48        PHA
 C - - - - - 0x0085FB 02:85EB: 20 7E 88  JSR sub_887E
 C - - - - - 0x0085FE 02:85EE: 68        PLA
@@ -844,11 +844,11 @@ C - - - - - 0x0085FF 02:85EF: 90 0A     BCC bra_85FB
 C - - - - - 0x008601 02:85F1: 18        CLC
 C - - - - - 0x008602 02:85F2: 69 01     ADC #$01
 C - - - - - 0x008604 02:85F4: C9 10     CMP #$10
-C - - - - - 0x008606 02:85F6: D0 F2     BNE bra_85EA
+C - - - - - 0x008606 02:85F6: D0 F2     BNE bra_85EA_loop
 - - - - - - 0x008608 02:85F8: 4C 0C 86  JMP loc_860C
 bra_85FB:
 C - - - - - 0x00860B 02:85FB: 8D AA 03  STA ram_team_id + 1
-C - - - - - 0x00860E 02:85FE: 20 98 88  JSR sub_8898
+C - - - - - 0x00860E 02:85FE: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x008611 02:8601: 20 40 86  JSR sub_8640
 C - - - - - 0x008614 02:8604: A9 14     LDA #$14
 C - - - - - 0x008616 02:8606: 20 09 C0  JSR sub_0x00C619_delay
@@ -1225,7 +1225,7 @@ C - - - - - 0x00885D 02:884D: 60        RTS
 
 sub_884E:
 C - - - - - 0x00885E 02:884E: BD A9 03  LDA ram_team_id,X
-C - - - - - 0x008861 02:8851: 20 86 88  JSR sub_8886
+C - - - - - 0x008861 02:8851: 20 86 88  JSR sub_8886_clear_ban
 bra_8854:
 C - - - - - 0x008864 02:8854: A6 2A     LDX ram_002A
 C - - - - - 0x008866 02:8856: BD A9 03  LDA ram_team_id,X
@@ -1237,7 +1237,7 @@ C - - - - - 0x008871 02:8861: 20 7E 88  JSR sub_887E
 C - - - - - 0x008874 02:8864: B0 EE     BCS bra_8854
 C - - - - - 0x008876 02:8866: A6 2A     LDX ram_002A
 C - - - - - 0x008878 02:8868: BD A9 03  LDA ram_team_id,X
-C - - - - - 0x00887B 02:886B: 20 98 88  JSR sub_8898
+C - - - - - 0x00887B 02:886B: 20 98 88  JSR sub_8898_set_ban
 C - - - - - 0x00887E 02:886E: A6 2A     LDX ram_002A
 C - - - - - 0x008880 02:8870: A9 00     LDA #$00
 C - - - - - 0x008882 02:8872: 9D B4 03  STA ram_03B4,X
@@ -1249,56 +1249,52 @@ C - - - - - 0x00888D 02:887D: 60        RTS
 
 
 sub_887E:
-C - - - - - 0x00888E 02:887E: 20 AA 88  JSR sub_88AA
-bra_8881:
+C - - - - - 0x00888E 02:887E: 20 AA 88  JSR sub_88AA_calculate_ban
+bra_8881_loop:
 C - - - - - 0x008891 02:8881: 0A        ASL
 C - - - - - 0x008892 02:8882: 88        DEY
-C - - - - - 0x008893 02:8883: 10 FC     BPL bra_8881
+C - - - - - 0x008893 02:8883: 10 FC     BPL bra_8881_loop
 C - - - - - 0x008895 02:8885: 60        RTS
 
 
 
-sub_8886:
-C - - - - - 0x008896 02:8886: 20 AA 88  JSR sub_88AA
+sub_8886_clear_ban:
+C - - - - - 0x008896 02:8886: 20 AA 88  JSR sub_88AA_calculate_ban
 C - - - - - 0x008899 02:8889: 39 90 88  AND tbl_8890,Y
-C - - - - - 0x00889C 02:888C: 9D AB 03  STA ram_03AB,X
+C - - - - - 0x00889C 02:888C: 9D AB 03  STA ram_team_ban,X
 C - - - - - 0x00889F 02:888F: 60        RTS
 
-
-
 tbl_8890:
-- D 0 - - - 0x0088A0 02:8890: 7F        .byte $7F   ; 
-- D 0 - - - 0x0088A1 02:8891: BF        .byte $BF   ; 
-- D 0 - - - 0x0088A2 02:8892: DF        .byte $DF   ; 
-- D 0 - - - 0x0088A3 02:8893: EF        .byte $EF   ; 
-- D 0 - - - 0x0088A4 02:8894: F7        .byte $F7   ; 
-- D 0 - - - 0x0088A5 02:8895: FB        .byte $FB   ; 
-- D 0 - - - 0x0088A6 02:8896: FD        .byte $FD   ; 
-- D 0 - - - 0x0088A7 02:8897: FE        .byte $FE   ; 
+- D 0 - - - 0x0088A0 02:8890: 7F        .byte $7F   ; 00
+- D 0 - - - 0x0088A1 02:8891: BF        .byte $BF   ; 01
+- D 0 - - - 0x0088A2 02:8892: DF        .byte $DF   ; 02
+- D 0 - - - 0x0088A3 02:8893: EF        .byte $EF   ; 03
+- D 0 - - - 0x0088A4 02:8894: F7        .byte $F7   ; 04
+- D 0 - - - 0x0088A5 02:8895: FB        .byte $FB   ; 05
+- D 0 - - - 0x0088A6 02:8896: FD        .byte $FD   ; 06
+- D 0 - - - 0x0088A7 02:8897: FE        .byte $FE   ; 07
 
 
 
-sub_8898:
-C - - - - - 0x0088A8 02:8898: 20 AA 88  JSR sub_88AA
+sub_8898_set_ban:
+C - - - - - 0x0088A8 02:8898: 20 AA 88  JSR sub_88AA_calculate_ban
 C - - - - - 0x0088AB 02:889B: 19 A2 88  ORA tbl_88A2,Y
-C - - - - - 0x0088AE 02:889E: 9D AB 03  STA ram_03AB,X
+C - - - - - 0x0088AE 02:889E: 9D AB 03  STA ram_team_ban,X
 C - - - - - 0x0088B1 02:88A1: 60        RTS
 
-
-
 tbl_88A2:
-- D 0 - - - 0x0088B2 02:88A2: 80        .byte $80   ; 
-- D 0 - - - 0x0088B3 02:88A3: 40        .byte $40   ; 
-- D 0 - - - 0x0088B4 02:88A4: 20        .byte $20   ; 
-- D 0 - - - 0x0088B5 02:88A5: 10        .byte $10   ; 
-- D 0 - - - 0x0088B6 02:88A6: 08        .byte $08   ; 
-- D 0 - - - 0x0088B7 02:88A7: 04        .byte $04   ; 
-- D 0 - - - 0x0088B8 02:88A8: 02        .byte $02   ; 
-- D 0 - - - 0x0088B9 02:88A9: 01        .byte $01   ; 
+- D 0 - - - 0x0088B2 02:88A2: 80        .byte $80   ; 00
+- D 0 - - - 0x0088B3 02:88A3: 40        .byte $40   ; 01
+- D 0 - - - 0x0088B4 02:88A4: 20        .byte $20   ; 02
+- D 0 - - - 0x0088B5 02:88A5: 10        .byte $10   ; 03
+- D 0 - - - 0x0088B6 02:88A6: 08        .byte $08   ; 04
+- D 0 - - - 0x0088B7 02:88A7: 04        .byte $04   ; 05
+- D 0 - - - 0x0088B8 02:88A8: 02        .byte $02   ; 06
+- D 0 - - - 0x0088B9 02:88A9: 01        .byte $01   ; 07
 
 
 
-sub_88AA:
+sub_88AA_calculate_ban:
 C - - - - - 0x0088BA 02:88AA: 48        PHA
 C - - - - - 0x0088BB 02:88AB: 29 08     AND #$08
 C - - - - - 0x0088BD 02:88AD: 4A        LSR
@@ -1308,7 +1304,7 @@ C - - - - - 0x0088C0 02:88B0: AA        TAX
 C - - - - - 0x0088C1 02:88B1: 68        PLA
 C - - - - - 0x0088C2 02:88B2: 29 07     AND #$07
 C - - - - - 0x0088C4 02:88B4: A8        TAY
-C - - - - - 0x0088C5 02:88B5: BD AB 03  LDA ram_03AB,X
+C - - - - - 0x0088C5 02:88B5: BD AB 03  LDA ram_team_ban,X
 C - - - - - 0x0088C8 02:88B8: 60        RTS
 
 
@@ -6756,11 +6752,11 @@ C - - - - - 0x00A065 02:A055: 85 69     STA ram_0069
 C - - - - - 0x00A067 02:A057: A9 1A     LDA #$1A
 C - - - - - 0x00A069 02:A059: 85 6A     STA ram_006A
 C - - - - - 0x00A06B 02:A05B: A9 80     LDA #$80
-C - - - - - 0x00A06D 02:A05D: 8D B7 03  STA ram_03B7
+C - - - - - 0x00A06D 02:A05D: 8D B7 03  STA ram_cam_edge_X_lo
 C - - - - - 0x00A070 02:A060: A9 00     LDA #$00
-C - - - - - 0x00A072 02:A062: 8D B8 03  STA ram_03B8
-C - - - - - 0x00A075 02:A065: 8D BC 03  STA ram_03BC
-C - - - - - 0x00A078 02:A068: 8D BD 03  STA ram_03BD
+C - - - - - 0x00A072 02:A062: 8D B8 03  STA ram_cam_edge_X_hi
+C - - - - - 0x00A075 02:A065: 8D BC 03  STA ram_cam_edge_Y_lo
+C - - - - - 0x00A078 02:A068: 8D BD 03  STA ram_cam_edge_Y_hi
 C - - - - - 0x00A07B 02:A06B: 8D F8 03  STA ram_shad_pos_X_lo
 C - - - - - 0x00A07E 02:A06E: 8D FA 03  STA ram_shad_pos_X_hi
 bra_A071:
@@ -7981,9 +7977,9 @@ C - - - - - 0x00A651 02:A641: 85 2A     STA ram_002A
 C - - - - - 0x00A653 02:A643: AD AA 03  LDA ram_team_id + 1
 C - - - - - 0x00A656 02:A646: 05 2A     ORA ram_002A
 C - - - - - 0x00A658 02:A648: 85 2A     STA ram_002A
-C - - - - - 0x00A65A 02:A64A: AD AB 03  LDA ram_03AB
+C - - - - - 0x00A65A 02:A64A: AD AB 03  LDA ram_team_ban
 C - - - - - 0x00A65D 02:A64D: 85 2B     STA ram_002B
-C - - - - - 0x00A65F 02:A64F: AD AC 03  LDA ram_03AC
+C - - - - - 0x00A65F 02:A64F: AD AC 03  LDA ram_team_ban + 1
 C - - - - - 0x00A662 02:A652: 85 2C     STA ram_002C
 C - - - - - 0x00A664 02:A654: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00A667 02:A657: 29 08     AND #con_gm_team_select
@@ -8421,9 +8417,9 @@ C - - - - - 0x00A917 02:A907: 8A        TXA
 C - - - - - 0x00A918 02:A908: 0D A4 03  ORA ram_game_mode_flags
 C - - - - - 0x00A91B 02:A90B: 8D A4 03  STA ram_game_mode_flags
 C - - - - - 0x00A91E 02:A90E: A5 2C     LDA ram_002C
-C - - - - - 0x00A920 02:A910: 8D AC 03  STA ram_03AC
+C - - - - - 0x00A920 02:A910: 8D AC 03  STA ram_team_ban + 1
 C - - - - - 0x00A923 02:A913: A5 2B     LDA ram_002B
-C - - - - - 0x00A925 02:A915: 8D AB 03  STA ram_03AB
+C - - - - - 0x00A925 02:A915: 8D AB 03  STA ram_team_ban
 C - - - - - 0x00A928 02:A918: A5 2A     LDA ram_002A
 C - - - - - 0x00A92A 02:A91A: 48        PHA
 C - - - - - 0x00A92B 02:A91B: 29 0F     AND #$0F

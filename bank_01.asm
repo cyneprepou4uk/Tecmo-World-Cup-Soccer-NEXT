@@ -57,10 +57,10 @@ C - - - - - 0x004080 01:8070: E6 2A     INC ram_002A
 bra_8072:
 C - - - - - 0x004082 01:8072: A2 00     LDX #$00
 bra_8074:
-C - - - - - 0x004084 01:8074: 8E B7 03  STX ram_03B7
+C - - - - - 0x004084 01:8074: 8E B7 03  STX ram_cam_edge_X_lo
 C - - - - - 0x004087 01:8077: 86 3A     STX ram_003A
 C - - - - - 0x004089 01:8079: A5 2A     LDA ram_002A
-C - - - - - 0x00408B 01:807B: 8D B8 03  STA ram_03B8
+C - - - - - 0x00408B 01:807B: 8D B8 03  STA ram_cam_edge_X_hi
 C - - - - - 0x00408E 01:807E: A5 28     LDA ram_0028
 C - - - - - 0x004090 01:8080: 29 FE     AND #$FE
 C - - - - - 0x004092 01:8082: 05 2A     ORA ram_002A
@@ -105,10 +105,10 @@ C - - - - - 0x0040B5 01:80A5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0040B8 01:80A8: A9 00     LDA #$00
 C - - - - - 0x0040BA 01:80AA: 85 2C     STA ram_002C
 C - - - - - 0x0040BC 01:80AC: 38        SEC
-C - - - - - 0x0040BD 01:80AD: AD BC 03  LDA ram_03BC
+C - - - - - 0x0040BD 01:80AD: AD BC 03  LDA ram_cam_edge_Y_lo
 C - - - - - 0x0040C0 01:80B0: ED C0 03  SBC ram_03C0
 C - - - - - 0x0040C3 01:80B3: AA        TAX
-C - - - - - 0x0040C4 01:80B4: AD BD 03  LDA ram_03BD
+C - - - - - 0x0040C4 01:80B4: AD BD 03  LDA ram_cam_edge_Y_hi
 C - - - - - 0x0040C7 01:80B7: ED C1 03  SBC ram_03C1
 C - - - - - 0x0040CA 01:80BA: A8        TAY
 C - - - - - 0x0040CB 01:80BB: 10 05     BPL bra_80C2
@@ -297,10 +297,10 @@ C - - - - - 0x004224 01:8214: A9 00     LDA #$00
 C - - - - - 0x004226 01:8216: 85 2A     STA ram_002A
 C - - - - - 0x004228 01:8218: AD BE 03  LDA ram_03BE
 C - - - - - 0x00422B 01:821B: 38        SEC
-C - - - - - 0x00422C 01:821C: ED BC 03  SBC ram_03BC
+C - - - - - 0x00422C 01:821C: ED BC 03  SBC ram_cam_edge_Y_lo
 C - - - - - 0x00422F 01:821F: AA        TAX
 C - - - - - 0x004230 01:8220: AD BF 03  LDA ram_03BF
-C - - - - - 0x004233 01:8223: ED BD 03  SBC ram_03BD
+C - - - - - 0x004233 01:8223: ED BD 03  SBC ram_cam_edge_Y_hi
 C - - - - - 0x004236 01:8226: A8        TAY
 C - - - - - 0x004237 01:8227: 08        PHP
 C - - - - - 0x004238 01:8228: 10 03     BPL bra_822D
@@ -347,23 +347,23 @@ C - - - - - 0x004276 01:8266: 18        CLC
 C - - - - - 0x004277 01:8267: 6D BB 03  ADC ram_03BB
 C - - - - - 0x00427A 01:826A: 8D BB 03  STA ram_03BB
 C - - - - - 0x00427D 01:826D: 8A        TXA
-C - - - - - 0x00427E 01:826E: 6D BC 03  ADC ram_03BC
-C - - - - - 0x004281 01:8271: 8D BC 03  STA ram_03BC
+C - - - - - 0x00427E 01:826E: 6D BC 03  ADC ram_cam_edge_Y_lo
+C - - - - - 0x004281 01:8271: 8D BC 03  STA ram_cam_edge_Y_lo
 C - - - - - 0x004284 01:8274: 98        TYA
-C - - - - - 0x004285 01:8275: 6D BD 03  ADC ram_03BD
-C - - - - - 0x004288 01:8278: 8D BD 03  STA ram_03BD
+C - - - - - 0x004285 01:8275: 6D BD 03  ADC ram_cam_edge_Y_hi
+C - - - - - 0x004288 01:8278: 8D BD 03  STA ram_cam_edge_Y_hi
 C - - - - - 0x00428B 01:827B: 8C B9 03  STY ram_03B9
 sub_0x00428E:
-C D 0 - - - 0x00428E 01:827E: AE BC 03  LDX ram_03BC
-C - - - - - 0x004291 01:8281: AC BD 03  LDY ram_03BD
+C D 0 - - - 0x00428E 01:827E: AE BC 03  LDX ram_cam_edge_Y_lo
+C - - - - - 0x004291 01:8281: AC BD 03  LDY ram_cam_edge_Y_hi
 C - - - - - 0x004294 01:8284: 20 87 80  JSR sub_8087
 C - - - - - 0x004297 01:8287: 86 3B     STX ram_003B
 C - - - - - 0x004299 01:8289: A2 00     LDX #$00
 bra_828B:
 C - - - - - 0x00429B 01:828B: 38        SEC
-C - - - - - 0x00429C 01:828C: AD BC 03  LDA ram_03BC
+C - - - - - 0x00429C 01:828C: AD BC 03  LDA ram_cam_edge_Y_lo
 C - - - - - 0x00429F 01:828F: FD AB 82  SBC tbl_82AB,X
-C - - - - - 0x0042A2 01:8292: AD BD 03  LDA ram_03BD
+C - - - - - 0x0042A2 01:8292: AD BD 03  LDA ram_cam_edge_Y_hi
 C - - - - - 0x0042A5 01:8295: FD AC 82  SBC tbl_82AC,X
 C - - - - - 0x0042A8 01:8298: 90 04     BCC bra_829E
 C - - - - - 0x0042AA 01:829A: E8        INX
@@ -1049,22 +1049,22 @@ C - - - - - 0x0046B0 01:86A0: 30 26     BMI bra_86C8_RTS
 C - - - - - 0x0046B2 01:86A2: A0 0B     LDY #con_plr_pos_Y_lo
 C - - - - - 0x0046B4 01:86A4: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x0046B6 01:86A6: 38        SEC
-C - - - - - 0x0046B7 01:86A7: ED BC 03  SBC ram_03BC
+C - - - - - 0x0046B7 01:86A7: ED BC 03  SBC ram_cam_edge_Y_lo
 C - - - - - 0x0046BA 01:86AA: 85 36     STA ram_0036
 C - - - - - 0x0046BC 01:86AC: C8        INY
 C - - - - - 0x0046BD 01:86AD: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x0046BE 01:86AE: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0046C0 01:86B0: ED BD 03  SBC ram_03BD
+C - - - - - 0x0046C0 01:86B0: ED BD 03  SBC ram_cam_edge_Y_hi
 C - - - - - 0x0046C3 01:86B3: D0 13     BNE bra_86C8_RTS
 C - - - - - 0x0046C5 01:86B5: 38        SEC
 C - - - - - 0x0046C6 01:86B6: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x0046C8 01:86B8: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0046CA 01:86BA: ED B7 03  SBC ram_03B7
+C - - - - - 0x0046CA 01:86BA: ED B7 03  SBC ram_cam_edge_X_lo
 C - - - - - 0x0046CD 01:86BD: 85 34     STA ram_0034
 C - - - - - 0x0046CF 01:86BF: C8        INY
 C - - - - - 0x0046D0 01:86C0: C8        INY ; con_plr_pos_X_hi
 C - - - - - 0x0046D1 01:86C1: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x0046D3 01:86C3: ED B8 03  SBC ram_03B8
+C - - - - - 0x0046D3 01:86C3: ED B8 03  SBC ram_cam_edge_X_hi
 C - - - - - 0x0046D6 01:86C6: F0 01     BEQ bra_86C9_player_is_on_the_screen
 bra_86C8_RTS:
 C - - - - - 0x0046D8 01:86C8: 60        RTS

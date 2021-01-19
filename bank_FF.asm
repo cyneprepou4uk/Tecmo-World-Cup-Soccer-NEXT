@@ -618,11 +618,11 @@ C - - - - - 0x00C523 03:C513: A9 04     LDA #$04
 C - - - - - 0x00C525 03:C515: 85 6B     STA ram_006B
 C - - - - - 0x00C527 03:C517: A9 00     LDA #$00
 C - - - - - 0x00C529 03:C519: 8D B6 03  STA ram_03B6
-C - - - - - 0x00C52C 03:C51C: 8D B7 03  STA ram_03B7
-C - - - - - 0x00C52F 03:C51F: 8D B8 03  STA ram_03B8
+C - - - - - 0x00C52C 03:C51C: 8D B7 03  STA ram_cam_edge_X_lo
+C - - - - - 0x00C52F 03:C51F: 8D B8 03  STA ram_cam_edge_X_hi
 C - - - - - 0x00C532 03:C522: 8D BB 03  STA ram_03BB
-C - - - - - 0x00C535 03:C525: 8D BC 03  STA ram_03BC
-C - - - - - 0x00C538 03:C528: 8D BD 03  STA ram_03BD
+C - - - - - 0x00C535 03:C525: 8D BC 03  STA ram_cam_edge_Y_lo
+C - - - - - 0x00C538 03:C528: 8D BD 03  STA ram_cam_edge_Y_hi
 C - - - - - 0x00C53B 03:C52B: A9 3B     LDA #$3B
 C - - - - - 0x00C53D 03:C52D: 8D B0 03  STA ram_timer_ms
 C - - - - - 0x00C540 03:C530: A9 00     LDA #$00
@@ -936,8 +936,8 @@ bra_C717:
 
 
 sub_C71D:
-C - - - - - 0x00C72D 03:C71D: AE BC 03  LDX ram_03BC
-C - - - - - 0x00C730 03:C720: AC BD 03  LDY ram_03BD
+C - - - - - 0x00C72D 03:C71D: AE BC 03  LDX ram_cam_edge_Y_lo
+C - - - - - 0x00C730 03:C720: AC BD 03  LDY ram_cam_edge_Y_hi
 C - - - - - 0x00C733 03:C723: 38        SEC
 C - - - - - 0x00C734 03:C724: 8A        TXA
 C - - - - - 0x00C735 03:C725: E9 60     SBC #$60
@@ -1293,7 +1293,7 @@ C - - - - - 0x00C8FB 03:C8EB: 60        RTS
 
 
 sub_C8EC_clear_memory_before_match:
-; очистка 03B4-06B3
+; очистка 03B4-06B3, 0769-07B3
 C - - - - - 0x00C8FC 03:C8EC: A9 B4     LDA #< ram_03B4
 C - - - - - 0x00C8FE 03:C8EE: 85 2A     STA ram_002A
 C - - - - - 0x00C900 03:C8F0: A9 03     LDA #> ram_03B4
@@ -2046,14 +2046,14 @@ C - - - - - 0x00CD78 03:CD68: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00CD7B 03:CD6B: A9 90     LDA #$90
 C - - - - - 0x00CD7D 03:CD6D: 8D C0 03  STA ram_03C0
 C - - - - - 0x00CD80 03:CD70: A9 A0     LDA #$A0
-C - - - - - 0x00CD82 03:CD72: 8D BC 03  STA ram_03BC
+C - - - - - 0x00CD82 03:CD72: 8D BC 03  STA ram_cam_edge_Y_lo
 C - - - - - 0x00CD85 03:CD75: A9 00     LDA #$00
-C - - - - - 0x00CD87 03:CD77: 8D BD 03  STA ram_03BD
+C - - - - - 0x00CD87 03:CD77: 8D BD 03  STA ram_cam_edge_Y_hi
 C - - - - - 0x00CD8A 03:CD7A: 8D C1 03  STA ram_03C1
 C - - - - - 0x00CD8D 03:CD7D: A9 80     LDA #$80
-C - - - - - 0x00CD8F 03:CD7F: 8D B7 03  STA ram_03B7
+C - - - - - 0x00CD8F 03:CD7F: 8D B7 03  STA ram_cam_edge_X_lo
 C - - - - - 0x00CD92 03:CD82: A9 00     LDA #$00
-C - - - - - 0x00CD94 03:CD84: 8D B8 03  STA ram_03B8
+C - - - - - 0x00CD94 03:CD84: 8D B8 03  STA ram_cam_edge_X_hi
 bra_CD87:
 C - - - - - 0x00CD97 03:CD87: A9 01     LDA #$01
 C - - - - - 0x00CD99 03:CD89: 20 09 C6  JSR sub_C609_delay
@@ -2889,12 +2889,12 @@ C - - - - - 0x00D3CF 03:D3BF: 20 1E C9  JSR sub_C91E_EOR_16bit
 bra_D3C2:
 C - - - - - 0x00D3D2 03:D3C2: 8A        TXA
 C - - - - - 0x00D3D3 03:D3C3: 18        CLC
-C - - - - - 0x00D3D4 03:D3C4: 6D BC 03  ADC ram_03BC
-C - - - - - 0x00D3D7 03:D3C7: 8D BC 03  STA ram_03BC
+C - - - - - 0x00D3D4 03:D3C4: 6D BC 03  ADC ram_cam_edge_Y_lo
+C - - - - - 0x00D3D7 03:D3C7: 8D BC 03  STA ram_cam_edge_Y_lo
 C - - - - - 0x00D3DA 03:D3CA: AA        TAX
 C - - - - - 0x00D3DB 03:D3CB: 98        TYA
-C - - - - - 0x00D3DC 03:D3CC: 6D BD 03  ADC ram_03BD
-C - - - - - 0x00D3DF 03:D3CF: 8D BD 03  STA ram_03BD
+C - - - - - 0x00D3DC 03:D3CC: 6D BD 03  ADC ram_cam_edge_Y_hi
+C - - - - - 0x00D3DF 03:D3CF: 8D BD 03  STA ram_cam_edge_Y_hi
 C - - - - - 0x00D3E2 03:D3D2: 30 1E     BMI bra_D3F2
 C - - - - - 0x00D3E4 03:D3D4: C9 03     CMP #$03
 C - - - - - 0x00D3E6 03:D3D6: 90 04     BCC bra_D3DC
