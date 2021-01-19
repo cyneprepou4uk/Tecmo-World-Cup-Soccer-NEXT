@@ -612,7 +612,7 @@ C - - - - - 0x00C516 03:C506: 60        RTS
 sub_C507:
 C - - - - - 0x00C517 03:C507: 20 59 CA  JSR sub_CA59_clear_nametables
 C - - - - - 0x00C51A 03:C50A: 20 AF CA  JSR sub_CAAF_hide_sprites
-C - - - - - 0x00C51D 03:C50D: 20 EC C8  JSR sub_C8EC
+C - - - - - 0x00C51D 03:C50D: 20 EC C8  JSR sub_C8EC_clear_memory_before_match
 C - - - - - 0x00C520 03:C510: 20 97 CF  JSR sub_CF97
 C - - - - - 0x00C523 03:C513: A9 04     LDA #$04
 C - - - - - 0x00C525 03:C515: 85 6B     STA ram_006B
@@ -821,7 +821,7 @@ C - - - - - 0x00C668 03:C658: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00C66A 03:C65A: 88        DEY ; con_plr_sub_hi
 C - - - - - 0x00C66B 03:C65B: 68        PLA
 C - - - - - 0x00C66C 03:C65C: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00C66E 03:C65E: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00C66E 03:C65E: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -1057,7 +1057,7 @@ C - - - - - 0x00C7E0 03:C7D0: 48        PHA
 C - - - - - 0x00C7E1 03:C7D1: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00C7E3 03:C7D3: 18        CLC
 C - - - - - 0x00C7E4 03:C7D4: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00C7E6 03:C7D6: 8D D8 03  STA ram_03D8
+C - - - - - 0x00C7E6 03:C7D6: 8D D8 03  STA ram_ball_pos_X_lo
 C - - - - - 0x00C7E9 03:C7D9: C8        INY
 C - - - - - 0x00C7EA 03:C7DA: C8        INY ; con_plr_pos_X_hi
 C - - - - - 0x00C7EB 03:C7DB: A2 00     LDX #$00
@@ -1067,7 +1067,7 @@ C - - - - - 0x00C7F0 03:C7E0: CA        DEX
 bra_C7E1:
 C - - - - - 0x00C7F1 03:C7E1: 8A        TXA
 C - - - - - 0x00C7F2 03:C7E2: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00C7F4 03:C7E4: 8D DA 03  STA ram_03DA
+C - - - - - 0x00C7F4 03:C7E4: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00C7F7 03:C7E7: A0 01     LDY #con_plr_spr_A
 C - - - - - 0x00C7F9 03:C7E9: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00C7FB 03:C7EB: 08        PHP
@@ -1083,7 +1083,7 @@ C - - - - - 0x00C809 03:C7F9: 48        PHA
 C - - - - - 0x00C80A 03:C7FA: A0 0B     LDY #con_plr_pos_Y_lo
 C - - - - - 0x00C80C 03:C7FC: 18        CLC
 C - - - - - 0x00C80D 03:C7FD: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00C80F 03:C7FF: 8D DE 03  STA ram_03DE
+C - - - - - 0x00C80F 03:C7FF: 8D DE 03  STA ram_ball_pos_Y_lo
 C - - - - - 0x00C812 03:C802: C8        INY
 C - - - - - 0x00C813 03:C803: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x00C814 03:C804: A2 00     LDX #$00
@@ -1093,7 +1093,7 @@ C - - - - - 0x00C819 03:C809: CA        DEX
 bra_C80A:
 C - - - - - 0x00C81A 03:C80A: 8A        TXA
 C - - - - - 0x00C81B 03:C80B: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00C81D 03:C80D: 8D E0 03  STA ram_03E0
+C - - - - - 0x00C81D 03:C80D: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00C820 03:C810: 60        RTS
 
 
@@ -1292,30 +1292,31 @@ C - - - - - 0x00C8FB 03:C8EB: 60        RTS
 
 
 
-sub_C8EC:
-C - - - - - 0x00C8FC 03:C8EC: A9 B4     LDA #$B4
+sub_C8EC_clear_memory_before_match:
+; очистка 03B4-06B3
+C - - - - - 0x00C8FC 03:C8EC: A9 B4     LDA #< ram_03B4
 C - - - - - 0x00C8FE 03:C8EE: 85 2A     STA ram_002A
-C - - - - - 0x00C900 03:C8F0: A9 03     LDA #$03
+C - - - - - 0x00C900 03:C8F0: A9 03     LDA #> ram_03B4
 C - - - - - 0x00C902 03:C8F2: 85 2B     STA ram_002B
 C - - - - - 0x00C904 03:C8F4: A2 03     LDX #$03
 C - - - - - 0x00C906 03:C8F6: A9 00     LDA #$00
 C - - - - - 0x00C908 03:C8F8: A8        TAY
-loc_C8F9:
+loc_C8F9_loop:
 C D 2 - - - 0x00C909 03:C8F9: CA        DEX
 C - - - - - 0x00C90A 03:C8FA: 30 0A     BMI bra_C906
-bra_C8FC:
+bra_C8FC_loop:
 C - - - - - 0x00C90C 03:C8FC: 91 2A     STA (ram_002A),Y
 C - - - - - 0x00C90E 03:C8FE: C8        INY
-C - - - - - 0x00C90F 03:C8FF: D0 FB     BNE bra_C8FC
+C - - - - - 0x00C90F 03:C8FF: D0 FB     BNE bra_C8FC_loop
 C - - - - - 0x00C911 03:C901: E6 2B     INC ram_002B
-C - - - - - 0x00C913 03:C903: 4C F9 C8  JMP loc_C8F9
+C - - - - - 0x00C913 03:C903: 4C F9 C8  JMP loc_C8F9_loop
 bra_C906:
 C - - - - - 0x00C916 03:C906: A0 B5     LDY #$B5
-C - - - - - 0x00C918 03:C908: F0 05     BEQ bra_C90F_RTS
-bra_C90A:
+C - - - - - 0x00C918 03:C908: F0 05     BEQ bra_C90F_RTS    ; bzk опт, бесполезная проверка
+bra_C90A_loop:
 C - - - - - 0x00C91A 03:C90A: 91 2A     STA (ram_002A),Y
 C - - - - - 0x00C91C 03:C90C: C8        INY
-C - - - - - 0x00C91D 03:C90D: D0 FB     BNE bra_C90A
+C - - - - - 0x00C91D 03:C90D: D0 FB     BNE bra_C90A_loop
 bra_C90F_RTS:
 C - - - - - 0x00C91F 03:C90F: 60        RTS
 
@@ -1466,12 +1467,12 @@ sub_C998:
 C - - - - - 0x00C9A8 03:C998: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00C9AA 03:C99A: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00C9AC 03:C99C: 38        SEC
-C - - - - - 0x00C9AD 03:C99D: ED D8 03  SBC ram_03D8
+C - - - - - 0x00C9AD 03:C99D: ED D8 03  SBC ram_ball_pos_X_lo
 C - - - - - 0x00C9B0 03:C9A0: AA        TAX
 C - - - - - 0x00C9B1 03:C9A1: C8        INY
 C - - - - - 0x00C9B2 03:C9A2: C8        INY ; con_plr_pos_X_hi
 C - - - - - 0x00C9B3 03:C9A3: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00C9B5 03:C9A5: ED DA 03  SBC ram_03DA
+C - - - - - 0x00C9B5 03:C9A5: ED DA 03  SBC ram_ball_pos_X_hi
 C - - - - - 0x00C9B8 03:C9A8: A8        TAY
 C - - - - - 0x00C9B9 03:C9A9: B0 03     BCS bra_C9AE
 C - - - - - 0x00C9BB 03:C9AB: 20 1E C9  JSR sub_C91E_EOR_16bit
@@ -1485,12 +1486,12 @@ C - - - - - 0x00C9C5 03:C9B5: B0 21     BCS bra_C9D8
 C - - - - - 0x00C9C7 03:C9B7: A0 0B     LDY #con_plr_pos_Y_lo
 C - - - - - 0x00C9C9 03:C9B9: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00C9CB 03:C9BB: 38        SEC
-C - - - - - 0x00C9CC 03:C9BC: ED DE 03  SBC ram_03DE
+C - - - - - 0x00C9CC 03:C9BC: ED DE 03  SBC ram_ball_pos_Y_lo
 C - - - - - 0x00C9CF 03:C9BF: AA        TAX
 C - - - - - 0x00C9D0 03:C9C0: C8        INY
 C - - - - - 0x00C9D1 03:C9C1: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x00C9D2 03:C9C2: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00C9D4 03:C9C4: ED E0 03  SBC ram_03E0
+C - - - - - 0x00C9D4 03:C9C4: ED E0 03  SBC ram_ball_pos_Y_hi
 C - - - - - 0x00C9D7 03:C9C7: A8        TAY
 C - - - - - 0x00C9D8 03:C9C8: B0 03     BCS bra_C9CD
 C - - - - - 0x00C9DA 03:C9CA: 20 1E C9  JSR sub_C91E_EOR_16bit
@@ -2448,8 +2449,8 @@ C - - - - - 0x00D08E 03:D07E: 85 0A     STA ram_000A
 C - - - - - 0x00D090 03:D080: A9 02     LDA #$02    ; throw in
 C - - - - - 0x00D092 03:D082: 20 B8 F9  JSR sub_F9B8_print_message_and_skip_it
 C - - - - - 0x00D095 03:D085: 20 9F D4  JSR sub_D49F
-C - - - - - 0x00D098 03:D088: AE D8 03  LDX ram_03D8
-C - - - - - 0x00D09B 03:D08B: AC DA 03  LDY ram_03DA
+C - - - - - 0x00D098 03:D088: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x00D09B 03:D08B: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x00D09E 03:D08E: AD 28 04  LDA ram_0428
 C - - - - - 0x00D0A1 03:D091: 49 0B     EOR #$0B
 C - - - - - 0x00D0A3 03:D093: 8D AD 03  STA ram_team_w_ball
@@ -2458,8 +2459,8 @@ C - - - - - 0x00D0A8 03:D098: 20 4A CB  JSR sub_CB4A
 bra_D09B:
 C - - - - - 0x00D0AB 03:D09B: 86 2A     STX ram_002A
 C - - - - - 0x00D0AD 03:D09D: 84 2B     STY ram_002B
-C - - - - - 0x00D0AF 03:D09F: AE DE 03  LDX ram_03DE
-C - - - - - 0x00D0B2 03:D0A2: AC E0 03  LDY ram_03E0
+C - - - - - 0x00D0AF 03:D09F: AE DE 03  LDX ram_ball_pos_Y_lo
+C - - - - - 0x00D0B2 03:D0A2: AC E0 03  LDY ram_ball_pos_Y_hi
 C - - - - - 0x00D0B5 03:D0A5: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00D0B8 03:D0A8: F0 03     BEQ bra_D0AD
 C - - - - - 0x00D0BA 03:D0AA: 20 50 CB  JSR sub_CB50
@@ -2483,7 +2484,7 @@ C - - - - - 0x00D0D4 03:D0C4: 6D AD 03  ADC ram_team_w_ball
 C - - - - - 0x00D0D7 03:D0C7: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00D0DA 03:D0CA: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00D0DD 03:D0CD: A2 00     LDX #$00
-C - - - - - 0x00D0DF 03:D0CF: AD DA 03  LDA ram_03DA
+C - - - - - 0x00D0DF 03:D0CF: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00D0E2 03:D0D2: F0 03     BEQ bra_D0D7
 C - - - - - 0x00D0E4 03:D0D4: E8        INX
 C - - - - - 0x00D0E5 03:D0D5: E8        INX
@@ -2500,11 +2501,11 @@ C - - - - - 0x00D0F5 03:D0E5: A0 13     LDY #con_plr_direction
 C - - - - - 0x00D0F7 03:D0E7: BD 6B D1  LDA tbl_D16B,X
 C - - - - - 0x00D0FA 03:D0EA: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00D0FC 03:D0EC: A0 0B     LDY #con_plr_pos_Y_lo
-C - - - - - 0x00D0FE 03:D0EE: AD DE 03  LDA ram_03DE
+C - - - - - 0x00D0FE 03:D0EE: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x00D101 03:D0F1: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00D103 03:D0F3: C8        INY
 C - - - - - 0x00D104 03:D0F4: C8        INY ; con_plr_pos_Y_hi
-C - - - - - 0x00D105 03:D0F5: AD E0 03  LDA ram_03E0
+C - - - - - 0x00D105 03:D0F5: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00D108 03:D0F8: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00D10A 03:D0FA: A9 02     LDA #$02
 C - - - - - 0x00D10C 03:D0FC: 20 9E C7  JSR sub_C79E
@@ -2522,7 +2523,7 @@ C - - - - - 0x00D130 03:D120: E8        INX
 C - - - - - 0x00D131 03:D121: D0 F8     BNE bra_D11B_loop
 bra_D123:
 C - - - - - 0x00D133 03:D123: 8A        TXA
-C - - - - - 0x00D134 03:D124: AE DA 03  LDX ram_03DA
+C - - - - - 0x00D134 03:D124: AE DA 03  LDX ram_ball_pos_X_hi
 C - - - - - 0x00D137 03:D127: F0 03     BEQ bra_D12C
 C - - - - - 0x00D139 03:D129: 18        CLC
 C - - - - - 0x00D13A 03:D12A: 69 08     ADC #$08
@@ -2541,9 +2542,9 @@ C - - - - - 0x00D14F 03:D13F: A9 80     LDA #$80
 C - - - - - 0x00D151 03:D141: 8D 2A 04  STA ram_plr_wo_ball
 C - - - - - 0x00D154 03:D144: A9 00     LDA #$00
 C - - - - - 0x00D156 03:D146: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00D159 03:D149: 8D 26 04  STA ram_0426
+C - - - - - 0x00D159 03:D149: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00D15C 03:D14C: A9 01     LDA #$01
-C - - - - - 0x00D15E 03:D14E: 8D E4 03  STA ram_03E4
+C - - - - - 0x00D15E 03:D14E: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00D161 03:D151: 20 ED DC  JSR sub_DCED
 bra_D154:
 C - - - - - 0x00D164 03:D154: A9 01     LDA #$01
@@ -2583,9 +2584,9 @@ C - - - - - 0x00D185 03:D175: 85 09     STA ram_0009
 C - - - - - 0x00D187 03:D177: 85 0A     STA ram_000A
 C - - - - - 0x00D189 03:D179: A9 00     LDA #$00
 C - - - - - 0x00D18B 03:D17B: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00D18E 03:D17E: 8D 26 04  STA ram_0426
+C - - - - - 0x00D18E 03:D17E: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00D191 03:D181: A9 01     LDA #$01
-C - - - - - 0x00D193 03:D183: 8D E4 03  STA ram_03E4
+C - - - - - 0x00D193 03:D183: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00D196 03:D186: A9 03     LDA #$03    ; goal kick
 C - - - - - 0x00D198 03:D188: 20 B8 F9  JSR sub_F9B8_print_message_and_skip_it
 C - - - - - 0x00D19B 03:D18B: 20 9F D4  JSR sub_D49F
@@ -2596,7 +2597,7 @@ C - - - - - 0x00D1A6 03:D196: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00D1A9 03:D199: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00D1AC 03:D19C: A2 B8     LDX #$B8
 C - - - - - 0x00D1AE 03:D19E: A0 00     LDY #$00
-C - - - - - 0x00D1B0 03:D1A0: AD DA 03  LDA ram_03DA
+C - - - - - 0x00D1B0 03:D1A0: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00D1B3 03:D1A3: F0 03     BEQ bra_D1A8
 C - - - - - 0x00D1B5 03:D1A5: 20 4A CB  JSR sub_CB4A
 bra_D1A8:
@@ -2689,17 +2690,17 @@ C - - - - - 0x00D269 03:D259: 85 09     STA ram_0009
 C - - - - - 0x00D26B 03:D25B: 85 0A     STA ram_000A
 C - - - - - 0x00D26D 03:D25D: A9 00     LDA #$00
 C - - - - - 0x00D26F 03:D25F: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00D272 03:D262: 8D 26 04  STA ram_0426
+C - - - - - 0x00D272 03:D262: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00D275 03:D265: A9 01     LDA #$01
-C - - - - - 0x00D277 03:D267: 8D E4 03  STA ram_03E4
+C - - - - - 0x00D277 03:D267: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00D27A 03:D26A: A9 04     LDA #$04    ; corner kick
 C - - - - - 0x00D27C 03:D26C: 20 B8 F9  JSR sub_F9B8_print_message_and_skip_it
 C - - - - - 0x00D27F 03:D26F: 20 9F D4  JSR sub_D49F
 C - - - - - 0x00D282 03:D272: AD 28 04  LDA ram_0428
 C - - - - - 0x00D285 03:D275: 49 0B     EOR #$0B
 C - - - - - 0x00D287 03:D277: 8D AD 03  STA ram_team_w_ball
-C - - - - - 0x00D28A 03:D27A: AE D8 03  LDX ram_03D8
-C - - - - - 0x00D28D 03:D27D: AC DA 03  LDY ram_03DA
+C - - - - - 0x00D28A 03:D27A: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x00D28D 03:D27D: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x00D290 03:D280: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00D293 03:D283: F0 03     BEQ bra_D288
 C - - - - - 0x00D295 03:D285: 20 4A CB  JSR sub_CB4A
@@ -2722,12 +2723,12 @@ C - - - - - 0x00D2AB 03:D29B: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00D2AE 03:D29E: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00D2B1 03:D2A1: A0 34     LDY #$34
 C - - - - - 0x00D2B3 03:D2A3: A2 00     LDX #$00
-C - - - - - 0x00D2B5 03:D2A5: AD DA 03  LDA ram_03DA
+C - - - - - 0x00D2B5 03:D2A5: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00D2B8 03:D2A8: F0 03     BEQ bra_D2AD
 C - - - - - 0x00D2BA 03:D2AA: A0 CC     LDY #$CC
 C - - - - - 0x00D2BC 03:D2AC: E8        INX
 bra_D2AD:
-C - - - - - 0x00D2BD 03:D2AD: AD E0 03  LDA ram_03E0
+C - - - - - 0x00D2BD 03:D2AD: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00D2C0 03:D2B0: C9 02     CMP #$02
 C - - - - - 0x00D2C2 03:D2B2: 90 08     BCC bra_D2BC
 C - - - - - 0x00D2C4 03:D2B4: E8        INX
@@ -2746,13 +2747,13 @@ C - - - - - 0x00D2D3 03:D2C3: 0A        ASL
 C - - - - - 0x00D2D4 03:D2C4: 0A        ASL
 C - - - - - 0x00D2D5 03:D2C5: AA        TAX
 C - - - - - 0x00D2D6 03:D2C6: BD 5F D3  LDA tbl_D35F,X
-C - - - - - 0x00D2D9 03:D2C9: 8D D8 03  STA ram_03D8
+C - - - - - 0x00D2D9 03:D2C9: 8D D8 03  STA ram_ball_pos_X_lo
 C - - - - - 0x00D2DC 03:D2CC: BD 60 D3  LDA tbl_D360,X
-C - - - - - 0x00D2DF 03:D2CF: 8D DA 03  STA ram_03DA
+C - - - - - 0x00D2DF 03:D2CF: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00D2E2 03:D2D2: BD 61 D3  LDA tbl_D361,X
-C - - - - - 0x00D2E5 03:D2D5: 8D DE 03  STA ram_03DE
+C - - - - - 0x00D2E5 03:D2D5: 8D DE 03  STA ram_ball_pos_Y_lo
 C - - - - - 0x00D2E8 03:D2D8: BD 62 D3  LDA tbl_D362,X
-C - - - - - 0x00D2EB 03:D2DB: 8D E0 03  STA ram_03E0
+C - - - - - 0x00D2EB 03:D2DB: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00D2EE 03:D2DE: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00D2F0 03:D2E0: BD 63 D3  LDA tbl_D363,X
 C - - - - - 0x00D2F3 03:D2E3: 91 61     STA (ram_plr_data),Y
@@ -2872,7 +2873,7 @@ C - - - - - 0x00D3AE 03:D39E: 69 01     ADC #$01
 C - - - - - 0x00D3B0 03:D3A0: C9 16     CMP #$16
 C - - - - - 0x00D3B2 03:D3A2: D0 E7     BNE bra_D38B_loop
 C - - - - - 0x00D3B4 03:D3A4: A2 00     LDX #$00
-C - - - - - 0x00D3B6 03:D3A6: AD E0 03  LDA ram_03E0
+C - - - - - 0x00D3B6 03:D3A6: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00D3B9 03:D3A9: C9 02     CMP #$02
 C - - - - - 0x00D3BB 03:D3AB: 90 01     BCC bra_D3AE
 C - - - - - 0x00D3BD 03:D3AD: E8        INX
@@ -2997,7 +2998,7 @@ C - - - - - 0x00D4AC 03:D49C: 4C C4 CC  JMP loc_CCC4
 sub_D49F:
 C - - - - - 0x00D4AF 03:D49F: A9 00     LDA #$00
 C - - - - - 0x00D4B1 03:D4A1: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00D4B4 03:D4A4: 8D 26 04  STA ram_0426
+C - - - - - 0x00D4B4 03:D4A4: 8D 26 04  STA ram_ball_Z_hi
 bra_D4A7_loop:
 C - - - - - 0x00D4B7 03:D4A7: 48        PHA
 C - - - - - 0x00D4B8 03:D4A8: AA        TAX
@@ -3015,7 +3016,7 @@ C - - - - - 0x00D4D1 03:D4C1: 69 01     ADC #$01
 C - - - - - 0x00D4D3 03:D4C3: C9 16     CMP #$16
 C - - - - - 0x00D4D5 03:D4C5: D0 E0     BNE bra_D4A7_loop
 C - - - - - 0x00D4D7 03:D4C7: A9 03     LDA #$03
-C - - - - - 0x00D4D9 03:D4C9: 8D E4 03  STA ram_03E4
+C - - - - - 0x00D4D9 03:D4C9: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00D4DC 03:D4CC: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00D4DF 03:D4CF: 09 20     ORA #con_gm_out_of_play
 C - - - - - 0x00D4E1 03:D4D1: 8D A4 03  STA ram_game_mode_flags
@@ -3035,8 +3036,8 @@ C - - - - - 0x00D4F5 03:D4E5: 4C C1 CD  JMP loc_CDC1
 
 
 sub_D4E8:
-C - - - - - 0x00D4F8 03:D4E8: AE D8 03  LDX ram_03D8
-C - - - - - 0x00D4FB 03:D4EB: AC DA 03  LDY ram_03DA
+C - - - - - 0x00D4F8 03:D4E8: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x00D4FB 03:D4EB: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x00D4FE 03:D4EE: F0 03     BEQ bra_D4F3
 C - - - - - 0x00D500 03:D4F0: 20 4A CB  JSR sub_CB4A
 bra_D4F3:
@@ -3054,15 +3055,15 @@ C - - - - - 0x00D515 03:D505: A2 00     LDX #$00
 C - - - - - 0x00D517 03:D507: 38        SEC
 C - - - - - 0x00D518 03:D508: 60        RTS
 bra_D509:
-C - - - - - 0x00D519 03:D509: AE DE 03  LDX ram_03DE
-C - - - - - 0x00D51C 03:D50C: AC E0 03  LDY ram_03E0
+C - - - - - 0x00D519 03:D509: AE DE 03  LDX ram_ball_pos_Y_lo
+C - - - - - 0x00D51C 03:D50C: AC E0 03  LDY ram_ball_pos_Y_hi
 C - - - - - 0x00D51F 03:D50F: C0 02     CPY #$02
 C - - - - - 0x00D521 03:D511: 90 03     BCC bra_D516
 C - - - - - 0x00D523 03:D513: 20 50 CB  JSR sub_CB50
 bra_D516:
 C - - - - - 0x00D526 03:D516: 86 2C     STX ram_002C
 C - - - - - 0x00D528 03:D518: 84 2D     STY ram_002D
-C - - - - - 0x00D52A 03:D51A: AD 26 04  LDA ram_0426
+C - - - - - 0x00D52A 03:D51A: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00D52D 03:D51D: D0 4A     BNE bra_D569
 C - - - - - 0x00D52F 03:D51F: AD 24 04  LDA ram_ball_Z_lo
 C - - - - - 0x00D532 03:D522: C9 19     CMP #$19
@@ -3112,7 +3113,7 @@ C - - - - - 0x00D580 03:D570: E9 00     SBC #$00
 C - - - - - 0x00D582 03:D572: B0 1A     BCS bra_D58E
 C - - - - - 0x00D584 03:D574: A2 01     LDX #$01
 C - - - - - 0x00D586 03:D576: A9 00     LDA #$00
-C - - - - - 0x00D588 03:D578: AC E0 03  LDY ram_03E0
+C - - - - - 0x00D588 03:D578: AC E0 03  LDY ram_ball_pos_Y_hi
 C - - - - - 0x00D58B 03:D57B: C0 02     CPY #$02
 C - - - - - 0x00D58D 03:D57D: B0 02     BCS bra_D581
 C - - - - - 0x00D58F 03:D57F: A9 0B     LDA #$0B
@@ -3210,13 +3211,13 @@ C - - - - - 0x00D5F9 03:D5E9: D0 E5     BNE bra_D5D0
 C - - - - - 0x00D5FB 03:D5EB: A9 02     LDA #$02
 C - - - - - 0x00D5FD 03:D5ED: 8D D4 03  STA ram_03D4
 C - - - - - 0x00D600 03:D5F0: A9 00     LDA #$00
-C - - - - - 0x00D602 03:D5F2: 8D DE 03  STA ram_03DE
+C - - - - - 0x00D602 03:D5F2: 8D DE 03  STA ram_ball_pos_Y_lo
 C - - - - - 0x00D605 03:D5F5: A9 00     LDA #$00
-C - - - - - 0x00D607 03:D5F7: 8D D8 03  STA ram_03D8
+C - - - - - 0x00D607 03:D5F7: 8D D8 03  STA ram_ball_pos_X_lo
 C - - - - - 0x00D60A 03:D5FA: A9 01     LDA #$01
-C - - - - - 0x00D60C 03:D5FC: 8D DA 03  STA ram_03DA
+C - - - - - 0x00D60C 03:D5FC: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00D60F 03:D5FF: A9 02     LDA #$02
-C - - - - - 0x00D611 03:D601: 8D E0 03  STA ram_03E0
+C - - - - - 0x00D611 03:D601: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00D614 03:D604: 60        RTS
 
 
@@ -3259,8 +3260,8 @@ C - - - - - 0x00D65A 03:D64A: 20 09 C6  JSR sub_C609_delay
 bra_D64D:
 C - - - - - 0x00D65D 03:D64D: A9 01     LDA #$01
 C - - - - - 0x00D65F 03:D64F: 20 09 C6  JSR sub_C609_delay
-C - - - - - 0x00D662 03:D652: EE DE 03  INC ram_03DE
-C - - - - - 0x00D665 03:D655: AD DE 03  LDA ram_03DE
+C - - - - - 0x00D662 03:D652: EE DE 03  INC ram_ball_pos_Y_lo
+C - - - - - 0x00D665 03:D655: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x00D668 03:D658: C9 80     CMP #$80
 C - - - - - 0x00D66A 03:D65A: 90 F1     BCC bra_D64D
 C - - - - - 0x00D66C 03:D65C: AE AD 03  LDX ram_team_w_ball
@@ -3295,7 +3296,7 @@ bra_D68F:
 C - - - - - 0x00D69F 03:D68F: A9 01     LDA #$01
 C - - - - - 0x00D6A1 03:D691: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D6A4 03:D694: 20 68 DC  JSR sub_DC68
-C - - - - - 0x00D6A7 03:D697: AD DE 03  LDA ram_03DE
+C - - - - - 0x00D6A7 03:D697: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x00D6AA 03:D69A: C9 10     CMP #$10
 C - - - - - 0x00D6AC 03:D69C: B0 F1     BCS bra_D68F
 C - - - - - 0x00D6AE 03:D69E: 18        CLC
@@ -3317,7 +3318,7 @@ C - - - - - 0x00D6C3 03:D6B3: 38        SEC
 C - - - - - 0x00D6C4 03:D6B4: ED 24 04  SBC ram_ball_Z_lo
 C - - - - - 0x00D6C7 03:D6B7: AA        TAX
 C - - - - - 0x00D6C8 03:D6B8: BD D4 D6  LDA tbl_D6D4,X
-C - - - - - 0x00D6CB 03:D6BB: 8D E4 03  STA ram_03E4
+C - - - - - 0x00D6CB 03:D6BB: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00D6CE 03:D6BE: AD D4 03  LDA ram_03D4
 C - - - - - 0x00D6D1 03:D6C1: 29 3F     AND #$3F
 C - - - - - 0x00D6D3 03:D6C3: 8D D4 03  STA ram_03D4
@@ -3397,10 +3398,10 @@ C - - - - - 0x00D73C 03:D72C: 4C F1 C5  JMP loc_C5F1
 
 sub_D72F:
 C - - - - - 0x00D73F 03:D72F: 38        SEC
-C - - - - - 0x00D740 03:D730: AD D8 03  LDA ram_03D8
+C - - - - - 0x00D740 03:D730: AD D8 03  LDA ram_ball_pos_X_lo
 C - - - - - 0x00D743 03:D733: E9 10     SBC #$10
 C - - - - - 0x00D745 03:D735: AA        TAX
-C - - - - - 0x00D746 03:D736: AD DA 03  LDA ram_03DA
+C - - - - - 0x00D746 03:D736: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00D749 03:D739: E9 00     SBC #$00
 C - - - - - 0x00D74B 03:D73B: B0 03     BCS bra_D740
 C - - - - - 0x00D74D 03:D73D: A2 00     LDX #$00
@@ -3428,10 +3429,10 @@ C - - - - - 0x00D769 03:D759: A9 04     LDA #$04
 bra_D75B:
 C - - - - - 0x00D76B 03:D75B: 85 2A     STA ram_002A
 C - - - - - 0x00D76D 03:D75D: 38        SEC
-C - - - - - 0x00D76E 03:D75E: AD DE 03  LDA ram_03DE
+C - - - - - 0x00D76E 03:D75E: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x00D771 03:D761: E9 A0     SBC #$A0
 C - - - - - 0x00D773 03:D763: AA        TAX
-C - - - - - 0x00D774 03:D764: AD E0 03  LDA ram_03E0
+C - - - - - 0x00D774 03:D764: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00D777 03:D767: E9 00     SBC #$00
 C - - - - - 0x00D779 03:D769: B0 03     BCS bra_D76E
 C - - - - - 0x00D77B 03:D76B: A2 00     LDX #$00
@@ -3474,7 +3475,7 @@ off_D79D:
 ofs_D79D = off_D79D - 1
 C - - - - - 0x00D7AD 03:D79D: A9 00     LDA #$00
 C - - - - - 0x00D7AF 03:D79F: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00D7B2 03:D7A2: 8D 26 04  STA ram_0426
+C - - - - - 0x00D7B2 03:D7A2: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00D7B5 03:D7A5: 8D D3 03  STA ram_03D3
 C - - - - - 0x00D7B8 03:D7A8: AD D4 03  LDA ram_03D4
 C - - - - - 0x00D7BB 03:D7AB: 29 DF     AND #$DF
@@ -3493,11 +3494,11 @@ C - - - - - 0x00D7D4 03:D7C4: AD D3 03  LDA ram_03D3
 C - - - - - 0x00D7D7 03:D7C7: 09 20     ORA #$20
 C - - - - - 0x00D7D9 03:D7C9: 8D D3 03  STA ram_03D3
 C - - - - - 0x00D7DC 03:D7CC: A9 00     LDA #$00
-C - - - - - 0x00D7DE 03:D7CE: 8D E2 03  STA ram_03E2
+C - - - - - 0x00D7DE 03:D7CE: 8D E2 03  STA ram_ball_push_anim_id
 bra_D7D1:
 C - - - - - 0x00D7E1 03:D7D1: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00D7E4 03:D7D4: 20 E3 CB  JSR sub_CBE3_get_base_player_address
-C - - - - - 0x00D7E7 03:D7D7: AE E2 03  LDX ram_03E2
+C - - - - - 0x00D7E7 03:D7D7: AE E2 03  LDX ram_ball_push_anim_id
 C - - - - - 0x00D7EA 03:D7DA: BD 42 D8  LDA tbl_D842,X
 C - - - - - 0x00D7ED 03:D7DD: 49 FF     EOR #$FF
 C - - - - - 0x00D7EF 03:D7DF: 18        CLC
@@ -3522,20 +3523,20 @@ bra_D7FE:
 C - - - - - 0x00D80E 03:D7FE: C8        INY
 bra_D7FF:
 C - - - - - 0x00D80F 03:D7FF: 20 39 D8  JSR sub_D839
-C - - - - - 0x00D812 03:D802: EE E2 03  INC ram_03E2
-C - - - - - 0x00D815 03:D805: AD E2 03  LDA ram_03E2
+C - - - - - 0x00D812 03:D802: EE E2 03  INC ram_ball_push_anim_id
+C - - - - - 0x00D815 03:D805: AD E2 03  LDA ram_ball_push_anim_id
 C - - - - - 0x00D818 03:D808: C9 0B     CMP #$0B
 C - - - - - 0x00D81A 03:D80A: D0 08     BNE bra_D814
 C - - - - - 0x00D81C 03:D80C: AD D3 03  LDA ram_03D3
 C - - - - - 0x00D81F 03:D80F: 29 9F     AND #$9F
 C - - - - - 0x00D821 03:D811: 8D D3 03  STA ram_03D3
 bra_D814:
-C - - - - - 0x00D824 03:D814: AD E2 03  LDA ram_03E2
+C - - - - - 0x00D824 03:D814: AD E2 03  LDA ram_ball_push_anim_id
 C - - - - - 0x00D827 03:D817: 29 01     AND #$01
-C - - - - - 0x00D829 03:D819: 8D E4 03  STA ram_03E4
-C - - - - - 0x00D82C 03:D81C: EE E4 03  INC ram_03E4
+C - - - - - 0x00D829 03:D819: 8D E4 03  STA ram_ball_anim_id
+C - - - - - 0x00D82C 03:D81C: EE E4 03  INC ram_ball_anim_id
 C - - - - - 0x00D82F 03:D81F: A2 00     LDX #$00
-C - - - - - 0x00D831 03:D821: AD E2 03  LDA ram_03E2
+C - - - - - 0x00D831 03:D821: AD E2 03  LDA ram_ball_push_anim_id
 C - - - - - 0x00D834 03:D824: 29 02     AND #$02
 C - - - - - 0x00D836 03:D826: F0 02     BEQ bra_D82A
 C - - - - - 0x00D838 03:D828: A2 40     LDX #$40
@@ -3593,12 +3594,12 @@ C - - - - - 0x00D87A 03:D86A: 8A        TXA
 C - - - - - 0x00D87B 03:D86B: A0 0B     LDY #con_plr_pos_Y_lo
 C - - - - - 0x00D87D 03:D86D: 18        CLC
 C - - - - - 0x00D87E 03:D86E: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00D880 03:D870: 8D DE 03  STA ram_03DE
+C - - - - - 0x00D880 03:D870: 8D DE 03  STA ram_ball_pos_Y_lo
 C - - - - - 0x00D883 03:D873: C8        INY
 C - - - - - 0x00D884 03:D874: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x00D885 03:D875: 68        PLA
 C - - - - - 0x00D886 03:D876: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00D888 03:D878: 8D E0 03  STA ram_03E0
+C - - - - - 0x00D888 03:D878: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00D88B 03:D87B: 60        RTS
 bra_D87C:
 C - - - - - 0x00D88C 03:D87C: 20 8A D8  JSR sub_D88A
@@ -3636,14 +3637,14 @@ C - - - - - 0x00D8B7 03:D8A7: 10 03     BPL bra_D8AC
 - - - - - - 0x00D8B9 03:D8A9: A2 00     LDX #$00
 - - - - - - 0x00D8BB 03:D8AB: 8A        TXA
 bra_D8AC:
-C - - - - - 0x00D8BC 03:D8AC: 8E D8 03  STX ram_03D8
-C - - - - - 0x00D8BF 03:D8AF: 8D DA 03  STA ram_03DA
+C - - - - - 0x00D8BC 03:D8AC: 8E D8 03  STX ram_ball_pos_X_lo
+C - - - - - 0x00D8BF 03:D8AF: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00D8C2 03:D8B2: 60        RTS
 
 
 
 sub_D8B3:
-C - - - - - 0x00D8C3 03:D8B3: AD 26 04  LDA ram_0426
+C - - - - - 0x00D8C3 03:D8B3: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00D8C6 03:D8B6: F0 03     BEQ bra_D8BB
                                         RTS
 bra_D8BB:
@@ -3663,13 +3664,13 @@ C - - - - - 0x00D8DF 03:D8CF: 98        TYA
 C - - - - - 0x00D8E0 03:D8D0: 0A        ASL
 C - - - - - 0x00D8E1 03:D8D1: 0A        ASL
 C - - - - - 0x00D8E2 03:D8D2: 85 2B     STA ram_002B
-C - - - - - 0x00D8E4 03:D8D4: AD E6 03  LDA ram_03E6
-C - - - - - 0x00D8E7 03:D8D7: AE DE 03  LDX ram_03DE
-C - - - - - 0x00D8EA 03:D8DA: AC E0 03  LDY ram_03E0
+C - - - - - 0x00D8E4 03:D8D4: AD E6 03  LDA ram_ball_direction
+C - - - - - 0x00D8E7 03:D8D7: AE DE 03  LDX ram_ball_pos_Y_lo
+C - - - - - 0x00D8EA 03:D8DA: AC E0 03  LDY ram_ball_pos_Y_hi
 C - - - - - 0x00D8ED 03:D8DD: C0 02     CPY #$02
 C - - - - - 0x00D8EF 03:D8DF: 90 0A     BCC bra_D8EB
 C - - - - - 0x00D8F1 03:D8E1: 20 50 CB  JSR sub_CB50
-C - - - - - 0x00D8F4 03:D8E4: AD E6 03  LDA ram_03E6
+C - - - - - 0x00D8F4 03:D8E4: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00D8F7 03:D8E7: 18        CLC
 C - - - - - 0x00D8F8 03:D8E8: 69 80     ADC #$80
 C - - - - - 0x00D8FA 03:D8EA: 38        SEC
@@ -3692,8 +3693,8 @@ C - - - - - 0x00D915 03:D905: D0 31     BNE bra_D938_RTS
 C - - - - - 0x00D917 03:D907: E0 08     CPX #$08
 C - - - - - 0x00D919 03:D909: B0 2D     BCS bra_D938_RTS
 C - - - - - 0x00D91B 03:D90B: 18        CLC
-C - - - - - 0x00D91C 03:D90C: AE D8 03  LDX ram_03D8
-C - - - - - 0x00D91F 03:D90F: AC DA 03  LDY ram_03DA
+C - - - - - 0x00D91C 03:D90C: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x00D91F 03:D90F: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x00D922 03:D912: F0 04     BEQ bra_D918
 C - - - - - 0x00D924 03:D914: 20 4A CB  JSR sub_CB4A
 C - - - - - 0x00D927 03:D917: 38        SEC
@@ -3753,15 +3754,15 @@ C - - - - - 0x00D974 03:D964: 8E 17 04  STX ram_ball_pass_pos_Y_lo
 C - - - - - 0x00D977 03:D967: 8C 18 04  STY ram_ball_pass_pos_Y_hi
 C - - - - - 0x00D97A 03:D96A: 20 6B DD  JSR sub_DD6B
 C - - - - - 0x00D97D 03:D96D: 38        SEC
-C - - - - - 0x00D97E 03:D96E: ED E6 03  SBC ram_03E6
+C - - - - - 0x00D97E 03:D96E: ED E6 03  SBC ram_ball_direction
 C - - - - - 0x00D981 03:D971: 0A        ASL
 C - - - - - 0x00D982 03:D972: 85 2A     STA ram_002A
-C - - - - - 0x00D984 03:D974: AD E6 03  LDA ram_03E6
+C - - - - - 0x00D984 03:D974: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00D987 03:D977: 18        CLC
 C - - - - - 0x00D988 03:D978: 69 80     ADC #$80
 C - - - - - 0x00D98A 03:D97A: 18        CLC
 C - - - - - 0x00D98B 03:D97B: 65 2A     ADC ram_002A
-C - - - - - 0x00D98D 03:D97D: 8D E6 03  STA ram_03E6
+C - - - - - 0x00D98D 03:D97D: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00D990 03:D980: 20 DF DD  JSR sub_DDDF
 C - - - - - 0x00D993 03:D983: 20 5E DB  JSR sub_DB5E
 C - - - - - 0x00D996 03:D986: 20 5E DF  JSR sub_DF5E
@@ -3799,7 +3800,7 @@ tbl_D992:
 
 
 sub_D9A3:
-C - - - - - 0x00D9B3 03:D9A3: AD 26 04  LDA ram_0426
+C - - - - - 0x00D9B3 03:D9A3: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00D9B6 03:D9A6: F0 03     BEQ bra_D9AB
                                         RTS
 bra_D9AB:
@@ -3809,8 +3810,8 @@ C - - - - - 0x00D9C0 03:D9B0: 90 63     BCC bra_DA15_RTS
 C - - - - - 0x00D9C2 03:D9B2: C9 20     CMP #$20
 C - - - - - 0x00D9C4 03:D9B4: B0 5F     BCS bra_DA15_RTS
 C - - - - - 0x00D9C6 03:D9B6: A9 00     LDA #$00
-C - - - - - 0x00D9C8 03:D9B8: AE DE 03  LDX ram_03DE
-C - - - - - 0x00D9CB 03:D9BB: AC E0 03  LDY ram_03E0
+C - - - - - 0x00D9C8 03:D9B8: AE DE 03  LDX ram_ball_pos_Y_lo
+C - - - - - 0x00D9CB 03:D9BB: AC E0 03  LDY ram_ball_pos_Y_hi
 C - - - - - 0x00D9CE 03:D9BE: C0 02     CPY #$02
 C - - - - - 0x00D9D0 03:D9C0: 90 05     BCC bra_D9C7
 C - - - - - 0x00D9D2 03:D9C2: 20 50 CB  JSR sub_CB50
@@ -3829,8 +3830,8 @@ C - - - - - 0x00D9E8 03:D9D8: 90 3B     BCC bra_DA15_RTS
 C - - - - - 0x00D9EA 03:D9DA: D0 39     BNE bra_DA15_RTS
 C - - - - - 0x00D9EC 03:D9DC: E0 04     CPX #$04
 C - - - - - 0x00D9EE 03:D9DE: B0 35     BCS bra_DA15_RTS
-C - - - - - 0x00D9F0 03:D9E0: AE D8 03  LDX ram_03D8
-C - - - - - 0x00D9F3 03:D9E3: AC DA 03  LDY ram_03DA
+C - - - - - 0x00D9F0 03:D9E0: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x00D9F3 03:D9E3: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x00D9F6 03:D9E6: F0 03     BEQ bra_D9EB
 - - - - - - 0x00D9F8 03:D9E8: 20 4A CB  JSR sub_CB4A
 bra_D9EB:
@@ -3842,11 +3843,11 @@ C - - - - - 0x00DA01 03:D9F1: ED 19 DA  SBC tbl_DA18 + 1
 C - - - - - 0x00DA04 03:D9F4: 90 1F     BCC bra_DA15_RTS
 - - - - - - 0x00DA06 03:D9F6: 4E 1E 04  LSR ram_041E
 - - - - - - 0x00DA09 03:D9F9: 6E 1D 04  ROR ram_041D
-- - - - - - 0x00DA0C 03:D9FC: AD E6 03  LDA ram_03E6
+- - - - - - 0x00DA0C 03:D9FC: AD E6 03  LDA ram_ball_direction
 - - - - - - 0x00DA0F 03:D9FF: 49 FF     EOR #$FF
 - - - - - - 0x00DA11 03:DA01: 18        CLC
 - - - - - - 0x00DA12 03:DA02: 69 81     ADC #$81
-- - - - - - 0x00DA14 03:DA04: 8D E6 03  STA ram_03E6
+- - - - - - 0x00DA14 03:DA04: 8D E6 03  STA ram_ball_direction
 - - - - - - 0x00DA17 03:DA07: 20 DF DD  JSR sub_DDDF
 - - - - - - 0x00DA1A 03:DA0A: 20 5E DB  JSR sub_DB5E
 - - - - - - 0x00DA1D 03:DA0D: 20 5E DF  JSR sub_DF5E
@@ -3877,8 +3878,8 @@ C - - - - - 0x00DA39 03:DA29: 60        RTS
 bra_DA3D:
 C - - - - - 0x00DA4D 03:DA3D: A9 00     LDA #$00
 C - - - - - 0x00DA4F 03:DA3F: 85 2E     STA ram_002E
-C - - - - - 0x00DA51 03:DA41: AE DE 03  LDX ram_03DE
-C - - - - - 0x00DA54 03:DA44: AC E0 03  LDY ram_03E0
+C - - - - - 0x00DA51 03:DA41: AE DE 03  LDX ram_ball_pos_Y_lo
+C - - - - - 0x00DA54 03:DA44: AC E0 03  LDY ram_ball_pos_Y_hi
 C - - - - - 0x00DA57 03:DA47: C0 02     CPY #$02
 C - - - - - 0x00DA59 03:DA49: 90 05     BCC bra_DA50
 C - - - - - 0x00DA5B 03:DA4B: 20 50 CB  JSR sub_CB50
@@ -3902,8 +3903,8 @@ C - - - - - 0x00DA78 03:DA68: ED 5D DB  SBC tbl_DB5C + 1
 C - - - - - 0x00DA7B 03:DA6B: B0 03     BCS bra_DA70
                                         RTS
 bra_DA70:
-C - - - - - 0x00DA80 03:DA70: AE D8 03  LDX ram_03D8
-C - - - - - 0x00DA83 03:DA73: AC DA 03  LDY ram_03DA
+C - - - - - 0x00DA80 03:DA70: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x00DA83 03:DA73: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x00DA86 03:DA76: F0 07     BEQ bra_DA7F
 C - - - - - 0x00DA88 03:DA78: E6 2E     INC ram_002E
 C - - - - - 0x00DA8A 03:DA7A: E6 2E     INC ram_002E
@@ -3942,7 +3943,7 @@ C - - - - - 0x00DAC6 03:DAB6: 29 80     AND #$80
 C - - - - - 0x00DAC8 03:DAB8: D0 03     BNE bra_DABD
                                         RTS
 bra_DABD:
-C - - - - - 0x00DACD 03:DABD: AD E6 03  LDA ram_03E6
+C - - - - - 0x00DACD 03:DABD: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00DAD0 03:DAC0: 49 FF     EOR #$FF
 C - - - - - 0x00DAD2 03:DAC2: 18        CLC
 C - - - - - 0x00DAD3 03:DAC3: 69 01     ADC #$01
@@ -3964,10 +3965,10 @@ C - - - - - 0x00DAEE 03:DADE: 4D DD 03  EOR ram_03DD
 C - - - - - 0x00DAF1 03:DAE1: 29 80     AND #$80
 C - - - - - 0x00DAF3 03:DAE3: F0 55     BEQ bra_DB3A_RTS
 C - - - - - 0x00DAF5 03:DAE5: 38        SEC
-C - - - - - 0x00DAF6 03:DAE6: AD D8 03  LDA ram_03D8
+C - - - - - 0x00DAF6 03:DAE6: AD D8 03  LDA ram_ball_pos_X_lo
 C - - - - - 0x00DAF9 03:DAE9: ED 56 DB  SBC tbl_DB56
 C - - - - - 0x00DAFC 03:DAEC: 85 2A     STA ram_002A
-C - - - - - 0x00DAFE 03:DAEE: AD DA 03  LDA ram_03DA
+C - - - - - 0x00DAFE 03:DAEE: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00DB01 03:DAF1: ED 57 DB  SBC tbl_DB56 + 1
 C - - - - - 0x00DB04 03:DAF4: B0 04     BCS bra_DAFA
 - - - - - - 0x00DB06 03:DAF6: A9 00     LDA #$00
@@ -3983,12 +3984,12 @@ C - - - - - 0x00DB14 03:DB04: 90 02     BCC bra_DB08
 - - - - - - 0x00DB16 03:DB06: A0 18     LDY #$18
 bra_DB08:
 C - - - - - 0x00DB18 03:DB08: BE 3B DB  LDX tbl_DB3B,Y
-C - - - - - 0x00DB1B 03:DB0B: AD E6 03  LDA ram_03E6
+C - - - - - 0x00DB1B 03:DB0B: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00DB1E 03:DB0E: 49 FF     EOR #$FF
 C - - - - - 0x00DB20 03:DB10: 18        CLC
 C - - - - - 0x00DB21 03:DB11: 69 81     ADC #$81
 loc_DB13:
-C D 2 - - - 0x00DB23 03:DB13: 8D E6 03  STA ram_03E6
+C D 2 - - - 0x00DB23 03:DB13: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00DB26 03:DB16: 8A        TXA
 C - - - - - 0x00DB27 03:DB17: 46 2E     LSR ram_002E
 C - - - - - 0x00DB29 03:DB19: 90 02     BCC bra_DB1D
@@ -4064,10 +4065,10 @@ C - - - - - 0x00DB71 03:DB61: AC D7 03  LDY ram_03D7
 C - - - - - 0x00DB74 03:DB64: 20 9B DB  JSR sub_DB9B
 C - - - - - 0x00DB77 03:DB67: 18        CLC
 C - - - - - 0x00DB78 03:DB68: 8A        TXA
-C - - - - - 0x00DB79 03:DB69: 6D D8 03  ADC ram_03D8
+C - - - - - 0x00DB79 03:DB69: 6D D8 03  ADC ram_ball_pos_X_lo
 C - - - - - 0x00DB7C 03:DB6C: AA        TAX
 C - - - - - 0x00DB7D 03:DB6D: 98        TYA
-C - - - - - 0x00DB7E 03:DB6E: 6D DA 03  ADC ram_03DA
+C - - - - - 0x00DB7E 03:DB6E: 6D DA 03  ADC ram_ball_pos_X_hi
 C - - - - - 0x00DB81 03:DB71: 10 03     BPL bra_DB76
 C - - - - - 0x00DB83 03:DB73: A9 00     LDA #$00
 C - - - - - 0x00DB85 03:DB75: AA        TAX
@@ -4079,10 +4080,10 @@ C - - - - - 0x00DB8F 03:DB7F: AC DD 03  LDY ram_03DD
 C - - - - - 0x00DB92 03:DB82: 20 9B DB  JSR sub_DB9B
 C - - - - - 0x00DB95 03:DB85: 18        CLC
 C - - - - - 0x00DB96 03:DB86: 8A        TXA
-C - - - - - 0x00DB97 03:DB87: 6D DE 03  ADC ram_03DE
+C - - - - - 0x00DB97 03:DB87: 6D DE 03  ADC ram_ball_pos_Y_lo
 C - - - - - 0x00DB9A 03:DB8A: AA        TAX
 C - - - - - 0x00DB9B 03:DB8B: 98        TYA
-C - - - - - 0x00DB9C 03:DB8C: 6D E0 03  ADC ram_03E0
+C - - - - - 0x00DB9C 03:DB8C: 6D E0 03  ADC ram_ball_pos_Y_hi
 C - - - - - 0x00DB9F 03:DB8F: 10 03     BPL bra_DB94
 C - - - - - 0x00DBA1 03:DB91: A9 00     LDA #$00
 C - - - - - 0x00DBA3 03:DB93: AA        TAX
@@ -4130,8 +4131,8 @@ C - - - - - 0x00DBE6 03:DBD6: 2C 23 04  BIT ram_0423
 C - - - - - 0x00DBE9 03:DBD9: 10 02     BPL bra_DBDD
 C - - - - - 0x00DBEB 03:DBDB: A9 FF     LDA #$FF
 bra_DBDD:
-C - - - - - 0x00DBED 03:DBDD: 6D 26 04  ADC ram_0426
-C - - - - - 0x00DBF0 03:DBE0: 8D 26 04  STA ram_0426
+C - - - - - 0x00DBED 03:DBDD: 6D 26 04  ADC ram_ball_Z_hi
+C - - - - - 0x00DBF0 03:DBE0: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00DBF3 03:DBE3: 30 12     BMI bra_DBF7
 C - - - - - 0x00DBF5 03:DBE5: 18        CLC
 C - - - - - 0x00DBF6 03:DBE6: AD 21 04  LDA ram_0421
@@ -4144,7 +4145,7 @@ C - - - - - 0x00DC06 03:DBF6: 60        RTS
 bra_DBF7:
 C - - - - - 0x00DC07 03:DBF7: A9 00     LDA #$00
 C - - - - - 0x00DC09 03:DBF9: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00DC0C 03:DBFC: 8D 26 04  STA ram_0426
+C - - - - - 0x00DC0C 03:DBFC: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00DC0F 03:DBFF: 4E 1E 04  LSR ram_041E
 C - - - - - 0x00DC12 03:DC02: 6E 1D 04  ROR ram_041D
 C - - - - - 0x00DC15 03:DC05: AD 1E 04  LDA ram_041E
@@ -4199,43 +4200,43 @@ C - - - - - 0x00DC79 03:DC69: AD D5 03  LDA ram_03D5
 C - - - - - 0x00DC7C 03:DC6C: 6D D6 03  ADC ram_03D6
 C - - - - - 0x00DC7F 03:DC6F: AA        TAX
 C - - - - - 0x00DC80 03:DC70: AD D7 03  LDA ram_03D7
-C - - - - - 0x00DC83 03:DC73: 6D D8 03  ADC ram_03D8
+C - - - - - 0x00DC83 03:DC73: 6D D8 03  ADC ram_ball_pos_X_lo
 C - - - - - 0x00DC86 03:DC76: A8        TAY
 C - - - - - 0x00DC87 03:DC77: A9 00     LDA #$00
 C - - - - - 0x00DC89 03:DC79: 2C D7 03  BIT ram_03D7
 C - - - - - 0x00DC8C 03:DC7C: 10 02     BPL bra_DC80
 C - - - - - 0x00DC8E 03:DC7E: A9 FF     LDA #$FF
 bra_DC80:
-C - - - - - 0x00DC90 03:DC80: 6D DA 03  ADC ram_03DA
+C - - - - - 0x00DC90 03:DC80: 6D DA 03  ADC ram_ball_pos_X_hi
 C - - - - - 0x00DC93 03:DC83: 10 04     BPL bra_DC89
 C - - - - - 0x00DC95 03:DC85: A9 00     LDA #$00
 C - - - - - 0x00DC97 03:DC87: AA        TAX
 C - - - - - 0x00DC98 03:DC88: A8        TAY
 bra_DC89:
 C - - - - - 0x00DC99 03:DC89: 8E D6 03  STX ram_03D6
-C - - - - - 0x00DC9C 03:DC8C: 8C D8 03  STY ram_03D8
-C - - - - - 0x00DC9F 03:DC8F: 8D DA 03  STA ram_03DA
+C - - - - - 0x00DC9C 03:DC8C: 8C D8 03  STY ram_ball_pos_X_lo
+C - - - - - 0x00DC9F 03:DC8F: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00DCA2 03:DC92: 18        CLC
 C - - - - - 0x00DCA3 03:DC93: AD DB 03  LDA ram_03DB
 C - - - - - 0x00DCA6 03:DC96: 6D DC 03  ADC ram_03DC
 C - - - - - 0x00DCA9 03:DC99: AA        TAX
 C - - - - - 0x00DCAA 03:DC9A: AD DD 03  LDA ram_03DD
-C - - - - - 0x00DCAD 03:DC9D: 6D DE 03  ADC ram_03DE
+C - - - - - 0x00DCAD 03:DC9D: 6D DE 03  ADC ram_ball_pos_Y_lo
 C - - - - - 0x00DCB0 03:DCA0: A8        TAY
 C - - - - - 0x00DCB1 03:DCA1: A9 00     LDA #$00
 C - - - - - 0x00DCB3 03:DCA3: 2C DD 03  BIT ram_03DD
 C - - - - - 0x00DCB6 03:DCA6: 10 02     BPL bra_DCAA
 C - - - - - 0x00DCB8 03:DCA8: A9 FF     LDA #$FF
 bra_DCAA:
-C - - - - - 0x00DCBA 03:DCAA: 6D E0 03  ADC ram_03E0
+C - - - - - 0x00DCBA 03:DCAA: 6D E0 03  ADC ram_ball_pos_Y_hi
 C - - - - - 0x00DCBD 03:DCAD: 10 04     BPL bra_DCB3
 - - - - - - 0x00DCBF 03:DCAF: A9 00     LDA #$00
 - - - - - - 0x00DCC1 03:DCB1: AA        TAX
 - - - - - - 0x00DCC2 03:DCB2: A8        TAY
 bra_DCB3:
 C - - - - - 0x00DCC3 03:DCB3: 8E DC 03  STX ram_03DC
-C - - - - - 0x00DCC6 03:DCB6: 8C DE 03  STY ram_03DE
-C - - - - - 0x00DCC9 03:DCB9: 8D E0 03  STA ram_03E0
+C - - - - - 0x00DCC6 03:DCB6: 8C DE 03  STY ram_ball_pos_Y_lo
+C - - - - - 0x00DCC9 03:DCB9: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00DCCC 03:DCBC: 60        RTS
 
 
@@ -4262,18 +4263,18 @@ C - - - - - 0x00DCFC 03:DCEC: 60        RTS
 sub_DCED:
 C - - - - - 0x00DCFD 03:DCED: 18        CLC
 C - - - - - 0x00DCFE 03:DCEE: AD 24 04  LDA ram_ball_Z_lo
-C - - - - - 0x00DD01 03:DCF1: 6D D8 03  ADC ram_03D8
-C - - - - - 0x00DD04 03:DCF4: 8D F8 03  STA ram_03F8
-C - - - - - 0x00DD07 03:DCF7: AD 26 04  LDA ram_0426
-C - - - - - 0x00DD0A 03:DCFA: 6D DA 03  ADC ram_03DA
-C - - - - - 0x00DD0D 03:DCFD: 8D FA 03  STA ram_03FA
+C - - - - - 0x00DD01 03:DCF1: 6D D8 03  ADC ram_ball_pos_X_lo
+C - - - - - 0x00DD04 03:DCF4: 8D F8 03  STA ram_shad_pos_X_lo
+C - - - - - 0x00DD07 03:DCF7: AD 26 04  LDA ram_ball_Z_hi
+C - - - - - 0x00DD0A 03:DCFA: 6D DA 03  ADC ram_ball_pos_X_hi
+C - - - - - 0x00DD0D 03:DCFD: 8D FA 03  STA ram_shad_pos_X_hi
 C - - - - - 0x00DD10 03:DD00: 18        CLC
-C - - - - - 0x00DD11 03:DD01: AD DE 03  LDA ram_03DE
+C - - - - - 0x00DD11 03:DD01: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x00DD14 03:DD04: 69 02     ADC #$02
-C - - - - - 0x00DD16 03:DD06: 8D FE 03  STA ram_03FE
-C - - - - - 0x00DD19 03:DD09: AD E0 03  LDA ram_03E0
+C - - - - - 0x00DD16 03:DD06: 8D FE 03  STA ram_shad_pos_Y_lo
+C - - - - - 0x00DD19 03:DD09: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00DD1C 03:DD0C: 69 00     ADC #$00
-C - - - - - 0x00DD1E 03:DD0E: 8D 00 04  STA ram_0400
+C - - - - - 0x00DD1E 03:DD0E: 8D 00 04  STA ram_shad_pos_Y_hi
 C - - - - - 0x00DD21 03:DD11: A9 E0     LDA #$E0
 C - - - - - 0x00DD23 03:DD13: 8D 04 04  STA ram_0404
 C - - - - - 0x00DD26 03:DD16: 60        RTS
@@ -4286,7 +4287,7 @@ bra_DD19_loop:
 C - - - - - 0x00DD29 03:DD19: 38        SEC
 C - - - - - 0x00DD2A 03:DD1A: AD 24 04  LDA ram_ball_Z_lo
 C - - - - - 0x00DD2D 03:DD1D: FD 5D DD  SBC tbl_DD5D,X
-C - - - - - 0x00DD30 03:DD20: AD 26 04  LDA ram_0426
+C - - - - - 0x00DD30 03:DD20: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00DD33 03:DD23: FD 5E DD  SBC tbl_DD5E,X
 C - - - - - 0x00DD36 03:DD26: 90 04     BCC bra_DD2C
 C - - - - - 0x00DD38 03:DD28: E8        INX
@@ -4297,7 +4298,7 @@ C - - - - - 0x00DD3C 03:DD2C: 8A        TXA
 C - - - - - 0x00DD3D 03:DD2D: 4A        LSR
 C - - - - - 0x00DD3E 03:DD2E: 18        CLC
 C - - - - - 0x00DD3F 03:DD2F: 69 03     ADC #$03
-C - - - - - 0x00DD41 03:DD31: 8D E4 03  STA ram_03E4
+C - - - - - 0x00DD41 03:DD31: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00DD44 03:DD34: 2C D3 03  BIT ram_03D3
 C - - - - - 0x00DD47 03:DD37: 10 23     BPL bra_DD5C_RTS
 C - - - - - 0x00DD49 03:DD39: AD E1 03  LDA ram_03E1
@@ -4311,10 +4312,10 @@ bra_DD4B:
 C - - - - - 0x00DD5B 03:DD4B: CE E1 03  DEC ram_03E1
 C - - - - - 0x00DD5E 03:DD4E: 2C D4 03  BIT ram_03D4
 C - - - - - 0x00DD61 03:DD51: 10 09     BPL bra_DD5C_RTS
-C - - - - - 0x00DD63 03:DD53: AD E4 03  LDA ram_03E4
+C - - - - - 0x00DD63 03:DD53: AD E4 03  LDA ram_ball_anim_id
 C - - - - - 0x00DD66 03:DD56: 18        CLC
 C - - - - - 0x00DD67 03:DD57: 69 07     ADC #$07
-C - - - - - 0x00DD69 03:DD59: 8D E4 03  STA ram_03E4
+C - - - - - 0x00DD69 03:DD59: 8D E4 03  STA ram_ball_anim_id
 bra_DD5C_RTS:
 C - - - - - 0x00DD6C 03:DD5C: 60        RTS
 
@@ -4344,10 +4345,10 @@ C - - - - - 0x00DD7B 03:DD6B: A9 00     LDA #$00
 C - - - - - 0x00DD7D 03:DD6D: 85 2A     STA ram_002A
 C - - - - - 0x00DD7F 03:DD6F: AD 19 04  LDA ram_ball_pass_pos_X_lo
 C - - - - - 0x00DD82 03:DD72: 38        SEC
-C - - - - - 0x00DD83 03:DD73: ED D8 03  SBC ram_03D8
+C - - - - - 0x00DD83 03:DD73: ED D8 03  SBC ram_ball_pos_X_lo
 C - - - - - 0x00DD86 03:DD76: AA        TAX
 C - - - - - 0x00DD87 03:DD77: AD 1A 04  LDA ram_ball_pass_pos_X_hi
-C - - - - - 0x00DD8A 03:DD7A: ED DA 03  SBC ram_03DA
+C - - - - - 0x00DD8A 03:DD7A: ED DA 03  SBC ram_ball_pos_X_hi
 C - - - - - 0x00DD8D 03:DD7D: A8        TAY
 C - - - - - 0x00DD8E 03:DD7E: B0 03     BCS bra_DD83
 C - - - - - 0x00DD90 03:DD80: 20 1E C9  JSR sub_C91E_EOR_16bit
@@ -4359,10 +4360,10 @@ C - - - - - 0x00DD99 03:DD89: A9 00     LDA #$00
 C - - - - - 0x00DD9B 03:DD8B: 85 52     STA ram_0052
 C - - - - - 0x00DD9D 03:DD8D: AD 17 04  LDA ram_ball_pass_pos_Y_lo
 C - - - - - 0x00DDA0 03:DD90: 38        SEC
-C - - - - - 0x00DDA1 03:DD91: ED DE 03  SBC ram_03DE
+C - - - - - 0x00DDA1 03:DD91: ED DE 03  SBC ram_ball_pos_Y_lo
 C - - - - - 0x00DDA4 03:DD94: AA        TAX
 C - - - - - 0x00DDA5 03:DD95: AD 18 04  LDA ram_ball_pass_pos_Y_hi
-C - - - - - 0x00DDA8 03:DD98: ED E0 03  SBC ram_03E0
+C - - - - - 0x00DDA8 03:DD98: ED E0 03  SBC ram_ball_pos_Y_hi
 C - - - - - 0x00DDAB 03:DD9B: A8        TAY
 C - - - - - 0x00DDAC 03:DD9C: B0 03     BCS bra_DDA1
 C - - - - - 0x00DDAE 03:DD9E: 20 1E C9  JSR sub_C91E_EOR_16bit
@@ -4427,7 +4428,7 @@ C - - - - - 0x00DE09 03:DDF9: AD 1B 04  LDA ram_041B
 C - - - - - 0x00DE0C 03:DDFC: 85 53     STA ram_0053
 C - - - - - 0x00DE0E 03:DDFE: AD 1C 04  LDA ram_041C
 C - - - - - 0x00DE11 03:DE01: 85 58     STA ram_0058
-C - - - - - 0x00DE13 03:DE03: AD E6 03  LDA ram_03E6
+C - - - - - 0x00DE13 03:DE03: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00DE16 03:DE06: 10 04     BPL bra_DE0C
 C - - - - - 0x00DE18 03:DE08: 49 FF     EOR #$FF
 C - - - - - 0x00DE1A 03:DE0A: 29 7F     AND #$7F
@@ -4476,20 +4477,20 @@ C - - - - - 0x00DE65 03:DE55: 8D 23 04  STA ram_0423
 C - - - - - 0x00DE68 03:DE58: A9 00     LDA #$00
 C - - - - - 0x00DE6A 03:DE5A: 8D 22 04  STA ram_0422
 C - - - - - 0x00DE6D 03:DE5D: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00DE70 03:DE60: 8D 26 04  STA ram_0426
+C - - - - - 0x00DE70 03:DE60: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00DE73 03:DE63: 60        RTS
 
 
 
 sub_DE64:
-C - - - - - 0x00DE74 03:DE64: AD E6 03  LDA ram_03E6
+C - - - - - 0x00DE74 03:DE64: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00DE77 03:DE67: 20 20 CC  JSR sub_CC20
 C - - - - - 0x00DE7A 03:DE6A: 4C 73 DE  JMP loc_DE73
 
 
 
 sub_DE6D:
-C - - - - - 0x00DE7D 03:DE6D: AD E6 03  LDA ram_03E6
+C - - - - - 0x00DE7D 03:DE6D: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00DE80 03:DE70: 20 23 CC  JSR sub_CC23
 loc_DE73:
 C D 2 - - - 0x00DE83 03:DE73: 98        TYA
@@ -4610,13 +4611,13 @@ C - - - - - 0x00DF45 03:DF35: A5 6F     LDA ram_006F
 C - - - - - 0x00DF47 03:DF37: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00DF4A 03:DF3A: A0 18     LDY #con_plr_sub_timer
 C - - - - - 0x00DF4C 03:DF3C: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00DF4E 03:DF3E: F0 15     BEQ bra_DF55
+C - - - - - 0x00DF4E 03:DF3E: F0 15     BEQ bra_DF55_check_next_player
 C - - - - - 0x00DF50 03:DF40: C9 FF     CMP #$FF
-C - - - - - 0x00DF52 03:DF42: F0 11     BEQ bra_DF55
+C - - - - - 0x00DF52 03:DF42: F0 11     BEQ bra_DF55_check_next_player
 C - - - - - 0x00DF54 03:DF44: 38        SEC
 C - - - - - 0x00DF55 03:DF45: E9 01     SBC #$01
 C - - - - - 0x00DF57 03:DF47: 91 61     STA (ram_plr_data),Y
-C - - - - - 0x00DF59 03:DF49: D0 0A     BNE bra_DF55
+C - - - - - 0x00DF59 03:DF49: D0 0A     BNE bra_DF55_check_next_player
 C - - - - - 0x00DF5B 03:DF4B: A0 16     LDY #con_plr_sub_hi
 C - - - - - 0x00DF5D 03:DF4D: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00DF5F 03:DF4F: 48        PHA
@@ -4624,8 +4625,8 @@ C - - - - - 0x00DF60 03:DF50: C8        INY ; con_plr_sub_lo
 C - - - - - 0x00DF61 03:DF51: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00DF63 03:DF53: 48        PHA
 C - - - - - 0x00DF64 03:DF54: 60        RTS
-bra_DF55:
-loc_DF55:
+bra_DF55_check_next_player:
+loc_DF55_check_next_player:
 C D 2 - - - 0x00DF65 03:DF55: E6 6F     INC ram_006F
 C - - - - - 0x00DF67 03:DF57: A5 6F     LDA ram_006F
 C - - - - - 0x00DF69 03:DF59: C9 16     CMP #$16
@@ -5048,7 +5049,7 @@ bra_E213:
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E22B 03:E21B: A9 11     LDA #con_behavior_follow_enemy
 C - - - - - 0x00E22D 03:E21D: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00E230 03:E220: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E230 03:E220: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -5177,7 +5178,7 @@ C - - - - - 0x00E302 03:E2F2: A5 78     LDA ram_0078
 C - - - - - 0x00E304 03:E2F4: 8D 1E 04  STA ram_041E
 C - - - - - 0x00E307 03:E2F7: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E309 03:E2F9: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00E30B 03:E2FB: 8D E6 03  STA ram_03E6
+C - - - - - 0x00E30B 03:E2FB: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00E30E 03:E2FE: A9 10     LDA #$10
 C - - - - - 0x00E310 03:E300: 8D 1B 04  STA ram_041B
 C - - - - - 0x00E313 03:E303: A9 00     LDA #$00
@@ -5263,7 +5264,7 @@ C - - - - - 0x00E38C 03:E37C: A9 05     LDA #con_sound_recieve
 C - - - - - 0x00E38E 03:E37E: 20 10 C9  JSR sub_C910_prepare_sound
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E39B 03:E38B: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
-C - - - - - 0x00E39E 03:E38E: AD E6 03  LDA ram_03E6
+C - - - - - 0x00E39E 03:E38E: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00E3A1 03:E391: 18        CLC
 C - - - - - 0x00E3A2 03:E392: 69 80     ADC #$80
 C - - - - - 0x00E3A4 03:E394: A0 13     LDY #con_plr_direction
@@ -5271,7 +5272,7 @@ C - - - - - 0x00E3A6 03:E396: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E3A8 03:E398: 38        SEC
 C - - - - - 0x00E3A9 03:E399: AD 24 04  LDA ram_ball_Z_lo
 C - - - - - 0x00E3AC 03:E39C: E9 0C     SBC #$0C
-C - - - - - 0x00E3AE 03:E39E: AD 26 04  LDA ram_0426
+C - - - - - 0x00E3AE 03:E39E: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00E3B1 03:E3A1: E9 00     SBC #$00
 C - - - - - 0x00E3B3 03:E3A3: 90 22     BCC bra_E3C7
 C - - - - - 0x00E3B5 03:E3A5: 2C 23 04  BIT ram_0423
@@ -5293,18 +5294,18 @@ bra_E3C7:
 C - - - - - 0x00E3DF 03:E3CF: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00E3E1 03:E3D1: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00E3EE 03:E3DE: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E3EE 03:E3DE: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
 sub_E3E1:
 C - - - - - 0x00E3F1 03:E3E1: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00E3F4 03:E3E4: AE AD 03  LDX ram_team_w_ball
-C - - - - - 0x00E3F7 03:E3E7: F0 1C     BEQ bra_E405
+C - - - - - 0x00E3F7 03:E3E7: F0 1C     BEQ bra_E405    ; мяч у команды снизу
 C - - - - - 0x00E3F9 03:E3E9: AD 25 00  LDA ram_btn_hold + 1
 C - - - - - 0x00E3FC 03:E3EC: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00E3FF 03:E3EF: 30 14     BMI bra_E405    ; con_gm_2p
-C - - - - - 0x00E401 03:E3F1: 48        PHA
+C - - - - - 0x00E401 03:E3F1: 48        PHA     ; bzk опт, бесполезное сохранение A, в подпрограмме не используется
 C - - - - - 0x00E402 03:E3F2: A9 02     LDA #$02
 C - - - - - 0x00E404 03:E3F4: 85 67     STA ram_prg_bank_0
 C - - - - - 0x00E406 03:E3F6: A9 03     LDA #$03
@@ -5330,18 +5331,18 @@ C - - - - - 0x00E422 03:E412: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E42D 03:E41D: A2 00     LDX #$00
 C - - - - - 0x00E42F 03:E41F: A0 00     LDY #$00
-bra_E421:
+bra_E421_loop:
 C - - - - - 0x00E431 03:E421: 38        SEC
 C - - - - - 0x00E432 03:E422: AD 24 04  LDA ram_ball_Z_lo
-C - - - - - 0x00E435 03:E425: FD 61 E4  SBC tbl_E461,X
-C - - - - - 0x00E438 03:E428: AD 26 04  LDA ram_0426
-C - - - - - 0x00E43B 03:E42B: FD 62 E4  SBC tbl_E462,X
-C - - - - - 0x00E43E 03:E42E: 30 05     BMI bra_E435
+C - - - - - 0x00E435 03:E425: FD 61 E4  SBC tbl_E461_ball_Z_pos,X
+C - - - - - 0x00E438 03:E428: AD 26 04  LDA ram_ball_Z_hi
+C - - - - - 0x00E43B 03:E42B: FD 62 E4  SBC tbl_E461_ball_Z_pos + 1,X
+C - - - - - 0x00E43E 03:E42E: 30 05     BMI bra_E435_lower_than
 C - - - - - 0x00E440 03:E430: E8        INX
 C - - - - - 0x00E441 03:E431: E8        INX
 C - - - - - 0x00E442 03:E432: C8        INY
-C - - - - - 0x00E443 03:E433: D0 EC     BNE bra_E421
-bra_E435:
+C - - - - - 0x00E443 03:E433: D0 EC     BNE bra_E421_loop
+bra_E435_lower_than:
 C - - - - - 0x00E445 03:E435: 98        TYA
 C - - - - - 0x00E446 03:E436: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 - D 3 - I - 0x00E449 03:E439: 3F E4     .word ofs_E43F_00
@@ -5363,18 +5364,14 @@ C - - J - - 0x00E45F 03:E44F: A9 0A     LDA #con_behavior_0A
 bra_E450:
                                         JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00E46E 03:E45E: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E46E 03:E45E: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
-tbl_E461:
-- D 3 - - - 0x00E471 03:E461: 04        .byte $04   ; 
-tbl_E462:
-- D 3 - - - 0x00E472 03:E462: 00        .byte $00   ; 
-- D 3 - - - 0x00E473 03:E463: 08        .byte $08   ; 
-- D 3 - - - 0x00E474 03:E464: 00        .byte $00   ; 
-- D 3 - - - 0x00E475 03:E465: FF        .byte $FF   ; 
-- D 3 - - - 0x00E476 03:E466: 3F        .byte $3F   ; 
+tbl_E461_ball_Z_pos:
+- D 3 - - - 0x00E471 03:E461: 04 00     .word $0004
+- D 3 - - - 0x00E473 03:E463: 08 00     .word $0008
+- D 3 - - - 0x00E475 03:E465: FF 3F     .word $3FFF
 
 
 
@@ -5535,16 +5532,16 @@ C - - - - - 0x00E53B 03:E52B: 20 BD CA  JSR sub_CABD_bytes_after_JSR
 
 sub_E55C:
 C - - - - - 0x00E56C 03:E55C: A0 1A     LDY #con_plr_aim_X_lo
-C - - - - - 0x00E56E 03:E55E: AD D8 03  LDA ram_03D8
+C - - - - - 0x00E56E 03:E55E: AD D8 03  LDA ram_ball_pos_X_lo
 C - - - - - 0x00E571 03:E561: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E573 03:E563: C8        INY ; con_plr_aim_X_hi
-C - - - - - 0x00E574 03:E564: AD DA 03  LDA ram_03DA
+C - - - - - 0x00E574 03:E564: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00E577 03:E567: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E579 03:E569: C8        INY ; con_plr_aim_Y_lo
-C - - - - - 0x00E57A 03:E56A: AD DE 03  LDA ram_03DE
+C - - - - - 0x00E57A 03:E56A: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x00E57D 03:E56D: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E57F 03:E56F: C8        INY ; con_plr_aim_Y_hi
-C - - - - - 0x00E580 03:E570: AD E0 03  LDA ram_03E0
+C - - - - - 0x00E580 03:E570: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00E583 03:E573: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00E585 03:E575: 60        RTS
 
@@ -5860,7 +5857,7 @@ C - - - - - 0x00E752 03:E742: 20 43 FA  JSR sub_FA43
 C - - - - - 0x00E755 03:E745: 90 BA     BCC bra_E701
 C - - - - - 0x00E757 03:E747: 2C 29 04  BIT ram_plr_w_ball
 C - - - - - 0x00E75A 03:E74A: 30 65     BMI bra_E7B1
-C - - - - - 0x00E75C 03:E74C: AD E6 03  LDA ram_03E6
+C - - - - - 0x00E75C 03:E74C: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00E75F 03:E74F: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E761 03:E751: 38        SEC
 C - - - - - 0x00E762 03:E752: F1 61     SBC (ram_plr_data),Y
@@ -5884,12 +5881,12 @@ C - - - - - 0x00E79A 03:E78A: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00E7A7 03:E797: A5 6F     LDA ram_006F
 C - - - - - 0x00E7A9 03:E799: 20 B9 C6  JSR sub_C6B9
-C - - - - - 0x00E7AC 03:E79C: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E7AC 03:E79C: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_E79F:
 C - - - - - 0x00E7AF 03:E79F: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00E7B1 03:E7A1: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00E7BE 03:E7AE: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E7BE 03:E7AE: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_E7B1:
 C - - - - - 0x00E7C1 03:E7B1: AD 1E 04  LDA ram_041E
 C - - - - - 0x00E7C4 03:E7B4: C9 03     CMP #$03
@@ -5900,7 +5897,7 @@ bra_E7BD:
 C - - - - - 0x00E7CD 03:E7BD: 2C 23 04  BIT ram_0423
 C - - - - - 0x00E7D0 03:E7C0: 30 57     BMI bra_E819
 C - - - - - 0x00E7D2 03:E7C2: AD 7F 03  LDA ram_random + 1
-C - - - - - 0x00E7D5 03:E7C5: 8D E6 03  STA ram_03E6
+C - - - - - 0x00E7D5 03:E7C5: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00E7D8 03:E7C8: 6D 7E 03  ADC ram_random
 C - - - - - 0x00E7DB 03:E7CB: 29 1F     AND #$1F
 C - - - - - 0x00E7DD 03:E7CD: 69 80     ADC #$80
@@ -5930,7 +5927,7 @@ C - - - - - 0x00E81C 03:E80C: A5 6F     LDA ram_006F
 C - - - - - 0x00E81E 03:E80E: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00E821 03:E811: A5 6F     LDA ram_006F
 C - - - - - 0x00E823 03:E813: 20 2B C9  JSR sub_C92B
-C - - - - - 0x00E826 03:E816: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E826 03:E816: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_E819:
 C - - - - - 0x00E829 03:E819: 4C 6E E3  JMP loc_E36E
 
@@ -6005,7 +6002,7 @@ C - - - - - 0x00E899 03:E889: 30 10     BMI bra_E89B
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00E8A3 03:E893: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00E8A5 03:E895: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00E8A8 03:E898: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E8A8 03:E898: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_E89B:
 C - - - - - 0x00E8AB 03:E89B: A9 16     LDA #$16
 C - - - - - 0x00E8AD 03:E89D: A2 0C     LDX #$0C
@@ -6024,7 +6021,7 @@ C - - - - - 0x00E8CB 03:E8BB: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00E8D6 03:E8C6: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00E8D8 03:E8C8: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00E8E5 03:E8D5: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00E8E5 03:E8D5: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -6087,7 +6084,7 @@ C - - - - - 0x00E96B 03:E95B: 20 1E 80  JSR sub_0x00479F
 loc_E95E:
 C D 3 - - - 0x00E96E 03:E95E: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E970 03:E960: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00E972 03:E962: 8D E6 03  STA ram_03E6
+C - - - - - 0x00E972 03:E962: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00E975 03:E965: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00E978 03:E968: D0 08     BNE bra_E972
 C - - - - - 0x00E97A 03:E96A: A9 C0     LDA #con_btns_AB
@@ -6157,7 +6154,7 @@ C - - - - - 0x00E9E9 03:E9D9: A9 02     LDA #$02
 C - - - - - 0x00E9EB 03:E9DB: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E9EE 03:E9DE: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E9F0 03:E9E0: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00E9F2 03:E9E2: 8D E6 03  STA ram_03E6
+C - - - - - 0x00E9F2 03:E9E2: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00E9F5 03:E9E5: A9 80     LDA #$80
 C - - - - - 0x00E9F7 03:E9E7: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00E9FA 03:E9EA: A2 09     LDX #$09
@@ -6181,7 +6178,7 @@ C - - - - - 0x00EA22 03:EA12: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EA2D 03:EA1D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EA2F 03:EA1F: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00EA32 03:EA22: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EA32 03:EA22: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -6254,7 +6251,7 @@ C - - - - - 0x00EAA9 03:EA99: 8D 18 04  STA ram_ball_pass_pos_Y_hi
 C - - - - - 0x00EAAC 03:EA9C: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00EAAF 03:EA9F: 20 E3 CB  JSR sub_CBE3_get_base_player_address
 C - - - - - 0x00EAB2 03:EAA2: 20 6B DD  JSR sub_DD6B
-C - - - - - 0x00EAB5 03:EAA5: 8D E6 03  STA ram_03E6
+C - - - - - 0x00EAB5 03:EAA5: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00EAB8 03:EAA8: A0 13     LDY #con_plr_direction
 C - - - - - 0x00EABA 03:EAAA: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00EABC 03:EAAC: 60        RTS
@@ -6294,7 +6291,7 @@ C - - - - - 0x00EAF5 03:EAE5: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00EAF8 03:EAE8: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00EAFB 03:EAEB: 4C 00 EB  JMP loc_EB00
 bra_EAEE:
-C - - - - - 0x00EAFE 03:EAEE: AD E6 03  LDA ram_03E6
+C - - - - - 0x00EAFE 03:EAEE: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00EB01 03:EAF1: 18        CLC
 C - - - - - 0x00EB02 03:EAF2: 69 80     ADC #$80
 C - - - - - 0x00EB04 03:EAF4: A0 13     LDY #con_plr_direction
@@ -6308,7 +6305,7 @@ C - - - - - 0x00EB13 03:EB03: 30 10     BMI bra_EB15
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EB1D 03:EB0D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EB1F 03:EB0F: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00EB22 03:EB12: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EB22 03:EB12: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_EB15:
 C - - - - - 0x00EB25 03:EB15: A9 16     LDA #$16
 C - - - - - 0x00EB27 03:EB17: A2 0C     LDX #$0C
@@ -6354,7 +6351,7 @@ C - - - - - 0x00EB77 03:EB67: 30 10     BMI bra_EB79    ; con_gm_2p
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EB81 03:EB71: A9 11     LDA #con_behavior_follow_enemy
 C - - - - - 0x00EB83 03:EB73: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00EB86 03:EB76: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EB86 03:EB76: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_EB79:
 loc_EB79:
 C D 3 - - - 0x00EB89 03:EB79: A9 01     LDA #$01
@@ -6365,7 +6362,7 @@ C - - - - - 0x00EB93 03:EB83: F0 10     BEQ bra_EB95
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EB9D 03:EB8D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EB9F 03:EB8F: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00EBA2 03:EB92: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EBA2 03:EB92: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_EB95:
 C - - - - - 0x00EBA5 03:EB95: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00EBA8 03:EB98: AE AD 03  LDX ram_team_w_ball
@@ -6401,7 +6398,7 @@ C - - - - - 0x00EBF2 03:EBE2: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00EBFD 03:EBED: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00EBFF 03:EBEF: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00EC0C 03:EBFC: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EC0C 03:EBFC: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_EBFF:
 C - - - - - 0x00EC0F 03:EBFF: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00EC12 03:EC02: F0 08     BEQ bra_EC0C
@@ -6487,7 +6484,7 @@ C - - - - - 0x00EC8D 03:EC7D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EC8F 03:EC7F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00EC92 03:EC82: A9 80     LDA #$80
 C - - - - - 0x00EC94 03:EC84: 8D 2A 04  STA ram_plr_wo_ball
-C - - - - - 0x00EC97 03:EC87: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EC97 03:EC87: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_EC8A:
 C - - - - - 0x00EC9A 03:EC8A: A5 6F     LDA ram_006F
 C - - - - - 0x00EC9C 03:EC8C: F0 1D     BEQ bra_ECAB
@@ -6522,7 +6519,7 @@ C D 3 - - - 0x00ECD5 03:ECC5: A2 09     LDX #$09
 C - - - - - 0x00ECD7 03:ECC7: A9 16     LDA #$16
 C - - - - - 0x00ECD9 03:ECC9: 20 60 FA  JSR sub_FA60
 C - - - - - 0x00ECDC 03:ECCC: 90 0F     BCC bra_ECDD
-C - - - - - 0x00ECDE 03:ECCE: AD 26 04  LDA ram_0426
+C - - - - - 0x00ECDE 03:ECCE: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00ECE1 03:ECD1: D0 85     BNE bra_EC58
 C - - - - - 0x00ECE3 03:ECD3: AD 24 04  LDA ram_ball_Z_lo
 C - - - - - 0x00ECE6 03:ECD6: C9 1C     CMP #$1C
@@ -6535,7 +6532,7 @@ C - - - - - 0x00ECF1 03:ECE1: 20 60 FA  JSR sub_FA60
 C - - - - - 0x00ECF4 03:ECE4: B0 03     BCS bra_ECE9
 C - - - - - 0x00ECF6 03:ECE6: 4C 58 EC  JMP loc_EC58
 bra_ECE9:
-C - - - - - 0x00ECF9 03:ECE9: AD 26 04  LDA ram_0426
+C - - - - - 0x00ECF9 03:ECE9: AD 26 04  LDA ram_ball_Z_hi
 C - - - - - 0x00ECFC 03:ECEC: F0 03     BEQ bra_ECF1
 - - - - - - 0x00ECFE 03:ECEE: 4C 58 EC  JMP loc_EC58
 bra_ECF1:
@@ -6551,7 +6548,7 @@ C - - - - - 0x00ED13 03:ED03: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00ED15 03:ED05: 18        CLC
 C - - - - - 0x00ED16 03:ED06: 69 80     ADC #$80
 C - - - - - 0x00ED18 03:ED08: 38        SEC
-C - - - - - 0x00ED19 03:ED09: ED E6 03  SBC ram_03E6
+C - - - - - 0x00ED19 03:ED09: ED E6 03  SBC ram_ball_direction
 C - - - - - 0x00ED1C 03:ED0C: B0 04     BCS bra_ED12
 C - - - - - 0x00ED1E 03:ED0E: 49 FF     EOR #$FF
 C - - - - - 0x00ED20 03:ED10: 69 01     ADC #$01
@@ -6561,16 +6558,16 @@ C - - - - - 0x00ED24 03:ED14: B0 03     BCS bra_ED19
 C - - - - - 0x00ED26 03:ED16: 4C 58 EC  JMP loc_EC58
 bra_ED19:
 C - - - - - 0x00ED29 03:ED19: A9 03     LDA #$03
-C - - - - - 0x00ED2B 03:ED1B: 8D E4 03  STA ram_03E4
+C - - - - - 0x00ED2B 03:ED1B: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00ED2E 03:ED1E: A9 00     LDA #$00
 C - - - - - 0x00ED30 03:ED20: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00ED33 03:ED23: 8D 26 04  STA ram_0426
+C - - - - - 0x00ED33 03:ED23: 8D 26 04  STA ram_ball_Z_hi
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00ED40 03:ED30: 20 40 C9  JSR sub_C93F_clear_player_flag___unknown
 C - - - - - 0x00ED43 03:ED33: 20 77 C6  JSR sub_C677
 C - - - - - 0x00ED46 03:ED36: A5 6F     LDA ram_006F
 C - - - - - 0x00ED48 03:ED38: 20 2B C9  JSR sub_C92B
-C - - - - - 0x00ED4B 03:ED3B: AD E6 03  LDA ram_03E6
+C - - - - - 0x00ED4B 03:ED3B: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00ED4E 03:ED3E: 18        CLC
 C - - - - - 0x00ED4F 03:ED3F: 69 08     ADC #$08
 C - - - - - 0x00ED51 03:ED41: 29 E0     AND #$E0
@@ -6677,12 +6674,12 @@ C D 3 - - - 0x00EDF9 03:EDE9: A9 00     LDA #$00
 C - - - - - 0x00EDFB 03:EDEB: 8D 98 00  STA ram_0098
 C - - - - - 0x00EDFE 03:EDEE: A9 00     LDA #$00
 C - - - - - 0x00EE00 03:EDF0: 8D 24 04  STA ram_ball_Z_lo
-C - - - - - 0x00EE03 03:EDF3: 8D 26 04  STA ram_0426
+C - - - - - 0x00EE03 03:EDF3: 8D 26 04  STA ram_ball_Z_hi
 C - - - - - 0x00EE06 03:EDF6: A9 03     LDA #$03
-C - - - - - 0x00EE08 03:EDF8: 8D E4 03  STA ram_03E4
+C - - - - - 0x00EE08 03:EDF8: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00EE0B 03:EDFB: A9 06     LDA #$06
 C - - - - - 0x00EE0D 03:EDFD: 20 9E C7  JSR sub_C79E
-C - - - - - 0x00EE10 03:EE00: AD E6 03  LDA ram_03E6
+C - - - - - 0x00EE10 03:EE00: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00EE13 03:EE03: 18        CLC
 C - - - - - 0x00EE14 03:EE04: 69 80     ADC #$80
 C - - - - - 0x00EE16 03:EE06: A0 13     LDY #con_plr_direction
@@ -6701,8 +6698,8 @@ C - - - - - 0x00EE32 03:EE22: 69 00     ADC #$00
 bra_EE24:
 C - - - - - 0x00EE34 03:EE24: 18        CLC
 C - - - - - 0x00EE35 03:EE25: 69 80     ADC #$80
-C - - - - - 0x00EE37 03:EE27: 6D E6 03  ADC ram_03E6
-C - - - - - 0x00EE3A 03:EE2A: 8D E6 03  STA ram_03E6
+C - - - - - 0x00EE37 03:EE27: 6D E6 03  ADC ram_ball_direction
+C - - - - - 0x00EE3A 03:EE2A: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00EE3D 03:EE2D: 4E 1E 04  LSR ram_041E
 C - - - - - 0x00EE40 03:EE30: 6E 1D 04  ROR ram_041D
 C - - - - - 0x00EE43 03:EE33: 20 DF DD  JSR sub_DDDF
@@ -6779,7 +6776,7 @@ C - - - - - 0x00EED9 03:EEC9: A9 B0     LDA #$B0
 bra_EECB:
 C - - - - - 0x00EEDB 03:EECB: 18        CLC
 C - - - - - 0x00EEDC 03:EECC: 65 2A     ADC ram_002A
-C - - - - - 0x00EEDE 03:EECE: 8D E6 03  STA ram_03E6
+C - - - - - 0x00EEDE 03:EECE: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00EEE1 03:EED1: 20 DF DD  JSR sub_DDDF
 C - - - - - 0x00EEE4 03:EED4: A9 80     LDA #$80
 C - - - - - 0x00EEE6 03:EED6: 8D 29 04  STA ram_plr_w_ball
@@ -6817,7 +6814,7 @@ C - - - - - 0x00EF33 03:EF23: 09 40     ORA #$40
 C - - - - - 0x00EF35 03:EF25: 8D 2C 04  STA ram_042C
 C - - - - - 0x00EF38 03:EF28: A9 80     LDA #$80
 C - - - - - 0x00EF3A 03:EF2A: 8D 2A 04  STA ram_plr_wo_ball
-C - - - - - 0x00EF3D 03:EF2D: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00EF3D 03:EF2D: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -6842,7 +6839,7 @@ C - - - - - 0x00EF5B 03:EF4B: 48        PHA
 C - - - - - 0x00EF5C 03:EF4C: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00EF5E 03:EF4E: 18        CLC
 C - - - - - 0x00EF5F 03:EF4F: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00EF61 03:EF51: 8D D8 03  STA ram_03D8
+C - - - - - 0x00EF61 03:EF51: 8D D8 03  STA ram_ball_pos_X_lo
 C - - - - - 0x00EF64 03:EF54: C8        INY
 C - - - - - 0x00EF65 03:EF55: C8        INY ; con_plr_pos_X_hi
 C - - - - - 0x00EF66 03:EF56: A2 00     LDX #$00
@@ -6852,7 +6849,7 @@ C - - - - - 0x00EF6B 03:EF5B: CA        DEX
 bra_EF5C:
 C - - - - - 0x00EF6C 03:EF5C: 8A        TXA
 C - - - - - 0x00EF6D 03:EF5D: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00EF6F 03:EF5F: 8D DA 03  STA ram_03DA
+C - - - - - 0x00EF6F 03:EF5F: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00EF72 03:EF62: A0 01     LDY #con_plr_spr_A
 C - - - - - 0x00EF74 03:EF64: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00EF76 03:EF66: 08        PHP
@@ -6868,7 +6865,7 @@ C - - - - - 0x00EF84 03:EF74: 48        PHA
 C - - - - - 0x00EF85 03:EF75: A0 0B     LDY #con_plr_pos_Y_lo
 C - - - - - 0x00EF87 03:EF77: 18        CLC
 C - - - - - 0x00EF88 03:EF78: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00EF8A 03:EF7A: 8D DE 03  STA ram_03DE
+C - - - - - 0x00EF8A 03:EF7A: 8D DE 03  STA ram_ball_pos_Y_lo
 C - - - - - 0x00EF8D 03:EF7D: C8        INY
 C - - - - - 0x00EF8E 03:EF7E: C8        INY ; con_plr_pos_Y_hi
 C - - - - - 0x00EF8F 03:EF7F: A2 00     LDX #$00
@@ -6878,7 +6875,7 @@ C - - - - - 0x00EF94 03:EF84: CA        DEX
 bra_EF85:
 C - - - - - 0x00EF95 03:EF85: 8A        TXA
 C - - - - - 0x00EF96 03:EF86: 71 61     ADC (ram_plr_data),Y
-C - - - - - 0x00EF98 03:EF88: 8D E0 03  STA ram_03E0
+C - - - - - 0x00EF98 03:EF88: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00EF9B 03:EF8B: 20 ED DC  JSR sub_DCED
 C D 3 - - - 0x00EF9E 03:EF8E: 60        RTS
 
@@ -7036,7 +7033,7 @@ C - - - - - 0x00F06A 03:F05A: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00F06D 03:F05D: 68        PLA
 C - - - - - 0x00F06E 03:F05E: 20 45 80  JSR sub_0x00487C
 C - - - - - 0x00F071 03:F061: 20 48 80  JSR sub_0x0048C2
-C - - - - - 0x00F074 03:F064: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F074 03:F064: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7057,7 +7054,7 @@ C - - - - - 0x00F09B 03:F08B: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F0A6 03:F096: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F0A8 03:F098: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00F0B5 03:F0A5: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F0B5 03:F0A5: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7075,7 +7072,7 @@ C - - - - - 0x00F0CE 03:F0BE: D1 61     CMP (ram_plr_data),Y
 C - - - - - 0x00F0D0 03:F0C0: D0 08     BNE bra_F0CA
 C - - - - - 0x00F0D2 03:F0C2: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F0D4 03:F0C4: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F0D7 03:F0C7: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F0D7 03:F0C7: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_F0CA:
 C - - - - - 0x00F0DA 03:F0CA: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00F0DD 03:F0CD: 20 A9 E4  JSR sub_E4A9
@@ -7136,7 +7133,7 @@ C - - - - - 0x00F14F 03:F13F: D0 10     BNE bra_F151
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F159 03:F149: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F15B 03:F14B: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F15E 03:F14E: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F15E 03:F14E: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_F151:
 C - - - - - 0x00F161 03:F151: AD 29 04  LDA ram_plr_w_ball
 C - - - - - 0x00F164 03:F154: 30 22     BMI bra_F178
@@ -7180,13 +7177,13 @@ C - - - - - 0x00F1BE 03:F1AE: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00F1C9 03:F1B9: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F1CB 03:F1BB: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00F1D8 03:F1C8: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F1D8 03:F1C8: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_F1CB:
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F1E3 03:F1D3: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00F1E5 03:F1D5: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00F1F2 03:F1E2: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F1F2 03:F1E2: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7217,7 +7214,7 @@ C - - - - - 0x00F221 03:F211: 4C F2 F1  JMP loc_F1F2
 ofs_F214_13:
                                         JSR sub_C93B_set_player_flag___control
 C - - - - - 0x00F22E 03:F21E: A9 01     LDA #$01
-C - - - - - 0x00F230 03:F220: 8D E4 03  STA ram_03E4
+C - - - - - 0x00F230 03:F220: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00F233 03:F223: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F236 03:F226: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F239 03:F229: AD 7E 03  LDA ram_random
@@ -7266,7 +7263,7 @@ C - - - - - 0x00F2A6 03:F296: 8D 2C 04  STA ram_042C
 C - - - - - 0x00F2A9 03:F299: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00F2AC 03:F29C: 29 DF     AND #con_gm_out_of_play ^ $FF
 C - - - - - 0x00F2AE 03:F29E: 8D A4 03  STA ram_game_mode_flags
-C - - - - - 0x00F2B1 03:F2A1: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F2B1 03:F2A1: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7283,7 +7280,7 @@ C - - - - - 0x00F2C4 03:F2B4: D0 10     BNE bra_F2C6
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F2CE 03:F2BE: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F2D0 03:F2C0: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F2D3 03:F2C3: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F2D3 03:F2C3: 4C 55 DF  JMP loc_DF55_check_next_player
 bra_F2C6:
 C - - - - - 0x00F2D6 03:F2C6: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00F2D9 03:F2C9: 20 A9 E4  JSR sub_E4A9
@@ -7313,7 +7310,7 @@ C - - - - - 0x00F316 03:F306: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F321 03:F311: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F323 03:F313: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F326 03:F316: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F326 03:F316: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7349,7 +7346,7 @@ C - - - - - 0x00F377 03:F367: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F382 03:F372: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F384 03:F374: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F387 03:F377: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F387 03:F377: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7359,7 +7356,7 @@ C - - - - - 0x00F397 03:F387: 20 BA DF  JSR sub_DFBA
 C - - - - - 0x00F39A 03:F38A: A9 04     LDA #con_sound_fast_shot
 C - - - - - 0x00F39C 03:F38C: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F39F 03:F38F: A0 13     LDY #con_plr_direction
-C - - - - - 0x00F3A1 03:F391: AD E6 03  LDA ram_03E6
+C - - - - - 0x00F3A1 03:F391: AD E6 03  LDA ram_ball_direction
 C - - - - - 0x00F3A4 03:F394: 38        SEC
 C - - - - - 0x00F3A5 03:F395: F1 61     SBC (ram_plr_data),Y
 C - - - - - 0x00F3A7 03:F397: B0 04     BCS bra_F39D
@@ -7387,7 +7384,7 @@ C - - - - - 0x00F3D6 03:F3C6: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F3E1 03:F3D1: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F3E3 03:F3D3: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F3E6 03:F3D6: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F3E6 03:F3D6: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7419,14 +7416,14 @@ C - - - - - 0x00F425 03:F415: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F430 03:F420: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F432 03:F422: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F435 03:F425: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F435 03:F425: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
 sub_F428:
 C - - - - - 0x00F438 03:F428: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F43A 03:F42A: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00F43C 03:F42C: 8D E6 03  STA ram_03E6
+C - - - - - 0x00F43C 03:F42C: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00F43F 03:F42F: A9 00     LDA #$00
 C - - - - - 0x00F441 03:F431: 8D 1D 04  STA ram_041D
 C - - - - - 0x00F444 03:F434: A9 04     LDA #$04
@@ -7543,7 +7540,7 @@ C - - - - - 0x00F522 03:F512: A9 02     LDA #$02
 C - - - - - 0x00F524 03:F514: 8D 1E 04  STA ram_041E
 C - - - - - 0x00F527 03:F517: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F529 03:F519: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00F52B 03:F51B: 8D E6 03  STA ram_03E6
+C - - - - - 0x00F52B 03:F51B: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00F52E 03:F51E: A9 40     LDA #$40
 C - - - - - 0x00F530 03:F520: 8D 1B 04  STA ram_041B
 C - - - - - 0x00F533 03:F523: A9 00     LDA #$00
@@ -7569,7 +7566,7 @@ C - - - - - 0x00F565 03:F555: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F568 03:F558: A9 80     LDA #$80
 C - - - - - 0x00F56A 03:F55A: 0D 2C 04  ORA ram_042C
 C - - - - - 0x00F56D 03:F55D: 8D 2C 04  STA ram_042C
-C - - - - - 0x00F570 03:F560: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F570 03:F560: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7584,7 +7581,7 @@ C - - - - - 0x00F586 03:F576: 85 99     STA ram_0099
 C - - - - - 0x00F588 03:F578: A9 00     LDA #$00
 C - - - - - 0x00F58A 03:F57A: 8D 24 04  STA ram_ball_Z_lo
 C - - - - - 0x00F58D 03:F57D: A9 01     LDA #$01
-C - - - - - 0x00F58F 03:F57F: 8D E4 03  STA ram_03E4
+C - - - - - 0x00F58F 03:F57F: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00F592 03:F582: A5 6F     LDA ram_006F
 C - - - - - 0x00F594 03:F584: 20 2B C9  JSR sub_C92B
 C - - - - - 0x00F597 03:F587: A5 6F     LDA ram_006F
@@ -7667,7 +7664,7 @@ C - - - - - 0x00F639 03:F629: A9 02     LDA #$02
 C - - - - - 0x00F63B 03:F62B: 8D 1E 04  STA ram_041E
 C - - - - - 0x00F63E 03:F62E: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F640 03:F630: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00F642 03:F632: 8D E6 03  STA ram_03E6
+C - - - - - 0x00F642 03:F632: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00F645 03:F635: A2 09     LDX #$09
 C - - - - - 0x00F647 03:F637: A9 5A     LDA #$5A
 C - - - - - 0x00F649 03:F639: 95 01     STA ram_0001,X
@@ -7697,7 +7694,7 @@ C - - - - - 0x00F682 03:F672: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F68D 03:F67D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F68F 03:F67F: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F692 03:F682: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F692 03:F682: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7737,13 +7734,13 @@ C - - - - - 0x00F6DE 03:F6CE: 85 2A     STA ram_002A
 C - - - - - 0x00F6E0 03:F6D0: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x00F6E2 03:F6D2: F0 36     BEQ bra_F70A
 C - - - - - 0x00F6E4 03:F6D4: A2 01     LDX #$01
-C - - - - - 0x00F6E6 03:F6D6: AD DA 03  LDA ram_03DA
+C - - - - - 0x00F6E6 03:F6D6: AD DA 03  LDA ram_ball_pos_X_hi
 C - - - - - 0x00F6E9 03:F6D9: F0 01     BEQ bra_F6DC
 C - - - - - 0x00F6EB 03:F6DB: E8        INX
 bra_F6DC:
 C - - - - - 0x00F6EC 03:F6DC: 86 2C     STX ram_002C
 C - - - - - 0x00F6EE 03:F6DE: A0 04     LDY #$04
-C - - - - - 0x00F6F0 03:F6E0: AD E0 03  LDA ram_03E0
+C - - - - - 0x00F6F0 03:F6E0: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x00F6F3 03:F6E3: C9 02     CMP #$02
 C - - - - - 0x00F6F5 03:F6E5: 90 02     BCC bra_F6E9
 C - - - - - 0x00F6F7 03:F6E7: A0 08     LDY #$08
@@ -7803,7 +7800,7 @@ C - - - - - 0x00F760 03:F750: A9 01     LDA #$01
 C - - - - - 0x00F762 03:F752: 8D 1C 04  STA ram_041C
 C - - - - - 0x00F765 03:F755: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F767 03:F757: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00F769 03:F759: 8D E6 03  STA ram_03E6
+C - - - - - 0x00F769 03:F759: 8D E6 03  STA ram_ball_direction
 C - - - - - 0x00F76C 03:F75C: A9 80     LDA #$80
 C - - - - - 0x00F76E 03:F75E: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00F771 03:F761: A2 09     LDX #$09
@@ -7827,7 +7824,7 @@ C - - - - - 0x00F799 03:F789: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F7A4 03:F794: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F7A6 03:F796: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F7A9 03:F799: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F7A9 03:F799: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7879,14 +7876,14 @@ C - - - - - 0x00F7F7 03:F7E7: A9 03     LDA #$03
 C - - - - - 0x00F7F9 03:F7E9: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00F7FB 03:F7EB: 20 58 CB  JSR sub_CB58_prg_bankswitch
                                         LDX #$00
-C - - - - - 0x00F7FF 03:F7EF: 20 42 80  JSR sub_0x004B34
-C - - - - - 0x00F802 03:F7F2: 4C FF F7  JMP loc_F7FF
+C - - - - - 0x00F7FF 03:F7EF: 20 42 80  JSR sub_0x004B34_random_button
+C - - - - - 0x00F802 03:F7F2: 4C FF F7  JMP loc_F7FF_check_buttons
 bra_F7F5:
 C - - - - - 0x00F805 03:F7F5: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F807 03:F7F7: 3D 26 00  AND ram_btn_press,X
 C - - - - - 0x00F80A 03:F7FA: F0 CF     BEQ bra_F7CB_loop
 C - - - - - 0x00F80C 03:F7FC: BD 24 00  LDA ram_btn_hold,X
-loc_F7FF:
+loc_F7FF_check_buttons:
 C D 3 - - - 0x00F80F 03:F7FF: 29 03     AND #con_btns_LR
 C - - - - - 0x00F811 03:F801: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00F813 03:F803: 91 61     STA (ram_plr_data),Y
@@ -7912,7 +7909,7 @@ C - - - - - 0x00F841 03:F831: A9 15     LDA #$15
 C - - - - - 0x00F843 03:F833: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F846 03:F836: A9 19     LDA #con_behavior_pk_bench
 C - - - - - 0x00F848 03:F838: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F84B 03:F83B: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F84B 03:F83B: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -7941,8 +7938,8 @@ C - - - - - 0x00F87A 03:F86A: A9 03     LDA #$03
 C - - - - - 0x00F87C 03:F86C: 85 68     STA ram_prg_bank_1
 C - - - - - 0x00F87E 03:F86E: 20 58 CB  JSR sub_CB58_prg_bankswitch
                                         LDX #$02
-C - - - - - 0x00F882 03:F872: 20 42 80  JSR sub_0x004B34
-C - - - - - 0x00F885 03:F875: 4C 88 F8  JMP loc_F888
+C - - - - - 0x00F882 03:F872: 20 42 80  JSR sub_0x004B34_random_button
+C - - - - - 0x00F885 03:F875: 4C 88 F8  JMP loc_F888_check_buttons
 bra_F878:
 C - - - - - 0x00F888 03:F878: A9 0B     LDA #con_btns_LR + con_btn_Up
 C - - - - - 0x00F88A 03:F87A: 3D 26 00  AND ram_btn_press,X
@@ -7951,7 +7948,7 @@ C - - - - - 0x00F88F 03:F87F: 20 49 F9  JSR sub_F949
 C - - - - - 0x00F892 03:F882: 4C 46 F8  JMP loc_F846
 bra_F885:
 C - - - - - 0x00F895 03:F885: BD 24 00  LDA ram_btn_hold,X
-loc_F888:
+loc_F888_check_buttons:
 C D 3 - - - 0x00F898 03:F888: 29 0B     AND #con_btns_LR + con_btn_Up
 C - - - - - 0x00F89A 03:F88A: AA        TAX
 C - - - - - 0x00F89B 03:F88B: BD 39 F9  LDA tbl_F939_direction,X
@@ -8028,7 +8025,7 @@ C - - - - - 0x00F928 03:F918: A9 16     LDA #$16
 C - - - - - 0x00F92A 03:F91A: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F92D 03:F91D: A9 19     LDA #con_behavior_pk_bench
 C - - - - - 0x00F92F 03:F91F: 20 2F C6  JSR sub_C62F_player_state_handler
-C - - - - - 0x00F932 03:F922: 4C 55 DF  JMP loc_DF55
+C - - - - - 0x00F932 03:F922: 4C 55 DF  JMP loc_DF55_check_next_player
 
 
 
@@ -8242,7 +8239,7 @@ C - - - - - 0x00FA52 03:FA42: 60        RTS
 sub_FA43:
 C - - - - - 0x00FA53 03:FA43: C9 16     CMP #$16
 C - - - - - 0x00FA55 03:FA45: D0 19     BNE bra_FA60
-C - - - - - 0x00FA57 03:FA47: AC 26 04  LDY ram_0426
+C - - - - - 0x00FA57 03:FA47: AC 26 04  LDY ram_ball_Z_hi
 C - - - - - 0x00FA5A 03:FA4A: D0 12     BNE bra_FA5E
 C - - - - - 0x00FA5C 03:FA4C: AC 24 04  LDY ram_ball_Z_lo
 C - - - - - 0x00FA5F 03:FA4F: C0 18     CPY #$18

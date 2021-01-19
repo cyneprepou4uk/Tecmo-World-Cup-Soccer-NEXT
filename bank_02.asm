@@ -4647,10 +4647,10 @@ C - - - - - 0x0097DF 02:97CF: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_97D2:
 C - - - - - 0x0097E2 02:97D2: 18        CLC
 C - - - - - 0x0097E3 02:97D3: 8A        TXA
-C - - - - - 0x0097E4 02:97D4: 6D D8 03  ADC ram_03D8
+C - - - - - 0x0097E4 02:97D4: 6D D8 03  ADC ram_ball_pos_X_lo
 C - - - - - 0x0097E7 02:97D7: AA        TAX
 C - - - - - 0x0097E8 02:97D8: 98        TYA
-C - - - - - 0x0097E9 02:97D9: 6D DA 03  ADC ram_03DA
+C - - - - - 0x0097E9 02:97D9: 6D DA 03  ADC ram_ball_pos_X_hi
 C - - - - - 0x0097EC 02:97DC: A8        TAY
 C - - - - - 0x0097ED 02:97DD: 4C E9 97  JMP loc_97E9
 bra_97E0:
@@ -4693,10 +4693,10 @@ C - - - - - 0x009824 02:9814: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_9817:
 C - - - - - 0x009827 02:9817: 18        CLC
 C - - - - - 0x009828 02:9818: 8A        TXA
-C - - - - - 0x009829 02:9819: 6D DE 03  ADC ram_03DE
+C - - - - - 0x009829 02:9819: 6D DE 03  ADC ram_ball_pos_Y_lo
 C - - - - - 0x00982C 02:981C: AA        TAX
 C - - - - - 0x00982D 02:981D: 98        TYA
-C - - - - - 0x00982E 02:981E: 6D E0 03  ADC ram_03E0
+C - - - - - 0x00982E 02:981E: 6D E0 03  ADC ram_ball_pos_Y_hi
 C - - - - - 0x009831 02:9821: A8        TAY
 C - - - - - 0x009832 02:9822: 4C 2E 98  JMP loc_982E
 bra_9825:
@@ -4790,10 +4790,10 @@ C - - - - - 0x0098BD 02:98AD: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_98B0:
 C - - - - - 0x0098C0 02:98B0: 18        CLC
 C - - - - - 0x0098C1 02:98B1: 8A        TXA
-C - - - - - 0x0098C2 02:98B2: 6D D8 03  ADC ram_03D8
+C - - - - - 0x0098C2 02:98B2: 6D D8 03  ADC ram_ball_pos_X_lo
 C - - - - - 0x0098C5 02:98B5: AA        TAX
 C - - - - - 0x0098C6 02:98B6: 98        TYA
-C - - - - - 0x0098C7 02:98B7: 6D DA 03  ADC ram_03DA
+C - - - - - 0x0098C7 02:98B7: 6D DA 03  ADC ram_ball_pos_X_hi
 C - - - - - 0x0098CA 02:98BA: A8        TAY
 C - - - - - 0x0098CB 02:98BB: 4C C7 98  JMP loc_98C7
 bra_98BE:
@@ -4836,10 +4836,10 @@ C - - - - - 0x009902 02:98F2: 20 42 C0  JSR sub_0x00C92E_EOR_16bit
 bra_98F5:
 C - - - - - 0x009905 02:98F5: 18        CLC
 C - - - - - 0x009906 02:98F6: 8A        TXA
-C - - - - - 0x009907 02:98F7: 6D DE 03  ADC ram_03DE
+C - - - - - 0x009907 02:98F7: 6D DE 03  ADC ram_ball_pos_Y_lo
 C - - - - - 0x00990A 02:98FA: AA        TAX
 C - - - - - 0x00990B 02:98FB: 98        TYA
-C - - - - - 0x00990C 02:98FC: 6D E0 03  ADC ram_03E0
+C - - - - - 0x00990C 02:98FC: 6D E0 03  ADC ram_ball_pos_Y_hi
 C - - - - - 0x00990F 02:98FF: A8        TAY
 C - - - - - 0x009910 02:9900: 4C 0C 99  JMP loc_990C
 bra_9903:
@@ -6761,8 +6761,8 @@ C - - - - - 0x00A070 02:A060: A9 00     LDA #$00
 C - - - - - 0x00A072 02:A062: 8D B8 03  STA ram_03B8
 C - - - - - 0x00A075 02:A065: 8D BC 03  STA ram_03BC
 C - - - - - 0x00A078 02:A068: 8D BD 03  STA ram_03BD
-C - - - - - 0x00A07B 02:A06B: 8D F8 03  STA ram_03F8
-C - - - - - 0x00A07E 02:A06E: 8D FA 03  STA ram_03FA
+C - - - - - 0x00A07B 02:A06B: 8D F8 03  STA ram_shad_pos_X_lo
+C - - - - - 0x00A07E 02:A06E: 8D FA 03  STA ram_shad_pos_X_hi
 bra_A071:
 loc_A071:
 C D 1 - - - 0x00A081 02:A071: A9 01     LDA #$01
@@ -6881,15 +6881,15 @@ C - - - - - 0x00A15D 02:A14D: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A160 02:A150: A2 04     LDX #$04
 C - - - - - 0x00A162 02:A152: 20 74 A1  JSR sub_A174_set_base_pk_position
 C - - - - - 0x00A165 02:A155: A9 FF     LDA #$FF
-C - - - - - 0x00A167 02:A157: 8D D8 03  STA ram_03D8
+C - - - - - 0x00A167 02:A157: 8D D8 03  STA ram_ball_pos_X_lo
 C - - - - - 0x00A16A 02:A15A: A9 00     LDA #$00
-C - - - - - 0x00A16C 02:A15C: 8D DA 03  STA ram_03DA
+C - - - - - 0x00A16C 02:A15C: 8D DA 03  STA ram_ball_pos_X_hi
 C - - - - - 0x00A16F 02:A15F: A9 BF     LDA #$BF
-C - - - - - 0x00A171 02:A161: 8D DE 03  STA ram_03DE
+C - - - - - 0x00A171 02:A161: 8D DE 03  STA ram_ball_pos_Y_lo
 C - - - - - 0x00A174 02:A164: A9 00     LDA #$00
-C - - - - - 0x00A176 02:A166: 8D E0 03  STA ram_03E0
+C - - - - - 0x00A176 02:A166: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00A179 02:A169: A9 09     LDA #$09
-C - - - - - 0x00A17B 02:A16B: 8D E4 03  STA ram_03E4
+C - - - - - 0x00A17B 02:A16B: 8D E4 03  STA ram_ball_anim_id
 C - - - - - 0x00A17E 02:A16E: A9 0C     LDA #con_sound_whistle_referee
 C - - - - - 0x00A180 02:A170: 20 7E C0  JSR sub_0x00C920_prepare_sound
 C - - - - - 0x00A183 02:A173: 60        RTS
@@ -8205,7 +8205,7 @@ C - - - - - 0x00A7A3 02:A793: 20 33 C0  JSR sub_0x00C762
 C - - - - - 0x00A7A6 02:A796: A2 09     LDX #$09
 C - - - - - 0x00A7A8 02:A798: A9 00     LDA #$00
 bra_A79A_loop:
-C - - - - - 0x00A7AA 02:A79A: 9D DA 03  STA ram_03DA,X
+C - - - - - 0x00A7AA 02:A79A: 9D DA 03  STA ram_ball_pos_X_hi,X
 C - - - - - 0x00A7AD 02:A79D: CA        DEX
 C - - - - - 0x00A7AE 02:A79E: 10 FA     BPL bra_A79A_loop
 C - - - - - 0x00A7B0 02:A7A0: 20 5F A9  JSR sub_A95F
@@ -8243,9 +8243,9 @@ bra_A7DE:
 C - - - - - 0x00A7EE 02:A7DE: A4 94     LDY ram_0094
 C - - - - - 0x00A7F0 02:A7E0: 8A        TXA
 C - - - - - 0x00A7F1 02:A7E1: 18        CLC
-C - - - - - 0x00A7F2 02:A7E2: 79 DA 03  ADC ram_03DA,Y
+C - - - - - 0x00A7F2 02:A7E2: 79 DA 03  ADC ram_ball_pos_X_hi,Y
 C - - - - - 0x00A7F5 02:A7E5: 29 0F     AND #$0F
-C - - - - - 0x00A7F7 02:A7E7: 99 DA 03  STA ram_03DA,Y
+C - - - - - 0x00A7F7 02:A7E7: 99 DA 03  STA ram_ball_pos_X_hi,Y
 C - - - - - 0x00A7FA 02:A7EA: 20 5F A9  JSR sub_A95F
 C - - - - - 0x00A7FD 02:A7ED: 4C 08 A8  JMP loc_A808
 bra_A7F0:
@@ -8474,7 +8474,7 @@ sub_A95F:
 C - - - - - 0x00A96F 02:A95F: A2 00     LDX #$00
 C - - - - - 0x00A971 02:A961: A0 00     LDY #$00
 bra_A963_loop:
-C - - - - - 0x00A973 02:A963: BD DA 03  LDA ram_03DA,X
+C - - - - - 0x00A973 02:A963: BD DA 03  LDA ram_ball_pos_X_hi,X
 C - - - - - 0x00A976 02:A966: 0A        ASL
 C - - - - - 0x00A977 02:A967: 0A        ASL
 C - - - - - 0x00A978 02:A968: 0A        ASL
@@ -8486,7 +8486,7 @@ C - - - - - 0x00A981 02:A971: E8        INX
 C - - - - - 0x00A982 02:A972: C8        INY
 C - - - - - 0x00A983 02:A973: C0 04     CPY #$04
 C - - - - - 0x00A985 02:A975: D0 EC     BNE bra_A963_loop
-C - - - - - 0x00A987 02:A977: AD E2 03  LDA ram_03E2
+C - - - - - 0x00A987 02:A977: AD E2 03  LDA ram_ball_push_anim_id
 C - - - - - 0x00A98A 02:A97A: 8D D9 03  STA ram_03D9
 C - - - - - 0x00A98D 02:A97D: 20 1A A7  JSR sub_A71A
 C - - - - - 0x00A990 02:A980: 60        RTS

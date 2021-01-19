@@ -24,7 +24,7 @@
 .export sub_0x0048F0
 .export sub_0x004A03
 .export sub_0x004A81
-.export sub_0x004B34
+.export sub_0x004B34_random_button
 .export sub_0x004B4F
 .export sub_0x004B7B
 .export sub_0x004BEC_bot_throw_in_timer
@@ -1783,17 +1783,18 @@ tbl_8B19:
 
 
 
-sub_0x004B34:
-; на вход подается X = 00 для игрока или 02 для кипера в пк
-C - - - - - 0x004B35 01:8B25: A0 00     LDY #$00
+sub_0x004B34_random_button:
+; на вход подается X = 00 для игрока или 02 для кипера
+; выбирается направление удара/прыжка для бота в пенальти
+C - - - - - 0x004B35 01:8B25: A0 00     LDY #$00    ; кнопка не нажата
 C - - - - - 0x004B37 01:8B27: AD 7F 03  LDA ram_random + 1
 C - - - - - 0x004B3A 01:8B2A: 6D 7E 03  ADC ram_random
 C - - - - - 0x004B3D 01:8B2D: DD 3B 8B  CMP tbl_8B3B_random,X
 C - - - - - 0x004B40 01:8B30: 90 07     BCC bra_8B39_less_than
-C - - - - - 0x004B42 01:8B32: C8        INY
+C - - - - - 0x004B42 01:8B32: C8        INY ; 01 con_btn_Right
 C - - - - - 0x004B43 01:8B33: DD 3C 8B  CMP tbl_8B3B_random + 1,X
 C - - - - - 0x004B46 01:8B36: 90 01     BCC bra_8B39_less_than
-C - - - - - 0x004B48 01:8B38: C8        INY
+C - - - - - 0x004B48 01:8B38: C8        INY ; 02 con_btn_Left
 bra_8B39_less_than:
 C - - - - - 0x004B49 01:8B39: 98        TYA
 C - - - - - 0x004B4A 01:8B3A: 60        RTS
@@ -1801,20 +1802,20 @@ C - - - - - 0x004B4A 01:8B3A: 60        RTS
 
 
 tbl_8B3B_random:
-- D 0 - - - 0x004B4B 01:8B3B: 55        .byte $55, $AA   ; 
-- D 0 - - - 0x004B4D 01:8B3D: 64        .byte $64, $B2   ; 
+- D 0 - - - 0x004B4B 01:8B3B: 55        .byte $55, $AA   ; игрок
+- D 0 - - - 0x004B4D 01:8B3D: 64        .byte $64, $B2   ; кипер
 
 
 
 sub_0x004B4F:
 C D 0 - - - 0x004B4F 01:8B3F: 38        SEC
-C - - - - - 0x004B50 01:8B40: AD DE 03  LDA ram_03DE
+C - - - - - 0x004B50 01:8B40: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x004B53 01:8B43: E9 00     SBC #$00
-C - - - - - 0x004B55 01:8B45: AD E0 03  LDA ram_03E0
+C - - - - - 0x004B55 01:8B45: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x004B58 01:8B48: E9 03     SBC #$03
 C - - - - - 0x004B5A 01:8B4A: 90 1D     BCC bra_8B69
-C - - - - - 0x004B5C 01:8B4C: AE D8 03  LDX ram_03D8
-C - - - - - 0x004B5F 01:8B4F: AC DA 03  LDY ram_03DA
+C - - - - - 0x004B5C 01:8B4C: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x004B5F 01:8B4F: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x004B62 01:8B52: F0 03     BEQ bra_8B57
 C - - - - - 0x004B64 01:8B54: 20 36 C0  JSR sub_0x00CB5A
 bra_8B57:
@@ -1970,7 +1971,7 @@ C - - - - - 0x004C40 01:8C30: 29 03     AND #$03
 C - - - - - 0x004C42 01:8C32: C9 03     CMP #$03
 C - - - - - 0x004C44 01:8C34: D0 09     BNE bra_8C3F
 C - - - - - 0x004C46 01:8C36: A9 01     LDA #$01
-C - - - - - 0x004C48 01:8C38: AE DA 03  LDX ram_03DA
+C - - - - - 0x004C48 01:8C38: AE DA 03  LDX ram_ball_pos_X_hi
 C - - - - - 0x004C4B 01:8C3B: F0 02     BEQ bra_8C3F
 C - - - - - 0x004C4D 01:8C3D: A9 02     LDA #$02
 bra_8C3F:
@@ -2002,8 +2003,8 @@ C - - - - - 0x004C72 01:8C62: 20 92 8C  JSR sub_8C92
 loc_8C65:
 C D 0 - - - 0x004C75 01:8C65: A9 00     LDA #$00
 C - - - - - 0x004C77 01:8C67: 85 2A     STA ram_002A
-C - - - - - 0x004C79 01:8C69: AE D8 03  LDX ram_03D8
-C - - - - - 0x004C7C 01:8C6C: AC DA 03  LDY ram_03DA
+C - - - - - 0x004C79 01:8C69: AE D8 03  LDX ram_ball_pos_X_lo
+C - - - - - 0x004C7C 01:8C6C: AC DA 03  LDY ram_ball_pos_X_hi
 C - - - - - 0x004C7F 01:8C6F: F0 05     BEQ bra_8C76
 C - - - - - 0x004C81 01:8C71: E6 2A     INC ram_002A
 C - - - - - 0x004C83 01:8C73: 20 36 C0  JSR sub_0x00CB5A
@@ -2032,9 +2033,9 @@ C - - - - - 0x004CA1 01:8C91: 60        RTS
 
 sub_8C92:
 C - - - - - 0x004CA2 01:8C92: 38        SEC
-C - - - - - 0x004CA3 01:8C93: AD DE 03  LDA ram_03DE
+C - - - - - 0x004CA3 01:8C93: AD DE 03  LDA ram_ball_pos_Y_lo
 C - - - - - 0x004CA6 01:8C96: E9 40     SBC #$40
-C - - - - - 0x004CA8 01:8C98: AD E0 03  LDA ram_03E0
+C - - - - - 0x004CA8 01:8C98: AD E0 03  LDA ram_ball_pos_Y_hi
 C - - - - - 0x004CAB 01:8C9B: E9 03     SBC #$03
 C - - - - - 0x004CAD 01:8C9D: 90 08     BCC bra_8CA7_RTS
 C - - - - - 0x004CAF 01:8C9F: A5 84     LDA ram_0084
