@@ -1312,7 +1312,6 @@ C - - - - - 0x00C911 03:C901: E6 2B     INC ram_002B
 C - - - - - 0x00C913 03:C903: 4C F9 C8  JMP loc_C8F9_loop
 bra_C906:
 C - - - - - 0x00C916 03:C906: A0 B5     LDY #$B5
-C - - - - - 0x00C918 03:C908: F0 05     BEQ bra_C90F_RTS    ; bzk опт, бесполезная проверка
 bra_C90A_loop:
 C - - - - - 0x00C91A 03:C90A: 91 2A     STA (ram_002A),Y
 C - - - - - 0x00C91C 03:C90C: C8        INY
