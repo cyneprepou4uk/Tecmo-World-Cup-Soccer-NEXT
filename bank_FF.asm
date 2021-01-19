@@ -2013,9 +2013,6 @@ C - - - - - 0x00CD9C 03:CD8C: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
 C - - - - - 0x00CDA8 03:CD98: 68        PLA
 C - - - - - 0x00CDA9 03:CD99: 20 00 80  JSR sub_0x00405E
-C - - - - - 0x00CDAC 03:CD9C: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01 ; bzk опт лишнее
-C - - - - - 0x00CDB8 03:CDA8: 68        PLA
 C - - - - - 0x00CDB9 03:CDA9: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00CDBC 03:CDAC: 2C C2 03  BIT ram_03C2
 C - - - - - 0x00CDBF 03:CDAF: 30 D6     BMI bra_CD87
