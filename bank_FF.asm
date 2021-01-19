@@ -2035,9 +2035,6 @@ C - - - - - 0x00CDF6 03:CDE6: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00CDF9 03:CDE9: 20 E8 D4  JSR sub_D4E8
 C - - - - - 0x00CDFC 03:CDEC: B0 29     BCS bra_CE17
 C - - - - - 0x00CDFE 03:CDEE: 20 2F D7  JSR sub_D72F
-C - - - - - 0x00CE01 03:CDF1: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01
-C - - - - - 0x00CE0D 03:CDFD: 68        PLA
 C - - - - - 0x00CE0E 03:CDFE: 20 0F 80  JSR sub_0x0047FD
 C - - - - - 0x00CE11 03:CE01: 20 DA CF  JSR sub_CFDA
 C - - - - - 0x00CE14 03:CE04: AD B1 03  LDA ram_timer_sec
