@@ -311,7 +311,7 @@ C - - - - - 0x00C2C3 03:C2B3: A5 6A     LDA ram_006A
 C - - - - - 0x00C2C5 03:C2B5: 8D 01 80  STA $8001
 C - - - - - 0x00C2C8 03:C2B8: A2 00     LDX #$00
 C - - - - - 0x00C2CA 03:C2BA: A0 02     LDY #$02
-bra_C2BC:
+bra_C2BC_loop:
 C - - - - - 0x00C2CC 03:C2BC: 98        TYA
 C - - - - - 0x00C2CF 03:C2BF: 8D 00 80  STA $8000
 C - - - - - 0x00C2D2 03:C2C2: B5 6B     LDA ram_006B,X
@@ -319,7 +319,7 @@ C - - - - - 0x00C2D4 03:C2C4: 8D 01 80  STA $8001
 C - - - - - 0x00C2D7 03:C2C7: E8        INX
 C - - - - - 0x00C2D8 03:C2C8: C8        INY
 C - - - - - 0x00C2D9 03:C2C9: C0 06     CPY #$06
-C - - - - - 0x00C2DB 03:C2CB: D0 EF     BNE bra_C2BC
+C - - - - - 0x00C2DB 03:C2CB: D0 EF     BNE bra_C2BC_loop
 C - - - - - 0x00C2DD 03:C2CD: 60        RTS
 
 
