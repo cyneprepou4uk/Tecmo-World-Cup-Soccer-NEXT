@@ -1294,30 +1294,21 @@ C - - - - - 0x00C8FB 03:C8EB: 60        RTS
 
 sub_C8EC_clear_memory_before_match:
 ; очистка 03B4-06B3, 0769-07B3
-C - - - - - 0x00C8FC 03:C8EC: A9 B4     LDA #< ram_03B4
-C - - - - - 0x00C8FE 03:C8EE: 85 2A     STA ram_002A
-C - - - - - 0x00C900 03:C8F0: A9 03     LDA #> ram_03B4
-C - - - - - 0x00C902 03:C8F2: 85 2B     STA ram_002B
-C - - - - - 0x00C904 03:C8F4: A2 03     LDX #$03
-C - - - - - 0x00C906 03:C8F6: A9 00     LDA #$00
-C - - - - - 0x00C908 03:C8F8: A8        TAY
-loc_C8F9_loop:
-C D 2 - - - 0x00C909 03:C8F9: CA        DEX
-C - - - - - 0x00C90A 03:C8FA: 30 0A     BMI bra_C906
-bra_C8FC_loop:
-C - - - - - 0x00C90C 03:C8FC: 91 2A     STA (ram_002A),Y
-C - - - - - 0x00C90E 03:C8FE: C8        INY
-C - - - - - 0x00C90F 03:C8FF: D0 FB     BNE bra_C8FC_loop
-C - - - - - 0x00C911 03:C901: E6 2B     INC ram_002B
-C - - - - - 0x00C913 03:C903: 4C F9 C8  JMP loc_C8F9_loop
-bra_C906:
-C - - - - - 0x00C916 03:C906: A0 B5     LDY #$B5
-bra_C90A_loop:
-C - - - - - 0x00C91A 03:C90A: 91 2A     STA (ram_002A),Y
-C - - - - - 0x00C91C 03:C90C: C8        INY
-C - - - - - 0x00C91D 03:C90D: D0 FB     BNE bra_C90A_loop
-bra_C90F_RTS:
-C - - - - - 0x00C91F 03:C90F: 60        RTS
+; 0x00C8FC 03:C8EC: 
+    LDA #$00
+    TAX
+bra_C8EE_loop:
+    STA ram_03B4,X
+    STA $04B4,X
+    STA $05B4,X
+    INX
+    BNE bra_C8EE_loop
+bra_C8EF_loop:
+    STA $0769,X
+    INX
+    CPX #$4B
+    BNE bra_C8EF_loop
+    RTS
 
 
 
