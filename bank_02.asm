@@ -334,9 +334,9 @@ C - - - - - 0x008276 02:8266: A5 3A     LDA ram_003A
 C - - - - - 0x008278 02:8268: E9 01     SBC #$01
 C - - - - - 0x00827A 02:826A: 85 3A     STA ram_003A
 C - - - - - 0x00827C 02:826C: B0 06     BCS bra_8274
-C - - - - - 0x00827E 02:826E: A5 28     LDA ram_0028
+C - - - - - 0x00827E 02:826E: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x008280 02:8270: 49 01     EOR #$01
-C - - - - - 0x008282 02:8272: 85 28     STA ram_0028
+C - - - - - 0x008282 02:8272: 85 28     STA ram_byte_for_2000
 bra_8274:
 C - - - - - 0x008284 02:8274: A9 00     LDA #$00
 C - - - - - 0x008286 02:8276: A6 3A     LDX ram_003A
@@ -584,9 +584,9 @@ C - - - - - 0x008402 02:83F2: A2 10     LDX #$10
 C - - - - - 0x008404 02:83F4: A9 02     LDA #$02
 C - - - - - 0x008406 02:83F6: 20 18 C0  JSR sub_0x00CAE4_load_screen_palette
                                         INC ram_buffer_pal_flag
-C - - - - - 0x00840E 02:83FE: A5 28     LDA ram_0028
+C - - - - - 0x00840E 02:83FE: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x008410 02:8400: 09 20     ORA #$20
-C - - - - - 0x008412 02:8402: 85 28     STA ram_0028
+C - - - - - 0x008412 02:8402: 85 28     STA ram_byte_for_2000
 C - - - - - 0x008414 02:8404: A9 00     LDA #$00
 C - - - - - 0x008416 02:8406: 8D 00 A0  STA $A000
 bra_8409_RTS:
@@ -620,9 +620,9 @@ C - - - - - 0x008449 02:8439: A9 7F     LDA #$7F
 C - - - - - 0x00844B 02:843B: 8D B8 03  STA ram_cam_edge_X_hi
 C - - - - - 0x00844E 02:843E: A9 F4     LDA #$F4
 C - - - - - 0x008450 02:8440: 8D B9 03  STA ram_03B9
-C - - - - - 0x008453 02:8443: A5 28     LDA ram_0028
+C - - - - - 0x008453 02:8443: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x008455 02:8445: 29 DF     AND #$DF
-C - - - - - 0x008457 02:8447: 85 28     STA ram_0028
+C - - - - - 0x008457 02:8447: 85 28     STA ram_byte_for_2000
 C - - - - - 0x008459 02:8449: A9 01     LDA #$01
 C - - - - - 0x00845B 02:844B: 8D 00 A0  STA $A000
 C - - - - - 0x00845E 02:844E: A9 EF     LDA #$EF
@@ -724,9 +724,9 @@ C - - - - - 0x0084F5 02:84E5: 4C 87 84  JMP loc_8487
 sub_0x008501:
 C D 0 - - - 0x008501 02:84F1: 20 75 C0  JSR sub_0x00CA69_clear_nametables
 C - - - - - 0x008504 02:84F4: 20 51 C0  JSR sub_0x00CABF_hide_sprites
-C - - - - - 0x008507 02:84F7: A5 28     LDA ram_0028
+C - - - - - 0x008507 02:84F7: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x008509 02:84F9: 09 20     ORA #$20
-C - - - - - 0x00850B 02:84FB: 85 28     STA ram_0028
+C - - - - - 0x00850B 02:84FB: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00850D 02:84FD: A9 1C     LDA #$1C
 C - - - - - 0x00850F 02:84FF: 85 69     STA ram_0069
 C - - - - - 0x008511 02:8501: A9 1A     LDA #$1A
@@ -1530,10 +1530,10 @@ C - - - - - 0x008A29 02:8A19: 60        RTS
 
 off_0x008A2A:
 sub_0x008A2A = off_0x008A2A - 1
-C D 0 - - - 0x008A2A 02:8A1A: A5 28     LDA ram_0028
+C D 0 - - - 0x008A2A 02:8A1A: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x008A2C 02:8A1C: 29 FC     AND #$FC
 C - - - - - 0x008A2E 02:8A1E: 09 20     ORA #$20
-C - - - - - 0x008A30 02:8A20: 85 28     STA ram_0028
+C - - - - - 0x008A30 02:8A20: 85 28     STA ram_byte_for_2000
 C - - - - - 0x008A32 02:8A22: A9 00     LDA #$00
 C - - - - - 0x008A34 02:8A24: 85 3A     STA ram_003A
 C - - - - - 0x008A36 02:8A26: A9 98     LDA #$98
@@ -6834,9 +6834,9 @@ C - - - - - 0x00A0FF 02:A0EF: 60        RTS
 sub_0x00A100:
 C D 1 - - - 0x00A100 02:A0F0: 20 9F A1  JSR sub_A19F
 C - - - - - 0x00A103 02:A0F3: 20 51 C0  JSR sub_0x00CABF_hide_sprites
-C - - - - - 0x00A106 02:A0F6: A5 28     LDA ram_0028
+C - - - - - 0x00A106 02:A0F6: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00A108 02:A0F8: 09 20     ORA #$20
-C - - - - - 0x00A10A 02:A0FA: 85 28     STA ram_0028
+C - - - - - 0x00A10A 02:A0FA: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00A10C 02:A0FC: A9 04     LDA #$04
 C - - - - - 0x00A10E 02:A0FE: 85 6B     STA ram_006B
 C - - - - - 0x00A110 02:A100: A9 2A     LDA #$2A
@@ -6926,9 +6926,9 @@ tbl_A197_X_Y_position:
 
 sub_A19F:
 C - - - - - 0x00A1AF 02:A19F: 20 51 C0  JSR sub_0x00CABF_hide_sprites
-C - - - - - 0x00A1B2 02:A1A2: A5 28     LDA ram_0028
+C - - - - - 0x00A1B2 02:A1A2: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00A1B4 02:A1A4: 29 DF     AND #$DF
-C - - - - - 0x00A1B6 02:A1A6: 85 28     STA ram_0028
+C - - - - - 0x00A1B6 02:A1A6: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00A1B8 02:A1A8: A2 03     LDX #$03
 bra_A1AA:
 C - - - - - 0x00A1BA 02:A1AA: 8A        TXA
@@ -6973,9 +6973,9 @@ C - - - - - 0x00A1FC 02:A1EC: 60        RTS
 
 sub_0x00A1FD:
 C D 1 - - - 0x00A1FD 02:A1ED: 20 51 C0  JSR sub_0x00CABF_hide_sprites
-C - - - - - 0x00A200 02:A1F0: A5 28     LDA ram_0028
+C - - - - - 0x00A200 02:A1F0: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00A202 02:A1F2: 29 DF     AND #$DF
-C - - - - - 0x00A204 02:A1F4: 85 28     STA ram_0028
+C - - - - - 0x00A204 02:A1F4: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00A206 02:A1F6: A2 03     LDX #$03
 bra_A1F8:
 C - - - - - 0x00A208 02:A1F8: 8A        TXA
@@ -8541,9 +8541,9 @@ C - - - - - 0x00B016 02:B006: 60        RTS
 
 
 sub_B007:
-C - - - - - 0x00B017 02:B007: AD 28 00  LDA ram_0028
+C - - - - - 0x00B017 02:B007: AD 28 00  LDA ram_byte_for_2000
 C - - - - - 0x00B01A 02:B00A: 09 01     ORA #$01
-C - - - - - 0x00B01C 02:B00C: 8D 28 00  STA ram_0028
+C - - - - - 0x00B01C 02:B00C: 8D 28 00  STA ram_byte_for_2000
 C - - - - - 0x00B01F 02:B00F: A9 40     LDA #$40
 C - - - - - 0x00B021 02:B011: 8D DB 00  STA ram_00DB
 C - - - - - 0x00B024 02:B014: A9 20     LDA #$20
@@ -8633,9 +8633,9 @@ C - - - - - 0x00B0CD 02:B0BD: 4C 23 B0  JMP loc_B023
 loc_B0C0:
 C D 1 - - - 0x00B0D0 02:B0C0: 20 CF B0  JSR sub_B0CF
 C - - - - - 0x00B0D3 02:B0C3: 20 51 B1  JSR sub_B151
-C - - - - - 0x00B0D6 02:B0C6: AD 28 00  LDA ram_0028
+C - - - - - 0x00B0D6 02:B0C6: AD 28 00  LDA ram_byte_for_2000
 C - - - - - 0x00B0D9 02:B0C9: 29 FE     AND #$FE
-C - - - - - 0x00B0DB 02:B0CB: 8D 28 00  STA ram_0028
+C - - - - - 0x00B0DB 02:B0CB: 8D 28 00  STA ram_byte_for_2000
 C - - - - - 0x00B0DE 02:B0CE: 60        RTS
 
 

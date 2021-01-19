@@ -61,10 +61,10 @@ C - - - - - 0x004084 01:8074: 8E B7 03  STX ram_cam_edge_X_lo
 C - - - - - 0x004087 01:8077: 86 3A     STX ram_003A
 C - - - - - 0x004089 01:8079: A5 2A     LDA ram_002A
 C - - - - - 0x00408B 01:807B: 8D B8 03  STA ram_cam_edge_X_hi
-C - - - - - 0x00408E 01:807E: A5 28     LDA ram_0028
+C - - - - - 0x00408E 01:807E: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x004090 01:8080: 29 FE     AND #$FE
 C - - - - - 0x004092 01:8082: 05 2A     ORA ram_002A
-C - - - - - 0x004094 01:8084: 85 28     STA ram_0028
+C - - - - - 0x004094 01:8084: 85 28     STA ram_byte_for_2000
 C - - - - - 0x004096 01:8086: 60        RTS
 
 

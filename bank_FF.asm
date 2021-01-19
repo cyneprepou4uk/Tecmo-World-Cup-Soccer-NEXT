@@ -58,8 +58,8 @@ C - - - - - 0x00C0B3 03:C0A3: E6 01     INC ram_0001
 C - - - - - 0x00C0B5 03:C0A5: CA        DEX
 C - - - - - 0x00C0B6 03:C0A6: D0 F6     BNE bra_C09E_clear_mem_loop
 C - - - - - 0x00C0B8 03:C0A8: A9 28     LDA #$28
-C - - - - - 0x00C0BA 03:C0AA: 85 28     STA ram_0028
-C - - - - - 0x00C0BC 03:C0AC: A9 06     LDA #$06
+C - - - - - 0x00C0BA 03:C0AA: 85 28     STA ram_byte_for_2000
+C - - - - - 0x00C0BC 03:C0AC: A9 06     LDA #$06    ; отобразить фон и спрайты слева 8 пикселей
 C - - - - - 0x00C0C0 03:C0B0: 8D 01 20  STA $2001
 C - - - - - 0x00C0C3 03:C0B3: A9 00     LDA #$00
 C - - - - - 0x00C0C5 03:C0B5: 8D 00 A0  STA $A000
@@ -85,7 +85,7 @@ C - - - - - 0x00C109 03:C0F9: 85 12     STA ram_0012
 C - - - - - 0x00C10D 03:C0FD: 85 15     STA ram_0015
 C - - - - - 0x00C10F 03:C0FF: 85 16     STA ram_0016
 C - - - - - 0x00C111 03:C101: A9 28     LDA #$28
-C - - - - - 0x00C113 03:C103: 85 28     STA ram_0028
+C - - - - - 0x00C113 03:C103: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00C119 03:C109: A9 20     LDA #$20
 C - - - - - 0x00C11B 03:C10B: 8D 80 03  STA ram_buffer_pal_hi
 C - - - - - 0x00C11E 03:C10E: A9 00     LDA #$00
@@ -107,9 +107,9 @@ C - - - - - 0x00C143 03:C133: 95 02     STA ram_0002,X
 C - - - - - 0x00C145 03:C135: A9 C2     LDA #> ofs_C2F2_logo_screen
 C - - - - - 0x00C147 03:C137: A0 F1     LDY #< ofs_C2F2_logo_screen
 C - - - - - 0x00C149 03:C139: 20 E1 C5  JSR sub_C5E1_prepare_return_address
-C - - - - - 0x00C14C 03:C13C: A5 28     LDA ram_0028
+C - - - - - 0x00C14C 03:C13C: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C14E 03:C13E: 09 80     ORA #$80
-C - - - - - 0x00C150 03:C140: 85 28     STA ram_0028
+C - - - - - 0x00C150 03:C140: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00C152 03:C142: 85 21     STA ram_0021
 C - - - - - 0x00C154 03:C144: 8D 00 20  STA $2000
 C - - - - - 0x00C157 03:C147: 4C 5B C5  JMP loc_C55B_infinite_loop
@@ -122,10 +122,10 @@ C - - - - - 0x00C15B 03:C14B: 8A        TXA
 C - - - - - 0x00C15C 03:C14C: 48        PHA
 C - - - - - 0x00C15D 03:C14D: 98        TYA
 C - - - - - 0x00C15E 03:C14E: 48        PHA
-C - - - - - 0x00C15F 03:C14F: A5 28     LDA ram_0028
+C - - - - - 0x00C15F 03:C14F: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C161 03:C151: 29 7F     AND #$7F
 C - - - - - 0x00C163 03:C153: 8D 00 20  STA $2000
-C - - - - - 0x00C166 03:C156: 85 28     STA ram_0028
+C - - - - - 0x00C166 03:C156: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00C168 03:C158: BA        TSX
 C - - - - - 0x00C169 03:C159: 8A        TXA
 C - - - - - 0x00C16A 03:C15A: A2 FF     LDX #$FF
@@ -143,7 +143,7 @@ C - - - - - 0x00C183 03:C173: A9 00     LDA #$00
 C - - - - - 0x00C185 03:C175: 8D 06 20  STA $2006
 C - - - - - 0x00C188 03:C178: 8D 06 20  STA $2006
 C - - - - - 0x00C18B 03:C17B: 8D 06 20  STA $2006
-C - - - - - 0x00C18E 03:C17E: A5 28     LDA ram_0028
+C - - - - - 0x00C18E 03:C17E: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C190 03:C180: 8D 00 20  STA $2000
 C - - - - - 0x00C193 03:C183: 2C 02 20  BIT $2002
 C - - - - - 0x00C196 03:C186: A5 3A     LDA ram_003A
@@ -176,11 +176,11 @@ C - - - - - 0x00C1DF 03:C1CF: 20 CE C2  JSR sub_C2CE_roll_rng
 C - - - - - 0x00C1E2 03:C1D2: 68        PLA
 C - - - - - 0x00C1E3 03:C1D3: AA        TAX
 C - - - - - 0x00C1E4 03:C1D4: 9A        TXS
-C - - - - - 0x00C1E5 03:C1D5: A5 66     LDA ram_0066
+C - - - - - 0x00C1E5 03:C1D5: A5 66     LDA ram_byte_for_8000
 C - - - - - 0x00C1E7 03:C1D7: 8D 00 80  STA $8000
-C - - - - - 0x00C1EA 03:C1DA: A5 28     LDA ram_0028
+C - - - - - 0x00C1EA 03:C1DA: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C1EC 03:C1DC: 09 80     ORA #$80
-C - - - - - 0x00C1EE 03:C1DE: 85 28     STA ram_0028
+C - - - - - 0x00C1EE 03:C1DE: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00C1F0 03:C1E0: 85 21     STA ram_0021
 C - - - - - 0x00C1F2 03:C1E2: 8D 00 20  STA $2000
 C - - - - - 0x00C1F5 03:C1E5: 68        PLA
@@ -544,9 +544,9 @@ C - - - - - 0x00C4C7 03:C4B7: 60        RTS
 sub_C4B8:
 C - - - - - 0x00C4C8 03:C4B8: 20 59 CA  JSR sub_CA59_clear_nametables
 C - - - - - 0x00C4CB 03:C4BB: 20 AF CA  JSR sub_CAAF_hide_sprites
-C - - - - - 0x00C4CE 03:C4BE: A5 28     LDA ram_0028
+C - - - - - 0x00C4CE 03:C4BE: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C4D0 03:C4C0: 29 FC     AND #$FC
-C - - - - - 0x00C4D2 03:C4C2: 85 28     STA ram_0028
+C - - - - - 0x00C4D2 03:C4C2: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00C4D4 03:C4C4: A9 00     LDA #$00
 C - - - - - 0x00C4D6 03:C4C6: 85 3A     STA ram_003A
 C - - - - - 0x00C4D8 03:C4C8: 85 3B     STA ram_003B
@@ -1556,21 +1556,21 @@ C - - - - - 0x00CA68 03:CA58: 60        RTS
 
 sub_CA59_clear_nametables:
 sub_0x00CA69_clear_nametables:
-C D 2 - - - 0x00CA69 03:CA59: A5 28     LDA ram_0028
+C D 2 - - - 0x00CA69 03:CA59: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00CA6B 03:CA5B: 29 7F     AND #$7F
-C - - - - - 0x00CA6D 03:CA5D: 85 28     STA ram_0028
+C - - - - - 0x00CA6D 03:CA5D: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00CA6F 03:CA5F: 8D 00 20  STA $2000
-C - - - - - 0x00CA72 03:CA62: A9 06     LDA #$06
+C - - - - - 0x00CA72 03:CA62: A9 06     LDA #$06    ; отобразить фон и спрайты слева 8 пикселей
 C - - - - - 0x00CA74 03:CA64: 8D 01 20  STA $2001
 C - - - - - 0x00CA77 03:CA67: A9 20     LDA #$20
 C - - - - - 0x00CA79 03:CA69: 20 80 CA  JSR sub_CA80_clear_nametable
 C - - - - - 0x00CA7C 03:CA6C: A9 24     LDA #$24
 C - - - - - 0x00CA7E 03:CA6E: 20 80 CA  JSR sub_CA80_clear_nametable
-C - - - - - 0x00CA81 03:CA71: A9 1E     LDA #$1E
+C - - - - - 0x00CA81 03:CA71: A9 1E     LDA #$1E    ; отобразить фон и спрайты слева 8 пикселей + отобразить фон и спрайты на экране
 C - - - - - 0x00CA83 03:CA73: 8D 01 20  STA $2001
-C - - - - - 0x00CA86 03:CA76: A5 28     LDA ram_0028
+C - - - - - 0x00CA86 03:CA76: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00CA88 03:CA78: 09 80     ORA #$80
-C - - - - - 0x00CA8A 03:CA7A: 85 28     STA ram_0028
+C - - - - - 0x00CA8A 03:CA7A: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00CA8C 03:CA7C: 8D 00 20  STA $2000
 C - - - - - 0x00CA8F 03:CA7F: 60        RTS
 
@@ -1716,12 +1716,12 @@ bra_CB58_set_bank:
                                         INC ram_prg_bank_1
 sub_CB58_bankswitch_prg:
                                         LDA #$06
-C - - - - - 0x00CB6C 03:CB5C: 85 66     STA ram_0066
+C - - - - - 0x00CB6C 03:CB5C: 85 66     STA ram_byte_for_8000
 C - - - - - 0x00CB6E 03:CB5E: 8D 00 80  STA $8000
 C - - - - - 0x00CB71 03:CB61: A5 67     LDA ram_prg_bank_0
 C - - - - - 0x00CB73 03:CB63: 8D 01 80  STA $8001
                                         LDA #$07
-C - - - - - 0x00CB7A 03:CB6A: 85 66     STA ram_0066
+C - - - - - 0x00CB7A 03:CB6A: 85 66     STA ram_byte_for_8000
 C - - - - - 0x00CB7C 03:CB6C: 8D 00 80  STA $8000
 C - - - - - 0x00CB7F 03:CB6F: A5 68     LDA ram_prg_bank_1
 C - - - - - 0x00CB81 03:CB71: 8D 01 80  STA $8001
@@ -2120,10 +2120,10 @@ C - - - - - 0x00CE99 03:CE89: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_02
 C - - - - - 0x00CEA5 03:CE95: 68        PLA
 C - - - - - 0x00CEA6 03:CE96: 20 24 80  JSR sub_0x00A03A
-C - - - - - 0x00CEA9 03:CE99: A5 28     LDA ram_0028
+C - - - - - 0x00CEA9 03:CE99: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00CEAB 03:CE9B: 29 7F     AND #$7F
 C - - - - - 0x00CEAD 03:CE9D: 8D 00 20  STA $2000
-C - - - - - 0x00CEB0 03:CEA0: 85 28     STA ram_0028
+C - - - - - 0x00CEB0 03:CEA0: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00CEB2 03:CEA2: 20 97 CF  JSR sub_CF97_load_bg_and_team_palette
 C - - - - - 0x00CEB5 03:CEA5: A2 00     LDX #$00
 C - - - - - 0x00CEB7 03:CEA7: A9 09     LDA #$09
@@ -2138,9 +2138,9 @@ C - - - - - 0x00CEC5 03:CEB5: E8        INX
 C - - - - - 0x00CEC6 03:CEB6: E8        INX
 C - - - - - 0x00CEC7 03:CEB7: E0 20     CPX #$20
 C - - - - - 0x00CEC9 03:CEB9: D0 F5     BNE bra_CEB0_loop
-C - - - - - 0x00CECB 03:CEBB: A5 28     LDA ram_0028
+C - - - - - 0x00CECB 03:CEBB: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00CECD 03:CEBD: 09 80     ORA #$80
-C - - - - - 0x00CECF 03:CEBF: 85 28     STA ram_0028
+C - - - - - 0x00CECF 03:CEBF: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00CED1 03:CEC1: 85 21     STA ram_0021
 C - - - - - 0x00CED3 03:CEC3: 8D 00 20  STA $2000
 C - - - - - 0x00CED6 03:CEC6: A9 17     LDA #con_music_penalty
@@ -2821,9 +2821,9 @@ C - - - - - 0x00D42B 03:D41B: A9 14     LDA #$14
 C - - - - - 0x00D42D 03:D41D: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D430 03:D420: A9 02     LDA #$02
 C - - - - - 0x00D432 03:D422: 85 6B     STA ram_006B
-C - - - - - 0x00D434 03:D424: A5 28     LDA ram_0028
+C - - - - - 0x00D434 03:D424: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00D436 03:D426: 29 DF     AND #$DF
-C - - - - - 0x00D438 03:D428: 85 28     STA ram_0028
+C - - - - - 0x00D438 03:D428: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00D43A 03:D42A: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
 C - - - - - 0x00D446 03:D436: 68        PLA
@@ -2850,9 +2850,9 @@ C - - - - - 0x00D481 03:D471: 20 2A 80  JSR sub_0x004371
 C - - - - - 0x00D484 03:D474: A9 6E     LDA #$6E
 C - - - - - 0x00D486 03:D476: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00D489 03:D479: 20 AF CA  JSR sub_CAAF_hide_sprites
-C - - - - - 0x00D48C 03:D47C: A5 28     LDA ram_0028
+C - - - - - 0x00D48C 03:D47C: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00D48E 03:D47E: 09 20     ORA #$20
-C - - - - - 0x00D490 03:D480: 85 28     STA ram_0028
+C - - - - - 0x00D490 03:D480: 85 28     STA ram_byte_for_2000
 C - - - - - 0x00D492 03:D482: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00D495 03:D485: F0 02     BEQ bra_D489
 C - - - - - 0x00D497 03:D487: A9 01     LDA #$01
