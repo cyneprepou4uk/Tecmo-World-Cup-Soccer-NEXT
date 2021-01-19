@@ -110,7 +110,6 @@ C - - - - - 0x00C149 03:C139: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00C14C 03:C13C: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C14E 03:C13E: 09 80     ORA #$80
 C - - - - - 0x00C150 03:C140: 85 28     STA ram_byte_for_2000
-C - - - - - 0x00C152 03:C142: 85 21     STA ram_0021
 C - - - - - 0x00C154 03:C144: 8D 00 20  STA $2000
 C - - - - - 0x00C157 03:C147: 4C 5B C5  JMP loc_C55B_infinite_loop
 
@@ -181,7 +180,6 @@ C - - - - - 0x00C1E7 03:C1D7: 8D 00 80  STA $8000
 C - - - - - 0x00C1EA 03:C1DA: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00C1EC 03:C1DC: 09 80     ORA #$80
 C - - - - - 0x00C1EE 03:C1DE: 85 28     STA ram_byte_for_2000
-C - - - - - 0x00C1F0 03:C1E0: 85 21     STA ram_0021
 C - - - - - 0x00C1F2 03:C1E2: 8D 00 20  STA $2000
 C - - - - - 0x00C1F5 03:C1E5: 68        PLA
 C - - - - - 0x00C1F6 03:C1E6: A8        TAY
@@ -651,7 +649,6 @@ C - - - - - 0x00C5F0 03:C5E0: 60        RTS
 bra_C576:
 C - - - - - 0x00C586 03:C576: D6 00     DEC ram_0000,X
 C - - - - - 0x00C588 03:C578: F0 39     BNE bra_C57A
-C - - - - - 0x00C5C3 03:C5B3: 46 21     LSR ram_0021
 C - - - - - 0x00C5C5 03:C5B5: 86 00     STX ram_0000
 C - - - - - 0x00C5C7 03:C5B7: B5 02     LDA ram_0002,X
 C - - - - - 0x00C5C9 03:C5B9: 85 67     STA ram_prg_bank_0
@@ -661,8 +658,6 @@ C - - - - - 0x00C5CF 03:C5BF: 20 58 CB  JSR sub_CB58_bankswitch_prg
 C - - - - - 0x00C5D2 03:C5C2: B5 01     LDA ram_0001,X
 C - - - - - 0x00C5D4 03:C5C4: AA        TAX
 C - - - - - 0x00C5D5 03:C5C5: 9A        TXS
-C - - - - - 0x00C5D6 03:C5C6: 38        SEC
-C - - - - - 0x00C5D7 03:C5C7: 66 21     ROR ram_0021
 C - - - - - 0x00C5D9 03:C5C9: 68        PLA
 C - - - - - 0x00C5DA 03:C5CA: A8        TAY
 C - - - - - 0x00C5DB 03:C5CB: 68        PLA
@@ -2141,7 +2136,6 @@ C - - - - - 0x00CEC9 03:CEB9: D0 F5     BNE bra_CEB0_loop
 C - - - - - 0x00CECB 03:CEBB: A5 28     LDA ram_byte_for_2000
 C - - - - - 0x00CECD 03:CEBD: 09 80     ORA #$80
 C - - - - - 0x00CECF 03:CEBF: 85 28     STA ram_byte_for_2000
-C - - - - - 0x00CED1 03:CEC1: 85 21     STA ram_0021
 C - - - - - 0x00CED3 03:CEC3: 8D 00 20  STA $2000
 C - - - - - 0x00CED6 03:CEC6: A9 17     LDA #con_music_penalty
 C - - - - - 0x00CED8 03:CEC8: 20 10 C9  JSR sub_C910_prepare_sound
