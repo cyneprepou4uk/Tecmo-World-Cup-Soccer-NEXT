@@ -2805,9 +2805,6 @@ C - - - - - 0x00D43A 03:D42A: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
 C - - - - - 0x00D446 03:D436: 68        PLA
 C - - - - - 0x00D447 03:D437: 20 27 80  JSR sub_0x0043BA
-C - - - - - 0x00D44A 03:D43A: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01
-C - - - - - 0x00D456 03:D446: 68        PLA
 C - - - - - 0x00D457 03:D447: 20 2A 80  JSR sub_0x004371
 C - - - - - 0x00D45A 03:D44A: A9 28     LDA #$28
 C - - - - - 0x00D45C 03:D44C: 20 09 C6  JSR sub_C609_delay
