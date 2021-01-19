@@ -5152,9 +5152,7 @@ C - - - - - 0x00E3F7 03:E3E7: F0 1C     BEQ bra_E405    ; мяч у команд
 C - - - - - 0x00E3F9 03:E3E9: AD 25 00  LDA ram_btn_hold + 1
 C - - - - - 0x00E3FC 03:E3EC: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00E3FF 03:E3EF: 30 14     BMI bra_E405    ; con_gm_2p
-C - - - - - 0x00E401 03:E3F1: 48        PHA     ; bzk опт, бесполезное сохранение A, в подпрограмме не используется
                                         JSR sub_CB58_prg_bankswitch_bank_01
-C - - - - - 0x00E40D 03:E3FD: 68        PLA
 C - - - - - 0x00E40E 03:E3FE: 20 4B 80  JSR sub_0x004B4F
 C - - - - - 0x00E411 03:E401: 90 0C     BCC bra_E40F_RTS
 C - - - - - 0x00E413 03:E403: B0 0B     BCS bra_E410
