@@ -106,9 +106,9 @@ con_behavior_13                 = $13   ;
 con_behavior_14                 = $14   ; 
 con_behavior_run_base           = $15   ; бежать на свою позицию когда кипер завладел мячом
 con_behavior_gk_get_ball        = $16   ; (для киперов) владеет мячом, даже когда еще находится в анимации падения
-con_behavior_17                 = $17   ; 
-con_behavior_18                 = $18   ; 
-con_behavior_19                 = $19   ; 
+con_behavior_pk_player          = $17   ; пробивающий игрок в пенальти
+con_behavior_pk_gk              = $18   ; обороняющийся кипер в пенальти
+con_behavior_pk_bench           = $19   ; все остальные игроки в пенальти
 
 
 

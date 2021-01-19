@@ -6854,7 +6854,7 @@ bra_A10E_loop:
 C - - - - - 0x00A11E 02:A10E: 48        PHA
 C - - - - - 0x00A11F 02:A10F: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
                                         JSR sub_0x00C953_clear_player_flag___control
-C - - - - - 0x00A12A 02:A11A: A9 19     LDA #con_behavior_19
+C - - - - - 0x00A12A 02:A11A: A9 19     LDA #con_behavior_pk_bench
 C - - - - - 0x00A12C 02:A11C: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A12F 02:A11F: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x00A131 02:A121: A9 00     LDA #$00
@@ -6869,17 +6869,17 @@ C - - - - - 0x00A140 02:A130: 18        CLC
 C - - - - - 0x00A141 02:A131: 69 09     ADC #$09
 C - - - - - 0x00A143 02:A133: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00A146 02:A136: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00A149 02:A139: A9 17     LDA #con_behavior_17
+C - - - - - 0x00A149 02:A139: A9 17     LDA #con_behavior_pk_player
 C - - - - - 0x00A14B 02:A13B: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A14E 02:A13E: A2 00     LDX #$00
-C - - - - - 0x00A150 02:A140: 20 74 A1  JSR sub_A174
+C - - - - - 0x00A150 02:A140: 20 74 A1  JSR sub_A174_set_base_pk_position
 C - - - - - 0x00A153 02:A143: AD AD 03  LDA ram_team_w_ball
 C - - - - - 0x00A156 02:A146: 49 0B     EOR #$0B
 C - - - - - 0x00A158 02:A148: 20 57 C0  JSR sub_0x00CBF3_get_base_player_address
-C - - - - - 0x00A15B 02:A14B: A9 18     LDA #con_behavior_18
+C - - - - - 0x00A15B 02:A14B: A9 18     LDA #con_behavior_pk_gk
 C - - - - - 0x00A15D 02:A14D: 20 5A C0  JSR sub_0x00C63F_player_state_handler
 C - - - - - 0x00A160 02:A150: A2 04     LDX #$04
-C - - - - - 0x00A162 02:A152: 20 74 A1  JSR sub_A174
+C - - - - - 0x00A162 02:A152: 20 74 A1  JSR sub_A174_set_base_pk_position
 C - - - - - 0x00A165 02:A155: A9 FF     LDA #$FF
 C - - - - - 0x00A167 02:A157: 8D D8 03  STA ram_03D8
 C - - - - - 0x00A16A 02:A15A: A9 00     LDA #$00
@@ -6896,20 +6896,20 @@ C - - - - - 0x00A183 02:A173: 60        RTS
 
 
 
-sub_A174:
+sub_A174_set_base_pk_position:
 C - - - - - 0x00A184 02:A174: A0 05     LDY #con_plr_pos_X_lo
-C - - - - - 0x00A186 02:A176: BD 97 A1  LDA tbl_A197,X
+C - - - - - 0x00A186 02:A176: BD 97 A1  LDA tbl_A197_X_Y_position,X
 C - - - - - 0x00A189 02:A179: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A18B 02:A17B: C8        INY
 C - - - - - 0x00A18C 02:A17C: C8        INY ; con_plr_pos_X_hi
-C - - - - - 0x00A18D 02:A17D: BD 98 A1  LDA tbl_A198,X
+C - - - - - 0x00A18D 02:A17D: BD 98 A1  LDA tbl_A197_X_Y_position + 1,X
 C - - - - - 0x00A190 02:A180: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A192 02:A182: A0 0B     LDY #con_plr_pos_Y_lo
-C - - - - - 0x00A194 02:A184: BD 99 A1  LDA tbl_A199,X
+C - - - - - 0x00A194 02:A184: BD 99 A1  LDA tbl_A197_X_Y_position + 2,X
 C - - - - - 0x00A197 02:A187: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A199 02:A189: C8        INY
 C - - - - - 0x00A19A 02:A18A: C8        INY ; con_plr_pos_Y_hi
-C - - - - - 0x00A19B 02:A18B: BD 9A A1  LDA tbl_A19A,X
+C - - - - - 0x00A19B 02:A18B: BD 9A A1  LDA tbl_A197_X_Y_position + 3,X
 C - - - - - 0x00A19E 02:A18E: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00A1A0 02:A190: A0 13     LDY #$13
 C - - - - - 0x00A1A2 02:A192: A9 80     LDA #$80
@@ -6918,18 +6918,13 @@ C - - - - - 0x00A1A6 02:A196: 60        RTS
 
 
 
-tbl_A197:
-- D 1 - - - 0x00A1A7 02:A197: FF        .byte $FF   ; 
-tbl_A198:
-- D 1 - - - 0x00A1A8 02:A198: 00        .byte $00   ; 
-tbl_A199:
-- D 1 - - - 0x00A1A9 02:A199: BF        .byte $BF   ; 
-tbl_A19A:
-- D 1 - - - 0x00A1AA 02:A19A: 00        .byte $00   ; 
-- D 1 - - - 0x00A1AB 02:A19B: FF        .byte $FF   ; 
-- D 1 - - - 0x00A1AC 02:A19C: 00        .byte $00   ; 
-- D 1 - - - 0x00A1AD 02:A19D: 6F        .byte $6F   ; 
-- D 1 - - - 0x00A1AE 02:A19E: 00        .byte $00   ; 
+tbl_A197_X_Y_position:
+; начальные координаты пробивающего
+- D 1 - - - 0x00A1A7 02:A197: FF 00     .word $00FF
+- D 1 - - - 0x00A1A9 02:A199: BF 00     .word $00BF
+; начальные координаты кипера
+- D 1 - - - 0x00A1AB 02:A19B: FF 00     .word $00FF
+- D 1 - - - 0x00A1AD 02:A19D: 6F 00     .word $006F
 
 
 

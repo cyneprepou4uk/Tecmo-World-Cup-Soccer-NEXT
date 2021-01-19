@@ -812,7 +812,7 @@ C - - - - - 0x00C661 03:C651: 60        RTS
 
 
 
-sub_C652:
+sub_C652_set_plr_sub_timer:
 C - - - - - 0x00C662 03:C652: A0 18     LDY #con_plr_sub_timer
 C - - - - - 0x00C664 03:C654: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00C666 03:C656: 88        DEY ; con_plr_sub_lo
@@ -4989,7 +4989,7 @@ C - - - - - 0x00E1A4 03:E194: 20 77 C6  JSR sub_C677
 C - - - - - 0x00E1A7 03:E197: A9 08     LDA #$08
 C - - - - - 0x00E1A9 03:E199: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00E1AC 03:E19C: A9 04     LDA #$04
-C - - - - - 0x00E1AE 03:E19E: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E1AE 03:E19E: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E1B1 03:E1A1: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00E1B4 03:E1A4: A9 08     LDA #$08
 C - - - - - 0x00E1B6 03:E1A6: 20 1E 80  JSR sub_0x00479F
@@ -5011,7 +5011,7 @@ C - - - - - 0x00E1D6 03:E1C6: A9 00     LDA #$00
 C - - - - - 0x00E1D8 03:E1C8: 91 61     STA (ram_plr_data),Y
 bra_E1CA:
 C - - - - - 0x00E1DA 03:E1CA: A9 01     LDA #$01
-C - - - - - 0x00E1DC 03:E1CC: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E1DC 03:E1CC: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E1DF 03:E1CF: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00E1E2 03:E1D2: 20 55 E2  JSR sub_E255
 C - - - - - 0x00E1E5 03:E1D5: A0 06     LDY #con_plr_action_timer_1
@@ -5026,7 +5026,7 @@ C - - - - - 0x00E1F5 03:E1E5: A9 0A     LDA #$0A
 C - - - - - 0x00E1F7 03:E1E7: 91 61     STA (ram_plr_data),Y
 bra_E1E9:
 C - - - - - 0x00E1F9 03:E1E9: A9 01     LDA #$01
-C - - - - - 0x00E1FB 03:E1EB: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E1FB 03:E1EB: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E1FE 03:E1EE: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00E201 03:E1F1: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00E203 03:E1F3: B1 61     LDA (ram_plr_data),Y
@@ -5038,7 +5038,7 @@ C - - - - - 0x00E20C 03:E1FC: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00E20F 03:E1FF: A9 08     LDA #$08
 C - - - - - 0x00E211 03:E201: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00E214 03:E204: A9 0A     LDA #$0A
-C - - - - - 0x00E216 03:E206: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E216 03:E206: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 loc_E209:
 C D 3 - - - 0x00E219 03:E209: A5 6F     LDA ram_006F
 C - - - - - 0x00E21B 03:E20B: CD 2A 04  CMP ram_plr_wo_ball
@@ -5283,7 +5283,7 @@ C - - - - - 0x00E3C2 03:E3B2: A9 01     LDA #$01
 C - - - - - 0x00E3C4 03:E3B4: 20 9E C7  JSR sub_C79E
 bra_E3B7:
 C - - - - - 0x00E3C7 03:E3B7: A9 01     LDA #$01
-C - - - - - 0x00E3C9 03:E3B9: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E3C9 03:E3B9: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E3CC 03:E3BC: 20 17 DD  JSR sub_DD17
 C - - - - - 0x00E3CF 03:E3BF: 20 ED DC  JSR sub_DCED
 C - - - - - 0x00E3D2 03:E3C2: CE 24 04  DEC ram_ball_Z_lo
@@ -5811,9 +5811,9 @@ tbl_E6C2_player_state_subroutine:
 - D 3 - - - 0x00E6FA 03:E6EA: A4 F2     .word ofs_F2A4_14 - 1
 - D 3 - - - 0x00E6FC 03:E6EC: CF F2     .word ofs_F0A8_15_run_base - 1
 - D 3 - - - 0x00E6FE 03:E6EE: 63 F5     .word ofs_F563_16_gk_get_ball - 1
-- D 3 - - - 0x00E700 03:E6F0: B9 F7     .word ofs_F7B9_17 - 1
-- D 3 - - - 0x00E702 03:E6F2: 3E F8     .word ofs_F83E_18 - 1
-- D 3 - - - 0x00E704 03:E6F4: 85 F9     .word ofs_F985_19 - 1
+- D 3 - - - 0x00E700 03:E6F0: B9 F7     .word ofs_F7B9_17_pk_player - 1
+- D 3 - - - 0x00E702 03:E6F2: 3E F8     .word ofs_F83E_18_pk_gk - 1
+- D 3 - - - 0x00E704 03:E6F4: 85 F9     .word ofs_F985_19_pk_bench - 1
 
 
 
@@ -5823,7 +5823,7 @@ C - - - - - 0x00E70E 03:E6FE: 20 77 C6  JSR sub_C677
 bra_E701:
 loc_E701:
 C D 3 - - - 0x00E711 03:E701: A9 01     LDA #$01
-C - - - - - 0x00E713 03:E703: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E713 03:E703: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E716 03:E706: A0 00     LDY #con_plr_flags
 C - - - - - 0x00E718 03:E708: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E71A 03:E70A: 29 01     AND #con_player_flag_unknown_01
@@ -5921,7 +5921,7 @@ C - - - - - 0x00E7FE 03:E7EE: A9 D6     LDA #> ofs_D6FA
 C - - - - - 0x00E800 03:E7F0: A0 F9     LDY #< ofs_D6FA
 C - - - - - 0x00E802 03:E7F2: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00E805 03:E7F5: A9 04     LDA #$04
-C - - - - - 0x00E807 03:E7F7: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E807 03:E7F7: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E80A 03:E7FA: A9 05     LDA #con_behavior_dead
 C - - - - - 0x00E80C 03:E7FC: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
@@ -5996,7 +5996,7 @@ ofs_E86E_01:
                                         JSR sub_C93B_set_player_flag___control
 bra_E878:
 C - - - - - 0x00E888 03:E878: A9 01     LDA #$01
-C - - - - - 0x00E88A 03:E87A: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E88A 03:E87A: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E88D 03:E87D: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00E890 03:E880: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00E893 03:E883: 20 A9 E4  JSR sub_E4A9
@@ -6055,7 +6055,7 @@ C - - - - - 0x00E921 03:E911: A9 00     LDA #$00
 C - - - - - 0x00E923 03:E913: 85 82     STA ram_0082
 bra_E915:
 C - - - - - 0x00E925 03:E915: A9 01     LDA #$01
-C - - - - - 0x00E927 03:E917: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E927 03:E917: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E92A 03:E91A: AD 24 00  LDA ram_btn_hold
 C - - - - - 0x00E92D 03:E91D: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00E930 03:E920: F0 12     BEQ bra_E934
@@ -6149,12 +6149,12 @@ C - - - - - 0x00E9D4 03:E9C4: 20 77 C6  JSR sub_C677
 C - - - - - 0x00E9D7 03:E9C7: A9 05     LDA #$05
 C - - - - - 0x00E9D9 03:E9C9: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00E9DC 03:E9CC: A9 02     LDA #$02
-C - - - - - 0x00E9DE 03:E9CE: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E9DE 03:E9CE: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E9E1 03:E9D1: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00E9E4 03:E9D4: A9 05     LDA #$05
 C - - - - - 0x00E9E6 03:E9D6: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00E9E9 03:E9D9: A9 02     LDA #$02
-C - - - - - 0x00E9EB 03:E9DB: 20 52 C6  JSR sub_C652
+C - - - - - 0x00E9EB 03:E9DB: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00E9EE 03:E9DE: A0 13     LDY #con_plr_direction
 C - - - - - 0x00E9F0 03:E9E0: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00E9F2 03:E9E2: 8D E6 03  STA ram_03E6
@@ -6169,15 +6169,15 @@ C - - - - - 0x00EA04 03:E9F4: A9 D6     LDA #> ofs_D6FA
 C - - - - - 0x00EA06 03:E9F6: A0 F9     LDY #< ofs_D6FA
 C - - - - - 0x00EA08 03:E9F8: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00EA0B 03:E9FB: A9 04     LDA #$04
-C - - - - - 0x00EA0D 03:E9FD: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EA0D 03:E9FD: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EA10 03:EA00: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00EA13 03:EA03: A9 01     LDA #$01
-C - - - - - 0x00EA15 03:EA05: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EA15 03:EA05: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EA18 03:EA08: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00EA1B 03:EA0B: A9 05     LDA #$05
 C - - - - - 0x00EA1D 03:EA0D: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00EA20 03:EA10: A9 30     LDA #$30
-C - - - - - 0x00EA22 03:EA12: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EA22 03:EA12: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00EA2D 03:EA1D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00EA2F 03:EA1F: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -6266,7 +6266,7 @@ ofs_EAAD_03_follow_ball:
 bra_EAB7:
 loc_EAB7:
 C D 3 - - - 0x00EAC7 03:EAB7: A9 01     LDA #$01
-C - - - - - 0x00EAC9 03:EAB9: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EAC9 03:EAB9: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EACC 03:EABC: A9 00     LDA #$00
 C - - - - - 0x00EACE 03:EABE: 85 2A     STA ram_002A
 ; con_plr_aim_X_lo    con_plr_aim_X_hi    con_plr_aim_Y_lo    con_plr_aim_Y_hi
@@ -6340,7 +6340,7 @@ C - - - - - 0x00EB5A 03:EB4A: 29 20     AND #con_gm_out_of_play
 C - - - - - 0x00EB5C 03:EB4C: F0 10     BEQ bra_EB5E
 loc_EB4E:
 C D 3 - - - 0x00EB5E 03:EB4E: A9 01     LDA #$01
-C - - - - - 0x00EB60 03:EB50: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EB60 03:EB50: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EB63 03:EB53: 20 77 C6  JSR sub_C677
 C - - - - - 0x00EB66 03:EB56: A9 01     LDA #$01
 C - - - - - 0x00EB68 03:EB58: 20 1E 80  JSR sub_0x00479F
@@ -6358,7 +6358,7 @@ C - - - - - 0x00EB86 03:EB76: 4C 55 DF  JMP loc_DF55
 bra_EB79:
 loc_EB79:
 C D 3 - - - 0x00EB89 03:EB79: A9 01     LDA #$01
-C - - - - - 0x00EB8B 03:EB7B: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EB8B 03:EB7B: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EB8E 03:EB7E: A5 6F     LDA ram_006F
 C - - - - - 0x00EB90 03:EB80: CD 2A 04  CMP ram_plr_wo_ball
 C - - - - - 0x00EB93 03:EB83: F0 10     BEQ bra_EB95
@@ -6468,7 +6468,7 @@ C - - - - - 0x00EC65 03:EC55: 20 67 E1  JSR sub_E167
 bra_EC58:
 loc_EC58:
 C D 3 - - - 0x00EC68 03:EC58: A9 01     LDA #$01
-C - - - - - 0x00EC6A 03:EC5A: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EC6A 03:EC5A: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EC6D 03:EC5D: A5 6F     LDA ram_006F
 C - - - - - 0x00EC6F 03:EC5F: CD 2A 04  CMP ram_plr_wo_ball
 C - - - - - 0x00EC72 03:EC62: D0 11     BNE bra_EC75
@@ -6667,7 +6667,7 @@ C - - - - - 0x00EDEB 03:EDDB: BD A7 EF  LDA tbl_EFA7,X
 C - - - - - 0x00EDEE 03:EDDE: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x00EDF0 03:EDE0: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00EDF2 03:EDE2: 68        PLA
-C - - - - - 0x00EDF3 03:EDE3: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EDF3 03:EDE3: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EDF6 03:EDE6: 4C 8F ED  JMP loc_ED8F
 
 
@@ -6741,13 +6741,13 @@ C - - - - - 0x00EE8D 03:EE7D: A0 0C     LDY #con_plr_action_timer_2
 C - - - - - 0x00EE8F 03:EE7F: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00EE91 03:EE81: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00EE94 03:EE84: A9 08     LDA #$08
-C - - - - - 0x00EE96 03:EE86: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EE96 03:EE86: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EE99 03:EE89: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00EE9C 03:EE8C: A0 0C     LDY #con_plr_action_timer_2
 C - - - - - 0x00EE9E 03:EE8E: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00EEA0 03:EE90: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00EEA3 03:EE93: A9 14     LDA #$14
-C - - - - - 0x00EEA5 03:EE95: 20 52 C6  JSR sub_C652
+C - - - - - 0x00EEA5 03:EE95: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00EEA8 03:EE98: 2C 98 00  BIT ram_0098
 C - - - - - 0x00EEAB 03:EE9B: 30 03     BMI bra_EEA0
 C - - - - - 0x00EEAD 03:EE9D: 4C FD EE  JMP loc_EEFD
@@ -7017,12 +7017,12 @@ C - - - - - 0x00F038 03:F028: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F03B 03:F02B: A9 09     LDA #$09
 C - - - - - 0x00F03D 03:F02D: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F040 03:F030: A9 40     LDA #$40
-C - - - - - 0x00F042 03:F032: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F042 03:F032: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F045 03:F035: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F048 03:F038: A9 09     LDA #$09
 C - - - - - 0x00F04A 03:F03A: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F04D 03:F03D: A9 0C     LDA #$0C
-C - - - - - 0x00F04F 03:F03F: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F04F 03:F03F: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F05A 03:F04A: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F05C 03:F04C: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7047,12 +7047,12 @@ C - - - - - 0x00F084 03:F074: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F087 03:F077: A9 0A     LDA #$0A
 C - - - - - 0x00F089 03:F079: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F08C 03:F07C: A9 14     LDA #$14
-C - - - - - 0x00F08E 03:F07E: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F08E 03:F07E: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F091 03:F081: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F094 03:F084: A9 0A     LDA #$0A
 C - - - - - 0x00F096 03:F086: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F099 03:F089: A9 06     LDA #$06
-C - - - - - 0x00F09B 03:F08B: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F09B 03:F08B: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F0A6 03:F096: A9 02     LDA #con_behavior_w_ball
 C - - - - - 0x00F0A8 03:F098: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7066,7 +7066,7 @@ ofs_F0A8_15_run_base:
                                         JSR sub_C943_clear_player_flag___control
 loc_F0B0:
 C D 3 - - - 0x00F0C0 03:F0B0: A9 01     LDA #$01
-C - - - - - 0x00F0C2 03:F0B2: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F0C2 03:F0B2: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F0C5 03:F0B5: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F0C8 03:F0B8: A0 19     LDY #con_plr_unknown_19
 C - - - - - 0x00F0CA 03:F0BA: B1 61     LDA (ram_plr_data),Y
@@ -7087,7 +7087,7 @@ ofs_F0D3_10:
                                         JSR sub_C943_clear_player_flag___control
 loc_F0DB:
 C D 3 - - - 0x00F0EB 03:F0DB: A9 01     LDA #$01
-C - - - - - 0x00F0ED 03:F0DD: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F0ED 03:F0DD: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F0F0 03:F0E0: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F0F3 03:F0E3: 20 67 E4  JSR sub_E467
 C - - - - - 0x00F0F6 03:F0E6: 90 0B     BCC bra_F0F3
@@ -7109,7 +7109,7 @@ C D 3 - - - 0x00F10F 03:F0FF: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00F112 03:F102: 29 20     AND #con_gm_out_of_play
 C - - - - - 0x00F114 03:F104: F0 10     BEQ bra_F116
 C - - - - - 0x00F116 03:F106: A9 01     LDA #$01
-C - - - - - 0x00F118 03:F108: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F118 03:F108: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F11B 03:F10B: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F11E 03:F10E: A9 01     LDA #$01
 C - - - - - 0x00F120 03:F110: 20 1E 80  JSR sub_0x00479F
@@ -7121,7 +7121,7 @@ C - - - - - 0x00F130 03:F120: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00F132 03:F122: 91 61     STA (ram_plr_data),Y
 bra_F124:
 C - - - - - 0x00F134 03:F124: A9 01     LDA #$01
-C - - - - - 0x00F136 03:F126: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F136 03:F126: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F139 03:F129: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F13C 03:F12C: 20 7E C6  JSR sub_C67E
 C - - - - - 0x00F13F 03:F12F: 20 A9 E4  JSR sub_E4A9
@@ -7196,7 +7196,7 @@ C - - - - - 0x00F1FF 03:F1EF: 20 77 C6  JSR sub_C677
 bra_F1F2:
 loc_F1F2:
 C D 3 - - - 0x00F202 03:F1F2: A9 01     LDA #$01
-C - - - - - 0x00F204 03:F1F4: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F204 03:F1F4: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F207 03:F1F7: A0 00     LDY #con_plr_flags
 C - - - - - 0x00F209 03:F1F9: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F20B 03:F1FB: 29 01     AND #con_player_flag_unknown_01
@@ -7227,7 +7227,7 @@ C - - - - - 0x00F240 03:F230: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00F242 03:F232: 91 61     STA (ram_plr_data),Y
 bra_F234_loop:
 C - - - - - 0x00F244 03:F234: A9 01     LDA #$01
-C - - - - - 0x00F246 03:F236: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F246 03:F236: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F249 03:F239: A9 06     LDA #$06
 C - - - - - 0x00F24B 03:F23B: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F24E 03:F23E: A2 00     LDX #$00
@@ -7273,7 +7273,7 @@ C - - - - - 0x00F2B1 03:F2A1: 4C 55 DF  JMP loc_DF55
 loc_F2A4:
 ofs_F2A4_14:
 C D 3 - - - 0x00F2B4 03:F2A4: A9 01     LDA #$01
-C - - - - - 0x00F2B6 03:F2A6: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F2B6 03:F2A6: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F2B9 03:F2A9: 20 37 C9  JSR sub_C937_set_player_flag___unknown
 C - - - - - 0x00F2BC 03:F2AC: A0 19     LDY #con_plr_unknown_19
 C - - - - - 0x00F2BE 03:F2AE: B1 61     LDA (ram_plr_data),Y
@@ -7300,16 +7300,16 @@ C - - - - - 0x00F2F4 03:F2E4: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F2F7 03:F2E7: A9 0B     LDA #$0B
 C - - - - - 0x00F2F9 03:F2E9: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F2FC 03:F2EC: A9 01     LDA #$01
-C - - - - - 0x00F2FE 03:F2EE: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F2FE 03:F2EE: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F301 03:F2F1: 20 28 F4  JSR sub_F428
 C - - - - - 0x00F304 03:F2F4: A9 02     LDA #$02
-C - - - - - 0x00F306 03:F2F6: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F306 03:F2F6: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F309 03:F2F9: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F30C 03:F2FC: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F30F 03:F2FF: A9 0B     LDA #$0B
 C - - - - - 0x00F311 03:F301: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F314 03:F304: A9 30     LDA #$30
-C - - - - - 0x00F316 03:F306: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F316 03:F306: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F321 03:F311: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F323 03:F313: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7326,26 +7326,26 @@ C - - - - - 0x00F33B 03:F32B: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F33E 03:F32E: A9 0C     LDA #$0C
 C - - - - - 0x00F340 03:F330: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F343 03:F333: A9 01     LDA #$01
-C - - - - - 0x00F345 03:F335: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F345 03:F335: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F348 03:F338: 20 28 F4  JSR sub_F428
 C - - - - - 0x00F34B 03:F33B: A9 02     LDA #$02
-C - - - - - 0x00F34D 03:F33D: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F34D 03:F33D: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F350 03:F340: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F353 03:F343: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F356 03:F346: A9 0C     LDA #$0C
 C - - - - - 0x00F358 03:F348: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F35B 03:F34B: A9 20     LDA #$20
-C - - - - - 0x00F35D 03:F34D: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F35D 03:F34D: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F360 03:F350: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F363 03:F353: A9 0C     LDA #$0C
 C - - - - - 0x00F365 03:F355: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F368 03:F358: A9 18     LDA #$18
-C - - - - - 0x00F36A 03:F35A: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F36A 03:F35A: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F36D 03:F35D: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F370 03:F360: A9 0C     LDA #$0C
 C - - - - - 0x00F372 03:F362: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F375 03:F365: A9 0C     LDA #$0C
-C - - - - - 0x00F377 03:F367: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F377 03:F367: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F382 03:F372: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F384 03:F374: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7374,16 +7374,16 @@ C - - - - - 0x00F3B4 03:F3A4: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F3B7 03:F3A7: A9 0D     LDA #$0D
 C - - - - - 0x00F3B9 03:F3A9: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F3BC 03:F3AC: A9 01     LDA #$01
-C - - - - - 0x00F3BE 03:F3AE: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F3BE 03:F3AE: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F3C1 03:F3B1: 20 28 F4  JSR sub_F428
 C - - - - - 0x00F3C4 03:F3B4: A9 02     LDA #$02
-C - - - - - 0x00F3C6 03:F3B6: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F3C6 03:F3B6: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F3C9 03:F3B9: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F3CC 03:F3BC: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F3CF 03:F3BF: A9 0D     LDA #$0D
 C - - - - - 0x00F3D1 03:F3C1: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F3D4 03:F3C4: A9 30     LDA #$30
-C - - - - - 0x00F3D6 03:F3C6: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F3D6 03:F3C6: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F3E1 03:F3D1: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F3E3 03:F3D3: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7396,26 +7396,26 @@ C D 3 - - - 0x00F3E9 03:F3D9: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F3EC 03:F3DC: A9 0E     LDA #$0E
 C - - - - - 0x00F3EE 03:F3DE: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F3F1 03:F3E1: A9 01     LDA #$01
-C - - - - - 0x00F3F3 03:F3E3: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F3F3 03:F3E3: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F3F6 03:F3E6: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F3F9 03:F3E9: A9 0E     LDA #$0E
 C - - - - - 0x00F3FB 03:F3EB: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F3FE 03:F3EE: A9 01     LDA #$01
-C - - - - - 0x00F400 03:F3F0: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F400 03:F3F0: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F403 03:F3F3: 20 28 F4  JSR sub_F428
 C - - - - - 0x00F406 03:F3F6: A9 02     LDA #$02
-C - - - - - 0x00F408 03:F3F8: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F408 03:F3F8: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F40B 03:F3FB: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F40E 03:F3FE: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F411 03:F401: A9 0E     LDA #$0E
 C - - - - - 0x00F413 03:F403: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F416 03:F406: A9 20     LDA #$20
-C - - - - - 0x00F418 03:F408: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F418 03:F408: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F41B 03:F40B: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F41E 03:F40E: A9 0E     LDA #$0E
 C - - - - - 0x00F420 03:F410: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F423 03:F413: A9 18     LDA #$18
-C - - - - - 0x00F425 03:F415: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F425 03:F415: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F430 03:F420: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F432 03:F422: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7470,7 +7470,7 @@ C - - - - - 0x00F493 03:F483: 20 3C 80  JSR sub_0x004BEC_bot_throw_in_timer
 bra_F486:
 loc_F486_loop:
 C D 3 - - - 0x00F496 03:F486: A9 01     LDA #$01
-C - - - - - 0x00F498 03:F488: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F498 03:F488: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F49B 03:F48B: A9 02     LDA #$02
 C - - - - - 0x00F49D 03:F48D: 20 9E C7  JSR sub_C79E
 C - - - - - 0x00F4A0 03:F490: A9 0F     LDA #$0F
@@ -7559,10 +7559,10 @@ C - - - - - 0x00F546 03:F536: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00F549 03:F539: A9 80     LDA #$80
 C - - - - - 0x00F54B 03:F53B: 8D 29 04  STA ram_plr_w_ball
 C - - - - - 0x00F54E 03:F53E: A9 02     LDA #$02
-C - - - - - 0x00F550 03:F540: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F550 03:F540: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F553 03:F543: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F556 03:F546: A9 10     LDA #$10
-C - - - - - 0x00F558 03:F548: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F558 03:F548: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F563 03:F553: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F565 03:F555: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7592,7 +7592,7 @@ C - - - - - 0x00F599 03:F589: 20 B9 C6  JSR sub_C6B9
 C - - - - - 0x00F59C 03:F58C: 20 80 E5  JSR sub_E580
 bra_F58F:
 C - - - - - 0x00F59F 03:F58F: A9 01     LDA #$01
-C - - - - - 0x00F5A1 03:F591: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F5A1 03:F591: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F5A4 03:F594: A0 12     LDY #con_plr_behavior
 C - - - - - 0x00F5A6 03:F596: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F5A8 03:F598: C9 0D     CMP #con_behavior_goal_kick
@@ -7653,12 +7653,12 @@ C - - - - - 0x00F615 03:F605: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F618 03:F608: A9 05     LDA #$05
 C - - - - - 0x00F61A 03:F60A: 20 9E C7  JSR sub_C79E
 C - - - - - 0x00F61D 03:F60D: A9 08     LDA #$08
-C - - - - - 0x00F61F 03:F60F: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F61F 03:F60F: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F622 03:F612: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F625 03:F615: A9 11     LDA #$11
 C - - - - - 0x00F627 03:F617: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F62A 03:F61A: A9 04     LDA #$04
-C - - - - - 0x00F62C 03:F61C: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F62C 03:F61C: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F62F 03:F61F: A9 03     LDA #con_sound_shot
 C - - - - - 0x00F631 03:F621: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F634 03:F624: A9 00     LDA #$00
@@ -7682,18 +7682,18 @@ C - - - - - 0x00F65B 03:F64B: AD 2C 04  LDA ram_042C
 C - - - - - 0x00F65E 03:F64E: 29 BF     AND #$BF
 C - - - - - 0x00F660 03:F650: 8D 2C 04  STA ram_042C
 C - - - - - 0x00F663 03:F653: A9 02     LDA #$02
-C - - - - - 0x00F665 03:F655: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F665 03:F655: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F668 03:F658: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F66B 03:F65B: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F66E 03:F65E: A9 11     LDA #$11
 C - - - - - 0x00F670 03:F660: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F673 03:F663: A9 2E     LDA #$2E
-C - - - - - 0x00F675 03:F665: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F675 03:F665: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F678 03:F668: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F67B 03:F66B: A9 11     LDA #$11
 C - - - - - 0x00F67D 03:F66D: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F680 03:F670: A9 10     LDA #$10
-C - - - - - 0x00F682 03:F672: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F682 03:F672: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F68D 03:F67D: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F68F 03:F67F: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7719,7 +7719,7 @@ C - - - - - 0x00F6BB 03:F6AB: 91 61     STA (ram_plr_data),Y
 bra_F6AD:
 loc_F6AD:
 C D 3 - - - 0x00F6BD 03:F6AD: A9 01     LDA #$01
-C - - - - - 0x00F6BF 03:F6AF: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F6BF 03:F6AF: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F6C2 03:F6B2: A9 01     LDA #$01
 C - - - - - 0x00F6C4 03:F6B4: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F6C7 03:F6B7: AD 24 00  LDA ram_btn_hold
@@ -7787,12 +7787,12 @@ bra_F72A:
 C - - - - - 0x00F73A 03:F72A: A9 05     LDA #$05
 C - - - - - 0x00F73C 03:F72C: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F73F 03:F72F: A9 08     LDA #$08
-C - - - - - 0x00F741 03:F731: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F741 03:F731: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F744 03:F734: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F747 03:F737: A9 05     LDA #$05
 C - - - - - 0x00F749 03:F739: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F74C 03:F73C: A9 04     LDA #$04
-C - - - - - 0x00F74E 03:F73E: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F74E 03:F73E: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F751 03:F741: A9 E0     LDA #$E0
 C - - - - - 0x00F753 03:F743: 8D 1D 04  STA ram_041D
 C - - - - - 0x00F756 03:F746: A9 01     LDA #$01
@@ -7817,13 +7817,13 @@ C - - - - - 0x00F77F 03:F76F: 20 E1 C5  JSR sub_C5E1_prepare_return_address
 C - - - - - 0x00F782 03:F772: A9 03     LDA #con_sound_shot
 C - - - - - 0x00F784 03:F774: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F787 03:F777: A9 02     LDA #$02
-C - - - - - 0x00F789 03:F779: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F789 03:F779: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F78C 03:F77C: 20 5E DF  JSR sub_DF5E
 C - - - - - 0x00F78F 03:F77F: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F792 03:F782: A9 05     LDA #$05
 C - - - - - 0x00F794 03:F784: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F797 03:F787: A9 30     LDA #$30
-C - - - - - 0x00F799 03:F789: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F799 03:F789: 20 52 C6  JSR sub_C652_set_plr_sub_timer
                                         JSR sub_C943_clear_player_flag___control
 C - - - - - 0x00F7A4 03:F794: A9 00     LDA #con_behavior_idle
 C - - - - - 0x00F7A6 03:F796: 20 2F C6  JSR sub_C62F_player_state_handler
@@ -7854,7 +7854,7 @@ C - - - - - 0x00F7C8 03:F7B8: 60        RTS
 
 
 
-ofs_F7B9_17:
+ofs_F7B9_17_pk_player:
 C - - - - - 0x00F7C9 03:F7B9: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F7CC 03:F7BC: A9 15     LDA #$15
 C - - - - - 0x00F7CE 03:F7BE: 20 1E 80  JSR sub_0x00479F
@@ -7862,18 +7862,18 @@ C - - - - - 0x00F7D1 03:F7C1: AD 7E 03  LDA ram_random
 C - - - - - 0x00F7D4 03:F7C4: 29 0F     AND #$0F
 C - - - - - 0x00F7D6 03:F7C6: 18        CLC
 C - - - - - 0x00F7D7 03:F7C7: 69 18     ADC #$18
-C - - - - - 0x00F7D9 03:F7C9: 85 8D     STA ram_008D
-bra_F7CB:
+C - - - - - 0x00F7D9 03:F7C9: 85 8D     STA ram_008D    ; таймер перед ударом бота
+bra_F7CB_loop:
 C - - - - - 0x00F7DB 03:F7CB: A9 01     LDA #$01
-C - - - - - 0x00F7DD 03:F7CD: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F7DD 03:F7CD: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F7E0 03:F7D0: AE AD 03  LDX ram_team_w_ball
 C - - - - - 0x00F7E3 03:F7D3: F0 20     BEQ bra_F7F5
 C - - - - - 0x00F7E5 03:F7D5: A2 01     LDX #$01
 C - - - - - 0x00F7E7 03:F7D7: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00F7EA 03:F7DA: 30 19     BMI bra_F7F5    ; con_gm_2p
 C - - - - - 0x00F7EC 03:F7DC: C6 8D     DEC ram_008D
-C - - - - - 0x00F7EE 03:F7DE: D0 EB     BNE bra_F7CB
-C - - - - - 0x00F7F0 03:F7E0: A9 00     LDA #$00
+C - - - - - 0x00F7EE 03:F7DE: D0 EB     BNE bra_F7CB_loop
+C - - - - - 0x00F7F0 03:F7E0: A9 00     LDA #$00    ; bzk опт, нахера сохранять в стеке
 C - - - - - 0x00F7F2 03:F7E2: 48        PHA
 C - - - - - 0x00F7F3 03:F7E3: A9 02     LDA #$02
 C - - - - - 0x00F7F5 03:F7E5: 85 67     STA ram_prg_bank_0
@@ -7886,25 +7886,25 @@ C - - - - - 0x00F802 03:F7F2: 4C FF F7  JMP loc_F7FF
 bra_F7F5:
 C - - - - - 0x00F805 03:F7F5: A9 C0     LDA #con_btns_AB
 C - - - - - 0x00F807 03:F7F7: 3D 26 00  AND ram_btn_press,X
-C - - - - - 0x00F80A 03:F7FA: F0 CF     BEQ bra_F7CB
+C - - - - - 0x00F80A 03:F7FA: F0 CF     BEQ bra_F7CB_loop
 C - - - - - 0x00F80C 03:F7FC: BD 24 00  LDA ram_btn_hold,X
 loc_F7FF:
 C D 3 - - - 0x00F80F 03:F7FF: 29 03     AND #con_btns_LR
 C - - - - - 0x00F811 03:F801: A0 06     LDY #con_plr_action_timer_1
 C - - - - - 0x00F813 03:F803: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00F815 03:F805: AA        TAX
-C - - - - - 0x00F816 03:F806: BD 39 F9  LDA tbl_F939,X
+C - - - - - 0x00F816 03:F806: BD 39 F9  LDA tbl_F939_direction,X
 C - - - - - 0x00F819 03:F809: 85 8D     STA ram_008D
 C - - - - - 0x00F81B 03:F80B: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F81E 03:F80E: A9 15     LDA #$15
 C - - - - - 0x00F820 03:F810: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F823 03:F813: A9 04     LDA #$04
-C - - - - - 0x00F825 03:F815: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F825 03:F815: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F828 03:F818: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F82B 03:F81B: A9 15     LDA #$15
 C - - - - - 0x00F82D 03:F81D: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F830 03:F820: A9 04     LDA #$04
-C - - - - - 0x00F832 03:F822: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F832 03:F822: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F835 03:F825: A9 80     LDA #$80
 C - - - - - 0x00F837 03:F827: 85 8A     STA ram_008A
 C - - - - - 0x00F839 03:F829: A9 03     LDA #con_sound_shot
@@ -7912,20 +7912,20 @@ C - - - - - 0x00F83B 03:F82B: 20 10 C9  JSR sub_C910_prepare_sound
 C - - - - - 0x00F83E 03:F82E: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F841 03:F831: A9 15     LDA #$15
 C - - - - - 0x00F843 03:F833: 20 1E 80  JSR sub_0x00479F
-C - - - - - 0x00F846 03:F836: A9 19     LDA #con_behavior_19
+C - - - - - 0x00F846 03:F836: A9 19     LDA #con_behavior_pk_bench
 C - - - - - 0x00F848 03:F838: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F84B 03:F83B: 4C 55 DF  JMP loc_DF55
 
 
 
-ofs_F83E_18:
+ofs_F83E_18_pk_gk:
 C - - - - - 0x00F84E 03:F83E: 20 77 C6  JSR sub_C677
 C - - - - - 0x00F851 03:F841: A9 16     LDA #$16
 C - - - - - 0x00F853 03:F843: 20 1E 80  JSR sub_0x00479F
 bra_F846:
 loc_F846:
 C D 3 - - - 0x00F856 03:F846: A9 01     LDA #$01
-C - - - - - 0x00F858 03:F848: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F858 03:F848: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F85B 03:F84B: A5 8A     LDA ram_008A
 C - - - - - 0x00F85D 03:F84D: 10 F7     BPL bra_F846
 C - - - - - 0x00F85F 03:F84F: AD AD 03  LDA ram_team_w_ball
@@ -7936,8 +7936,8 @@ C - - - - - 0x00F867 03:F857: A2 01     LDX #$01
 C - - - - - 0x00F869 03:F859: 2C A4 03  BIT ram_game_mode_flags
 C - - - - - 0x00F86C 03:F85C: 30 1A     BMI bra_F878    ; con_gm_2p
 C - - - - - 0x00F86E 03:F85E: A9 06     LDA #$06
-C - - - - - 0x00F870 03:F860: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F873 03:F863: A9 02     LDA #$02
+C - - - - - 0x00F870 03:F860: 20 52 C6  JSR sub_C652_set_plr_sub_timer
+C - - - - - 0x00F873 03:F863: A9 02     LDA #$02    ; bzk опт, нахера сохранять в стеке
 C - - - - - 0x00F875 03:F865: 48        PHA
 C - - - - - 0x00F876 03:F866: A9 02     LDA #$02
 C - - - - - 0x00F878 03:F868: 85 67     STA ram_prg_bank_0
@@ -7958,7 +7958,7 @@ C - - - - - 0x00F895 03:F885: BD 24 00  LDA ram_btn_hold,X
 loc_F888:
 C D 3 - - - 0x00F898 03:F888: 29 0B     AND #con_btns_LR + con_btn_Up
 C - - - - - 0x00F89A 03:F88A: AA        TAX
-C - - - - - 0x00F89B 03:F88B: BD 39 F9  LDA tbl_F939,X
+C - - - - - 0x00F89B 03:F88B: BD 39 F9  LDA tbl_F939_direction,X
 C - - - - - 0x00F89E 03:F88E: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F8A0 03:F890: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00F8A2 03:F892: A2 00     LDX #$00
@@ -7982,15 +7982,15 @@ C - - - - - 0x00F8BF 03:F8AF: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F8C2 03:F8B2: A9 16     LDA #$16
 C - - - - - 0x00F8C4 03:F8B4: 20 1E 80  JSR sub_0x00479F
 C - - - - - 0x00F8C7 03:F8B7: A9 EF     LDA #$EF
-C - - - - - 0x00F8C9 03:F8B9: 8D 5E 04  STA ram_045E
+C - - - - - 0x00F8C9 03:F8B9: 8D 5E 04  STA ram_045E    ; con_plr_anim_id
 C - - - - - 0x00F8CC 03:F8BC: A9 87     LDA #$87
-C - - - - - 0x00F8CE 03:F8BE: 8D 58 04  STA ram_0458
+C - - - - - 0x00F8CE 03:F8BE: 8D 58 04  STA ram_0458    ; con_plr_pos_Y_lo
 C - - - - - 0x00F8D1 03:F8C1: A9 00     LDA #$00
 C - - - - - 0x00F8D3 03:F8C3: 85 8B     STA ram_008B
 C - - - - - 0x00F8D5 03:F8C5: 85 8C     STA ram_008C
 bra_F8C7_loop:
 C - - - - - 0x00F8D7 03:F8C7: A9 01     LDA #$01
-C - - - - - 0x00F8D9 03:F8C9: 20 52 C6  JSR sub_C652
+C - - - - - 0x00F8D9 03:F8C9: 20 52 C6  JSR sub_C652_set_plr_sub_timer
 C - - - - - 0x00F8DC 03:F8CC: A0 08     LDY #con_plr_spd_Y_fr_cur
 C - - - - - 0x00F8DE 03:F8CE: A5 8B     LDA ram_008B
 C - - - - - 0x00F8E0 03:F8D0: 0A        ASL
@@ -8005,7 +8005,7 @@ C - - - - - 0x00F8EE 03:F8DE: 20 A9 E4  JSR sub_E4A9
 C - - - - - 0x00F8F1 03:F8E1: 20 49 F9  JSR sub_F949
 C - - - - - 0x00F8F4 03:F8E4: A0 05     LDY #con_plr_pos_X_lo
 C - - - - - 0x00F8F6 03:F8E6: B1 61     LDA (ram_plr_data),Y
-C - - - - - 0x00F8F8 03:F8E8: 8D 52 04  STA ram_0452
+C - - - - - 0x00F8F8 03:F8E8: 8D 52 04  STA ram_0452    ; con_plr_pos_X_lo
 C - - - - - 0x00F8FB 03:F8EB: E6 8C     INC ram_008C
 C - - - - - 0x00F8FD 03:F8ED: A6 8B     LDX ram_008B
 C - - - - - 0x00F8FF 03:F8EF: A5 8C     LDA ram_008C
@@ -8018,7 +8018,7 @@ C - - - - - 0x00F90C 03:F8FC: A5 8B     LDA ram_008B
 C - - - - - 0x00F90E 03:F8FE: C9 03     CMP #$03
 C - - - - - 0x00F910 03:F900: D0 C5     BNE bra_F8C7_loop
 C - - - - - 0x00F912 03:F902: A9 00     LDA #$00
-C - - - - - 0x00F914 03:F904: 8D 5E 04  STA ram_045E
+C - - - - - 0x00F914 03:F904: 8D 5E 04  STA ram_045E    ; con_plr_anim_id
 C - - - - - 0x00F917 03:F907: A0 13     LDY #con_plr_direction
 C - - - - - 0x00F919 03:F909: B1 61     LDA (ram_plr_data),Y
 C - - - - - 0x00F91B 03:F90B: C9 80     CMP #$80
@@ -8030,7 +8030,7 @@ bra_F915:
 C - - - - - 0x00F925 03:F915: 20 6D C6  JSR sub_C66D
 C - - - - - 0x00F928 03:F918: A9 16     LDA #$16
 C - - - - - 0x00F92A 03:F91A: 20 1E 80  JSR sub_0x00479F
-C - - - - - 0x00F92D 03:F91D: A9 19     LDA #con_behavior_19
+C - - - - - 0x00F92D 03:F91D: A9 19     LDA #con_behavior_pk_bench
 C - - - - - 0x00F92F 03:F91F: 20 2F C6  JSR sub_C62F_player_state_handler
 C - - - - - 0x00F932 03:F922: 4C 55 DF  JMP loc_DF55
 
@@ -8056,7 +8056,7 @@ tbl_F936:
 
 
 
-tbl_F939:
+tbl_F939_direction:
 ; читается в пенальти при ударе в F806
 - D 3 - - - 0x00F949 03:F939: 80        .byte $80   ; 
 - D 3 - - - 0x00F94A 03:F93A: 40        .byte $40   ; 
@@ -8112,11 +8112,11 @@ C - - - - - 0x00F994 03:F984: 60        RTS
 
 
 
-loc_F985:
-ofs_F985_19:
+ofs_F985_19_pk_bench:
+loc_F985_loop:
 C D 3 - - - 0x00F995 03:F985: A9 01     LDA #$01
-C - - - - - 0x00F997 03:F987: 20 52 C6  JSR sub_C652
-C - - - - - 0x00F99A 03:F98A: 4C 85 F9  JMP loc_F985
+C - - - - - 0x00F997 03:F987: 20 52 C6  JSR sub_C652_set_plr_sub_timer
+C - - - - - 0x00F99A 03:F98A: 4C 85 F9  JMP loc_F985_loop
 
 
 

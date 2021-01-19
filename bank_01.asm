@@ -1784,28 +1784,26 @@ tbl_8B19:
 
 
 sub_0x004B34:
+; на вход подается A = 00 или 02
 C D 0 - - - 0x004B34 01:8B24: AA        TAX
 C - - - - - 0x004B35 01:8B25: A0 00     LDY #$00
 C - - - - - 0x004B37 01:8B27: AD 7F 03  LDA ram_random + 1
 C - - - - - 0x004B3A 01:8B2A: 6D 7E 03  ADC ram_random
-C - - - - - 0x004B3D 01:8B2D: DD 3B 8B  CMP tbl_8B3B,X
-C - - - - - 0x004B40 01:8B30: 90 07     BCC bra_8B39
+C - - - - - 0x004B3D 01:8B2D: DD 3B 8B  CMP tbl_8B3B_random,X
+C - - - - - 0x004B40 01:8B30: 90 07     BCC bra_8B39_less_than
 C - - - - - 0x004B42 01:8B32: C8        INY
-C - - - - - 0x004B43 01:8B33: DD 3C 8B  CMP tbl_8B3C,X
-C - - - - - 0x004B46 01:8B36: 90 01     BCC bra_8B39
+C - - - - - 0x004B43 01:8B33: DD 3C 8B  CMP tbl_8B3B_random + 1,X
+C - - - - - 0x004B46 01:8B36: 90 01     BCC bra_8B39_less_than
 C - - - - - 0x004B48 01:8B38: C8        INY
-bra_8B39:
+bra_8B39_less_than:
 C - - - - - 0x004B49 01:8B39: 98        TYA
 C - - - - - 0x004B4A 01:8B3A: 60        RTS
 
 
 
-tbl_8B3B:
-- D 0 - - - 0x004B4B 01:8B3B: 55        .byte $55   ; 
-tbl_8B3C:
-- D 0 - - - 0x004B4C 01:8B3C: AA        .byte $AA   ; 
-- D 0 - - - 0x004B4D 01:8B3D: 64        .byte $64   ; 
-- D 0 - - - 0x004B4E 01:8B3E: B2        .byte $B2   ; 
+tbl_8B3B_random:
+- D 0 - - - 0x004B4B 01:8B3B: 55        .byte $55, $AA   ; 
+- D 0 - - - 0x004B4D 01:8B3D: 64        .byte $64, $B2   ; 
 
 
 
