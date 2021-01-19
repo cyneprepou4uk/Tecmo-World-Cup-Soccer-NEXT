@@ -2660,8 +2660,6 @@ C - - - - - 0x00D308 03:D2F8: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x00D312 03:D302: A9 0E     LDA #con_behavior_corner_kick
 C - - - - - 0x00D314 03:D304: 20 2F C6  JSR sub_C62F_player_state_handler
                                         JSR sub_C93B_set_player_flag___control
-C - - - - - 0x00D321 03:D311: 68        PLA
-C - - - - - 0x00D322 03:D312: 48        PHA ; bzk опт
                                         JSR sub_CB58_prg_bankswitch_bank_02
 C - - - - - 0x00D32E 03:D31E: 68        PLA
 C - - - - - 0x00D32F 03:D31F: 20 1E 80  JSR sub_0x009852
