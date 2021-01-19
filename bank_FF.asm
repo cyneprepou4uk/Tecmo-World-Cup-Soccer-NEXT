@@ -447,12 +447,12 @@ C - - - - - 0x00C3CE 03:C3BE: 20 58 CB  JSR sub_CB58_prg_bankswitch
 C - - - - - 0x00C3D1 03:C3C1: 68        PLA
 C - - - - - 0x00C3D2 03:C3C2: 20 2D 80  JSR sub_0x004A81
 C - - - - - 0x00C3D5 03:C3C5: 20 07 C5  JSR sub_C507
-bra_C3C8:
+bra_C3C8_loop:
 C - - - - - 0x00C3D8 03:C3C8: A9 01     LDA #$01
 C - - - - - 0x00C3DA 03:C3CA: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00C3DD 03:C3CD: AD A4 03  LDA ram_game_mode_flags
 C - - - - - 0x00C3E0 03:C3D0: 29 01     AND #con_gm_timeup
-C - - - - - 0x00C3E2 03:C3D2: F0 F4     BEQ bra_C3C8
+C - - - - - 0x00C3E2 03:C3D2: F0 F4     BEQ bra_C3C8_loop
 C - - - - - 0x00C3E4 03:C3D4: 20 76 C4  JSR sub_C476
 C - - - - - 0x00C3E7 03:C3D7: 20 B8 C4  JSR sub_C4B8
 C - - - - - 0x00C3EA 03:C3DA: 20 07 C5  JSR sub_C507
@@ -613,7 +613,7 @@ sub_C507:
 C - - - - - 0x00C517 03:C507: 20 59 CA  JSR sub_CA59_clear_nametables
 C - - - - - 0x00C51A 03:C50A: 20 AF CA  JSR sub_CAAF_hide_sprites
 C - - - - - 0x00C51D 03:C50D: 20 EC C8  JSR sub_C8EC_clear_memory_before_match
-C - - - - - 0x00C520 03:C510: 20 97 CF  JSR sub_CF97
+C - - - - - 0x00C520 03:C510: 20 97 CF  JSR sub_CF97_load_bg_and_team_palette
 C - - - - - 0x00C523 03:C513: A9 04     LDA #$04
 C - - - - - 0x00C525 03:C515: 85 6B     STA ram_006B
 C - - - - - 0x00C527 03:C517: A9 00     LDA #$00
@@ -2066,7 +2066,7 @@ C - - - - - 0x00CDB8 03:CDA8: 68        PLA
 C - - - - - 0x00CDB9 03:CDA9: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00CDBC 03:CDAC: 2C C2 03  BIT ram_03C2
 C - - - - - 0x00CDBF 03:CDAF: 30 D6     BMI bra_CD87
-C - - - - - 0x00CDC1 03:CDB1: 20 97 CF  JSR sub_CF97
+C - - - - - 0x00CDC1 03:CDB1: 20 97 CF  JSR sub_CF97_load_bg_and_team_palette
 C - - - - - 0x00CDC4 03:CDB4: A9 02     LDA #$02
 C - - - - - 0x00CDC6 03:CDB6: 20 09 C6  JSR sub_C609_delay
 C - - - - - 0x00CDC9 03:CDB9: AD A4 03  LDA ram_game_mode_flags
@@ -2183,7 +2183,7 @@ C - - - - - 0x00CEA9 03:CE99: A5 28     LDA ram_0028
 C - - - - - 0x00CEAB 03:CE9B: 29 7F     AND #$7F
 C - - - - - 0x00CEAD 03:CE9D: 8D 00 20  STA $2000
 C - - - - - 0x00CEB0 03:CEA0: 85 28     STA ram_0028
-C - - - - - 0x00CEB2 03:CEA2: 20 97 CF  JSR sub_CF97
+C - - - - - 0x00CEB2 03:CEA2: 20 97 CF  JSR sub_CF97_load_bg_and_team_palette
 C - - - - - 0x00CEB5 03:CEA5: A2 00     LDX #$00
 C - - - - - 0x00CEB7 03:CEA7: A9 09     LDA #$09
 C - - - - - 0x00CEB9 03:CEA9: 20 D4 CA  JSR sub_CAD4_load_screen_palette
@@ -2320,7 +2320,7 @@ C - - - - - 0x00CFA6 03:CF96: 60        RTS
 
 
 
-sub_CF97:
+sub_CF97_load_bg_and_team_palette:
 C - - - - - 0x00CFA7 03:CF97: A2 00     LDX #$00
 bra_CF99_loop:
 C - - - - - 0x00CFA9 03:CF99: BD BA CF  LDA tbl_CFBA_palette,X
