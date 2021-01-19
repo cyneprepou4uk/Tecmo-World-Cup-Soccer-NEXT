@@ -410,9 +410,6 @@ C - - - - - 0x00C3A5 03:C395: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_02
 C - - - - - 0x00C3B1 03:C3A1: 68        PLA
 C - - - - - 0x00C3B2 03:C3A2: 20 00 80  JSR sub_0x008501
-C - - - - - 0x00C3B5 03:C3A5: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_02 ; bzk опт лишнее
-C - - - - - 0x00C3C1 03:C3B1: 68        PLA
 C - - - - - 0x00C3C2 03:C3B2: 20 03 80  JSR sub_0x0083D9
 C - - - - - 0x00C3C5 03:C3B5: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
