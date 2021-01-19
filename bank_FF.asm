@@ -150,13 +150,11 @@ C - - - - - 0x00C196 03:C186: A5 3A     LDA ram_003A
 C - - - - - 0x00C198 03:C188: 8D 05 20  STA $2005
 C - - - - - 0x00C19B 03:C18B: A5 3B     LDA ram_003B
 C - - - - - 0x00C19D 03:C18D: 8D 05 20  STA $2005
-C - - - - - 0x00C1A0 03:C190: A5 65     LDA ram_0065
-C - - - - - 0x00C1A2 03:C192: 09 06     ORA #$06
+                                        LDA #$06
 C - - - - - 0x00C1A4 03:C194: 8D 00 80  STA $8000
 C - - - - - 0x00C1A7 03:C197: A9 00     LDA #$00
 C - - - - - 0x00C1A9 03:C199: 8D 01 80  STA $8001
-C - - - - - 0x00C1AC 03:C19C: A5 65     LDA ram_0065
-C - - - - - 0x00C1AE 03:C19E: 09 07     ORA #$07
+                                        LDA #$07
 C - - - - - 0x00C1B0 03:C1A0: 8D 00 80  STA $8000
 C - - - - - 0x00C1B3 03:C1A3: A9 01     LDA #$01
 C - - - - - 0x00C1B5 03:C1A5: 8D 01 80  STA $8001
@@ -166,13 +164,11 @@ C - - - - - 0x00C1BE 03:C1AE: 20 A2 C2  JSR sub_C2A2
 C - - - - - 0x00C1C1 03:C1B1: A5 23     LDA ram_0023
 C - - - - - 0x00C1C3 03:C1B3: 09 80     ORA #$80
 C - - - - - 0x00C1C5 03:C1B5: 85 23     STA ram_0023
-C - - - - - 0x00C1C7 03:C1B7: A5 65     LDA ram_0065
-C - - - - - 0x00C1C9 03:C1B9: 09 07     ORA #$07
+                                        LDA #$07
 C - - - - - 0x00C1CB 03:C1BB: 8D 00 80  STA $8000
 C - - - - - 0x00C1CE 03:C1BE: A5 68     LDA ram_prg_bank_1
 C - - - - - 0x00C1D0 03:C1C0: 8D 01 80  STA $8001
-C - - - - - 0x00C1D3 03:C1C3: A5 65     LDA ram_0065
-C - - - - - 0x00C1D5 03:C1C5: 09 06     ORA #$06
+                                        LDA #$06
 C - - - - - 0x00C1D7 03:C1C7: 8D 00 80  STA $8000
 C - - - - - 0x00C1DA 03:C1CA: A5 67     LDA ram_prg_bank_0
 C - - - - - 0x00C1DC 03:C1CC: 8D 01 80  STA $8001
@@ -307,12 +303,11 @@ C - - - - - 0x00C2B1 03:C2A1: 60        RTS
 
 
 sub_C2A2:
-C - - - - - 0x00C2B2 03:C2A2: A5 65     LDA ram_0065
+                                        LDA #$00
 C - - - - - 0x00C2B4 03:C2A4: 8D 00 80  STA $8000
 C - - - - - 0x00C2B7 03:C2A7: A5 69     LDA ram_0069
 C - - - - - 0x00C2B9 03:C2A9: 8D 01 80  STA $8001
-C - - - - - 0x00C2BC 03:C2AC: A5 65     LDA ram_0065
-C - - - - - 0x00C2BE 03:C2AE: 09 01     ORA #$01
+                                        LDA #$01
 C - - - - - 0x00C2C0 03:C2B0: 8D 00 80  STA $8000
 C - - - - - 0x00C2C3 03:C2B3: A5 6A     LDA ram_006A
 C - - - - - 0x00C2C5 03:C2B5: 8D 01 80  STA $8001
@@ -320,7 +315,6 @@ C - - - - - 0x00C2C8 03:C2B8: A2 00     LDX #$00
 C - - - - - 0x00C2CA 03:C2BA: A0 02     LDY #$02
 bra_C2BC:
 C - - - - - 0x00C2CC 03:C2BC: 98        TYA
-C - - - - - 0x00C2CD 03:C2BD: 05 65     ORA ram_0065
 C - - - - - 0x00C2CF 03:C2BF: 8D 00 80  STA $8000
 C - - - - - 0x00C2D2 03:C2C2: B5 6B     LDA ram_006B,X
 C - - - - - 0x00C2D4 03:C2C4: 8D 01 80  STA $8001
@@ -1740,14 +1734,12 @@ C - - - - - 0x00CB67 03:CB57: 60        RTS
 
 
 sub_CB58_prg_bankswitch:
-C - - - - - 0x00CB68 03:CB58: A5 65     LDA ram_0065
-C - - - - - 0x00CB6A 03:CB5A: 09 06     ORA #$06
+                                        LDA #$06
 C - - - - - 0x00CB6C 03:CB5C: 85 66     STA ram_0066
 C - - - - - 0x00CB6E 03:CB5E: 8D 00 80  STA $8000
 C - - - - - 0x00CB71 03:CB61: A5 67     LDA ram_prg_bank_0
 C - - - - - 0x00CB73 03:CB63: 8D 01 80  STA $8001
-C - - - - - 0x00CB76 03:CB66: A5 65     LDA ram_0065
-C - - - - - 0x00CB78 03:CB68: 09 07     ORA #$07
+                                        LDA #$07
 C - - - - - 0x00CB7A 03:CB6A: 85 66     STA ram_0066
 C - - - - - 0x00CB7C 03:CB6C: 8D 00 80  STA $8000
 C - - - - - 0x00CB7F 03:CB6F: A5 68     LDA ram_prg_bank_1
