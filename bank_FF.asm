@@ -2030,9 +2030,6 @@ C - - - - - 0x00CDD6 03:CDC6: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
 C - - - - - 0x00CDE2 03:CDD2: 68        PLA
 C - - - - - 0x00CDE3 03:CDD3: 20 00 80  JSR sub_0x00405E
-C - - - - - 0x00CDE6 03:CDD6: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01 ; bzk опт лишнее
-C - - - - - 0x00CDF2 03:CDE2: 68        PLA
 C - - - - - 0x00CDF3 03:CDE3: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00CDF6 03:CDE6: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00CDF9 03:CDE9: 20 E8 D4  JSR sub_D4E8
