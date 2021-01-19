@@ -2559,9 +2559,6 @@ C - - - - - 0x00D237 03:D227: 48        PHA
                                         JSR sub_CB58_prg_bankswitch_bank_01
 C - - - - - 0x00D243 03:D233: 68        PLA
 C - - - - - 0x00D244 03:D234: 20 00 80  JSR sub_0x00405E
-C - - - - - 0x00D247 03:D237: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01
-C - - - - - 0x00D253 03:D243: 68        PLA
 C - - - - - 0x00D254 03:D244: 20 09 80  JSR sub_0x0041E9
 C - - - - - 0x00D257 03:D247: 20 96 DE  JSR sub_DE96
 C - - - - - 0x00D25A 03:D24A: 2C 29 04  BIT ram_plr_w_ball
