@@ -2817,9 +2817,6 @@ C - - - - - 0x00D46C 03:D45C: AD AE 03  LDA ram_half_time_cnt
 C - - - - - 0x00D46F 03:D45F: D0 03     BNE bra_D464
 C - - - - - 0x00D471 03:D461: FE A5 03  INC ram_goals_half,X
 bra_D464:
-C - - - - - 0x00D474 03:D464: 48        PHA
-                                        JSR sub_CB58_prg_bankswitch_bank_01
-C - - - - - 0x00D480 03:D470: 68        PLA
 C - - - - - 0x00D481 03:D471: 20 2A 80  JSR sub_0x004371
 C - - - - - 0x00D484 03:D474: A9 6E     LDA #$6E
 C - - - - - 0x00D486 03:D476: 20 09 C6  JSR sub_C609_delay
