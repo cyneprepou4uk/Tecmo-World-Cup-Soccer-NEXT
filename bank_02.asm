@@ -8800,7 +8800,7 @@ C - - - - - 0x00B247 02:B237: 8D E4 00  STA ram_00E4
 C - - - - - 0x00B24A 02:B23A: A2 10     LDX #$10
 C - - - - - 0x00B24C 02:B23C: 2E E0 00  ROL ram_00E0
 C - - - - - 0x00B24F 02:B23F: 2E E1 00  ROL ram_00E1
-bra_B242:
+bra_B242_loop:
 C - - - - - 0x00B252 02:B242: 2E E4 00  ROL ram_00E4
 C - - - - - 0x00B255 02:B245: AD E4 00  LDA ram_00E4
 C - - - - - 0x00B258 02:B248: CD E2 00  CMP ram_00E2
@@ -8811,7 +8811,7 @@ bra_B253:
 C - - - - - 0x00B263 02:B253: 2E E0 00  ROL ram_00E0
 C - - - - - 0x00B266 02:B256: 2E E1 00  ROL ram_00E1
 C - - - - - 0x00B269 02:B259: CA        DEX
-C - - - - - 0x00B26A 02:B25A: D0 E6     BNE bra_B242
+C - - - - - 0x00B26A 02:B25A: D0 E6     BNE bra_B242_loop
 C - - - - - 0x00B26C 02:B25C: 68        PLA
 C - - - - - 0x00B26D 02:B25D: AA        TAX
 C - - - - - 0x00B26E 02:B25E: 60        RTS
@@ -9232,12 +9232,12 @@ tbl_B3C1:
 sub_B3F1:
 ; начальная позиция флагов на экране со счетом и пропуск этого экрана
 C - - - - - 0x00B401 02:B3F1: A2 00     LDX #$00
-bra_B3F3:
+bra_B3F3_loop:
 C - - - - - 0x00B403 02:B3F3: BD AD B4  LDA tbl_B4AD,X
 C - - - - - 0x00B406 02:B3F6: 9D 00 02  STA ram_spr_Y,X
 C - - - - - 0x00B409 02:B3F9: E8        INX
 C - - - - - 0x00B40A 02:B3FA: E0 18     CPX #$18
-C - - - - - 0x00B40C 02:B3FC: D0 F5     BNE bra_B3F3
+C - - - - - 0x00B40C 02:B3FC: D0 F5     BNE bra_B3F3_loop
 C - - - - - 0x00B40E 02:B3FE: A9 2C     LDA #$2C
 C - - - - - 0x00B410 02:B400: 8D E3 00  STA ram_00E3
 C - - - - - 0x00B413 02:B403: A9 01     LDA #$01
@@ -9251,7 +9251,7 @@ C - - - - - 0x00B425 02:B415: A9 21     LDA #$21
 C - - - - - 0x00B427 02:B417: 8D E8 00  STA ram_00E8
 C - - - - - 0x00B42A 02:B41A: A9 00     LDA #$00
 C - - - - - 0x00B42C 02:B41C: 8D E9 00  STA ram_00E9
-bra_B41F:
+bra_B41F_loop:
 C - - - - - 0x00B42F 02:B41F: A9 01     LDA #$01
 C - - - - - 0x00B431 02:B421: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00B434 02:B424: 20 58 B4  JSR sub_B458
@@ -9271,7 +9271,7 @@ C - - - - - 0x00B452 02:B442: E9 00     SBC #$00
 C - - - - - 0x00B454 02:B444: 8D E4 00  STA ram_00E4
 C - - - - - 0x00B457 02:B447: AD E3 00  LDA ram_00E3
 C - - - - - 0x00B45A 02:B44A: 0D E4 00  ORA ram_00E4
-C - - - - - 0x00B45D 02:B44D: D0 D0     BNE bra_B41F
+C - - - - - 0x00B45D 02:B44D: D0 D0     BNE bra_B41F_loop
                                         RTS
 bra_B452:
 C - - - - - 0x00B462 02:B452: AD E9 00  LDA ram_00E9
@@ -9290,13 +9290,13 @@ C - - - - - 0x00B472 02:B462: 0A        ASL
 C - - - - - 0x00B473 02:B463: 0A        ASL
 C - - - - - 0x00B474 02:B464: AA        TAX
 C - - - - - 0x00B475 02:B465: A0 00     LDY #$00
-bra_B467:
+bra_B467_loop:
 C - - - - - 0x00B477 02:B467: BD C5 B4  LDA tbl_B4C5,X
 C - - - - - 0x00B47A 02:B46A: 99 00 02  STA ram_spr_Y,Y
 C - - - - - 0x00B47D 02:B46D: E8        INX
 C - - - - - 0x00B47E 02:B46E: C8        INY
 C - - - - - 0x00B47F 02:B46F: C0 10     CPY #$10
-C - - - - - 0x00B481 02:B471: D0 F4     BNE bra_B467
+C - - - - - 0x00B481 02:B471: D0 F4     BNE bra_B467_loop
 C - - - - - 0x00B483 02:B473: EE E7 00  INC ram_00E7
 C - - - - - 0x00B486 02:B476: AD E7 00  LDA ram_00E7
 C - - - - - 0x00B489 02:B479: C9 03     CMP #$03
@@ -9378,6 +9378,7 @@ tbl_B4C5:
 - D 1 - - - 0x00B4E2 02:B4D2: BD        .byte $BD   ; 
 - D 1 - - - 0x00B4E3 02:B4D3: 00        .byte $00   ; 
 - D 1 - - - 0x00B4E4 02:B4D4: 92        .byte $92   ; 
+
 - D 1 - - - 0x00B4E5 02:B4D5: 38        .byte $38   ; 
 - D 1 - - - 0x00B4E6 02:B4D6: B7        .byte $B7   ; 
 - D 1 - - - 0x00B4E7 02:B4D7: 00        .byte $00   ; 
@@ -9394,6 +9395,7 @@ tbl_B4C5:
 - D 1 - - - 0x00B4F2 02:B4E2: BD        .byte $BD   ; 
 - D 1 - - - 0x00B4F3 02:B4E3: 00        .byte $00   ; 
 - D 1 - - - 0x00B4F4 02:B4E4: 92        .byte $92   ; 
+
 - D 1 - - - 0x00B4F5 02:B4E5: 38        .byte $38   ; 
 - D 1 - - - 0x00B4F6 02:B4E6: BF        .byte $BF   ; 
 - D 1 - - - 0x00B4F7 02:B4E7: 00        .byte $00   ; 
