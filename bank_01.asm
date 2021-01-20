@@ -2071,7 +2071,11 @@ C - - - - - 0x004CDE 01:8CCE: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x004CE0 01:8CD0: F0 08     BEQ bra_8CDA
 C - - - - - 0x004CE2 01:8CD2: CD 7E 03  CMP ram_random
 C - - - - - 0x004CE5 01:8CD5: 90 03     BCC bra_8CDA
-C - - - - - 0x004CE7 01:8CD7: 4C 0A 8D  JMP loc_8D0A
+                                        LDA #$80
+                                        STA ram_0086
+                                        PLA
+                                        PLA
+                                        RTS
 bra_8CDA:
 C - - - - - 0x004CEA 01:8CDA: C8        INY
 C - - - - - 0x004CEB 01:8CDB: B1 2A     LDA (ram_002A),Y
@@ -2094,31 +2098,17 @@ C - - - - - 0x004D0A 01:8CFA: C8        INY
 C - - - - - 0x004D0B 01:8CFB: 90 08     BCC bra_8D05
 C - - - - - 0x004D0D 01:8CFD: CD 29 04  CMP ram_plr_w_ball
 C - - - - - 0x004D10 01:8D00: F0 03     BEQ bra_8D05
-C - - - - - 0x004D12 01:8D02: 4C 11 8D  JMP loc_8D11
+                                        STA ram_0087
+                                        LDA #$81
+                                        STA ram_0086
+                                        PLA
+                                        PLA
+                                        RTS
 bra_8D05:
 C - - - - - 0x004D15 01:8D05: C6 2C     DEC ram_002C
 C - - - - - 0x004D17 01:8D07: D0 E3     BNE bra_8CEC_loop
 bra_8D09_RTS:
 C - - - - - 0x004D19 01:8D09: 60        RTS
-
-
-
-loc_8D0A:
-C D 0 - - - 0x004D1A 01:8D0A: A9 80     LDA #$80
-C - - - - - 0x004D1C 01:8D0C: 85 86     STA ram_0086
-C - - - - - 0x004D1E 01:8D0E: 68        PLA
-C - - - - - 0x004D1F 01:8D0F: 68        PLA
-C - - - - - 0x004D20 01:8D10: 60        RTS
-
-
-
-loc_8D11:
-C D 0 - - - 0x004D21 01:8D11: 85 87     STA ram_0087
-C - - - - - 0x004D23 01:8D13: A9 81     LDA #$81
-C - - - - - 0x004D25 01:8D15: 85 86     STA ram_0086
-C - - - - - 0x004D27 01:8D17: 68        PLA
-C - - - - - 0x004D28 01:8D18: 68        PLA
-C - - - - - 0x004D29 01:8D19: 60        RTS
 
 
 
