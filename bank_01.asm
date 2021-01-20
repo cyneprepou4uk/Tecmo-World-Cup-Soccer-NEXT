@@ -1104,12 +1104,12 @@ C - - - - - 0x00471F 01:870F: D0 03     BNE bra_8714
                                         RTS
 bra_8714:
 C - - - - - 0x004724 01:8714: C9 02     CMP #$02
-C - - - - - 0x004726 01:8716: D0 03     BNE bra_871B
+C - - - - - 0x004726 01:8716: D0 03     BNE bra_871B_02
                                         LDA #$00
                                         STA ram_0038
                                         INC ram_002C
                                         JMP loc_8705_draw_sprites_main_loop
-bra_871B:
+bra_871B_02:
                                         LDY ram_002C
                                         INY
                                         LDA (ram_002A),Y
@@ -4593,7 +4593,7 @@ tbl_97C6_animation_data:
 - - - - - - 0x005990 01:9980: C3 A2     .word $0000         ; DD    ; 
 - - - - - - 0x005992 01:9982: C4 A2     .word $0000         ; DE    ; 
 - - - - - - 0x005994 01:9984: C5 A2     .word $0000         ; DF    ; 
-- D 0 - I - 0x005996 01:9986: C6 A2     .word _animation_A2C6_E0    ; 
+- D 0 - I - 0x005996 01:9986: C6 A2     .word _animation_A2C6_E0    ; тень мяча
 - D 0 - I - 0x005998 01:9988: CD A2     .word _animation_A2CD_E1    ; 
 - D 0 - I - 0x00599A 01:998A: DE A2     .word _animation_A2DE_E2    ; 
 - D 0 - I - 0x00599C 01:998C: EB A2     .word _animation_A2EB_E3    ; 
