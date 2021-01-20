@@ -3391,9 +3391,15 @@ C - - - - - 0x00D846 03:D836: 4C B0 D7  JMP loc_D7B0_loop
 
 sub_D839:
 C - - - - - 0x00D849 03:D839: 88        DEY
-C - - - - - 0x00D84A 03:D83A: 30 16     BMI bra_D852    ; bzk залупно
+C - - - - - 0x00D84A 03:D83A: 30 16     BPL bra_D83C
+                                        JMP loc_D852
+bra_D83C:
 C - - - - - 0x00D84C 03:D83C: 88        DEY
-C - - - - - 0x00D84D 03:D83D: 30 3D     BMI bra_D87C
+C - - - - - 0x00D84D 03:D83D: 30 3D     BPL bra_D83F
+C - - - - - 0x00D88C 03:D87C: 20 8A D8  JSR sub_D88A
+C - - - - - 0x00D88F 03:D87F: 20 59 D8  JSR sub_D859
+C - - - - - 0x00D892 03:D882: 60        RTS
+bra_D83F:
 C - - - - - 0x00D84F 03:D83F: 4C 83 D8  JMP loc_D883
 
 
@@ -3413,7 +3419,7 @@ tbl_D842:
 
 
 
-bra_D852:
+loc_D852:
 C - - - - - 0x00D862 03:D852: A2 00     LDX #$00
 C - - - - - 0x00D864 03:D854: A0 00     LDY #$00
 C - - - - - 0x00D866 03:D856: 20 99 D8  JSR sub_D899
@@ -3440,10 +3446,6 @@ C - - - - - 0x00D885 03:D875: 68        PLA
 C - - - - - 0x00D886 03:D876: 71 61     ADC (ram_plr_data),Y
 C - - - - - 0x00D888 03:D878: 8D E0 03  STA ram_ball_pos_Y_hi
 C - - - - - 0x00D88B 03:D87B: 60        RTS
-bra_D87C:
-C - - - - - 0x00D88C 03:D87C: 20 8A D8  JSR sub_D88A
-C - - - - - 0x00D88F 03:D87F: 20 59 D8  JSR sub_D859
-C - - - - - 0x00D892 03:D882: 60        RTS
 
 
 
