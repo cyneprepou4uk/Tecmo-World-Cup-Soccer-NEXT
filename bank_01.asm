@@ -71,7 +71,7 @@ C - - - - - 0x004096 01:8086: 60        RTS
 
 sub_8087:
 C - - - - - 0x004097 01:8087: A9 00     LDA #$00
-bra_8089:
+bra_8089_loop:
 C - - - - - 0x004099 01:8089: 48        PHA
 C - - - - - 0x00409A 01:808A: 38        SEC
 C - - - - - 0x00409B 01:808B: 8A        TXA
@@ -87,7 +87,7 @@ C - - - - - 0x0040A7 01:8097: 68        PLA
 C - - - - - 0x0040A8 01:8098: AA        TAX
 C - - - - - 0x0040A9 01:8099: 68        PLA
 C - - - - - 0x0040AA 01:809A: 69 00     ADC #$00
-C - - - - - 0x0040AC 01:809C: D0 EB     BNE bra_8089
+C - - - - - 0x0040AC 01:809C: D0 EB     BNE bra_8089_loop
 bra_809E:
 C - - - - - 0x0040AE 01:809E: 68        PLA
 C - - - - - 0x0040AF 01:809F: 68        PLA
@@ -176,11 +176,11 @@ C - - - - - 0x00413B 01:812B: 2E C6 03  ROL ram_03C6
 C - - - - - 0x00413E 01:812E: 0A        ASL
 C - - - - - 0x00413F 01:812F: 2E C6 03  ROL ram_03C6
 C - - - - - 0x004142 01:8132: 8D C5 03  STA ram_03C5
-bra_8135:
+bra_8135_loop:
 C - - - - - 0x004145 01:8135: A9 01     LDA #$01
 C - - - - - 0x004147 01:8137: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x00414A 01:813A: AD 7D 03  LDA ram_buffer_bg_flag
-C - - - - - 0x00414D 01:813D: D0 F6     BNE bra_8135
+C - - - - - 0x00414D 01:813D: D0 F6     BNE bra_8135_loop
 C - - - - - 0x00414F 01:813F: A9 01     LDA #$01
 C - - - - - 0x004151 01:8141: 8D 7D 03  STA ram_buffer_bg_flag
 C - - - - - 0x004154 01:8144: AD C4 03  LDA ram_03C4
@@ -227,12 +227,12 @@ C - - - - - 0x0041A4 01:8194: A9 80     LDA #$80
 C - - - - - 0x0041A6 01:8196: 8D 7D 03  STA ram_buffer_bg_flag
 C - - - - - 0x0041A9 01:8199: A9 00     LDA #$00
 C - - - - - 0x0041AB 01:819B: 8D C7 03  STA ram_03C7
-bra_819E:
-loc_819E:
+loc_819E_loop:
+bra_819E_loop:
 C D 0 - - - 0x0041AE 01:819E: A9 01     LDA #$01
 C - - - - - 0x0041B0 01:81A0: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0041B3 01:81A3: AD 7D 03  LDA ram_buffer_bg_flag
-C - - - - - 0x0041B6 01:81A6: D0 F6     BNE bra_819E
+C - - - - - 0x0041B6 01:81A6: D0 F6     BNE bra_819E_loop
 C - - - - - 0x0041B8 01:81A8: A9 01     LDA #$01
 C - - - - - 0x0041BA 01:81AA: 8D 7D 03  STA ram_buffer_bg_flag
 C - - - - - 0x0041BD 01:81AD: A9 00     LDA #$00
@@ -248,7 +248,7 @@ C - - - - - 0x0041D4 01:81C4: 20 B4 82  JSR sub_82B4
 C - - - - - 0x0041D7 01:81C7: F0 08     BEQ bra_81D1
 C - - - - - 0x0041D9 01:81C9: A9 80     LDA #$80
 C - - - - - 0x0041DB 01:81CB: 8D 7D 03  STA ram_buffer_bg_flag
-C - - - - - 0x0041DE 01:81CE: 4C 9E 81  JMP loc_819E
+C - - - - - 0x0041DE 01:81CE: 4C 9E 81  JMP loc_819E_loop
 bra_81D1:
 C - - - - - 0x0041E1 01:81D1: A9 80     LDA #$80
 C - - - - - 0x0041E3 01:81D3: 8D 7D 03  STA ram_buffer_bg_flag
@@ -359,16 +359,16 @@ C - - - - - 0x004291 01:8281: AC BD 03  LDY ram_cam_edge_Y_hi
 C - - - - - 0x004294 01:8284: 20 87 80  JSR sub_8087
 C - - - - - 0x004297 01:8287: 86 3B     STX ram_003B
 C - - - - - 0x004299 01:8289: A2 00     LDX #$00
-bra_828B:
+bra_828B_loop:
 C - - - - - 0x00429B 01:828B: 38        SEC
 C - - - - - 0x00429C 01:828C: AD BC 03  LDA ram_cam_edge_Y_lo
 C - - - - - 0x00429F 01:828F: FD AB 82  SBC tbl_82AB,X
 C - - - - - 0x0042A2 01:8292: AD BD 03  LDA ram_cam_edge_Y_hi
-C - - - - - 0x0042A5 01:8295: FD AC 82  SBC tbl_82AC,X
+C - - - - - 0x0042A5 01:8295: FD AC 82  SBC tbl_82AB + 1,X
 C - - - - - 0x0042A8 01:8298: 90 04     BCC bra_829E
 C - - - - - 0x0042AA 01:829A: E8        INX
 C - - - - - 0x0042AB 01:829B: E8        INX
-C - - - - - 0x0042AC 01:829C: D0 ED     BNE bra_828B
+C - - - - - 0x0042AC 01:829C: D0 ED     BNE bra_828B_loop
 bra_829E:
 C - - - - - 0x0042AE 01:829E: 8A        TXA
 C - - - - - 0x0042AF 01:829F: 4A        LSR
@@ -382,13 +382,9 @@ C - - - - - 0x0042BA 01:82AA: 60        RTS
 
 
 tbl_82AB:
-- D 0 - - - 0x0042BB 01:82AB: E0        .byte $E0   ; 
-tbl_82AC:
-- D 0 - - - 0x0042BC 01:82AC: 00        .byte $00   ; 
-- D 0 - - - 0x0042BD 01:82AD: 40        .byte $40   ; 
-- D 0 - - - 0x0042BE 01:82AE: 02        .byte $02   ; 
-- D 0 - - - 0x0042BF 01:82AF: 00        .byte $00   ; 
-- D 0 - - - 0x0042C0 01:82B0: 30        .byte $30   ; 
+- D 0 - - - 0x0042BB 01:82AB: E0 00     .word $00E0
+- D 0 - - - 0x0042BD 01:82AD: 40 02     .word $0240
+- D 0 - - - 0x0042BF 01:82AF: 00 30     .word $3000
 
 
 
@@ -528,12 +524,12 @@ sub_8373:
 C - - - - - 0x004383 01:8373: 86 39     STX ram_0039
 C - - - - - 0x004385 01:8375: BD A7 03  LDA ram_goals_total,X
 C - - - - - 0x004388 01:8378: A0 00     LDY #$00
-bra_837A:
+bra_837A_loop:
 C - - - - - 0x00438A 01:837A: C9 0A     CMP #$0A
 C - - - - - 0x00438C 01:837C: 90 05     BCC bra_8383
 C - - - - - 0x00438E 01:837E: E9 0A     SBC #$0A
 C - - - - - 0x004390 01:8380: C8        INY
-C - - - - - 0x004391 01:8381: D0 F7     BNE bra_837A
+C - - - - - 0x004391 01:8381: D0 F7     BNE bra_837A_loop
 bra_8383:
 C - - - - - 0x004393 01:8383: 48        PHA
 C - - - - - 0x004394 01:8384: 98        TYA
@@ -659,7 +655,7 @@ sub_841B:
 C D 0 - - - 0x00442B 01:841B: 85 2D     STA ram_002D
 C - - - - - 0x00442D 01:841D: A9 04     LDA #$04
 C - - - - - 0x00442F 01:841F: 85 2E     STA ram_002E
-bra_8421:
+bra_8421_loop:
 C - - - - - 0x004431 01:8421: 26 2D     ROL ram_002D
 C - - - - - 0x004433 01:8423: 90 25     BCC bra_844A
 C - - - - - 0x004435 01:8425: A4 5B     LDY ram_005B
@@ -685,7 +681,7 @@ C - - - - - 0x004457 01:8447: C8        INY
 C - - - - - 0x004458 01:8448: 84 5B     STY ram_005B
 bra_844A:
 C - - - - - 0x00445A 01:844A: C6 2E     DEC ram_002E
-C - - - - - 0x00445C 01:844C: D0 D3     BNE bra_8421
+C - - - - - 0x00445C 01:844C: D0 D3     BNE bra_8421_loop
 C - - - - - 0x00445E 01:844E: A5 2B     LDA ram_002B
 C - - - - - 0x004460 01:8450: 18        CLC
 C - - - - - 0x004461 01:8451: 69 08     ADC #$08
@@ -756,12 +752,12 @@ C - - - - - 0x0044B0 01:84A0: CE B0 03  DEC ram_timer_ms
 C - - - - - 0x0044B3 01:84A3: 10 47     BPL bra_84EC_RTS
 C - - - - - 0x0044B5 01:84A5: A2 00     LDX #$00
 C - - - - - 0x0044B7 01:84A7: AD B1 03  LDA ram_timer_sec
-bra_84AA:
+bra_84AA_loop:
 C - - - - - 0x0044BA 01:84AA: C9 0A     CMP #$0A
 C - - - - - 0x0044BC 01:84AC: 90 05     BCC bra_84B3
 C - - - - - 0x0044BE 01:84AE: E9 0A     SBC #$0A
 C - - - - - 0x0044C0 01:84B0: E8        INX
-C - - - - - 0x0044C1 01:84B1: D0 F7     BNE bra_84AA
+C - - - - - 0x0044C1 01:84B1: D0 F7     BNE bra_84AA_loop
 bra_84B3:
 C - - - - - 0x0044C3 01:84B3: 86 2A     STX ram_002A
 C - - - - - 0x0044C5 01:84B5: A9 1E     LDA #$1E
@@ -893,15 +889,15 @@ loc_8596:
 off_0x0045A6:
 sub_0x0045A6 = off_0x0045A6 - 1
 C D 0 - - - 0x0045A6 01:8596: 2C D2 03  BIT ram_03D2
-C - - - - - 0x0045A9 01:8599: 30 08     BMI bra_85A3
+C - - - - - 0x0045A9 01:8599: 30 08     BMI bra_85A3_loop
 C - - - - - 0x0045AB 01:859B: A9 01     LDA #$01
 C - - - - - 0x0045AD 01:859D: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045B0 01:85A0: 4C 96 85  JMP loc_8596
-bra_85A3:
+bra_85A3_loop:
 C - - - - - 0x0045B3 01:85A3: A9 01     LDA #$01
 C - - - - - 0x0045B5 01:85A5: 20 09 C0  JSR sub_0x00C619_delay
 C - - - - - 0x0045B8 01:85A8: AD 7D 03  LDA ram_buffer_bg_flag
-C - - - - - 0x0045BB 01:85AB: D0 F6     BNE bra_85A3
+C - - - - - 0x0045BB 01:85AB: D0 F6     BNE bra_85A3_loop
 C - - - - - 0x0045BD 01:85AD: A9 01     LDA #$01
 C - - - - - 0x0045BF 01:85AF: 8D 7D 03  STA ram_buffer_bg_flag
 C - - - - - 0x0045C2 01:85B2: AE CE 03  LDX ram_03CE
@@ -1210,11 +1206,11 @@ C - - - - - 0x0047CE 01:87BE: A0 11     LDY #con_plr_anim_id
 C - - - - - 0x0047D0 01:87C0: 91 61     STA (ram_plr_data),Y
 C - - - - - 0x0047D2 01:87C2: 68        PLA
 C - - - - - 0x0047D3 01:87C3: BC DD 87  LDY tbl_87DD,X
-bra_87C6:
+bra_87C6_loop:
 C - - - - - 0x0047D6 01:87C6: 0A        ASL
 C - - - - - 0x0047D7 01:87C7: 0A        ASL
 C - - - - - 0x0047D8 01:87C8: 88        DEY
-C - - - - - 0x0047D9 01:87C9: D0 FB     BNE bra_87C6
+C - - - - - 0x0047D9 01:87C9: D0 FB     BNE bra_87C6_loop
 C - - - - - 0x0047DB 01:87CB: 29 C0     AND #$C0
 C - - - - - 0x0047DD 01:87CD: 85 2C     STA ram_002C
 C - - - - - 0x0047DF 01:87CF: A0 01     LDY #con_plr_spr_A
@@ -1265,7 +1261,7 @@ C - - - - - 0x004817 01:8807: 60        RTS
 bra_8808:
 C - - - - - 0x004818 01:8808: A9 00     LDA #$00
 C - - - - - 0x00481A 01:880A: 85 2A     STA ram_002A
-bra_880C:
+bra_880C_loop:
 C - - - - - 0x00481C 01:880C: A5 2A     LDA ram_002A
 C - - - - - 0x00481E 01:880E: F0 30     BEQ bra_8840
 C - - - - - 0x004820 01:8810: C9 0B     CMP #$0B
@@ -1291,7 +1287,7 @@ bra_8840:
 C - - - - - 0x004850 01:8840: E6 2A     INC ram_002A
 C - - - - - 0x004852 01:8842: A5 2A     LDA ram_002A
 C - - - - - 0x004854 01:8844: C9 16     CMP #$16
-C - - - - - 0x004856 01:8846: D0 C4     BNE bra_880C
+C - - - - - 0x004856 01:8846: D0 C4     BNE bra_880C_loop
 C - - - - - 0x004858 01:8848: 60        RTS
 
 
@@ -1302,7 +1298,7 @@ C - - - - - 0x00485B 01:884B: 20 6C 88  JSR sub_886C
 C - - - - - 0x00485E 01:884E: E6 2A     INC ram_002A
 C - - - - - 0x004860 01:8850: A9 0A     LDA #$0A
 C - - - - - 0x004862 01:8852: 85 2B     STA ram_002B
-bra_8854:
+bra_8854_loop:
 C - - - - - 0x004864 01:8854: A5 2A     LDA ram_002A
 C - - - - - 0x004866 01:8856: 20 B2 88  JSR sub_88B2
 C - - - - - 0x004869 01:8859: A5 2B     LDA ram_002B
@@ -1314,7 +1310,7 @@ C - - - - - 0x00486F 01:885F: 6D 7E 03  ADC ram_random
 C - - - - - 0x004872 01:8862: 8D 7E 03  STA ram_random
 C - - - - - 0x004875 01:8865: E6 2A     INC ram_002A
 C - - - - - 0x004877 01:8867: C6 2B     DEC ram_002B
-C - - - - - 0x004879 01:8869: D0 E9     BNE bra_8854
+C - - - - - 0x004879 01:8869: D0 E9     BNE bra_8854_loop
 C - - - - - 0x00487B 01:886B: 60        RTS
 
 
@@ -2087,7 +2083,7 @@ C - - - - - 0x004CF5 01:8CE5: B1 2A     LDA (ram_002A),Y
 C - - - - - 0x004CF7 01:8CE7: F0 20     BEQ bra_8D09_RTS
 C - - - - - 0x004CF9 01:8CE9: 85 2C     STA ram_002C
 C - - - - - 0x004CFB 01:8CEB: C8        INY
-bra_8CEC:
+bra_8CEC_loop:
 C - - - - - 0x004CFC 01:8CEC: 0E 7E 03  ASL ram_random
 C - - - - - 0x004CFF 01:8CEF: 2E 7F 03  ROL ram_random + 1
 C - - - - - 0x004D02 01:8CF2: B1 2A     LDA (ram_002A),Y
@@ -2101,7 +2097,7 @@ C - - - - - 0x004D10 01:8D00: F0 03     BEQ bra_8D05
 C - - - - - 0x004D12 01:8D02: 4C 11 8D  JMP loc_8D11
 bra_8D05:
 C - - - - - 0x004D15 01:8D05: C6 2C     DEC ram_002C
-C - - - - - 0x004D17 01:8D07: D0 E3     BNE bra_8CEC
+C - - - - - 0x004D17 01:8D07: D0 E3     BNE bra_8CEC_loop
 bra_8D09_RTS:
 C - - - - - 0x004D19 01:8D09: 60        RTS
 
