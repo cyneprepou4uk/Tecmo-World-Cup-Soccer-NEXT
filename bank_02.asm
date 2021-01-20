@@ -8629,7 +8629,7 @@ C - - - - - 0x00B0CD 02:B0BD: 4C 23 B0  JMP loc_B023_loop
 
 loc_B0C0:
 C D 1 - - - 0x00B0D0 02:B0C0: 20 CF B0  JSR sub_B0CF
-C - - - - - 0x00B0D3 02:B0C3: 20 51 B1  JSR sub_B151
+C - - - - - 0x00B0D3 02:B0C3: 20 51 B1  JSR sub_B151_print_half_time_goals
 C - - - - - 0x00B0D6 02:B0C6: AD 28 00  LDA ram_byte_for_2000
 C - - - - - 0x00B0D9 02:B0C9: 29 FE     AND #$FE
 C - - - - - 0x00B0DB 02:B0CB: 8D 28 00  STA ram_byte_for_2000
@@ -8703,61 +8703,61 @@ C - - - - - 0x00B160 02:B150: 60        RTS
 
 
 
-sub_B151:
+sub_B151_print_half_time_goals:
 C - - - - - 0x00B161 02:B151: AD A5 03  LDA ram_goals_half
 C - - - - - 0x00B164 02:B154: 8D DD 00  STA ram_00DD
-C - - - - - 0x00B167 02:B157: A9 AA     LDA #$AA
+C - - - - - 0x00B167 02:B157: A9 AA     LDA #< $21AA
 C - - - - - 0x00B169 02:B159: 8D DB 00  STA ram_00DB
-C - - - - - 0x00B16C 02:B15C: A9 21     LDA #$21
+C - - - - - 0x00B16C 02:B15C: A9 21     LDA #> $21AA
 C - - - - - 0x00B16E 02:B15E: 8D DC 00  STA ram_00DC
-C - - - - - 0x00B171 02:B161: 20 D1 B1  JSR sub_B1D1
+C - - - - - 0x00B171 02:B161: 20 D1 B1  JSR sub_B1D1_print_goals
 C - - - - - 0x00B174 02:B164: AD A6 03  LDA ram_goals_half + 1
 C - - - - - 0x00B177 02:B167: 8D DD 00  STA ram_00DD
-C - - - - - 0x00B17A 02:B16A: A9 B4     LDA #$B4
+C - - - - - 0x00B17A 02:B16A: A9 B4     LDA #< $21B4
 C - - - - - 0x00B17C 02:B16C: 8D DB 00  STA ram_00DB
-C - - - - - 0x00B17F 02:B16F: A9 21     LDA #$21
+C - - - - - 0x00B17F 02:B16F: A9 21     LDA #> $21B4
 C - - - - - 0x00B181 02:B171: 8D DC 00  STA ram_00DC
-C - - - - - 0x00B184 02:B174: 20 D1 B1  JSR sub_B1D1
+C - - - - - 0x00B184 02:B174: 20 D1 B1  JSR sub_B1D1_print_goals
 C - - - - - 0x00B187 02:B177: AD AE 03  LDA ram_half_time_cnt
-C - - - - - 0x00B18A 02:B17A: F0 2E     BEQ bra_B1AA
+C - - - - - 0x00B18A 02:B17A: F0 2E     BEQ bra_B1AA_it_is_first_half   ; пропустить рисовку голов 2го тайма
 C - - - - - 0x00B18C 02:B17C: AD A7 03  LDA ram_goals_total
 C - - - - - 0x00B18F 02:B17F: 38        SEC
 C - - - - - 0x00B190 02:B180: ED A5 03  SBC ram_goals_half
 C - - - - - 0x00B193 02:B183: 8D DD 00  STA ram_00DD
-C - - - - - 0x00B196 02:B186: A9 EA     LDA #$EA
+C - - - - - 0x00B196 02:B186: A9 EA     LDA #< $21EA
 C - - - - - 0x00B198 02:B188: 8D DB 00  STA ram_00DB
-C - - - - - 0x00B19B 02:B18B: A9 21     LDA #$21
+C - - - - - 0x00B19B 02:B18B: A9 21     LDA #> $21EA
 C - - - - - 0x00B19D 02:B18D: 8D DC 00  STA ram_00DC
-C - - - - - 0x00B1A0 02:B190: 20 D1 B1  JSR sub_B1D1
+C - - - - - 0x00B1A0 02:B190: 20 D1 B1  JSR sub_B1D1_print_goals
 C - - - - - 0x00B1A3 02:B193: AD A8 03  LDA ram_goals_total + 1
 C - - - - - 0x00B1A6 02:B196: 38        SEC
 C - - - - - 0x00B1A7 02:B197: ED A6 03  SBC ram_goals_half + 1
 C - - - - - 0x00B1AA 02:B19A: 8D DD 00  STA ram_00DD
-C - - - - - 0x00B1AD 02:B19D: A9 F4     LDA #$F4
+C - - - - - 0x00B1AD 02:B19D: A9 F4     LDA #< $21F4
 C - - - - - 0x00B1AF 02:B19F: 8D DB 00  STA ram_00DB
-C - - - - - 0x00B1B2 02:B1A2: A9 21     LDA #$21
+C - - - - - 0x00B1B2 02:B1A2: A9 21     LDA #> $21F4
 C - - - - - 0x00B1B4 02:B1A4: 8D DC 00  STA ram_00DC
-C - - - - - 0x00B1B7 02:B1A7: 20 D1 B1  JSR sub_B1D1
-bra_B1AA:
+C - - - - - 0x00B1B7 02:B1A7: 20 D1 B1  JSR sub_B1D1_print_goals
+bra_B1AA_it_is_first_half:
 C - - - - - 0x00B1BA 02:B1AA: AD A7 03  LDA ram_goals_total
 C - - - - - 0x00B1BD 02:B1AD: 8D DD 00  STA ram_00DD
-C - - - - - 0x00B1C0 02:B1B0: A9 2A     LDA #$2A
+C - - - - - 0x00B1C0 02:B1B0: A9 2A     LDA #< $222A
 C - - - - - 0x00B1C2 02:B1B2: 8D DB 00  STA ram_00DB
-C - - - - - 0x00B1C5 02:B1B5: A9 22     LDA #$22
+C - - - - - 0x00B1C5 02:B1B5: A9 22     LDA #> $222A
 C - - - - - 0x00B1C7 02:B1B7: 8D DC 00  STA ram_00DC
-C - - - - - 0x00B1CA 02:B1BA: 20 D1 B1  JSR sub_B1D1
+C - - - - - 0x00B1CA 02:B1BA: 20 D1 B1  JSR sub_B1D1_print_goals
 C - - - - - 0x00B1CD 02:B1BD: AD A8 03  LDA ram_goals_total + 1
 C - - - - - 0x00B1D0 02:B1C0: 8D DD 00  STA ram_00DD
-C - - - - - 0x00B1D3 02:B1C3: A9 34     LDA #$34
+C - - - - - 0x00B1D3 02:B1C3: A9 34     LDA #< $2234
 C - - - - - 0x00B1D5 02:B1C5: 8D DB 00  STA ram_00DB
-C - - - - - 0x00B1D8 02:B1C8: A9 22     LDA #$22
+C - - - - - 0x00B1D8 02:B1C8: A9 22     LDA #> $2234
 C - - - - - 0x00B1DA 02:B1CA: 8D DC 00  STA ram_00DC
-C - - - - - 0x00B1DD 02:B1CD: 20 D1 B1  JSR sub_B1D1
+C - - - - - 0x00B1DD 02:B1CD: 20 D1 B1  JSR sub_B1D1_print_goals
 C - - - - - 0x00B1E0 02:B1D0: 60        RTS
 
 
 
-sub_B1D1:
+sub_B1D1_print_goals:
 C - - - - - 0x00B1E1 02:B1D1: AD DD 00  LDA ram_00DD
 C - - - - - 0x00B1E4 02:B1D4: 8D E0 00  STA ram_00E0
 bra_B1D7_loop:
@@ -8781,7 +8781,7 @@ C - - - - - 0x00B211 02:B201: A9 0A     LDA #$0A
 C - - - - - 0x00B213 02:B203: 8D E2 00  STA ram_00E2
 C - - - - - 0x00B216 02:B206: A2 01     LDX #$01
 bra_B208_loop:
-C - - - - - 0x00B218 02:B208: 20 33 B2  JSR sub_B233
+C - - - - - 0x00B218 02:B208: 20 33 B2  JSR sub_B233_calculate_DEC
 C - - - - - 0x00B21B 02:B20B: AD E4 00  LDA ram_00E4
 C - - - - - 0x00B21E 02:B20E: 09 30     ORA #$30
 C - - - - - 0x00B220 02:B210: 9D 10 03  STA ram_buffer_bg_data,X
@@ -8805,7 +8805,7 @@ C - - - - - 0x00B242 02:B232: 60        RTS
 
 
 
-sub_B233:
+sub_B233_calculate_DEC:
 C - - - - - 0x00B243 02:B233: 8A        TXA
 C - - - - - 0x00B244 02:B234: 48        PHA
 C - - - - - 0x00B245 02:B235: A9 00     LDA #$00
